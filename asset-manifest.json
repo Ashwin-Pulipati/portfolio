@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/portfolio/static/css/main.1aaed8d8.css",
-    "main.js": "/portfolio/static/js/main.741d7bda.js",
+    "main.css": "/portfolio/static/css/main.b7e9c995.css",
+    "main.js": "/portfolio/static/js/main.d1dec7c0.js",
     "static/js/519.554f8b6e.chunk.js": "/portfolio/static/js/519.554f8b6e.chunk.js",
     "static/media/kitty2.webp": "/portfolio/static/media/kitty2.fcf0e091a4570bae4a38.webp",
     "static/media/kitty3.webp": "/portfolio/static/media/kitty3.2c614c352af3bccc492c.webp",
@@ -32,12 +32,12 @@
     "static/media/tensorflow.svg": "/portfolio/static/media/tensorflow.cbbee40dfc23131b3232ce7146730958.svg",
     "static/media/figma.svg": "/portfolio/static/media/figma.4c7c72690bda96207f676a0d84c261a3.svg",
     "static/media/materialui.svg": "/portfolio/static/media/materialui.35c1f68232f56950a73a1b2484869ec2.svg",
-    "main.1aaed8d8.css.map": "/portfolio/static/css/main.1aaed8d8.css.map",
-    "main.741d7bda.js.map": "/portfolio/static/js/main.741d7bda.js.map",
+    "main.b7e9c995.css.map": "/portfolio/static/css/main.b7e9c995.css.map",
+    "main.d1dec7c0.js.map": "/portfolio/static/js/main.d1dec7c0.js.map",
     "519.554f8b6e.chunk.js.map": "/portfolio/static/js/519.554f8b6e.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.1aaed8d8.css",
-    "static/js/main.741d7bda.js"
+    "static/css/main.b7e9c995.css",
+    "static/js/main.d1dec7c0.js"
   ]
 }
