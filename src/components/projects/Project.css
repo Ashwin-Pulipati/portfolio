@@ -1,0 +1,51 @@
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: true;
+}
+
+.ribbon-animated {
+  --angle: 0deg;
+  padding: 2px; /* border thickness */
+  border: 2px solid transparent;
+  border-radius: 9999px;
+  background:
+    linear-gradient(#dee3e7, #dee3e7) padding-box,
+    conic-gradient(from var(--angle), #ff4545, #00ff99, #006aff, #ff0095, black ) border-box;
+  animation: rotate-gradient 3s linear infinite;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes rotate-gradient {
+  from { --angle: 0deg; }
+  to   { --angle: 360deg; }
+}
+
+.dark .ribbon-animated {
+  background:
+    linear-gradient(#1f2022, #1f2022) padding-box,
+    conic-gradient(from var(--angle), #FF8080,#88E8C0,  #7FA8FF, #FF80D4, white) border-box;
+}
+
+.fade-mask {
+  /* fade out the bottom of the video to transparent */
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    rgba(0,0,0,1) 0%,
+    rgba(0,0,0,0) 95%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    rgba(0,0,0,1) 0%,
+    rgba(0,0,0,0) 95%
+  );
+  /* make sure it covers the whole element */
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+}

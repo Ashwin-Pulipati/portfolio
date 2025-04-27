@@ -1,0 +1,320 @@
+import React, { useState, useCallback, useEffect } from "react";
+import Title from "../layouts/Title";
+import { groupedInputs } from "./constants/inputs";
+import ContactBanner from "./components/ContactBanner";
+import emailjs from "emailjs-com";
+import { PiSealCheckFill } from "react-icons/pi";
+import { BsPatchExclamationFill } from "react-icons/bs";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import "./toastStyles.css"; // Import custom toast styles
+
+const Contact = () => {
+  // Form state
+  const [formData, setFormData] = useState({
+    username: "",
+    phoneNumber: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+
+  // Load saved form data on mount
+  useEffect(() => {
+    const savedData = localStorage.getItem("contactFormData");
+    if (savedData) {
+      setFormData(JSON.parse(savedData));
+    }
+  }, []);
+
+  // Persist formData to localStorage whenever it changes
+  useEffect(() => {
+    localStorage.setItem("contactFormData", JSON.stringify(formData));
+  }, [formData]);
+
+  // Track touched fields (only ephemeral; not persisted)
+  const [touched, setTouched] = useState({});
+
+  // Helper: field-specific validation
+  const validateField = (name, value) => {
+    if (!value.trim()) return "This is a required field.";
+    if (name === "email") {
+      // Email must end with @gmail.com or .edu (case-insensitive)
+      if (!value.match(/(@gmail\.com|\.edu)$/i)) {
+        return "Use Gmail or student email.";
+      }
+    }
+    if (name === "phoneNumber") {
+      if (value.includes("+")) {
+        return "Please avoid country codes";
+      }
+      // Must be exactly 10 digits
+      if (!/^\d{10}$/.test(value)) {
+        return "Phone number must be exactly 10 digits";
+      }
+    }
+    return "";
+  };
+
+  // As soon as the user types, mark the field as touched
+  const handleChange = useCallback((e) => {
+    const { name, value } = e.target;
+    setFormData((prevState) => ({ ...prevState, [name]: value }));
+    setTouched((prev) => ({ ...prev, [name]: true }));
+  }, []);
+
+  // Handle form submission with EmailJS and overall validation
+  const handleSend = useCallback(
+    async (e) => {
+      e.preventDefault();
+      const { username, phoneNumber, email, subject, message } = formData;
+
+      // Check that all fields are filled & valid
+      if (!username || !phoneNumber || !email || !subject || !message) {
+        toast.error("All fields are required!", {
+          className: "custom-toast",
+          progressClassName: "custom-toast-error-progress",
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+        });
+        return;
+      }
+
+      const emailError = validateField("email", email);
+      const phoneError = validateField("phoneNumber", phoneNumber);
+      if (emailError || phoneError) {
+        toast.error(emailError || phoneError, {
+          className: "custom-toast",
+          progressClassName: "custom-toast-error-progress",
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+        });
+        return;
+      }
+
+      const templateParams = {
+        subject: subject,
+        to_name: "Ashwin", // Change if needed
+        from_name: username,
+        message: message,
+        from_email: email,
+        phone_number: phoneNumber,
+      };
+
+      try {
+        await emailjs.send(
+          process.env.REACT_APP_SERVICE_ID, // Your EmailJS Service ID
+          process.env.REACT_APP_TEMPLATE_ID, // Your EmailJS Template ID
+          templateParams,
+          process.env.REACT_APP_EMAILJS_PUBLIC_KEY // Your EmailJS User ID
+        );
+        toast.success("Message sent successfully!", {
+          className: "custom-toast",
+          progressClassName: "custom-toast-success-progress",
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+        });
+        setFormData({
+          username: "",
+          phoneNumber: "",
+          email: "",
+          subject: "",
+          message: "",
+        });
+        setTouched({});
+      } catch (error) {
+        toast.error("Something went wrong. Please try again.", {
+          className: "custom-toast",
+          progressClassName: "custom-toast-error-progress",
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+        });
+      }
+    },
+    [formData]
+  );
+
+  // Initialize AOS animations
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      easing: "ease-in-out",
+      once: false,
+    });
+    AOS.refresh();
+    return () => {
+      AOS.refresh();
+    };
+  }, []);
+
+  // Render an input or textarea with immediate validation feedback
+  const renderField = (field) => {
+    const value = formData[field.name];
+    const errorMessage = touched[field.name]
+      ? validateField(field.name, value)
+      : "";
+    const iconStyle = {
+      position: "absolute",
+      right: "16px",
+      top: "50%",
+      transform: "translateY(-50%)",
+      fontSize: "18px",
+    };
+
+    if (field.type === "textarea") {
+      return (
+        <fieldset
+          key={field.name}
+          className="flex-1 flex flex-col gap-4 font-titleFont"
+        >
+          <label
+            htmlFor={field.id}
+            className="text-sm text-gray-500 dark:text-gray-400 font-semibold uppercase tracking-wide"
+          >
+            {field.label} <span className="text-red-500">*</span>
+          </label>
+          <div className="relative">
+            <div className="h-fit w-full rounded-md hover:bg-gradient-to-r focus-within:bg-gradient-to-r focus from-[#58eba6] via-[#1fc8de] to-[#0584d9] p-[2px]">
+              <div className="flex h-full rounded-md w-full items-center justify-center font-normal relative">
+                <textarea
+                  id={field.id}
+                  name={field.name}
+                  value={value}
+                  onChange={handleChange}
+                  rows={field.rows || 4}
+                  className="contactTextArea text-gray-600 dark:text-gray-200"
+                  required
+                ></textarea>
+                {touched[field.name] &&
+                  (errorMessage ? (
+                    <span style={iconStyle}>
+                      <BsPatchExclamationFill className="w-4 h-4 text-red-700 dark:text-red-500" />
+                    </span>
+                  ) : (
+                    <span style={iconStyle}>
+                      <PiSealCheckFill className="w-5 h-5 text-green-700 dark:text-green-500" />
+                    </span>
+                  ))}
+              </div>
+            </div>
+            {touched[field.name] && errorMessage && (
+              <div className="text-red-700 dark:text-red-500 text-xs mt-1 ml-1.5">
+                {errorMessage}
+              </div>
+            )}
+          </div>
+        </fieldset>
+      );
+    } else {
+      return (
+        <fieldset
+          key={field.name}
+          className="flex-1 flex flex-col gap-4 font-titleFont"
+        >
+          <label
+            htmlFor={field.id}
+            className="text-sm text-gray-500 dark:text-gray-400 font-semibold uppercase tracking-wide"
+          >
+            {field.label}{" "}
+            <span className="text-red-700 dark:text-red-500">*</span>
+          </label>
+          <div className="relative">
+            <div
+              className="p-[2px] font-normal rounded-md hover:bg-gradient-to-r focus-within:bg-gradient-to-r focus from-[#58eba6] via-[#1fc8de] to-[#0584d9]"
+              style={{ position: "relative" }}
+            >
+              <input
+                id={field.id}
+                type={field.type}
+                name={field.name}
+                value={value}
+                onChange={handleChange}
+                required
+                {...(field.name === "phoneNumber" && { maxLength: 10 })}
+                className="contactInput text-gray-600 dark:text-gray-200"
+              />
+              {touched[field.name] &&
+                (errorMessage ? (
+                  <span style={iconStyle}>
+                    <BsPatchExclamationFill className="w-4 h-4 text-red-700 dark:text-red-500" />
+                  </span>
+                ) : (
+                  <span style={iconStyle}>
+                    <PiSealCheckFill className="w-5 h-5 text-green-700 dark:text-green-500" />
+                  </span>
+                ))}
+            </div>
+            {touched[field.name] && errorMessage && (
+              <div className="text-red-700 dark:text-red-500 text-xs mt-1 ml-1.5">
+                {errorMessage}
+              </div>
+            )}
+          </div>
+        </fieldset>
+      );
+    }
+  };
+
+  return (
+    <section
+      id="contact"
+      className="w-full py-14 xs:px-6 xl:px-20 lg:px-16 md:px-12 sm:px-8"
+    >
+      <div className="border-b border-b-gray-400 dark:border-b-black pb-20">
+        <Title title="CONTACT" des="Contact Me" />
+        <div className="w-full">
+          <div className="w-full h-auto flex flex-col lg:flex-row justify-between lg:gap-8 md:gap-y-10 xs:gap-y-8">
+            <ContactBanner />
+            <div
+              className="w-full xl:w-[60%] h-full py-10 xs:px-8 md:px-10 sm:px-6 bg-gradient-to-br from-[#dee3e7] to-white shadow-shadowTwo dark:bg-gradient-to-r dark:from-[#1e2024] dark:to-[#23272b] flex flex-col gap-8 p-4 xl:p-8 rounded-lg dark:shadow-shadowOne"
+              data-aos="zoom-in"
+            >
+              <form
+                className="flex flex-col gap-4 xl:gap-6 py-2 xl:py-5"
+                onSubmit={handleSend}
+              >
+                {groupedInputs.map((group, index) => (
+                  <fieldset key={index} className={group.groupClass}>
+                    {group.fields.map((field) => renderField(field))}
+                  </fieldset>
+                ))}
+                <div className="group relative inline-block p-[2px] rounded-md bg-transparent hover:rounded-full shadow-shadowTwo dark:shadow-shadowOne">
+                  <button
+                    type="submit"
+                    className="w-full relative uppercase z-10 px-6 py-3 text-titleFont font-medium rounded-md bg-gradient-to-br from-[#dee3e7] to-white hover:bg-none hover:rounded-full hover:bg-green-100 hover:text-green-800 dark:bg-gradient-to-tl dark:from-[#1f2022] dark:to-[#16181c] dark:hover:bg-none dark:hover:bg-green-800 dark:hover:text-green-100"
+                  >
+                    Send Message
+                  </button>
+                  <span className="absolute inset-0 z-0 rounded-md bg-gradient-to-r from-[#58eba6] via-[#1fc8de] to-[#0584d9] opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none group-hover:rounded-full"></span>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        className="custom-toast-container"
+        toastClassName={(context) =>
+          context?.type === "success"
+            ? "custom-toast dark:custom-toast"
+            : "custom-toast-error dark:custom-toast-error"
+        }
+        progressClassName={(context) =>
+          context?.type === "success"
+            ? "custom-toast-success-progress dark:custom-toast-success-progress"
+            : "custom-toast-error-progress dark:custom-toast-error-progress"
+        }
+      />
+    </section>
+  );
+};
+
+export default React.memo(Contact);

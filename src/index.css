@@ -1,0 +1,60 @@
+@font-face {
+  font-family: 'VisbyRoundCF';
+  src: url('./assets/fonts/VisbyRoundCF-Bold.ttf') format('truetype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Arizonia';
+  src: url('./assets/fonts/Arizonia-Regular.ttf') format('truetype');
+  font-display: swap;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body, #root {
+    @apply bg-bodyColorWhite dark:bg-bodyColor;
+  }
+}
+
+@layer components {
+  .bannerIcon {
+    @apply w-16 h-16 bg-opacity-25 text-gray-200 text-xl inline-flex items-center justify-center rounded-lg shadow-shadowTwo dark:shadow-shadowOne hover:bg-opacity-40 hover:-translate-y-1 transition-all cursor-pointer bg-boxBgWhite dark:bg-boxBg bg-gradient-to-br from-[#dee3e7] to-white dark:bg-gradient-to-tl dark:from-[#262a2e] dark:to-[#1f2022] dark:hover:bg-gradient-to-br dark:hover:from-[#212428] dark:hover:to-[#16181c] duration-100;
+  }
+
+  .zoomIcon:hover {
+  transform: scale(1.15); /* Icons will zoom in when hovered */
+  transition: transform 0.3s ease-in-out;
+  }
+
+  .skillIcon {
+    @apply w-16 h-16 bg-boxBg bg-opacity-25 text-gray-200 text-xl inline-flex items-center justify-center rounded-lg shadow-shadowTwo dark:shadow-shadowOne cursor-pointer bg-gradient-to-br from-[#dee3e7] to-white dark:bg-gradient-to-tl dark:from-[#262a2e] dark:to-[#202327];
+  }
+  .bgOpacity {
+    @apply bg-black bg-opacity-40;
+  }
+  .contactInput {
+    @apply w-full h-12 rounded-md border-[2px] border-[#dee3e7] bg-[white] dark:border-[#1e1f1f] dark:bg-[#191b1e] text-lightText px-4 active:outline-none outline-none focus-visible:border-b-transparent duration-300 shadow-custom-inset-white dark:shadow-custom-inset;
+  }
+  .contactTextArea {
+    @apply w-full rounded-lg border-[2px] border-[#dee3e7] bg-[white] dark:border-[#1e1f1f] dark:bg-[#191b1e] text-lightText px-4 py-2 active:outline-none outline-none focus-visible:border-b-transparent duration-300 resize-none shadow-custom-inset-white dark:shadow-custom-inset;
+  }
+}
+
+.active {
+  color: white;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.navbar-logo {
+  width: 64px;
+  height: 64px;
+  background-size: cover;
+  background-position: center;
+}
+
