@@ -2,7 +2,7 @@
   "name": "portfolio-website",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://Ashwin-Pulipati.github.io/Portfolio",
+  "homepage": "https://Ashwin-Pulipati.github.io/portfolio",
   "dependencies": {
     "@heroicons/react": "^2.2.0",
     "@testing-library/jest-dom": "^5.16.5",

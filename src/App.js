@@ -33,7 +33,7 @@ useEffect(() => {
 }, []);
 
   return (
-    <Router basename="/Portfolio">
+    <Router basename="/portfolio">
       <CursorEffect />
       <div
         className={`
