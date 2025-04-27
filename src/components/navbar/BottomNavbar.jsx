@@ -9,17 +9,19 @@ function BottomNavbar() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isScrolled, setIsScrolled] = useState(false);
 
-    useEffect(() => {
-      const currentPath = location.pathname.toLowerCase();
-      const index = navItems.findIndex(item =>
-        currentPath.includes(item.link.toLowerCase())
-      );
-      // only override if we actually found a match
-      if (index !== -1) {
-        setActiveIndex(index);
-      }
-  }, [location.pathname]);
+  const sectionIds = navItems.map((n) => n.link);
+  const headerOffset = 70; // same offset you use for scrolls
 
+  useEffect(() => {
+    const currentPath = location.pathname.toLowerCase();
+    const index = navItems.findIndex((item) =>
+      currentPath.includes(item.link.toLowerCase())
+    );
+    // only override if we actually found a match
+    if (index !== -1) {
+      setActiveIndex(index);
+    }
+  }, [location.pathname]);
 
   useEffect(() => {
     const handleScroll = debounce(() => {
@@ -62,6 +64,31 @@ function BottomNavbar() {
   };
 
   const isDark = document.documentElement.classList.contains("dark");
+
+  useEffect(() => {
+    const handleActiveOnScroll = debounce(() => {
+      const scrollPos = window.pageYOffset + headerOffset + 1;
+      // find the first section whose top <= scrollPos < bottom
+      const newIndex = sectionIds.findIndex((id) => {
+        const sec = document.getElementById(id);
+        if (!sec) return false;
+        return (
+          scrollPos >= sec.offsetTop &&
+          scrollPos < sec.offsetTop + sec.offsetHeight
+        );
+      });
+      if (newIndex !== -1 && newIndex !== activeIndex) {
+        setActiveIndex(newIndex);
+      }
+    }, 100);
+
+    window.addEventListener("scroll", handleActiveOnScroll);
+    handleActiveOnScroll(); // run once on mount
+    return () => {
+      window.removeEventListener("scroll", handleActiveOnScroll);
+      handleActiveOnScroll.cancel();
+    };
+  }, [activeIndex, sectionIds]);
 
   return (
     <div

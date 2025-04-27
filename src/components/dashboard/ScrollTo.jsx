@@ -3,66 +3,58 @@ import { FaArrowUpLong } from "react-icons/fa6";
 
 function ScrollTo() {
   const [scrollDirection, setScrollDirection] = useState("up");
-  const [position, setPosition] = useState("top"); // "top" | "middle" | "bottom"
-  const lastY = useRef(0);
+  const [position, setPosition] = useState("top");
+  const lastY = useRef(window.pageYOffset);
 
-  // scroll handlers
   useEffect(() => {
-    let timer;
-    const handleScroll = () => {
-      if (timer) clearTimeout(timer);
-      timer = setTimeout(() => {
-        const y = window.pageYOffset;
-        const maxY = document.documentElement.scrollHeight - window.innerHeight;
+    let ticking = false;
 
-        // 1) detect direction
-        setScrollDirection(y > lastY.current ? "down" : "up");
-        lastY.current = y;
+    const onScroll = () => {
+      const y = window.pageYOffset;
+      const maxY =
+        document.documentElement.scrollHeight - window.innerHeight;
 
-        // 2) detect position
-        if (y === 0) {
-          setPosition("top");
-        } else if (y >= maxY) {
-          setPosition("bottom");
-        } else {
-          setPosition("middle");
-        }
-      }, 50);
+      // 1) Immediate direction change
+      setScrollDirection(y > lastY.current ? "down" : "up");
+      lastY.current = y;
+
+      // 2) Position update via rAF (no debounce)
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          if (y === 0) {
+            setPosition("top");
+          } else if (y >= maxY) {
+            setPosition("bottom");
+          } else {
+            setPosition("middle");
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
 
-    window.addEventListener("scroll", handleScroll);
-    handleScroll(); // init
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll(); // init
     return () => {
-      window.removeEventListener("scroll", handleScroll);
-      clearTimeout(timer);
+      window.removeEventListener("scroll", onScroll);
     };
   }, []);
 
-  // decide arrow orientation: true = pointing down
-  const arrowDown =
-    position === "top" || (position === "middle" && scrollDirection === "up");
+  // arrow points down when we're at top OR user is scrolling up
+  const arrowDown = position === "top";
 
-  // click behavior
   const handleClick = () => {
     if (position === "top") {
       window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
-    } else if (position === "bottom") {
-      window.scrollTo({ top: 0, behavior: "smooth" });
     } else {
-      if (scrollDirection === "up") {
-        window.scrollTo({
-          top: document.body.scrollHeight,
-          behavior: "smooth",
-        });
-      } else {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      }
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
-
+  
   return (
     <div
-      className="fixed xs:bottom-24 sm:bottom-28 md:bottom-5 xs:right-2 sm:right-3
+      className="fixed xs:bottom-24 sm:bottom-28 md:bottom-5 xs:right-2 sm:right-4
                 group opacity-25 hover:opacity-100 transition-all duration-300
                 shadow-shadowTwo dark:shadow-shadowOne rounded-full"
     >
