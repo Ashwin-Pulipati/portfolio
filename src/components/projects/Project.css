@@ -11,7 +11,7 @@
   border-radius: 9999px;
   background:
     linear-gradient(#dee3e7, #dee3e7) padding-box,
-    conic-gradient(from var(--angle), #ff4545, #00ff99, #006aff, #ff0095, black ) border-box;
+    conic-gradient(from var(--angle), #ff4545, #00ff99, #006aff, #ff0095, yellow ) border-box;
   animation: rotate-gradient 3s linear infinite;
   display: inline-flex;
   align-items: center;
