@@ -1,0 +1,41 @@
+{
+  "files": {
+    "main.css": "/Portfolio/static/css/main.e55d9990.css",
+    "main.js": "/Portfolio/static/js/main.f23c24f2.js",
+    "static/js/519.554f8b6e.chunk.js": "/Portfolio/static/js/519.554f8b6e.chunk.js",
+    "static/media/kitty2.webp": "/Portfolio/static/media/kitty2.fcf0e091a4570bae4a38.webp",
+    "static/media/kitty3.webp": "/Portfolio/static/media/kitty3.2c614c352af3bccc492c.webp",
+    "static/media/VisbyRoundCF-Bold.ttf": "/Portfolio/static/media/VisbyRoundCF-Bold.e48013f8232e85447d54.ttf",
+    "static/media/Arizonia-Regular.ttf": "/Portfolio/static/media/Arizonia-Regular.f420d64b78d3a3994c1b.ttf",
+    "static/media/projectThree.webp": "/Portfolio/static/media/projectThree.c4c5c3567e13c7955873.webp",
+    "static/media/fairy-trial.webp": "/Portfolio/static/media/fairy-trial.93437d23fb19259bb373.webp",
+    "static/media/fairy-trial2.webp": "/Portfolio/static/media/fairy-trial2.f52f89ebeaf9d42e4ec1.webp",
+    "static/media/vitepress-logo-large.webp": "/Portfolio/static/media/vitepress-logo-large.09e8b5238157837f6d6a.webp",
+    "static/media/projectTwo.webp": "/Portfolio/static/media/projectTwo.423a562f29a1c796d86b.webp",
+    "static/media/contact-left.webp": "/Portfolio/static/media/contact-left.d8c5cb211b0d533b2d87.webp",
+    "static/media/rest-api.webp": "/Portfolio/static/media/rest-api.73e6d67570f810a4ed77.webp",
+    "static/media/projectOne.webp": "/Portfolio/static/media/projectOne.34151bb8879e31da7d7b.webp",
+    "static/media/teachable-image.webp": "/Portfolio/static/media/teachable-image.ceee1221f66f3133c775.webp",
+    "static/media/external-link.svg": "/Portfolio/static/media/external-link.ab2c2d8651e084c0138d099076e99f6d.svg",
+    "static/media/search.svg": "/Portfolio/static/media/search.e5a5ee9521d457e076b3b06be2c970dc.svg",
+    "static/media/python.svg": "/Portfolio/static/media/python.21d3e740ff31e32c760d429b5c9a5f0d.svg",
+    "static/media/slick.svg": "/Portfolio/static/media/slick.2630a3e3eab21c607e21.svg",
+    "static/media/sql.svg": "/Portfolio/static/media/sql.9c81c444e214ac59f3b82775061eb41c.svg",
+    "static/media/slick.eot": "/Portfolio/static/media/slick.a4e97f5a2a64f0ab1323.eot",
+    "static/media/slick.ttf": "/Portfolio/static/media/slick.c94f7671dcc99dce43e2.ttf",
+    "static/media/slick.woff": "/Portfolio/static/media/slick.295183786cd8a1389865.woff",
+    "index.html": "/Portfolio/index.html",
+    "static/media/opencv.svg": "/Portfolio/static/media/opencv.7aa137522c314e5bf2d27c4e8619c640.svg",
+    "static/media/slack.svg": "/Portfolio/static/media/slack.61b331941f889e7f0870308f69594ef0.svg",
+    "static/media/tensorflow.svg": "/Portfolio/static/media/tensorflow.cbbee40dfc23131b3232ce7146730958.svg",
+    "static/media/figma.svg": "/Portfolio/static/media/figma.4c7c72690bda96207f676a0d84c261a3.svg",
+    "static/media/materialui.svg": "/Portfolio/static/media/materialui.35c1f68232f56950a73a1b2484869ec2.svg",
+    "main.e55d9990.css.map": "/Portfolio/static/css/main.e55d9990.css.map",
+    "main.f23c24f2.js.map": "/Portfolio/static/js/main.f23c24f2.js.map",
+    "519.554f8b6e.chunk.js.map": "/Portfolio/static/js/519.554f8b6e.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e55d9990.css",
+    "static/js/main.f23c24f2.js"
+  ]
+}
