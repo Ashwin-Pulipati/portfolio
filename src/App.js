@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import Dashboard from "./components/dashboard/Dashboard";
 import ProjectsList from "./components/projects/ProjectsList";
 import ProjectDetailLoader from "./components/projects/ProjectDetailLoader";
@@ -10,7 +10,6 @@ import CursorEffect from "./components/cursor/CustomCursor";
 import BottomNavbar from "./components/navbar/BottomNavbar";
 import Footer from "./components/footer/Footer";
 import ScrollTo from "./components/dashboard/ScrollTo";
-
 
 function App() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -34,7 +33,7 @@ useEffect(() => {
 }, []);
 
   return (
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
       <CursorEffect />
       <div
         className={`
