@@ -10,6 +10,7 @@ import "./Navbar.css";
 import ThemeToggle from "./components/ThemeToggle";
 import {  HiArrowLeft } from "react-icons/hi";
 import MediumScreenNavbar from "./components/MediumScreenNavbar";
+import logo from "../../assets/images/Webp/app-logo.webp";
 
 
 // Original desktop nav styling for screens > md
@@ -269,7 +270,7 @@ const Navbar = ({ onSearch }) => {
         <RouterLink to="/" smooth="true" offset={-70} duration={500}>
           <div className="w-16 h-16">
             <img
-              src="/app-logo.webp"
+              src={logo}
               alt="PortfolioLogo"
               className="w-16 h-16 aspect-square object-contain"
               width={64}

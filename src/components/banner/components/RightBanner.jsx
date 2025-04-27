@@ -1,4 +1,5 @@
 import React from "react";
+import banner from "../../assets/images/Webp/banner-right.webp";
 
 const RightBanner = () => {
   return (
@@ -15,7 +16,7 @@ const RightBanner = () => {
       {/* Image */}
       <img
         className="relative w-full h-auto max-w-md lg:max-w-lg mx-auto object-cover rounded-lg z-30"
-        src="/banner-right.png"
+        src={banner}
         alt="banner"
         decoding="async"
         loading="eager"
