@@ -28,10 +28,17 @@ const Media = () => {
           Find me on
         </h2>
         <div className="flex gap-6" data-aos="fade-up">
-          {socialIcons.map(({ id, Icon, containerClass, style }) => (
-            <span key={id} className={containerClass}>
+          {socialIcons.map(({ id, Icon, containerClass, style, link, label }) => (
+            <a
+              key={id}
+              className={containerClass}
+              href={link}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={label}
+            >
               <Icon style={style} />
-            </span>
+            </a>
           ))}
         </div>
       </div>

@@ -113,7 +113,7 @@ function SocialIconsSidebar() {
 
         {/* GitHub */}
         <a
-          href="https://github.com/example/task-manager"
+          href="https://github.com/Ashwin-Pulipati"
           target="_blank"
           rel="noopener noreferrer"
           onMouseEnter={() => setHovered("github")}

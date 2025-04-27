@@ -11,15 +11,19 @@ import {
 export const socialIcons = [
   {
     id: "linkedin",
+    label: "LinkedIn",
     Icon: FaLinkedinIn,
     containerClass: "bannerIcon zoomIcon",
     style: { color: "#0A66C2" },
+    link: "https://www.linkedin.com/in/ashwinpulipati/",
   },
   {
     id: "github",
+    label: "GitHub",
     Icon: FaGithub,
     containerClass: "bannerIcon zoomIcon dark:text-white text-black",
-    style: { },
+    style: {},
+    link: "https://github.com/Ashwin-Pulipati",
   },
 ];
 

@@ -12,7 +12,6 @@ import {  HiArrowLeft } from "react-icons/hi";
 import MediumScreenNavbar from "./components/MediumScreenNavbar";
 import logo from "../../assets/images/Webp/app-logo.webp";
 
-
 // Original desktop nav styling for screens > md
 const getNavLinkClasses = (title, isActive) => {
   if (title === "CONTACT") {

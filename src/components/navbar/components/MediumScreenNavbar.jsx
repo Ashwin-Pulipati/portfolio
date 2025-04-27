@@ -3,6 +3,7 @@ import { Link as ScrollLink } from "react-scroll";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 import { CrossIcon } from "./CrossIcon";
 import { RiSunLine, RiMoonLine } from "react-icons/ri";
+import logo from "../../../assets/images/Webp/app-logo.webp";
 import React from "react";
 
 function MediumScreenNavbar({
@@ -34,7 +35,7 @@ function MediumScreenNavbar({
               >
                 <div className="w-16 h-16">
                   <img
-                    src="/app-logo.webp"
+                    src={logo}
                     alt="PortfolioLogo"
                     className="w-16 h-16 aspect-square object-contain"
                     width={64}
@@ -58,15 +59,27 @@ function MediumScreenNavbar({
                 Find me on
               </h2>
               <div className="flex gap-4">
-                <span className="bannerIcon">
+                <a
+                  className="bannerIcon"
+                  href="https://www.linkedin.com/in/ashwinpulipati/"
+                  aria-label="LinkedIn"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <FaLinkedinIn
                     className="zoomIcon"
                     style={{ color: "#0A66C2" }}
                   />
-                </span>
-                <span className="bannerIcon">
+                </a>
+                <a
+                  className="bannerIcon"
+                  href="https://github.com/Ashwin-Pulipati"
+                  aria-label="GitHub"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <FaGithub className="zoomIcon text-black dark:text-white" />
-                </span>
+                </a>
               </div>
             </div>
             <hr className="border border-gray-300 dark:border-gray-700" />
