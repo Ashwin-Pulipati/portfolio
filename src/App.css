@@ -1,4 +1,4 @@
-/* html,
+html,
 body,
 #root {
   margin: 0;
@@ -15,27 +15,3 @@ body,
   overflow: hidden;
 }
 
-
- */
-
-
- /* In global styles or App.css */
-body {
-  margin: 0;
-  padding: 0;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-main {
-  flex-grow: 1;
-  overflow: auto;
-}
-
-/* Sticky elements should only be top-aligned without overlapping */
-.sticky-element {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
