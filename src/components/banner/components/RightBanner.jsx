@@ -1,5 +1,5 @@
 import React from "react";
-import banner from "../../assets/images/Webp/banner-right.webp";
+import banner from "../../../assets/images/Webp/banner-right.webp";
 
 const RightBanner = () => {
   return (
