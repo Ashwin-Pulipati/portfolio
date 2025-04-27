@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { HashRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Dashboard from "./components/dashboard/Dashboard";
 import ProjectsList from "./components/projects/ProjectsList";
 import ProjectDetailLoader from "./components/projects/ProjectDetailLoader";
@@ -33,7 +33,7 @@ useEffect(() => {
 }, []);
 
   return (
-    <Router basename={process.env.PUBLIC_URL}>
+    <Router basename="/Portfolio">
       <CursorEffect />
       <div
         className={`
