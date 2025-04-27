@@ -95,7 +95,7 @@ function BottomNavbar() {
       className={`w-full xs:block md:hidden fixed bottom-0 z-50 flex justify-between items-center font-titleFont backdrop-blur-lg 
       py-[20px] md:px-[45px] sm:px-[30px] xs:px-[20px] xs:pb-[15px] rounded-tr-xl rounded-tl-xl ${
         isScrolled
-          ? "bg-[#ECF0F3]/75 dark:bg-bodyColor/50"
+          ? "bg-[#ECF0F3]/75 dark:bg-bodyColor/50 xs:pb-[15px]"
           : "bg-[#ECF0F3] dark:bg-bodyColor"
       } transition-shadow duration-300`}
     >
