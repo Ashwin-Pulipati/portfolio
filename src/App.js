@@ -42,7 +42,7 @@ useEffect(() => {
         transition-all duration-300
         ${
           isScrolled
-            ? "xs:top-2 xs:mx-5 xs:rounded-full md:top-0 md:mx-0 md:rounded-none"
+            ? "xs:top-4 xs:mx-5 xs:rounded-full md:top-0 md:mx-0 md:rounded-none"
             : "top-0 mx-0 rounded-none"
         }
       `}

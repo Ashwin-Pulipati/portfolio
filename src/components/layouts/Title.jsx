@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React from "react";
 import Tooltip from "./Tooltip";
 import ExternalLinkIcon from "../../assets/images/SVG/external-link.svg";
 import FairyAnimation from "./FairyAnimation";
@@ -35,19 +35,6 @@ const commonTitleClasses =
 
 const Title = ({ title, des }) => {
   const isFeatures = title === "Features";
-
-  const openResume = useCallback(async () => {
-    try {
-      const response = await fetch("/resume/resume.pdf"); // Check if PDF is available
-      if (response.ok) {
-        window.open("/userResume/resume.pdf", "_blank");
-      } else {
-        console.error("Error fetching the resume PDF");
-      }
-    } catch (error) {
-      console.error("Error fetching the resume:", error);
-    }
-  }, []);
 
   // Render the title based on a mapping
   const renderTitle = () => {
@@ -134,9 +121,11 @@ const Title = ({ title, des }) => {
         {/* Description */}
         <div className="text-4xl md:text-5xl text-gray-700 dark:text-gray-300 font-bold capitalize pl-0 pr-2">
           {des === "My Resume" ? (
-            <span
+            <a
+              href={`${process.env.PUBLIC_URL}/resume.pdf`}
+              target="_blank"
+              rel="noopener noreferrer"
               className="relative inline-flex items-center gap-2 group cursor-pointer dark:hover:text-yellow-400 hover:text-yellow-800"
-              onClick={openResume}
             >
               My Resume
               <img
@@ -145,7 +134,7 @@ const Title = ({ title, des }) => {
                 className="w-8 h-8 mt-3"
               />
               <Tooltip text="View resume" />
-            </span>
+            </a>
           ) : (
             des
           )}

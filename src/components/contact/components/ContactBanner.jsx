@@ -2,8 +2,8 @@ import React, { useState, useCallback, useEffect } from "react";
 import {
   FaEnvelope,
   FaLinkedinIn,
-  FaPhone,
   FaCheckCircle,
+  FaGithub,
 } from "react-icons/fa";
 import ContactMe from "../../../assets/images/Webp/contact-left.webp";
 import AOS from "aos";
@@ -95,21 +95,6 @@ const ContactLeft = () => {
               </div>
             )}
           </div>
-          {/* Phone */}
-          <div
-            className="flex flex-col gap-3"
-            onClick={() => handleCopy("8563282919", "phone")}
-          >
-            <span className="bannerIcon zoomIcon group-hover:shadow-none">
-              <FaPhone style={{ color: "#34A853" }} />
-            </span>
-            {copied === "phone" && (
-              <div className="text-xs text-[#34A853] flex items-center gap-1 mt-1">
-                <FaCheckCircle />
-                <span>Copied!</span>
-              </div>
-            )}
-          </div>
           {/* LinkedIn */}
           <div
             className="flex flex-col gap-3"
@@ -138,6 +123,34 @@ const ContactLeft = () => {
             </span>
             {copied === "linkedin" && (
               <div className="text-xs text-[#0A66C2] flex items-center gap-1 mt-1">
+                <FaCheckCircle />
+                <span>Copied!</span>
+              </div>
+            )}
+          </div>
+
+          {/* Github */}
+          <div
+            className="flex flex-col gap-3"
+            onClick={(e) => {
+              e.preventDefault();
+              handleCopy("https://github.com/Ashwin-Pulipati", "github");
+              window.open("https://github.com/Ashwin-Pulipati", "_blank");
+            }}
+          >
+            <span className="bannerIcon zoomIcon group-hover:shadow-none">
+              <a
+                href="https://www.linkedin.com/in/ashwinpulipati"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Visit LinkedIn profile of Ashwin Pulipati"
+                title="Visit LinkedIn profile of Ashwin Pulipati"
+              >
+                <FaGithub className="text-black dark:text-white" />
+              </a>
+            </span>
+            {copied === "github" && (
+              <div className="text-xs flex items-center gap-1 mt-1">
                 <FaCheckCircle />
                 <span>Copied!</span>
               </div>

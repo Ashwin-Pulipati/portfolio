@@ -39,22 +39,27 @@ const Contact = () => {
 
   // Helper: field-specific validation
   const validateField = (name, value) => {
-    if (!value.trim()) return "This is a required field.";
+    // only require non-phone fields
+    if (!value.trim() && name !== "phoneNumber") {
+      return "This is a required field.";
+    }
+
     if (name === "email") {
-      // Email must end with @gmail.com or .edu (case-insensitive)
       if (!value.match(/(@gmail\.com|\.edu)$/i)) {
         return "Use Gmail or student email.";
       }
     }
-    if (name === "phoneNumber") {
+
+    // only validate phone if they actually typed something
+    if (name === "phoneNumber" && value.trim()) {
       if (value.includes("+")) {
         return "Please avoid country codes";
       }
-      // Must be exactly 10 digits
       if (!/^\d{10}$/.test(value)) {
         return "Phone number must be exactly 10 digits";
       }
     }
+
     return "";
   };
 
@@ -72,7 +77,7 @@ const Contact = () => {
       const { username, phoneNumber, email, subject, message } = formData;
 
       // Check that all fields are filled & valid
-      if (!username || !phoneNumber || !email || !subject || !message) {
+      if (!username || !email || !subject || !message) {
         toast.error("All fields are required!", {
           className: "custom-toast",
           progressClassName: "custom-toast-error-progress",
@@ -189,7 +194,7 @@ const Contact = () => {
                   onChange={handleChange}
                   rows={field.rows || 4}
                   className="contactTextArea text-gray-600 dark:text-gray-200"
-                  required
+                  {...(field.name === "phoneNumber" ? {} : { required: true })}
                 ></textarea>
                 {touched[field.name] &&
                   (errorMessage ? (
@@ -222,7 +227,8 @@ const Contact = () => {
             className="text-sm text-gray-500 dark:text-gray-400 font-semibold uppercase tracking-wide"
           >
             {field.label}{" "}
-            <span className="text-red-700 dark:text-red-500">*</span>
+            {field.label !== "Phone Number" ? (
+              <span className="text-red-500">*</span>): (<span className="text-gray-400 italic lowercase">(Optional)</span>)}
           </label>
           <div className="relative">
             <div
@@ -235,8 +241,9 @@ const Contact = () => {
                 name={field.name}
                 value={value}
                 onChange={handleChange}
-                required
-                {...(field.name === "phoneNumber" && { maxLength: 10 })}
+                {...(field.name === "phoneNumber"
+                  ? { maxLength: 10 }
+                  : { required: true })}
                 className="contactInput text-gray-600 dark:text-gray-200"
               />
               {touched[field.name] &&

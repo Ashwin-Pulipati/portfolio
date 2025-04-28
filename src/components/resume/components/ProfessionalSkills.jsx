@@ -33,7 +33,10 @@ const Skills = () => {
                 >
                   {subCat.title}
                 </h2>
-                <div className="flex gap-6 items-center" data-aos="zoom-in">
+                <div
+                  className="flex gap-6 items-center flex-wrap"
+                  data-aos="zoom-in"
+                >
                   {subCat.items.map((item, itemIndex) => {
                     if (item.type === "icon") {
                       const Icon = item.component;

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { FaGithub, FaLinkedinIn, FaEnvelope, FaPhone } from "react-icons/fa";
+import { FaGithub, FaLinkedinIn, FaEnvelope} from "react-icons/fa";
 import KittyLightMode from "../../assets/images/Webp/kitty3.webp";
 import KittyDarkMode from "../../assets/images/Webp/kitty2.webp";
 
@@ -138,26 +138,6 @@ const FooterBottom = () => {
           <FaGithub className="w-6 h-6 text-black dark:text-white" />
           {hovered === "github" && <Tooltip type="github" />}
         </a>
-
-        {/* Phone */}
-        <button
-          onClick={() => copyText("8563282919", "phone")}
-          onMouseEnter={() => setHovered("phone")}
-          onMouseLeave={() => setHovered(null)}
-          className={`
-                    relative w-fit p-2 rounded-xl
-                    hover:scale-110
-                    hover:border
-                    hover:border-green-800 dark:hover:border-green-200
-                    hover:bg-green-100 dark:hover:bg-green-800
-                  `}
-          aria-label="Phone"
-        >
-          <FaPhone className="w-5 h-5 text-green-800 dark:text-green-200" />
-          {(copied === "phone" || hovered === "phone") && (
-            <Tooltip type="phone" />
-          )}
-        </button>
       </div>
 
       <div className="flex flex-wrap justify-center gap-3 xs:pt-0 lg:pt-6 text-center text-gray-800 dark:text-gray-400 xs:text-sm md:text-base items-center">

@@ -68,7 +68,11 @@ export const skillsData = [
       {
         title: "Frontend",
         items: [
-          { type: "icon", component: SiJquery, color: "#0769AD" },
+          {
+            type: "icon",
+            component: SiJquery,
+            color: "#0769AD",
+          },
           { type: "icon", component: FaReact, color: "#61DAFB" },
           { type: "icon", component: SiRedux, color: "#764ABC" },
           { type: "icon", component: SiNextdotjs, color: "#ffffff" },
