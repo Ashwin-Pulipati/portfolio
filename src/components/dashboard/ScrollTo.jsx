@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { FaArrowUpLong } from "react-icons/fa6";
+import { createRipple } from "../layouts/RippleEffect";
 
 function ScrollTo() {
   const [scrollDirection, setScrollDirection] = useState("up");
@@ -68,7 +69,8 @@ function ScrollTo() {
         aria-label={arrowDown ? "Scroll to bottom" : "Scroll to top"}
         className="relative w-full h-full p-3 rounded-full bg-boxBgWhite dark:bg-boxBg bg-gradient-to-br dark:bg-gradient-to-tl
                from-[#dee3e7] to-white dark:from-[#262a2e] dark:to-[#1f2022] 
-               transition-colors duration-300 "
+               transition-colors duration-300 ripple-container"
+        onMouseDown={createRipple}
       >
         <FaArrowUpLong
           className={`w-6 h-6 transition-transform duration-300 text-sky-600 dark:text-sky-300 ${

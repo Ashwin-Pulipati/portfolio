@@ -4,6 +4,7 @@ import { FaBrain, FaChartLine } from "react-icons/fa";
 import { FaDiagramProject } from "react-icons/fa6";
 import { VscPreview } from "react-icons/vsc";
 import { BsMenuUp } from "react-icons/bs";
+import { createRipple } from "../../layouts/RippleEffect";
 
 // Reusable style map
 const typeStyles = {
@@ -149,10 +150,11 @@ function ProjectSidebarNavigation({
           className="relative w-full h-full flex items-center justify-center
                    bg-boxBgWhite dark:bg-boxBg bg-gradient-to-br dark:bg-gradient-to-tl
                    from-[#dee3e7] to-white dark:from-[#262a2e] dark:to-[#1f2022]
-                   transition-colors duration-300 rounded-full"
+                   transition-colors duration-300 rounded-full ripple-container"
+          onMouseDown={createRipple}
         >
           {navOpen ? (
-            <span className="relative block w-5 h-5 text-red-700 dark:text-red-300">
+            <span className="relative block w-5 h-5 text-red-700 dark:text-red-300 ">
               <span className="absolute inset-0 top-2 right-1 bg-current rotate-45 w-full h-[4px] rounded-full" />
               <span className="absolute inset-0 top-2 right-1 bg-current -rotate-45 w-full h-[4px] rounded-full" />
             </span>

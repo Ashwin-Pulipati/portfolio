@@ -148,6 +148,7 @@ import React, { useEffect, useState } from "react";
 import debounce from "lodash.debounce";
 import { useLocation, useNavigate } from "react-router-dom";
 import { navItems } from "./constants/NavItems";
+import { createRipple } from "../layouts/RippleEffect";
 
 function BottomNavbar() {
   const location = useLocation();
@@ -246,11 +247,12 @@ function BottomNavbar() {
             className="flex flex-col items-center justify-center transition-all duration-300"
           >
             <div
-              className={`w-6 h-6 flex items-center justify-center rounded-full transition-all duration-300 ${
+              className={`w-6 h-6 flex items-center justify-center rounded-full transition-all duration-300 ripple-container ${
                 activeIndex === idx
                   ? `${nav.backgroundActive} shadow-shadowTwo dark:shadow-shadowOne`
                   : ""
-              }`}
+                }`}
+              onMouseDown={createRipple}
             >
               <div
                 // 👇 Simplify: only check activeIndex, let the Tailwind classes handle dark/light
