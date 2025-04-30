@@ -6,6 +6,7 @@ import {
 } from "../constants/media";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { createRipple } from "../../layouts/RippleEffect";
 
 const Media = () => {
   // Initialize and refresh AOS animations
@@ -31,11 +32,12 @@ const Media = () => {
           {socialIcons.map(({ id, Icon, containerClass, style, link, label }) => (
             <a
               key={id}
-              className={containerClass}
+              className={`${containerClass} ripple-container`}
               href={link}
               target="_blank"
               rel="noopener noreferrer"
               aria-label={label}
+              onMouseDown={createRipple}
             >
               <Icon style={style} />
             </a>

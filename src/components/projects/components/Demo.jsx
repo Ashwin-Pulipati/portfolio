@@ -1,32 +1,33 @@
 import React from "react";
 import { BsPlayCircle, BsPlayCircleFill } from "react-icons/bs";
 import { FiExternalLink } from "react-icons/fi";
+import { createRipple } from "../../layouts/RippleEffect";
 
 function Demo({ demo }) {
   return (
     <div
-      className="relative p-0.5 rounded-full flex items-center hover:bg-gradient-to-r focus-within:bg-gradient-to-r from-[#58eba6] via-[#1fc8de] to-[#0584d9] shadow-shadowTwo dark:shadow-shadowOne"
-      onClick={() => window.open(demo, "_blank", "noopener,noreferrer")}
+      // OUTER WRAPPER with the full red shadow
+      className="relative rounded-full bg-red-100 dark:bg-red-800  shadow-md shadow-red-400 dark:shadow-red-500 overflow-visible hover:shadow-none ripple-container"
+    onMouseDown={createRipple}
     >
-      <div className="relative hover:text-white cursor-pointer">
-        <div className="shadow-md shadow-red-400 dark:shadow-red-500 hover:shadow-none group relative w-22 h-12 p-0.5 rounded-full bg-red-100 dark:bg-red-800 flex justify-start items-center ">
-          {/* Website button */}
+      <div
+        // INNER gradient container
+        className="relative p-0.5 rounded-full flex items-center hover:bg-gradient-to-r focus-within:bg-gradient-to-r from-[#58eba6] via-[#1fc8de] to-[#0584d9] cursor-pointer"
+        onClick={() => window.open(demo, "_blank", "noopener,noreferrer")}
+      >
+        <div className="group relative w-22 h-11 p-0.5 rounded-full bg-red-100 dark:bg-red-800 flex justify-start items-center hover:shadow-none">
           <a
             href={demo}
             target="_blank"
             rel="noopener noreferrer"
-            className="relative z-10 w-12 h-12 rounded-full bg-red-100 dark:bg-red-800 flex justify-center items-center focus:outline-none transition duration-200 group"
-            aria-label="Website"
+            onClick={(e) => e.stopPropagation()}
+            className="relative z-10 w-12 h-11 rounded-full flex justify-center items-center focus:outline-none transition duration-200"
+            aria-label="Demo"
           >
-            {/* Default state (outline icon) */}
             <BsPlayCircle className="w-5 h-5 text-red-800 dark:text-red-100 opacity-80 transition duration-200 mt-0.5 group-hover:hidden" />
-
-            {/* Hover state (filled icon) */}
             <BsPlayCircleFill className="w-5 h-5 text-red-800 dark:text-red-100 transition duration-200 mt-0.5 hidden group-hover:inline" />
           </a>
-
-          {/* Visit text with dynamically appearing external link icon */}
-          <div className="relative flex items-center text-sm w-fit h-fit pr-4">
+          <div className="relative flex items-center text-sm w-fit pr-4">
             <span className="font-bodyFont mt-0.5 text-red-800 dark:text-red-100">
               Demo
             </span>

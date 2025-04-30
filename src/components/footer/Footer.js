@@ -17,7 +17,7 @@ const FooterBottom = () => {
   const copyText = (text, type) => {
     navigator.clipboard.writeText(text);
     setCopied(type);
-    setTimeout(() => setCopied(null), 2000);
+    setTimeout(() => setCopied(null), 500);
   };
 
   const [isDark, setIsDark] = useState(false);
@@ -43,8 +43,6 @@ const FooterBottom = () => {
           ${
             type === "email"
               ? " bg-red-100 border-red-800 dark:bg-red-800 dark:border-red-100"
-              : type === "phone"
-              ? "bg-emerald-100 border-emerald-800 dark:bg-emerald-800 dark:border-emerald-100"
               : type === "linkedin"
               ? "bg-blue-100 border-blue-800 dark:bg-blue-800 dark:border-blue-100"
               : type === "github"
@@ -59,11 +57,9 @@ const FooterBottom = () => {
           absolute left-1/2 bottom-full transform -translate-x-1/2 -translate-y-2 px-2 py-1 text-xs whitespace-nowrap font-medium
           ${
             type === "email"
-              ? "text-red-800 dark:text-red-100 bg-red-100 border-red-800 dark:bg-red-800 dark:border-red-100"
-              : type === "phone"
-              ? "text-emerald-800 dark:text-emerald-100 bg-emerald-100 border-emerald-800 dark:bg-emerald-800 dark:border-emerald-100"
+              ? "text-red-600 dark:text-red-100 bg-red-100 border-red-800 dark:bg-red-800 dark:border-red-100"
               : type === "linkedin"
-              ? "text-blue-800 dark:text-blue-100 bg-blue-100 border-blue-800 dark:bg-blue-800 dark:border-blue-100"
+              ? "text-blue-700 dark:text-blue-100 bg-blue-100 border-blue-800 dark:bg-blue-800 dark:border-blue-100"
               : type === "github"
               ? "bg-white border-black dark:bg-black dark:border-white"
               : ""
@@ -93,7 +89,7 @@ const FooterBottom = () => {
                   `}
           aria-label="Email"
         >
-          <FaEnvelope className="w-6 h-6 text-red-800 dark:text-red-200" />
+          <FaEnvelope className="w-6 h-6 text-red-600 dark:text-red-300" />
           {(copied === "email" || hovered === "email") && (
             <Tooltip type="email" />
           )}
@@ -115,7 +111,7 @@ const FooterBottom = () => {
                   `}
           aria-label="LinkedIn"
         >
-          <FaLinkedinIn className="w-6 h-6 text-blue-800 dark:text-blue-200" />
+          <FaLinkedinIn className="w-6 h-6 text-blue-700 dark:text-blue-300" />
           {hovered === "linkedin" && <Tooltip type="linkedin" />}
         </a>
 

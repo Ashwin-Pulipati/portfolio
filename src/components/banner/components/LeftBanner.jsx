@@ -5,6 +5,7 @@ import "../Banner.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { HiArrowRight } from "react-icons/hi2";
+import { createRipple } from "../../layouts/RippleEffect";
 
 const LeftBanner = () => {
   const [text] = useTypewriter({
@@ -94,13 +95,14 @@ const LeftBanner = () => {
         <div className="flex items-center gap-4 xs:flex-wrap sm:flex-nowrap">
           {/* "View Projects" Button */}
           <div
-            className="group hover:cursor-pointer"
+            className="group hover:cursor-pointer "
             onClick={() => scrollToSection("features")}
           >
             <div
               className="flex items-center gap-2 w-fit h-fit bg-boxBgWhite dark:bg-boxBg bg-orange-100 text-amber-800 
             dark:bg-orange-800 dark:text-amber-100 shadow-shadowTwo dark:shadow-shadowOne group-hover:shadow-none font-medium
-            px-4 py-3 rounded-full text-sm sm:text-base view-projects-button"
+            px-4 py-3 rounded-full text-sm sm:text-base view-projects-button ripple-container"
+              onMouseDown={createRipple}
             >
               <div className="flex gap-1.5">
                 <div className="flex">
@@ -134,7 +136,8 @@ const LeftBanner = () => {
             <div
               className="flex items-center gap-2 w-fit h-fit bg-boxBgWhite dark:bg-boxBg bg-cyan-100 font-medium 
             dark:bg-cyan-800 dark:text-blue-100 shadow-shadowTwo dark:shadow-shadowOne group-hover:shadow-none
-            px-4 py-3 rounded-full text-blue-800 text-sm sm:text-base view-resume-button"
+            px-4 py-3 rounded-full text-blue-800 text-sm sm:text-base view-resume-button ripple-container"
+              onMouseDown={createRipple}
             >
               <div className="flex gap-1.5">
                 <div className="flex">

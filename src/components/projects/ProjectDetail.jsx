@@ -16,6 +16,7 @@ import Searchbar from "../navbar/components/Searchbar";
 import "./Project.css";
 import ProjectSidebarNavigation from "./constants/ProjectSidebarNavigation";
 import { useDarkMode } from "../layouts/DarkMode";
+import { createRipple } from "../layouts/RippleEffect";
 
 const ProjectDetail = ({
   id,
@@ -172,7 +173,8 @@ const ProjectDetail = ({
               className="absolute z-10 top-4 right-4 md:top-6 md:right-6 lg:top-8 lg:right-8 w-9 h-9 md:w-12 md:h-12 rounded-full flex items-center justify-center transition-all duration-300 group shadow-shadowTwo dark:shadow-shadowOne"
             >
               <div className="absolute -inset-0.5 p-0.5 rounded-full bg-gradient-to-r from-[#58eba6] via-[#1fc8de] to-[#0584d9] opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-300"></div>
-              <div className="relative w-full h-full bg-bgBoxWhite dark:bg-boxBg bg-gradient-to-br dark:bg-gradient-to-tl from-[#dee3e7] to-white dark:from-[#262a2e] dark:to-[#1f2022] rounded-full flex items-center justify-center">
+              <div className="relative w-full h-full bg-bgBoxWhite dark:bg-boxBg bg-gradient-to-br dark:bg-gradient-to-tl from-[#dee3e7] to-white dark:from-[#262a2e] dark:to-[#1f2022] rounded-full flex items-center justify-center ripple-container"
+              onMouseDown={createRipple}>
                 <span className="relative block w-4 h-4 md:w-5 md:h-5 text-blue-700 dark:text-designColor">
                   <span className="absolute inset-0 top-1.5 md:top-2 right-1 bg-current rotate-45 w-full h-[4px] rounded-full" />
                   <span className="absolute inset-0 top-1.5 md:top-2 right-1 bg-current -rotate-45 w-full h-[4px] rounded-full" />

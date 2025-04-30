@@ -10,6 +10,7 @@ import "aos/dist/aos.css";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./toastStyles.css"; // Import custom toast styles
+import { createRipple } from "../layouts/RippleEffect";
 
 const Contact = () => {
   // Form state
@@ -294,7 +295,8 @@ const Contact = () => {
                 <div className="group relative inline-block p-[2px] rounded-md bg-transparent hover:rounded-full shadow-shadowTwo dark:shadow-shadowOne">
                   <button
                     type="submit"
-                    className="w-full relative uppercase z-10 px-6 py-3 text-titleFont font-medium rounded-md bg-gradient-to-br from-[#dee3e7] to-white hover:bg-none hover:rounded-full hover:bg-green-100 hover:text-green-800 dark:bg-gradient-to-tl dark:from-[#1f2022] dark:to-[#16181c] dark:hover:bg-none dark:hover:bg-green-800 dark:hover:text-green-100"
+                    className="ripple-container w-full relative uppercase z-10 px-6 py-3 text-titleFont font-medium rounded-md bg-gradient-to-br from-[#dee3e7] to-white hover:bg-none hover:rounded-full hover:bg-green-100 hover:text-green-800 dark:bg-gradient-to-tl dark:from-[#1f2022] dark:to-[#16181c] dark:hover:bg-none dark:hover:bg-green-800 dark:hover:text-green-100"
+                  onMouseDown={createRipple}
                   >
                     Send Message
                   </button>

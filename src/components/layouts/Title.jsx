@@ -24,7 +24,7 @@ const rightLineMap = {
 const titleStyleMap = {
   Features:
     "text-purple-900 bg-purple-100 dark:text-purple-100 dark:bg-purple-800",
-  "2+ YEARS OF EXPERIENCE":
+  "4 YEARS OF EXPERIENCE":
     "text-yellow-900 bg-yellow-100 dark:text-yellow-100 dark:bg-yellow-800",
   CONTACT: "text-green-900 bg-green-100 dark:text-green-100 dark:bg-green-800",
 };
@@ -63,7 +63,7 @@ const Title = ({ title, des }) => {
         shockTitle: "Stylish Ribbons?",
       },
     ],
-    "2+ YEARS OF EXPERIENCE": [
+    "4 YEARS OF EXPERIENCE": [
       {
         message: "Sleek timeline dots inspired by CodeBucks' portfolio!",
         shockTitle: "Neat & Tidy!",

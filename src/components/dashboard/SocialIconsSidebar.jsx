@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { FaGithub, FaLinkedinIn, FaEnvelope} from "react-icons/fa";
+import { createRipple } from "../layouts/RippleEffect";
 
 const displayName = {
   email: "Email",
@@ -16,7 +17,7 @@ function SocialIconsSidebar() {
     navigator.clipboard.writeText(text);
     setCopied(type);
     // clear “Copied!!” after 2s, but keep your hover tooltip handling separate
-    setTimeout(() => setCopied(null), 2000);
+    setTimeout(() => setCopied(null), 500);
   };
 
   // Helper to render a tooltip arrow + box
@@ -24,13 +25,11 @@ function SocialIconsSidebar() {
     <>
       <div
         className={`
-          z-10 absolute ml-2 top-1/2 left-full transform -translate-y-1/2 rotate-45 
+          z-10 absolute ml-2 top-1/2 left-full transform -translate-y-1/2 rotate-45
           w-2 h-2
           ${
             type === "email"
               ? " bg-red-100 border-red-800 dark:bg-red-800 dark:border-red-100"
-              : type === "phone"
-              ? "bg-emerald-100 border-emerald-800 dark:bg-emerald-800 dark:border-emerald-100"
               : type === "linkedin"
               ? "bg-blue-100 border-blue-800 dark:bg-blue-800 dark:border-blue-100"
               : type === "github"
@@ -46,11 +45,9 @@ function SocialIconsSidebar() {
           px-2 py-1 text-xs whitespace-nowrap font-medium
           ${
             type === "email"
-              ? "text-red-800 dark:text-red-100 bg-red-100 border-red-800 dark:bg-red-800 dark:border-red-100"
-              : type === "phone"
-              ? "text-emerald-800 dark:text-emerald-100 bg-emerald-100 border-emerald-800 dark:bg-emerald-800 dark:border-emerald-100"
+              ? "text-red-600 dark:text-red-100 bg-red-100 border-red-800 dark:bg-red-800 dark:border-red-100"
               : type === "linkedin"
-              ? "text-blue-800 dark:text-blue-100 bg-blue-100 border-blue-800 dark:bg-blue-800 dark:border-blue-100"
+              ? "text-blue-700 dark:text-blue-100 bg-blue-100 border-blue-800 dark:bg-blue-800 dark:border-blue-100"
               : type === "github"
               ? "bg-white border-black dark:bg-black dark:border-white"
               : ""
@@ -81,11 +78,12 @@ function SocialIconsSidebar() {
             hover:scale-110
             hover:border
             hover:border-red-800 dark:hover:border-red-100
-            hover:bg-red-100 dark:hover:bg-red-800
+            hover:bg-red-100 dark:hover:bg-red-800 
           `}
+          
           aria-label="Email"
         >
-          <FaEnvelope className="w-6 h-6 text-red-800 dark:text-red-200" />
+          <FaEnvelope className="w-6 h-6 text-red-600 dark:text-red-300" />
           {(copied === "email" || hovered === "email") && (
             <Tooltip type="email" />
           )}
@@ -103,11 +101,12 @@ function SocialIconsSidebar() {
             hover:scale-110
             hover:border
             hover:border-blue-800 dark:hover:border-blue-100
-            hover:bg-blue-100 dark:hover:bg-blue-800
+            hover:bg-blue-100 dark:hover:bg-blue-800 
           `}
+          
           aria-label="LinkedIn"
         >
-          <FaLinkedinIn className="w-6 h-6 text-blue-800 dark:text-blue-200" />
+          <FaLinkedinIn className="w-6 h-6 text-blue-700 dark:text-blue-300" />
           {hovered === "linkedin" && <Tooltip type="linkedin" />}
         </a>
 
@@ -123,8 +122,9 @@ function SocialIconsSidebar() {
             hover:scale-110
             hover:border
             hover:border-black dark:hover:border-white
-            hover:bg-white dark:hover:bg-black
+            hover:bg-white dark:hover:bg-black 
           `}
+          
           aria-label="GitHub"
         >
           <FaGithub className="w-6 h-6 text-black dark:text-white" />

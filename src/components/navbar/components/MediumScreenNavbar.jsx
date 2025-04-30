@@ -5,6 +5,7 @@ import { CrossIcon } from "./CrossIcon";
 import { RiSunLine, RiMoonLine } from "react-icons/ri";
 import logo from "../../../assets/images/Webp/app-logo.webp";
 import React from "react";
+import { createRipple } from "../../layouts/RippleEffect";
 
 function MediumScreenNavbar({
   showMenu,
@@ -60,11 +61,12 @@ function MediumScreenNavbar({
               </h2>
               <div className="flex gap-4">
                 <a
-                  className="bannerIcon"
+                  className="bannerIcon ripple-container"
                   href="https://www.linkedin.com/in/ashwinpulipati/"
                   aria-label="LinkedIn"
                   target="_blank"
                   rel="noopener noreferrer"
+                  onMouseDown={createRipple}
                 >
                   <FaLinkedinIn
                     className="zoomIcon"
@@ -72,11 +74,12 @@ function MediumScreenNavbar({
                   />
                 </a>
                 <a
-                  className="bannerIcon"
+                  className="bannerIcon ripple-container"
                   href="https://github.com/Ashwin-Pulipati"
                   aria-label="GitHub"
                   target="_blank"
                   rel="noopener noreferrer"
+                  onMouseDown={createRipple}
                 >
                   <FaGithub className="zoomIcon text-black dark:text-white" />
                 </a>
@@ -86,7 +89,8 @@ function MediumScreenNavbar({
             <div
               className="w-fit h-fit flex items-center justify-start rounded-full bg-boxBgWhite dark:bg-boxBg
              bg-gradient-to-br dark:bg-gradient-to-tl from-[#dee3e7] to-white dark:from-[#262a2e] 
-             dark:to-[#1f2022] mb-5"
+             dark:to-[#1f2022] mb-5 shadow-shadowTwo dark:shadow-shadowOne ripple-container"
+              onMouseDown={createRipple}
             >
               <div
                 className="hover:bg-gradient-to-r focus-within:bg-gradient-to-r from-[#58eba6] via-[#1fc8de] to-[#0584d9] 
@@ -104,7 +108,7 @@ function MediumScreenNavbar({
                 >
                   {theme === "light" ? (
                     <>
-                      <RiSunLine size={24} className="text-orange-800" />
+                      <RiSunLine size={24} className="text-orange-600" />
                       {/* Tooltip arrow */}
                       <div
                         className="z-10 opacity-0 group-hover:opacity-100 absolute top-1/2 left-14 transform -translate-y-1/2 

@@ -5,6 +5,7 @@ import {
   RiExternalLinkLine,
 } from "react-icons/ri";
 import { useFeedback } from "./FeedbackContext"; // adjust the path as needed
+import { createRipple } from "../../layouts/RippleEffect";
 
 function StarRating({ projectId, temporary = false}) {
   const { getProjectFeedback, setRating /*removeRating*/ } = useFeedback();
@@ -143,8 +144,9 @@ function StarRating({ projectId, temporary = false}) {
         ) : (
           <div className="flex items-center">
             <button
-              className="group z-10 w-12 h-12 rounded-full bg-yellow-100 dark:bg-yellow-800 flex justify-center items-center focus:outline-none group/button"
-              onClick={toggleStarsVisibility}
+              className="group z-10 w-12 h-12 rounded-full bg-yellow-100 dark:bg-yellow-800 flex justify-center items-center focus:outline-none group/button ripple-container"
+                onClick={toggleStarsVisibility}
+                onMouseDown={createRipple}
             >
               {avgRating > 0 ? (
                 <RiStarSmileFill className="w-5 h-5 text-orange-800 dark:text-orange-100" />
@@ -165,14 +167,18 @@ function StarRating({ projectId, temporary = false}) {
   // Non-temporary (always-visible) mode.
   return (
     <div
-      ref={containerRef}
-      className="relative p-0.5 rounded-full flex items-center hover:bg-gradient-to-r focus-within:bg-gradient-to-r 
-      from-[#58eba6] via-[#1fc8de] to-[#0584d9] shadow-shadowTwo dark:shadow-shadowOne"
+      // OUTER WRAPPER with the full yellow shadow
+      className="relative rounded-full bg-yellow-100 dark:bg-yellow-800 shadow-md shadow-yellow-400 dark:shadow-yellow-500 overflow-visible hover:shadow-none ripple-container"
+      onMouseDown={createRipple}
     >
-      <div className="relative hover:text-white cursor-pointer bg-yellow-100 dark:bg-yellow-800 rounded-full">
-        <div className="shadow-md shadow-yellow-400 dark:shadow-yellow-500 hover:shadow-none group relative w-48 h-12 p-0.5 rounded-full bg-yellow-100 dark:bg-yellow-800 flex justify-start items-center">
+      <div
+        // INNER gradient container
+        ref={containerRef}
+        className="relative p-0.5 rounded-full flex items-center hover:bg-gradient-to-r focus-within:bg-gradient-to-r from-[#58eba6] via-[#1fc8de] to-[#0584d9] cursor-pointer"
+      >
+        <div className="group relative w-48 h-12 p-0.5 rounded-full bg-yellow-100 dark:bg-yellow-800 flex justify-start items-center hover:shadow-none">
           <button
-            className="z-10 w-12 h-12 rounded-full bg-yellow-100 dark:bg-yellow-800 flex justify-center items-center focus:outline-none"
+            className="z-10 w-12 h-12 rounded-full flex justify-center items-center focus:outline-none"
             onClick={toggleStarsVisibility}
           >
             {avgRating > 0 ? (
@@ -184,35 +190,33 @@ function StarRating({ projectId, temporary = false}) {
               </>
             )}
           </button>
-          <div className="flex gap-1 items-center ">
-            <div className="flex gap-1 justify-center items-center rounded-full text-white">
-              {[1, 2, 3, 4, 5].map((star) => (
-                <div
-                  key={star}
-                  className="relative w-4 h-4 cursor-pointer"
-                  onClick={() => handleStarClick(star)}
+          <div className="flex gap-1 items-center">
+            {[1, 2, 3, 4, 5].map((star) => (
+              <div
+                key={star}
+                className="relative w-4 h-4 cursor-pointer"
+                onClick={() => handleStarClick(star)}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 22 20"
+                  className={`absolute w-4 h-4 ${
+                    star <= filledStars
+                      ? "text-orange-300 dark:text-yellow-200"
+                      : "text-white"
+                  }`}
+                  fill="currentColor"
                 >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 22 20"
-                    className={`absolute w-4 h-4 ${
-                      star <= filledStars
-                        ? "text-orange-300 dark:text-yellow-200"
-                        : "text-white"
-                    }`}
-                    fill="currentColor"
-                  >
-                    <path
-                      d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"
-                      stroke="#ff5e00"
-                      strokeWidth="1"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </div>
-              ))}
-            </div>
-            <span className="rounded-full w-fit h-fit text-sm pl-1 font-bodyFont  mt-0.5 text-orange-800 dark:text-orange-100">
+                  <path
+                    d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"
+                    stroke="#ff5e00"
+                    strokeWidth="1"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </div>
+            ))}
+            <span className="rounded-full w-fit h-fit text-sm pl-1 font-bodyFont mt-0.5 text-orange-800 dark:text-orange-100">
               {avgRating.toFixed(1)}
             </span>
           </div>

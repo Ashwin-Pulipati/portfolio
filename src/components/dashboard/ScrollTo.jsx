@@ -71,7 +71,7 @@ function ScrollTo() {
                transition-colors duration-300 "
       >
         <FaArrowUpLong
-          className={`w-6 h-6 transition-transform duration-300 text-sky-600 dark:text-sky-200 ${
+          className={`w-6 h-6 transition-transform duration-300 text-sky-600 dark:text-sky-300 ${
             arrowDown ? "rotate-180" : "rotate-0"
           }`}
         />

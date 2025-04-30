@@ -8,9 +8,10 @@ import { Link as RouterLink, useLocation, useNavigate } from "react-router-dom";
 // Import Sidebar.css so that its classes are available on mobile
 import "./Navbar.css";
 import ThemeToggle from "./components/ThemeToggle";
-import {  HiArrowLeft } from "react-icons/hi";
+import { HiArrowLeft } from "react-icons/hi";
 import MediumScreenNavbar from "./components/MediumScreenNavbar";
 import logo from "../../assets/images/Webp/app-logo.webp";
+import { createRipple } from "../layouts/RippleEffect";
 
 // Original desktop nav styling for screens > md
 const getNavLinkClasses = (title, isActive) => {
@@ -137,18 +138,17 @@ const Navbar = ({ onSearch }) => {
                   isActive && theme !== "dark"
                     ? backgroundActive
                     : "bg-transparent"
-                } p-2 bg-none rounded-none ${combinedClasses}`}
+                } p-2 bg-none rounded-none ${combinedClasses} ripple-container`}
+                {...(isActive && { onMouseDown: createRipple })}
               >
                 <div
-                  className={`icon text-md ${
-                    theme === "dark" ? color : iconActive
-                  }`}
+                  className={`icon text-md ${isActive ? iconActive : color}`}
                 >
                   {isActive ? activeIcon : inactiveIcon}
                 </div>
                 <div
                   className={`link_text text-gray-500 dark:text-gray-200 ${
-                    isActive ? iconActive : color
+                    isActive ? color : iconActive
                   }`}
                 >
                   {title}
@@ -165,9 +165,10 @@ const Navbar = ({ onSearch }) => {
                 isActive
                   ? ` ${
                       theme === "dark" ? "shadow-shadowOne" : "shadow-shadowTwo"
-                    } ${backgroundActive}`
+                    } ${backgroundActive} ripple-container`
                   : "text-gray-500 hover:text-black dark:text-gray-300 dark:hover:text-white"
               }`}
+              {...(isActive && { onMouseDown: createRipple })}
             >
               {/* Special background effect for CONTACT when inactive */}
               {title === "CONTACT" && !isActive && (
@@ -208,7 +209,7 @@ const Navbar = ({ onSearch }) => {
     );
 
   const navigate = useNavigate();
-  
+
   const handleBack = () => {
     const pathParts = location.pathname.split("/");
     // Example: ['', 'features', 'frontend-development', 'projects', 'some-title']
@@ -226,7 +227,6 @@ const Navbar = ({ onSearch }) => {
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
-
 
   return (
     <nav
@@ -257,8 +257,10 @@ const Navbar = ({ onSearch }) => {
           >
             <div
               className="rounded-lg flex justify-center items-center w-12 h-12 bg-boxBgWhite dark:bg-boxBg bg-gradient-to-br 
-            dark:bg-gradient-to-tl from-[#dee3e7] to-white dark:from-[#262a2e] dark:to-[#1f2022] transition-colors duration-300"
+            dark:bg-gradient-to-tl from-[#dee3e7] to-white dark:from-[#262a2e] dark:to-[#1f2022] transition-colors 
+            duration-300 ripple-container"
               onClick={handleBack}
+              onMouseDown={createRipple}
             >
               <HiArrowLeft className="w-5 h-5 text-blue-700 dark:text-designColor" />
             </div>
@@ -331,8 +333,3 @@ const Navbar = ({ onSearch }) => {
 };
 
 export default Navbar;
-
-
-
-
-

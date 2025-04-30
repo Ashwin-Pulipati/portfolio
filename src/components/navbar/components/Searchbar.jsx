@@ -6,6 +6,7 @@ import { slugify } from "../../layouts/Utils";
 import { cardGradientMap, darkModeCardGradientMap } from "../constants/NavItems";
 import SearchIcon from "../../../assets/images/SVG/search.svg";
 import { projectsData } from "../../projects/constants/ProjectsCardData";
+import { createRipple } from "../../layouts/RippleEffect";
 
 const getCategoryCount = (category) => {
   const slug = slugify(category);
@@ -82,8 +83,13 @@ function Searchbar({ onSearch }) {
           onBlur={() => setDropdownOpen(false)}
         >
           <div
-            className="group flex justify-center gap-2 md:gap-4 bg-gray-50 bg-gradient-br from-[#dee3e7] to-white dark:bg-bodyColor dark:bg-gradient-to-tl  dark:from-[#262a2e] dark:to-[#1f2022] transition-colors duration-100 items-center px-3 py-3 lg:px-5 lg:py-3 rounded-lg text-gray-300 font-semibold cursor-pointer text-sm lg:text-base w-full min-w-max"
+            className="group flex justify-center gap-2 md:gap-4 bg-gray-50 bg-gradient-br from-[#dee3e7] to-white 
+            dark:bg-bodyColor dark:bg-gradient-to-tl  dark:from-[#262a2e] dark:to-[#1f2022] transition-colors duration-100 
+            items-center px-3 py-3 
+            lg:px-5 lg:py-3 rounded-lg text-gray-300 font-semibold cursor-pointer text-sm 
+            lg:text-base w-full min-w-max ripple-container"
             onClick={() => setDropdownOpen((prev) => !prev)}
+            onMouseDown={createRipple}
           >
             {isDropdownOpen ? (
               <BiSolidCategory className="w-5 h-5 text-green-800 dark:text-green-300" />
@@ -117,10 +123,12 @@ function Searchbar({ onSearch }) {
                 return (
                   <li
                     key={index}
-                    className="hover:scale-105 px-4 py-2 cursor-pointer transition text-sm md:text-base text-gray-600 dark:text-gray-300 xs:font-semibold lg:font-normal"
+                    className="hover:scale-105 px-4 py-2 cursor-pointer transition text-sm md:text-base text-gray-600 
+                    dark:text-gray-300 xs:font-semibold lg:font-normal ripple-container"
                     onClick={() => handleCategoryClick(category)}
                     onMouseEnter={() => setHoveredCategory(category)}
                     onMouseLeave={() => setHoveredCategory(null)}
+                    onMouseDown={createRipple}
                     style={{
                       background:
                         hoveredCategory === category ? bgGradient : "",

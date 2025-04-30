@@ -7,6 +7,7 @@ import Experience from "./components/Experience";
 import Certifications from "./components/Certifications";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { createRipple } from "../layouts/RippleEffect";
 
 const tabData = [
   { id: "experience", label: "Experience" },
@@ -38,7 +39,7 @@ const Resume = () => {
       data-aos="fade-up"
     >
       <div className="border-b border-b-gray-400 dark:border-b-black pb-10">
-        <Title title="2+ YEARS OF EXPERIENCE" des="My Resume" />
+        <Title title="4 YEARS OF EXPERIENCE" des="My Resume" />
         <div  data-aos="zoom-in">
           <ul
             className="flex w-full list-none p-0 m-0 rounded-xl boxBgWhite shadow-shadowTwo dark:bg-boxBg dark:shadow-shadowOne 
@@ -48,11 +49,12 @@ const Resume = () => {
               <li key={id} className="flex-1 text-center hover:text-white">
                 <button
                   onClick={() => setActiveTab(id)}
-                  className={`w-full xs:py-[20px] sm:py-[30px] lg:py-[30px] md:py-[20px] lg:text-lg font-medium outline-none border-none transition-all duration-500 ease-in-out bg-transparent rounded-xl cursor-pointer whitespace-nowrap tracking-wider ${
+                  className={`w-full xs:py-[20px] sm:py-[30px] lg:py-[30px] md:py-[20px] lg:text-lg font-medium outline-none border-none transition-all duration-500 ease-in-out bg-transparent rounded-xl cursor-pointer whitespace-nowrap tracking-wider ripple-container ${
                     activeTab === id
                       ? "w-fit h-fit font-semibold px-5 py-3 bg-gradient-to-br from-[#dee3e7] to-white shadow-shadowTwo dark:bg-gradient-to-tl dark:from-[#262a2e] dark:to-[#1f2022] dark:shadow-shadowOne rounded-xl bg-opacity-25 text-white"
                       : "text-lightText "
-                  }`}
+                    }`}
+                  onMouseDown={createRipple}
                 >
                   <span
                     className={`w-fit h-fit inline-block font-titleFont ${

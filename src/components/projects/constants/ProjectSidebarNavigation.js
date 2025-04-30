@@ -75,7 +75,7 @@ export const sections = [
     id: "overview-section",
     displayName: "Overview",
     icon: (
-      <VscPreview className="w-6 lg:w-8 h-8 text-emerald-700 dark:text-emerald-200" />
+      <VscPreview className="w-6 lg:w-8 h-8 text-emerald-700 dark:text-emerald-300" />
     ),
     type: "Overview",
   },
@@ -83,7 +83,7 @@ export const sections = [
     id: "challenges-section",
     displayName: "Challenges",
     icon: (
-      <BiTargetLock className="w-7 lg:w-8 h-8 text-indigo-700 dark:text-indigo-200" />
+      <BiTargetLock className="w-7 lg:w-8 h-8 text-indigo-700 dark:text-indigo-300" />
     ),
     type: "Challenges",
   },
@@ -91,7 +91,7 @@ export const sections = [
     id: "methodology-section",
     displayName: "Methodology",
     icon: (
-      <FaDiagramProject className="w-6 lg:w-7 h-7 text-fuchsia-700 dark:text-fuchsia-200" />
+      <FaDiagramProject className="w-6 lg:w-7 h-7 text-fuchsia-700 dark:text-fuchsia-300" />
     ),
     type: "Methodology",
   },
@@ -99,7 +99,7 @@ export const sections = [
     id: "results-section",
     displayName: "Results",
     icon: (
-      <FaChartLine className="w-6 lg:w-7 h-7 text-rose-700 dark:text-rose-200" />
+      <FaChartLine className="w-6 lg:w-7 h-7 text-rose-700 dark:text-rose-300" />
     ),
     type: "Results",
   },
@@ -107,7 +107,7 @@ export const sections = [
     id: "learnings-section",
     displayName: "Reflections",
     icon: (
-      <FaBrain className="w-6 lg:w-7 h-7 text-amber-700 dark:text-amber-200" />
+      <FaBrain className="w-6 lg:w-7 h-7 text-amber-700 dark:text-amber-300" />
     ),
     type: "Reflections",
   },
@@ -152,7 +152,7 @@ function ProjectSidebarNavigation({
                    transition-colors duration-300 rounded-full"
         >
           {navOpen ? (
-            <span className="relative block w-5 h-5 text-red-700 dark:text-red-200">
+            <span className="relative block w-5 h-5 text-red-700 dark:text-red-300">
               <span className="absolute inset-0 top-2 right-1 bg-current rotate-45 w-full h-[4px] rounded-full" />
               <span className="absolute inset-0 top-2 right-1 bg-current -rotate-45 w-full h-[4px] rounded-full" />
             </span>

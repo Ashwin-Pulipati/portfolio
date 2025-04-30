@@ -1,4 +1,5 @@
 import React from 'react'
+import { createRipple } from '../../layouts/RippleEffect';
 
 export const HamburgerMenu = ({showMenu}) => {
     return (
@@ -11,8 +12,9 @@ export const HamburgerMenu = ({showMenu}) => {
           }`}
         ></div>
         <div
+          onMouseDown={createRipple}
           className="relative w-full h-full bg-boxBgWhite dark:bg-boxBg bg-gradient-to-br dark:bg-gradient-to-tl from-[#dee3e7] to-white dark:from-[#262a2e] dark:to-[#1f2022]
-                 transition-colors duration-300 rounded-full flex items-center justify-center"
+                 transition-colors duration-300 rounded-full flex items-center justify-center ripple-container"
         >
           <span className="relative block w-6 h-4 text-blue-700 dark:text-designColor">
             <span className="absolute top-0 left-0 w-full h-[3px] bg-current rounded-full"></span>

@@ -8,6 +8,7 @@ import {
 import ContactMe from "../../../assets/images/Webp/contact-left.webp";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { createRipple } from "../../layouts/RippleEffect";
 
 const ContactLeft = () => {
   const [copied, setCopied] = useState("");
@@ -79,7 +80,10 @@ const ContactLeft = () => {
               handleCopy("ashwinpulipati@gmail.com", "email");
             }}
           >
-            <span className="bannerIcon zoomIcon group-hover:shadow-none">
+            <span
+              className="bannerIcon zoomIcon group-hover:shadow-none ripple-container"
+              onMouseDown={createRipple}
+            >
               <a
                 href="mailto:ashwinpulipati@gmail.com"
                 aria-label="Email Ashwin Pulipati"
@@ -97,7 +101,7 @@ const ContactLeft = () => {
           </div>
           {/* LinkedIn */}
           <div
-            className="flex flex-col gap-3"
+            className="flex flex-col gap-3 "
             onClick={(e) => {
               e.preventDefault();
               handleCopy(
@@ -110,7 +114,10 @@ const ContactLeft = () => {
               );
             }}
           >
-            <span className="bannerIcon zoomIcon group-hover:shadow-none">
+            <span
+              className="bannerIcon zoomIcon group-hover:shadow-none ripple-container"
+              onMouseDown={createRipple}
+            >
               <a
                 href="https://www.linkedin.com/in/ashwinpulipati"
                 target="_blank"
@@ -131,14 +138,17 @@ const ContactLeft = () => {
 
           {/* Github */}
           <div
-            className="flex flex-col gap-3"
+            className="flex flex-col gap-3 "
             onClick={(e) => {
               e.preventDefault();
               handleCopy("https://github.com/Ashwin-Pulipati", "github");
               window.open("https://github.com/Ashwin-Pulipati", "_blank");
             }}
           >
-            <span className="bannerIcon zoomIcon group-hover:shadow-none">
+            <span
+              className="bannerIcon zoomIcon group-hover:shadow-none ripple-container"
+              onMouseDown={createRipple}
+            >
               <a
                 href="https://www.linkedin.com/in/ashwinpulipati"
                 target="_blank"
