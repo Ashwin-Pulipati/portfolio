@@ -183,15 +183,17 @@ const ProjectDetail = ({
             {/* Project Overview Section */}
             <div
               id="overview-section"
-              className="flex flex-col xl:flex-row-reverse items-start gap-14 border-b border-b-gray-400 dark:border-b-black pb-20 mt-8"
+              className="flex flex-col-reverse xl:flex-row-reverse items-start gap-14 border-b border-b-gray-400 
+              dark:border-b-black pb-20 mt-8"
             >
               {/* Slider Container */}
-              <div className="w-full max-w-full md:max-w-[500px] lg:max-w-[800px] xl:max-w-[500px] mx-auto rounded-xl  z-20">
+              <div className="w-full max-w-full md:max-w-[500px] lg:max-w-[800px] xl:max-w-[500px] mx-auto rounded-xl z-20">
                 <Slider {...sliderSettings}>
                   {[Image1, Image2, Image3].map((image, index) => (
                     <div
                       key={index}
-                      className="w-full xs:h-[200px] sm:h-[250px] md:h-[400px] lg:h-[500px] xl:h-[400px] flex justify-center items-center rounded-xl"
+                      className="w-full xs:h-[200px] sm:h-[250px] md:h-[400px] lg:h-[500px] xl:h-[400px] flex justify-center 
+                      items-center rounded-xl"
                     >
                       <img
                         src={image}
