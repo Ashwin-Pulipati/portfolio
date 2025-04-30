@@ -36,7 +36,7 @@ function SocialIconsSidebar() {
               ? "bg-white border-black dark:bg-black dark:border-white"
               : ""
           }
-          border border-t-0 border-r-0
+          border border-t-0 border-r-0 shadow-md
         `}
       />
       <span
@@ -52,7 +52,7 @@ function SocialIconsSidebar() {
               ? "bg-white border-black dark:bg-black dark:border-white"
               : ""
           }
-          border rounded-md pointer-events-none transition-opacity
+          border rounded-md pointer-events-none transition-opacity shadow-md dark:shadow-gray-600
         `}
       >
         {copied === type ? "Copied!!" : displayName[type]}

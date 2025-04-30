@@ -49,7 +49,7 @@ const FooterBottom = () => {
               ? "bg-white border-black dark:bg-black dark:border-white"
               : ""
           }
-          border border-t-0 border-l-0
+          border border-t-0 border-l-0 shadow-md dark:shadow-gray-600
         `}
       />
       <span
@@ -63,8 +63,8 @@ const FooterBottom = () => {
               : type === "github"
               ? "bg-white border-black dark:bg-black dark:border-white"
               : ""
-          }
-          border rounded-md pointer-events-none transition-opacity
+          } 
+          border rounded-md pointer-events-none transition-opacity shadow-md dark:shadow-gray-600
         `}
       >
         {copied === type ? "Copied!!" : displayName[type]}

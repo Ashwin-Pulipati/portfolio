@@ -50,7 +50,9 @@ function StarRating({ projectId, temporary = false}) {
   // Tooltip elements (customize styling/positioning as needed)
   const FeedbackTooltipCard = (
     <div className="relative right-1/2 bottom-9">
-      <div className="whitespace-nowrap absolute left-1/2 bottom-full transform -translate-x-1/2 bg-bodyColor text-white dark:bg-white dark:text-black text-sm px-2 py-1 rounded shadow-md z-20 hover:text-green-200 dark:hover:text-green-800">
+      <div className="whitespace-nowrap absolute left-1/2 bottom-full transform -translate-x-1/2 bg-bodyColor 
+      text-white dark:bg-white dark:text-black text-sm px-2 py-1 rounded shadow-md
+      z-20 hover:text-green-300 dark:hover:text-green-600">
         <a
           href={feedbackLink}
           target="_blank"
@@ -66,8 +68,9 @@ function StarRating({ projectId, temporary = false}) {
   );
 
   const FeedbackTooltipDetail = (
-    <div className="relative top-8 -left-1/2">
-      <div className="whitespace-nowrap absolute left-1/2 top-full transform -translate-x-1/2 bg-boxBg text-white dark:bg-white dark:text-black text-sm px-2 py-1 rounded shadow-md z-20 hover:text-green-200 dark:hover:text-green-600">
+    <div className="relative top-4 -left-[5%]">
+      <div className="whitespace-nowrap absolute left-1/2 top-full transform -translate-x-1/2 bg-black text-white dark:bg-white 
+      dark:text-black text-sm px-2 py-1 rounded shadow-md z-20 hover:text-green-300 dark:hover:text-green-600">
         <a
           href={feedbackLink}
           target="_blank"
@@ -166,62 +169,125 @@ function StarRating({ projectId, temporary = false}) {
 
   // Non-temporary (always-visible) mode.
   return (
-    <div
-      // OUTER WRAPPER with the full yellow shadow
-      className="relative rounded-full bg-yellow-100 dark:bg-yellow-800 shadow-md shadow-yellow-400 dark:shadow-yellow-500 overflow-visible hover:shadow-none ripple-container"
-      onMouseDown={createRipple}
-    >
+    // <div
+    //   // OUTER WRAPPER with the full yellow shadow
+    //   className="relative rounded-full bg-yellow-100 dark:bg-yellow-800 shadow-md shadow-yellow-400 dark:shadow-yellow-500 overflow-visible hover:shadow-none ripple-container"
+    //   onMouseDown={createRipple}
+    // >
+    //   <div
+    //     // INNER gradient container
+    //     ref={containerRef}
+    //     className="relative p-0.5 rounded-full flex items-center hover:bg-gradient-to-r focus-within:bg-gradient-to-r from-[#58eba6] via-[#1fc8de] to-[#0584d9] cursor-pointer"
+    //   >
+    //     <div className="group relative w-48 h-12 p-0.5 rounded-full bg-yellow-100 dark:bg-yellow-800 flex justify-start items-center hover:shadow-none">
+    //       <button
+    //         className="z-10 w-12 h-12 rounded-full flex justify-center items-center focus:outline-none"
+    //         onClick={toggleStarsVisibility}
+    //       >
+    //         {avgRating > 0 ? (
+    //           <RiStarSmileFill className="w-5 h-5 text-orange-800 dark:text-orange-100 ml-0.5" />
+    //         ) : (
+    //           <>
+    //             <RiStarSmileLine className="w-5 h-5 text-yellow-800 dark:text-yellow-100 ml-0.5 group-hover:hidden" />
+    //             <RiStarSmileFill className="w-5 h-5 hidden group-hover:inline text-orange-800 dark:text-orange-200 ml-0.5" />
+    //           </>
+    //         )}
+    //       </button>
+    //       <div className="flex gap-1 items-center">
+    //         {[1, 2, 3, 4, 5].map((star) => (
+    //           <div
+    //             key={star}
+    //             className="relative w-4 h-4 cursor-pointer"
+    //             onClick={() => handleStarClick(star)}
+    //           >
+    //             <svg
+    //               xmlns="http://www.w3.org/2000/svg"
+    //               viewBox="0 0 22 20"
+    //               className={`absolute w-4 h-4 ${
+    //                 star <= filledStars
+    //                   ? "text-orange-300 dark:text-yellow-200"
+    //                   : "text-white"
+    //               }`}
+    //               fill="currentColor"
+    //             >
+    //               <path
+    //                 d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"
+    //                 stroke="#ff5e00"
+    //                 strokeWidth="1"
+    //                 strokeLinejoin="round"
+    //               />
+    //             </svg>
+    //           </div>
+    //         ))}
+    //         <span className="rounded-full w-fit h-fit text-sm pl-1 font-bodyFont mt-0.5 text-orange-800 dark:text-orange-100">
+    //           {avgRating.toFixed(1)}
+    //         </span>
+    //       </div>
+    //     </div>
+    //   </div>
+    //   {userRating > 0 && showFeedbackTooltip && FeedbackTooltipDetail}
+    // </div>
+
+    <div className="relative">
+      {/* This div handles ripple and styling */}
       <div
-        // INNER gradient container
-        ref={containerRef}
-        className="relative p-0.5 rounded-full flex items-center hover:bg-gradient-to-r focus-within:bg-gradient-to-r from-[#58eba6] via-[#1fc8de] to-[#0584d9] cursor-pointer"
+        className="ripple-container relative rounded-full bg-yellow-100 dark:bg-yellow-800 shadow-md shadow-yellow-400 dark:shadow-yellow-500 overflow-visible hover:shadow-none"
+        onMouseDown={createRipple}
       >
-        <div className="group relative w-48 h-12 p-0.5 rounded-full bg-yellow-100 dark:bg-yellow-800 flex justify-start items-center hover:shadow-none">
-          <button
-            className="z-10 w-12 h-12 rounded-full flex justify-center items-center focus:outline-none"
-            onClick={toggleStarsVisibility}
-          >
-            {avgRating > 0 ? (
-              <RiStarSmileFill className="w-5 h-5 text-orange-800 dark:text-orange-100 ml-0.5" />
-            ) : (
-              <>
-                <RiStarSmileLine className="w-5 h-5 text-yellow-800 dark:text-yellow-100 ml-0.5 group-hover:hidden" />
-                <RiStarSmileFill className="w-5 h-5 hidden group-hover:inline text-orange-800 dark:text-orange-200 ml-0.5" />
-              </>
-            )}
-          </button>
-          <div className="flex gap-1 items-center">
-            {[1, 2, 3, 4, 5].map((star) => (
-              <div
-                key={star}
-                className="relative w-4 h-4 cursor-pointer"
-                onClick={() => handleStarClick(star)}
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 22 20"
-                  className={`absolute w-4 h-4 ${
-                    star <= filledStars
-                      ? "text-orange-300 dark:text-yellow-200"
-                      : "text-white"
-                  }`}
-                  fill="currentColor"
+        {/* Inner content with stars and average */}
+        <div
+          ref={containerRef}
+          className="relative p-0.5 rounded-full flex items-center hover:bg-gradient-to-r focus-within:bg-gradient-to-r from-[#58eba6] via-[#1fc8de] to-[#0584d9] cursor-pointer"
+        >
+          <div className="group relative w-48 h-12 p-0.5 rounded-full bg-yellow-100 dark:bg-yellow-800 flex justify-start items-center hover:shadow-none">
+            <button
+              className="z-10 w-12 h-12 rounded-full flex justify-center items-center focus:outline-none"
+              onClick={toggleStarsVisibility}
+            >
+              {avgRating > 0 ? (
+                <RiStarSmileFill className="w-5 h-5 text-orange-800 dark:text-orange-100 ml-0.5" />
+              ) : (
+                <>
+                  <RiStarSmileLine className="w-5 h-5 text-yellow-800 dark:text-yellow-100 ml-0.5 group-hover:hidden" />
+                  <RiStarSmileFill className="w-5 h-5 hidden group-hover:inline text-orange-800 dark:text-orange-200 ml-0.5" />
+                </>
+              )}
+            </button>
+            <div className="flex gap-1 items-center">
+              {[1, 2, 3, 4, 5].map((star) => (
+                <div
+                  key={star}
+                  className="relative w-4 h-4 cursor-pointer"
+                  onClick={() => handleStarClick(star)}
                 >
-                  <path
-                    d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"
-                    stroke="#ff5e00"
-                    strokeWidth="1"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </div>
-            ))}
-            <span className="rounded-full w-fit h-fit text-sm pl-1 font-bodyFont mt-0.5 text-orange-800 dark:text-orange-100">
-              {avgRating.toFixed(1)}
-            </span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 22 20"
+                    className={`absolute w-4 h-4 ${
+                      star <= filledStars
+                        ? "text-orange-300 dark:text-yellow-200"
+                        : "text-white"
+                    }`}
+                    fill="currentColor"
+                  >
+                    <path
+                      d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"
+                      stroke="#ff5e00"
+                      strokeWidth="1"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </div>
+              ))}
+              <span className="rounded-full w-fit h-fit text-sm pl-1 font-bodyFont mt-0.5 text-orange-800 dark:text-orange-100">
+                {avgRating.toFixed(1)}
+              </span>
+            </div>
           </div>
         </div>
       </div>
+
+      {/* Tooltip rendered outside of ripple container to avoid DOM conflict */}
       {userRating > 0 && showFeedbackTooltip && FeedbackTooltipDetail}
     </div>
   );

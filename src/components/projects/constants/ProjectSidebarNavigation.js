@@ -54,14 +54,14 @@ const Tooltip = ({ type, displayName }) => {
         className={`
           z-10 absolute mr-2 top-1/2 right-full transform -translate-y-1/2 rotate-45 w-2 h-2 
           opacity-0 group-hover:opacity-100 transition-opacity duration-300
-          ${style.bg} ${style.border} border border-b-0 border-l-0
+          ${style.bg} ${style.border} border border-b-0 border-l-0 shadow-md dark:shadow-gray-600
         `}
       />
       <span
         className={`
           absolute right-full mr-3 top-1/2 -translate-y-1/2 px-2 py-1 text-xs whitespace-nowrap font-medium rounded-md 
           pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300 border
-          ${style.bg} ${style.border} ${style.text}
+          ${style.bg} ${style.border} ${style.text} shadow-md dark:shadow-gray-600
         `}
       >
         {displayName}
