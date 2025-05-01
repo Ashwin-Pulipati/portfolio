@@ -3,7 +3,6 @@ import Tooltip from "./Tooltip";
 import ExternalLinkIcon from "../../assets/images/SVG/external-link.svg";
 import FairyAnimation from "./FairyAnimation";
 
-// Mapping objects for gradient lines
 const leftLineMap = {
   "My Resume":
     "bg-gradient-to-r from-transparent to-yellow-600 dark:to-yellow-400",
@@ -20,7 +19,6 @@ const rightLineMap = {
     "bg-gradient-to-l from-transparent to-green-600 dark:to-green-400",
 };
 
-// Mapping object for title styles
 const titleStyleMap = {
   Features:
     "text-purple-900 bg-purple-100 dark:text-purple-100 dark:bg-purple-800",
@@ -29,23 +27,18 @@ const titleStyleMap = {
   CONTACT: "text-green-900 bg-green-100 dark:text-green-100 dark:bg-green-800",
 };
 
-// Common title classes used for every title
 const commonTitleClasses =
   "tracking-[1.5px] uppercase text-sm font-medium font-titleFont w-fit h-fit rounded-full p-2 pr-4 pl-4 shadow-shadowTwo dark:shadow-shadowOne";
 
 const Title = ({ title, des }) => {
   const isFeatures = title === "Features";
-
-  // Render the title based on a mapping
   const renderTitle = () => {
-    // Use the mapping only if title exists in our map; otherwise, render nothing.
     const titleClasses = titleStyleMap[title];
     return titleClasses ? (
       <h3 className={`${commonTitleClasses} ${titleClasses}`}>{title}</h3>
     ) : null;
   };
 
-  // Example messages for this title section as objects with message and shockTitle
   const titleMessages = {
     Features: [
       {
@@ -103,7 +96,6 @@ const Title = ({ title, des }) => {
     ],
   };
 
-  // Use title as key to get the relevant messages; fallback to a default object if none found.
   const messagesForThisTitle = titleMessages[title] || [
     { message: "Default title message", shockTitle: "Did you know?" },
   ];
@@ -116,23 +108,19 @@ const Title = ({ title, des }) => {
     >
       <div className="relative">
         {renderTitle()}
-        {/* Absolutely positioned FairyAnimation */}
         <div className="absolute hidden md:block md:top-4 md:-right-[7.5rem] md:z-50">
           <FairyAnimation section={title} messages={messagesForThisTitle} />
         </div>
       </div>
 
-      {/* Gradient lines + Description Container */}
       <div
         className="flex items-center w-full justify-center gap-4"
         data-aos="fade-up"
       >
-        {/* Left gradient line */}
         {leftLineMap[des] && (
           <div className={`mt-3 flex-1 h-[2px] ${leftLineMap[des]}`}></div>
         )}
 
-        {/* Description */}
         <div className="text-4xl md:text-5xl text-gray-700 dark:text-gray-300 font-bold capitalize pl-0 pr-2">
           {des === "My Resume" ? (
             <a
@@ -154,7 +142,6 @@ const Title = ({ title, des }) => {
           )}
         </div>
 
-        {/* Right gradient line */}
         {rightLineMap[des] && (
           <div className={`mt-3 flex-1 h-[2px] ${rightLineMap[des]}`}></div>
         )}

@@ -7,13 +7,12 @@ import ViewCardImage from "./components/ViewCardImage";
 import "./Project.css"
 import {gradients} from "./constants/ProjectsGradients.js";
 
-// Calculates the "time ago" text based on the creation date
 const getProjectAgeText = (createdAt) => {
   if (!createdAt) return null;
 
   const projectDate = new Date(createdAt);
   const currentDate = new Date();
-  const diffTime = Math.floor((currentDate - projectDate) / 1000); // in seconds
+  const diffTime = Math.floor((currentDate - projectDate) / 1000);
 
   if (diffTime < 60) return `${diffTime} sec${diffTime > 1 ? "s" : ""} ago`;
   if (diffTime < 3600)
@@ -34,7 +33,6 @@ const getProjectAgeText = (createdAt) => {
   return `${days} day${days > 1 ? "s" : ""} ago`;
 };
 
-// Custom hook with dynamic update intervals based on project age
 const useProjectAgeText = (createdAt) => {
   const [projectAgeText, setProjectAgeText] = useState(
     getProjectAgeText(createdAt)
@@ -48,13 +46,12 @@ const useProjectAgeText = (createdAt) => {
       const projectDate = new Date(createdAt);
       const diffSeconds = (Date.now() - projectDate.getTime()) / 1000;
 
-      // Determine next update delay based on the age of the project:
-      let nextDelay = 1000; // default: update every second for very recent projects
+      let nextDelay = 1000;
       if (diffSeconds >= 86400)
-        nextDelay = 86400000; // update every day if > 1 day
+        nextDelay = 86400000;
       else if (diffSeconds >= 3600)
-        nextDelay = 3600000; // update every hour if > 1 hour
-      else if (diffSeconds >= 60) nextDelay = 60000; // update every minute if > 1 minute
+        nextDelay = 3600000;
+      else if (diffSeconds >= 60) nextDelay = 60000;
 
       timerId = setTimeout(tick, nextDelay);
     };
@@ -78,25 +75,17 @@ const ProjectsCard = ({
   createdAt,
   gradientIndex,
 }) => {
-  // Memoize slug calculations so they only recompute when the title/category changes
   const slug = useMemo(() => slugify(title), [title]);
   const categorySlug = useMemo(() => slugify(category), [category]);
-
-  // Local state to track hover
   const [isHovered, setIsHovered] = useState(false);
 
-  // Optionally, determine dark mode.
-  // For simplicity, here we check if the HTML element has a "dark" class.
   const isDarkMode = document.documentElement.classList.contains("dark");
 
-  // Choose the gradient based on the index (make sure to wrap the index if more than 9 cards)
   const currentGradient = gradients[gradientIndex % gradients.length];
 
-  // Handlers for hover events:
   const handleMouseEnter = () => setIsHovered(true);
   const handleMouseLeave = () => setIsHovered(false);
 
-  // Memoize the highlighted texts to avoid re-computation on every render.
   const highlightText = (text, query) => {
     if (!query) return text;
     const regex = new RegExp(`(${query})`, "gi");
@@ -123,7 +112,6 @@ const ProjectsCard = ({
     [des, searchQuery]
   );
 
-  // Use the custom hook for dynamically updating the project age text.
   const projectAgeText = useProjectAgeText(createdAt);
 
   return (
@@ -149,7 +137,6 @@ const ProjectsCard = ({
           <div className="relative flex items-center gap-2 px-3 py-1.5 rounded-full bg-bodyColorWhite dark:bg-boxBg 
           dark:bg-gradient-to-tl bg-gradient-br from-[#dee3e7] to-white dark:from-[#262a2e] dark:to-[#1f2022]
           transition-colors duration-100">
-            {/* <IoRocketSharp className="w-3 h-3 md:w-4 md:h-4 text-orange-600" /> */}
             <img
               src="https://img.icons8.com/glassmorphism/48/storm.png"
               alt="storm"
@@ -158,7 +145,6 @@ const ProjectsCard = ({
             <span className="text-black dark:text-white text-xs font-bodyFont">
               {projectAgeText}
             </span>
-            {/* <IoRocketSharp className="w-3 h-3 md:w-4 md:h-4 text-orange-600" /> */}
             <img
               src="https://img.icons8.com/glassmorphism/48/storm.png"
               alt="storm"
@@ -176,7 +162,7 @@ const ProjectsCard = ({
             projectId={id}
             github={github}
             website={website}
-            disableShadow={isHovered} // Pass hover state to disable shadows
+            disableShadow={isHovered}
           />
         </div>
       </div>

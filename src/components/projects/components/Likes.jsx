@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from "react";
 import { GoHeart, GoHeartFill } from "react-icons/go";
-import { useFeedback } from "./FeedbackContext"; // adjust the import path as needed
+import { useFeedback } from "./FeedbackContext";
 import { createRipple } from "../../layouts/RippleEffect";
 
 function Likes({ projectId, temporary = false}) {
@@ -24,7 +24,6 @@ function Likes({ projectId, temporary = false}) {
       focus-within:bg-gradient-to-r from-[#58eba6] via-[#1fc8de] to-[#0584d9]"
       >
         {showLikes ? (
-          // Expanded view: Like button with like count.
           <div className="relative">
             <div className="absolute -inset-0.5 rounded-full bg-gradient-to-r from-[#58eba6] via-[#1fc8de] to-[#0584d9] opacity-60 blur"></div>
             <div className="relative w-22 h-12 p-0.5 rounded-full bg-pink-100 dark:bg-pink-800 flex justify-start items-center">
@@ -44,7 +43,6 @@ function Likes({ projectId, temporary = false}) {
             </div>
           </div>
         ) : (
-          // Compact view: Only the like button.
           <button
               className="relative z-10 w-12 h-12 rounded-full bg-pink-100 dark:bg-pink-800 flex justify-center items-center 
             focus:outline-none transition duration-200 group/button ripple-container"
@@ -65,16 +63,13 @@ function Likes({ projectId, temporary = false}) {
     );
   }
 
-  // Always-visible mode.
   return (
     <div
-      // OUTER WRAPPER with the full pink shadow
       className="relative rounded-full bg-pink-100 dark:bg-pink-800 shadow-md shadow-pink-400 dark:shadow-pink-500 ripple-container
       overflow-visible hover:shadow-none"
       onMouseDown={createRipple}
     >
       <div
-        // INNER gradient container
         className="relative p-0.5 rounded-full flex items-center hover:bg-gradient-to-r focus-within:bg-gradient-to-r 
         from-[#58eba6] via-[#1fc8de] to-[#0584d9] cursor-pointer"
         onClick={handleLikeClick}

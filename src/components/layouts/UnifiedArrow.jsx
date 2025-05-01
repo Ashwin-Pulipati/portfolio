@@ -7,7 +7,6 @@ const UnifiedArrow = React.memo(
     const Icon = direction === "next" ? HiArrowRight : HiArrowLeft;
 
     if (variant === "pagination") {
-      // Pagination arrow styles (for /features/:category)
       return (
         <div
           className={`group relative w-10 h-10 sm:w-12 sm:h-12 flex justify-center items-center cursor-pointer transition z-10 ${
@@ -31,7 +30,6 @@ const UnifiedArrow = React.memo(
         </div>
       );
     } else if (variant === "projectDetail") {
-      // ProjectDetail arrow styles (for /features/:category/projects/:title)
       return (
         <div
           className={`w-[40px] h-[40px] md:w-[60px] md:h-[60px] rounded-lg text-2xl text-white flex justify-center items-center absolute top-1/2 ${
@@ -57,7 +55,6 @@ const UnifiedArrow = React.memo(
         </div>
       );
     } else {
-      // Default features arrow (for all other cases)
       return (
         <div
           className={`w-16 h-16 rounded-md text-2xl text-blue-700 dark:text-designColor flex justify-center items-center absolute top-1/2 ${

@@ -4,30 +4,28 @@ import AnimatedFairyDarkMode from "../../assets/images/Webp/fairy-trial2.webp";
 import "./FairyAnimation.css";
 
 const FairyAnimation = ({
-  section, // a string identifier (e.g. "contact", "banner", etc.)
+  section,
   messages = ["Default message"],
-  displayTime = 5000, // how long the fairy is visible (ms)
-  minInterval = 20000, // minimum time between appearances (ms)
-  maxInterval = 60000, // maximum time between appearances (ms)
-  shockTitle = "Did you know?", // fallback shock title if not provided by message object
+  displayTime = 5000,
+  minInterval = 20000,
+  maxInterval = 60000,
+  shockTitle = "Did you know?",
 }) => {
   const [showFairy, setShowFairy] = useState(false);
   const [displayMessage, setDisplayMessage] = useState("");
   const [displayShockTitle, setDisplayShockTitle] = useState(shockTitle);
   const [isDark, setIsDark] = useState(false);
   const [pauseAnim, setPauseAnim] = useState(false);
-  const [isHolding, setIsHolding] = useState(false); // Track hold state
+  const [isHolding, setIsHolding] = useState(false);
 
-  // Global flag ensures only one fairy appears at a time.
   if (typeof window.__fairyActive === "undefined") {
     window.__fairyActive = false;
   }
-  // Global mapping for message indices per section.
+
   if (typeof window.__fairyMessageIndices === "undefined") {
     window.__fairyMessageIndices = {};
   }
 
-  // Dark mode detection
   useEffect(() => {
     const updateDarkMode = () =>
       setIsDark(document.documentElement.classList.contains("dark"));
@@ -40,7 +38,6 @@ const FairyAnimation = ({
     return () => observer.disconnect();
   }, []);
 
-  // Utility to get a random integer between min (inclusive) and max (exclusive)
   const randomInt = (min, max) => Math.floor(Math.random() * (max - min)) + min;
 
   useEffect(() => {
@@ -52,10 +49,8 @@ const FairyAnimation = ({
         if (!window.__fairyActive) {
           window.__fairyActive = true;
 
-          // Determine which message to show for this section
           let idx = window.__fairyMessageIndices[section] || 0;
           const selected = messages[idx];
-          // Check if message is an object (with message and shockTitle) or just a string.
           if (typeof selected === "object" && selected !== null) {
             setDisplayMessage(selected.message);
             setDisplayShockTitle(selected.shockTitle || shockTitle);
@@ -63,24 +58,19 @@ const FairyAnimation = ({
             setDisplayMessage(selected);
             setDisplayShockTitle(shockTitle);
           }
-          // Update global mapping so next time the next message shows
           window.__fairyMessageIndices[section] = (idx + 1) % messages.length;
-
           setShowFairy(true);
-          // Hide after displayTime, unless the user is holding the speech bubble
           const hideFairy = () => {
             if (!isHolding) {
               setShowFairy(false);
               window.__fairyActive = false;
               scheduleNext();
             } else {
-              // Keep checking until the user releases the hold
               setTimeout(hideFairy, 500);
             }
           };
           setTimeout(hideFairy, displayTime);
         } else {
-          // If another fairy is active, try again shortly.
           scheduleNext();
         }
       }, delay);
@@ -98,7 +88,7 @@ const FairyAnimation = ({
     isHolding,
   ]);
 
-  const longPressDelay = 1000; // how long to hold before pausing
+  const longPressDelay = 1000;
   const longPressTimer = useRef(null);
   const handlePressStart = () => {
     longPressTimer.current = setTimeout(() => {
@@ -137,7 +127,6 @@ const FairyAnimation = ({
         </div>
       </div>
 
-      {/* Fairy clickable area */}
       <div
         className="fairy-hover-area"
         onMouseDown={handlePressStart}
@@ -146,7 +135,6 @@ const FairyAnimation = ({
         onMouseLeave={handlePressEnd}
         onTouchEnd={handlePressEnd}
       >
-        {/* Fairy Image */}
         <img
           src={isDark ? AnimatedFairyDarkMode : AnimatedFairyLightMode}
           alt="fairy"
@@ -156,7 +144,6 @@ const FairyAnimation = ({
           loading="lazy"
         />
 
-        {/* Speech Bubble */}
         <div
           className="absolute -top-12 -right-36 z-10 animate-fadeInBounce"
           style={{ animationPlayState: pauseAnim ? "paused" : "running" }}

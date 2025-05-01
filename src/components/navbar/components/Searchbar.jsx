@@ -10,13 +10,10 @@ import { createRipple } from "../../layouts/RippleEffect";
 
 const getCategoryCount = (category) => {
   const slug = slugify(category);
-  // Find the object in projectsData with the matching key (adjust according to your data structure)
   const categoryData = projectsData.find((item) => item[slug]);
   return categoryData ? categoryData[slug].length : 0;
 };
 
-
-// Move static categories outside the component so they are not redefined on every render.
 const CATEGORY_LIST = [
   "All Categories",
   "Frontend Development",
@@ -32,10 +29,8 @@ function Searchbar({ onSearch }) {
   const [ searchQuery, setSearchQuery ] = useState("");
   const [hoveredCategory, setHoveredCategory] = useState(null);
 
-  // Optionally detect dark mode (similar to above)
   const isDarkMode = document.documentElement.classList.contains("dark");
 
-  // Compute the current category from the URL only when location.pathname changes.
   const currentCategory = useMemo(
     () =>
       CATEGORY_LIST.find(
@@ -44,13 +39,11 @@ function Searchbar({ onSearch }) {
     [location.pathname]
   );
 
-  // Prepare the dropdown categories (excluding the current category).
   const dropdownCategories = useMemo(
     () => CATEGORY_LIST.filter((category) => category !== currentCategory),
     [currentCategory]
   );
 
-  // Memoize event handlers to avoid unnecessary re-creation on every render.
   const handleCategoryClick = useCallback(
     (category) => {
       const slug = slugify(category);
@@ -64,7 +57,7 @@ function Searchbar({ onSearch }) {
     (e) => {
       const query = e.target.value;
       setSearchQuery(query);
-      onSearch(query); // Pass the search query to the parent component.
+      onSearch(query);
     },
     [onSearch]
   );
@@ -76,7 +69,6 @@ function Searchbar({ onSearch }) {
   return (
     <div className="flex justify-center items-center w-full xs:pt-4 sm:pt-0 px-8 lg:px-0 ">
       <div className="flex flex-1 max-w-3xl items-center xs:pr-0 md:pr-0 md:space-x-0 lg:space-x-4 bg-gray-50 bg-gradient-br from-[#dee3e7] to-white dark:bg-bodyColor dark:bg-gradient-to-tl dark:from-[#262a2e] dark:to-[#1f2022] transition-colors duration-100 rounded-lg shadow-shadowTwo dark:shadow-shadowOne xs:flex-col lg:flex-row w-full">
-        {/* Dropdown */}
         <div
           className="relative p-0.5 rounded-lg flex items-center hover:bg-gradient-to-r focus-within:bg-gradient-to-r from-[#58eba6] via-[#1fc8de] to-[#0584d9] flex-1 w-full"
           tabIndex="0"
@@ -147,13 +139,11 @@ function Searchbar({ onSearch }) {
           )}
         </div>
 
-        {/* Horizontal Line for small screens */}
         <hr className="w-full border-t border-gray-400 dark:border-gray-600 md:hidden my-1" />
 
         {/* Search Bar */}
         <div className="relative p-0.5 rounded-lg flex items-center hover:bg-gradient-to-r focus-within:bg-gradient-to-r from-[#58eba6] via-[#1fc8de] to-[#0584d9] flex-1 w-full">
           <div className="flex items-center gap-4 md:gap-5 lg:gap-4 bg-gray-50 dark:bg-bodyColor dark:bg-gradient-to-tl bg-gradient-br from-[#dee3e7] to-white dark:from-[#262a2e] dark:to-[#1f2022] transition-colors duration-100r p-2 md:p-3 w-full rounded-lg">
-            {/* <RiSearchLine className="w-5 h-5 mr-0 dark:text-white text-gray-700" /> */}
             <img
               src={SearchIcon}
               alt="Search Icon"

@@ -28,20 +28,16 @@ function Github({ github, temporary = false}) {
   }
 
   return (
-    // In your component render:
     <div
-      // ① OUTER WRAPPER holds the shadow and lets it spill out
       className="relative bg-purple-100 dark:bg-purple-800 rounded-full shadow-md shadow-purple-400 dark:shadow-purple-500 overflow-visible hover:shadow-none"
     >
       <div
-        // ② INNER container is your ripple‐container
         className="ripple-container relative p-0.5 rounded-full flex items-center hover:bg-gradient-to-r focus-within:bg-gradient-to-r from-[#58eba6] via-[#1fc8de] to-[#0584d9] cursor-pointer overflow-hidden"
         onClick={() => window.open(github, "_blank", "noopener,noreferrer")}
         onMouseDown={createRipple}
       >
         <div className="relative hover:text-white cursor-pointer">
           <div className="group relative w-22 h-11 p-0.5 rounded-full bg-purple-100 dark:bg-purple-800 flex justify-start items-center hover:shadow-none">
-            {/* Website button */}
             <a
               href={github}
               target="_blank"
@@ -53,7 +49,6 @@ function Github({ github, temporary = false}) {
               <PiGithubLogoFill className="w-5 h-5 text-purple-800 dark:text-purple-100 transition duration-200 mt-0.5 hidden group-hover:inline" />
             </a>
 
-            {/* Visit text + external‐link icon */}
             <div className="relative flex items-center gap-1 text-sm w-fit pr-4">
               <span className="font-bodyFont mt-0.5 text-purple-800 dark:text-purple-100">
                 Github

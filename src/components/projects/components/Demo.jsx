@@ -6,12 +6,10 @@ import { createRipple } from "../../layouts/RippleEffect";
 function Demo({ demo }) {
   return (
     <div
-      // OUTER WRAPPER with the full red shadow
       className="relative rounded-full bg-red-100 dark:bg-red-800  shadow-md shadow-red-400 dark:shadow-red-500 overflow-visible hover:shadow-none ripple-container"
     onMouseDown={createRipple}
     >
       <div
-        // INNER gradient container
         className="relative p-0.5 rounded-full flex items-center hover:bg-gradient-to-r focus-within:bg-gradient-to-r from-[#58eba6] via-[#1fc8de] to-[#0584d9] cursor-pointer"
         onClick={() => window.open(demo, "_blank", "noopener,noreferrer")}
       >

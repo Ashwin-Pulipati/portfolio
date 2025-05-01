@@ -19,7 +19,6 @@ export const experienceData = [
   },
 ];
 
-// constants/experienceGradients.js
 export const experienceGradientMap = {
   "product-manager": {
     light: "linear-gradient(to bottom right, #ff9aad, #b78fff)",

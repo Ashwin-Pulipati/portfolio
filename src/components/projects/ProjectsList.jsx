@@ -2,7 +2,6 @@ import React, { useState, useEffect, useCallback, lazy, Suspense } from "react";
 import Pagination from "../features/components/FeaturesPagination";
 import { useParams } from "react-router-dom";
 import { projectsData } from "./constants/ProjectsCardData";
-// Removed local Navbar to avoid duplication
 import Searchbar from "../navbar/components/Searchbar";
 
 const ProjectsCardLazy = lazy(() => import("./ProjectsCard"));
@@ -50,10 +49,10 @@ const SkeletonCard = () => (
 const DelayedFallback = () => {
   const [showLoader, setShowLoader] = useState(false);
   useEffect(() => {
-    const timeout = setTimeout(() => setShowLoader(true), 300); // Delay before showing the loader
+    const timeout = setTimeout(() => setShowLoader(true), 300);
     return () => clearTimeout(timeout);
   }, []);
-  return showLoader ? <SkeletonCard /> : null; // Show SkeletonCard only after delay
+  return showLoader ? <SkeletonCard /> : null;
 };
 
 const ITEMS_PER_PAGE = 9;
@@ -63,9 +62,6 @@ const ProjectsList = ({ searchQuery, onSearch }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [categoryProjects, setCategoryProjects] = useState([]);
 
-  // Remove local search state; use the passed in searchQuery instead.
-  // const [searchQuery, setSearchQuery] = useState("");
-
   useEffect(() => {
     const selectedCategory = projectsData.find((project) => project[category]);
     if (selectedCategory) {
@@ -73,7 +69,6 @@ const ProjectsList = ({ searchQuery, onSearch }) => {
     }
   }, [category]);
 
-  // Reset page when searchQuery changes
   useEffect(() => {
     setCurrentPage(1);
   }, [searchQuery]);
@@ -105,7 +100,6 @@ const ProjectsList = ({ searchQuery, onSearch }) => {
 
   return (
     <section className="w-full min-h-screen bg-bodyColorWhite dark:bg-bodyColor text-lightText sm:pt-4 lg:pt-0">
-      {/* For mobile view, use the global onSearch via the Searchbar */}
       <div className="flex justify-center items-center lg:hidden mt-0">
         <Searchbar onSearch={onSearch} />
       </div>
@@ -119,7 +113,7 @@ const ProjectsList = ({ searchQuery, onSearch }) => {
                 searchQuery={searchQuery}
                 createdAt={project.createdAt}
                 id={project.id}
-                gradientIndex={index} // pass the index for gradient selection
+                gradientIndex={index}
               />
             </Suspense>
           ))

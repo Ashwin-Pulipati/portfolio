@@ -1,9 +1,7 @@
-// HighlightText.jsx
 import React from "react";
 
 function HighlightTextProjectDetail({ text, highlight }) {
   if (!highlight) return <>{text}</>;
-  // Escape special regex characters in highlight.
   const escapeRegex = (string) =>
     string.replace(/[-\\^$*+?.()|[\]{}]/g, "\\$&");
   const regex = new RegExp(`(${escapeRegex(highlight)})`, "gi");

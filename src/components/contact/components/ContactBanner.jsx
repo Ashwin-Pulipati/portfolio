@@ -19,7 +19,6 @@ const ContactLeft = () => {
     setTimeout(() => setCopied(""), 2000);
   }, []);
 
-  // Initialize and refresh AOS animations
       useEffect(() => {
         AOS.init({
           duration: 1000,
@@ -46,8 +45,8 @@ const ContactLeft = () => {
         <img
           className="w-full xs:h-44 md:h-64 object-cover hover:scale-105 duration-300 cursor-pointer"
           src={ContactMe}
-          width="500" // replace with actual width
-          height="300" // replace with actual height
+          width="500"
+          height="300"
           alt="contactImg"
         />
       </div>

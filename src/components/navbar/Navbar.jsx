@@ -5,7 +5,6 @@ import Searchbar from "./components/Searchbar";
 import { navItems } from "./constants/NavItems";
 import { HamburgerMenu } from "./components/HamburgerMenu";
 import { Link as RouterLink, useLocation, useNavigate } from "react-router-dom";
-// Import Sidebar.css so that its classes are available on mobile
 import "./Navbar.css";
 import ThemeToggle from "./components/ThemeToggle";
 import { HiArrowLeft } from "react-icons/hi";
@@ -14,7 +13,6 @@ import logo from "../../assets/images/Webp/app-logo.webp";
 import { createRipple } from "../layouts/RippleEffect";
 import useSystemTheme from "react-use-system-theme"; 
 
-// Original desktop nav styling for screens > md
 const getNavLinkClasses = (title, isActive) => {
   if (title === "CONTACT") {
     return isActive
@@ -32,8 +30,7 @@ const Navbar = ({ onSearch }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const location = useLocation();
   const isFeaturesPage = location.pathname.startsWith("/features/");
-
-  // Attach a debounced scroll listener to update shadow and active index.
+  
   useEffect(() => {
     const handleScroll = debounce(() => {
       setIsScrolled(window.scrollY > 0);
@@ -57,69 +54,40 @@ const Navbar = ({ onSearch }) => {
     }, 100);
 
     window.addEventListener("scroll", handleScroll);
-    handleScroll(); // Run on mount
+    handleScroll(); 
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
       handleScroll.cancel();
     };
   }, []);
-
-  // Restore active index from storage if available.
+  
   useEffect(() => {
     const storedIndex = localStorage.getItem("activeIndex");
     if (storedIndex !== null) {
       setActiveIndex(parseInt(storedIndex, 10));
     }
   }, []);
-
-  // Callback when a nav item is clicked.
+  
   const handleLinkClick = useCallback((index) => {
     setActiveIndex(index);
     localStorage.setItem("activeIndex", index);
     setShowMenu(false);
   }, []);
 
-  // // Initialize from localStorage if available, otherwise default to "light"
-  // const [theme, setTheme] = useState(
-  //   () => localStorage.getItem("theme") || "light"
-  // );
-
-  // useEffect(() => {
-  //   // Persist theme changes in localStorage and update html class
-  //   localStorage.setItem("theme", theme);
-  //   if (theme === "light") {
-  //     document.documentElement.classList.remove("dark");
-  //   } else if (theme === "dark") {
-  //     document.documentElement.classList.add("dark");
-  //   }
-  // }, [theme]);
-
-  // // Toggle function cycles: system -> light -> dark -> system…
-  // const toggleTheme = () => {
-  //   if (theme === "light") {
-  //     setTheme("dark");
-  //   } else if (theme === "dark") {
-  //     setTheme("light");
-  //   }
-  // };
-
-
-  const systemTheme = useSystemTheme(); // ← detects OS light/dark
+  const systemTheme = useSystemTheme();
   const [theme, setTheme] = useState(
-    () => localStorage.getItem("theme") || "system" // default to system
+    () => localStorage.getItem("theme") || "system"
   );
   const isDarkMode =
     theme === "dark" || (theme === "system" && systemTheme === "dark");
 
-  // whenever system setting changes *and* user is in “system” mode, reapply
   useEffect(() => {
     if (theme === "system") {
       document.documentElement.classList.toggle("dark", systemTheme === "dark");
     }
   }, [systemTheme, theme]);
 
-  // persist & apply current theme
   useEffect(() => {
     localStorage.setItem("theme", theme);
     if (theme === "light") {
@@ -131,7 +99,6 @@ const Navbar = ({ onSearch }) => {
     }
   }, [theme, systemTheme]);
 
-  // cycle light → dark → system → light ...
   const toggleTheme = () => {
     if (theme === "light") setTheme("dark");
     else if (theme === "dark") setTheme("system");
@@ -156,7 +123,6 @@ const Navbar = ({ onSearch }) => {
       ) => {
         const isActive = activeIndex === index;
         if (mobile) {
-          // Combine the original desktop classes with Sidebar.css classes.
           const desktopClasses = getNavLinkClasses(title, isActive);
           const sidebarClasses = `link ${isActive ? "active" : ""}`;
           const combinedClasses = `${desktopClasses} ${sidebarClasses}`;
@@ -192,7 +158,6 @@ const Navbar = ({ onSearch }) => {
             </li>
           );
         } else {
-          // For desktop, use the nav item active/inactive properties.
           return (
             <li
               key={id}
@@ -205,7 +170,6 @@ const Navbar = ({ onSearch }) => {
               }`}
               {...(isActive && { onMouseDown: createRipple })}
             >
-              {/* Special background effect for CONTACT when inactive */}
               {title === "CONTACT" && !isActive && (
                 <div className="absolute -inset-0.5 dark:-inset-1 rounded-lg bg-gradient-to-r from-[#58eba6] via-[#1fc8de] to-[#0584d9] dark:from-[#58eba6] dark:via-[#1fc8de] dark:to-[#0584d9] opacity-75 blur transition duration-500 group-hover:opacity-100"></div>
               )}
@@ -218,7 +182,7 @@ const Navbar = ({ onSearch }) => {
                 onClick={() => handleLinkClick(index)}
                 className={`relative inline-flex items-center gap-2 ${
                   title === "CONTACT" && !isActive
-                    ? "z-10 bg-gradient-to-br from-gray-200 to-white px-4 py-[11px] rounded-lg" //bg-gradient-to-r from-[#58eba6] via-[#1fc8de] to-[#0584d9]
+                    ? "z-10 bg-gradient-to-br from-gray-200 to-white px-4 py-[11px] rounded-lg"
                     : ""
                 }`}
                 style={{
@@ -247,14 +211,11 @@ const Navbar = ({ onSearch }) => {
 
   const handleBack = () => {
     const pathParts = location.pathname.split("/");
-    // Example: ['', 'features', 'frontend-development', 'projects', 'some-title']
     if (pathParts.includes("projects")) {
-      // We're on /features/:category/projects/:title, so navigate back to /features/:category
-      const category = pathParts[2]; // index 2 holds the category
+      const category = pathParts[2];
       navigate(`/features/${category}`);
       window.scrollTo({ top: 0, behavior: "smooth" });
     } else if (location.pathname.startsWith("/features")) {
-      // We're on /features/:category so navigate back to home
       navigate("/");
       window.scrollTo({ top: 0, behavior: "smooth" });
     } else {
@@ -282,9 +243,7 @@ const Navbar = ({ onSearch }) => {
     transition-shadow duration-300
   `}
     >
-      {/* Left Section */}
       <div className="flex items-center gap-3">
-        {/* Conditionally render back button */}
         {location.pathname !== "/" && (
           <div
             className="hover:bg-gradient-to-r focus-within:bg-gradient-to-r from-[#58eba6] via-[#1fc8de] to-[#0584d9] 
@@ -302,7 +261,6 @@ const Navbar = ({ onSearch }) => {
           </div>
         )}
 
-        {/* Logo */}
         <RouterLink to="/" smooth="true" offset={-70} duration={500}>
           <div className="w-16 h-16">
             <img
@@ -317,7 +275,6 @@ const Navbar = ({ onSearch }) => {
           </div>
         </RouterLink>
 
-        {/* Desktop Toggle (visible on lg and up) */}
         <div className="hidden lg:block">
           <div className="hover:bg-gradient-to-r focus-within:bg-gradient-to-r from-[#58eba6] via-[#1fc8de] to-[#0584d9] rounded-full p-0.5 shadow-shadowTwo dark:shadow-shadowOne">
             <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
@@ -325,7 +282,6 @@ const Navbar = ({ onSearch }) => {
         </div>
       </div>
 
-      {/* Right Section */}
       <div className="flex items-center gap-4">
         {isFeaturesPage ? (
           <div className="hidden lg:flex">
@@ -337,7 +293,6 @@ const Navbar = ({ onSearch }) => {
           </ul>
         )}
 
-        {/* Mobile Menu Icon */}
         <button
           type="button"
           aria-label="Toggle Menu"
@@ -347,7 +302,6 @@ const Navbar = ({ onSearch }) => {
           <HamburgerMenu showMenu={showMenu} />
         </button>
 
-        {/* MOBILE MENU (only visible on screens < lg) */}
         <MediumScreenNavbar
           showMenu={showMenu}
           setShowMenu={setShowMenu}
@@ -356,7 +310,6 @@ const Navbar = ({ onSearch }) => {
           theme={theme}
         />
 
-        {/* Mobile Toggle (visible on md and below) */}
         <div className="block md:hidden">
           <div className="hover:bg-gradient-to-r focus-within:bg-gradient-to-r from-[#58eba6] via-[#1fc8de] to-[#0584d9] rounded-full p-0.5 shadow-shadowTwo dark:shadow-shadowOne">
             <ThemeToggle theme={theme} toggleTheme={toggleTheme} />

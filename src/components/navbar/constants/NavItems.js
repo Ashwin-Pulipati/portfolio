@@ -55,7 +55,6 @@ export const navItems = [
   },
 ];
 
-// Light mode gradients
 export const cardGradientMap = {
   "all-categories": "linear-gradient(to bottom right, #a0f0f4, #b78fff)",
   "frontend-development": `linear-gradient(to bottom right, #ff9aad 0%, #f9f586 100%)`,
@@ -67,7 +66,6 @@ export const cardGradientMap = {
   ai: "linear-gradient(to bottom right, #a0f0f4 0%, #f9f586 100%)",
 };
 
-// Dark mode gradients
 export const darkModeCardGradientMap = {
   "all-categories": "linear-gradient(to bottom right, #0d7998, #4f2a7a)",
   "frontend-development": "linear-gradient(to bottom right, #6e0c19 0%, #453a94 100%)",

@@ -6,7 +6,6 @@ import { slugify } from "../layouts/Utils";
 const ProjectDetailLoader = ({ searchQuery, onSearch }) => {
   const { category, title } = useParams();
 
-  // Lookup the project data
   const categoryDataObj = useMemo(
     () => projectsData.find((catObj) => Object.keys(catObj)[0] === category),
     [category]
@@ -32,7 +31,7 @@ const ProjectDetailLoader = ({ searchQuery, onSearch }) => {
     <DetailComponent
       {...project}
       searchQuery={searchQuery}
-      onSearch={onSearch} // forward the onSearch prop here
+      onSearch={onSearch}
     />
   );
 };

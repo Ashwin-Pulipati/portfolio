@@ -14,12 +14,10 @@ function ScrollTo() {
       const y = window.pageYOffset;
       const maxY =
         document.documentElement.scrollHeight - window.innerHeight;
-
-      // 1) Immediate direction change
+     
       setScrollDirection(y > lastY.current ? "down" : "up");
       lastY.current = y;
-
-      // 2) Position update via rAF (no debounce)
+     
       if (!ticking) {
         window.requestAnimationFrame(() => {
           if (y === 0) {
@@ -36,13 +34,12 @@ function ScrollTo() {
     };
 
     window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll(); // init
+    onScroll();
     return () => {
       window.removeEventListener("scroll", onScroll);
     };
   }, []);
-
-  // arrow points down when we're at top OR user is scrolling up
+ 
   const arrowDown = position === "top";
 
   const handleClick = () => {

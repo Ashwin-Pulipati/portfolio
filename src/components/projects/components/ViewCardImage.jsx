@@ -4,7 +4,6 @@ import { BiExpand } from "react-icons/bi";
 const ViewCardImage = ({ src }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
-  // Memoize toggle function to prevent unnecessary re-creations
   const toggleExpand = useCallback(() => {
     setIsExpanded((prev) => !prev);
   }, []);

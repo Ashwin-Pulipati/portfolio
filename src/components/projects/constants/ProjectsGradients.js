@@ -1,4 +1,3 @@
-// Define your 9 gradients in order:
 export const gradients = [
   {
     light: "linear-gradient(to bottom right, #ff9aad 0%, #f9f586 100%)",

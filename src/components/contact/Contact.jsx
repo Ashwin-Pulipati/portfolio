@@ -9,11 +9,10 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import "./toastStyles.css"; // Import custom toast styles
+import "./toastStyles.css";
 import { createRipple } from "../layouts/RippleEffect";
 
 const Contact = () => {
-  // Form state
   const [formData, setFormData] = useState({
     username: "",
     phoneNumber: "",
@@ -22,7 +21,6 @@ const Contact = () => {
     message: "",
   });
 
-  // Load saved form data on mount
   useEffect(() => {
     const savedData = localStorage.getItem("contactFormData");
     if (savedData) {
@@ -30,17 +28,13 @@ const Contact = () => {
     }
   }, []);
 
-  // Persist formData to localStorage whenever it changes
   useEffect(() => {
     localStorage.setItem("contactFormData", JSON.stringify(formData));
   }, [formData]);
 
-  // Track touched fields (only ephemeral; not persisted)
   const [touched, setTouched] = useState({});
 
-  // Helper: field-specific validation
   const validateField = (name, value) => {
-    // only require non-phone fields
     if (!value.trim() && name !== "phoneNumber") {
       return "This is a required field.";
     }
@@ -51,7 +45,6 @@ const Contact = () => {
       }
     }
 
-    // only validate phone if they actually typed something
     if (name === "phoneNumber" && value.trim()) {
       if (value.includes("+")) {
         return "Please avoid country codes";
@@ -64,20 +57,17 @@ const Contact = () => {
     return "";
   };
 
-  // As soon as the user types, mark the field as touched
   const handleChange = useCallback((e) => {
     const { name, value } = e.target;
     setFormData((prevState) => ({ ...prevState, [name]: value }));
     setTouched((prev) => ({ ...prev, [name]: true }));
   }, []);
 
-  // Handle form submission with EmailJS and overall validation
   const handleSend = useCallback(
     async (e) => {
       e.preventDefault();
       const { username, phoneNumber, email, subject, message } = formData;
 
-      // Check that all fields are filled & valid
       if (!username || !email || !subject || !message) {
         toast.error("All fields are required!", {
           className: "custom-toast",
@@ -104,7 +94,7 @@ const Contact = () => {
 
       const templateParams = {
         subject: subject,
-        to_name: "Ashwin", // Change if needed
+        to_name: "Ashwin",
         from_name: username,
         message: message,
         from_email: email,
@@ -113,10 +103,10 @@ const Contact = () => {
 
       try {
         await emailjs.send(
-          process.env.REACT_APP_SERVICE_ID, // Your EmailJS Service ID
-          process.env.REACT_APP_TEMPLATE_ID, // Your EmailJS Template ID
+          process.env.REACT_APP_SERVICE_ID,
+          process.env.REACT_APP_TEMPLATE_ID,
           templateParams,
-          process.env.REACT_APP_EMAILJS_PUBLIC_KEY // Your EmailJS User ID
+          process.env.REACT_APP_EMAILJS_PUBLIC_KEY
         );
         toast.success("Message sent successfully!", {
           className: "custom-toast",
@@ -146,7 +136,6 @@ const Contact = () => {
     [formData]
   );
 
-  // Initialize AOS animations
   useEffect(() => {
     AOS.init({
       duration: 1000,
@@ -159,7 +148,6 @@ const Contact = () => {
     };
   }, []);
 
-  // Render an input or textarea with immediate validation feedback
   const renderField = (field) => {
     const value = formData[field.name];
     const errorMessage = touched[field.name]

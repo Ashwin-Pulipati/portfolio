@@ -1,4 +1,3 @@
-// Centralized project detail data
 import {FaNodeJs, FaReact} from "react-icons/fa";
 import { SiNextdotjs, SiPostgresql, SiTailwindcss, SiTypescript } from "react-icons/si";
 import { BiLogoMongodb } from "react-icons/bi";

@@ -19,7 +19,6 @@ const tabData = [
 
 const Resume = () => {
   const [activeTab, setActiveTab] = useState("experience");
-  // Initialize and refresh AOS animations
   useEffect(() => {
     AOS.init({
       duration: 1000,

@@ -9,7 +9,6 @@ import "aos/dist/aos.css";
 import { createRipple } from "../../layouts/RippleEffect";
 
 const Media = () => {
-  // Initialize and refresh AOS animations
       useEffect(() => {
         AOS.init({
           duration: 1000,

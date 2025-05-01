@@ -2,37 +2,31 @@ import React, { useState, useEffect, useMemo } from "react";
 
 const TimelineDot = ({ reference, timelineGradient }) => {
   const [progress, setProgress] = useState(0);
-  const circumference = 125.66; // For a circle with radius 20 (approx.)
+  const circumference = 125.66;
 
-  // Update the progress based on the card's position relative to the viewport.
   useEffect(() => {
     const handleScroll = () => {
       if (reference && reference.current) {
         const rect = reference.current.getBoundingClientRect();
-        // Calculate progress: when the card’s top is at half the viewport height, progress=0;
-        // when the card’s top is at 0, progress=1.
         const viewportHeight = window.innerHeight;
-        const startThreshold = viewportHeight * 1; // Start when 80% of viewport is visible
+        const startThreshold = viewportHeight * 1;
 
         let newProgress = (startThreshold - rect.top) / startThreshold;
-        newProgress = Math.max(0, Math.min(1, newProgress)); // Clamp between 0 and 1
+        newProgress = Math.max(0, Math.min(1, newProgress));
         setProgress(newProgress);
 
-        newProgress = Math.max(0, Math.min(1, newProgress)); // Clamp between 0 and 1.
+        newProgress = Math.max(0, Math.min(1, newProgress)); 
         setProgress(newProgress);
       }
     };
 
     window.addEventListener("scroll", handleScroll);
-    handleScroll(); // Initialize immediately.
+    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, [reference]);
 
-  // Compute the stroke offset based on progress.
   const strokeDashoffset = circumference * (1 - progress);
 
-  // Extract the two colors from the gradient string.
-  // Example gradient: "linear-gradient(to bottom right, #ff9aad, #b78fff)"
   const { start, end } = useMemo(() => {
     const matches = timelineGradient.match(/#([0-9a-fA-F]{6})/g);
     if (matches && matches.length >= 2) {
@@ -41,7 +35,6 @@ const TimelineDot = ({ reference, timelineGradient }) => {
     return { start: "blue", end: "blue" };
   }, [timelineGradient]);
 
-  // Create a stable gradient ID (here we hash the gradient string)
   const gradientId = useMemo(() => {
     const hash = timelineGradient
       .split("")
@@ -61,7 +54,6 @@ const TimelineDot = ({ reference, timelineGradient }) => {
             <stop offset="100%" stopColor={end} />
           </linearGradient>
         </defs>
-        {/* Unfilled track */}
         <circle
           cx="50"
           cy="50"
@@ -70,15 +62,14 @@ const TimelineDot = ({ reference, timelineGradient }) => {
           strokeWidth="2"
           fill="transparent"
         />
-        {/* Animated stroke fill (starts at 12 o’clock using transform) */}
         <circle
           cx="50"
           cy="50"
           r="20"
           stroke={`url(#${gradientId})`}
           strokeWidth="5"
-          fill="white" // Default light mode
-          className="dark:fill-bodyColor" // Dark mode fill
+          fill="white"
+          className="dark:fill-bodyColor"
           strokeDasharray={circumference}
           style={{
             strokeDashoffset,
@@ -86,7 +77,6 @@ const TimelineDot = ({ reference, timelineGradient }) => {
           }}
           transform="rotate(0 50 50)"
         />
-        {/* Center pulsing dot filled with the gradient */}
         <circle
           cx="50"
           cy="50"

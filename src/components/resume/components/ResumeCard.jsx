@@ -22,7 +22,6 @@ const ResumeCard = ({
   const [isExpanded, setIsExpanded] = useState(false);
   const toggleReadMore = () => setIsExpanded(!isExpanded);
 
-  // Tag expansion state...
   const initialVisibleCount = 9;
   const [tagsExpanded, setTagsExpanded] = useState(false);
   const visibleTags = tagsExpanded ? tags : tags.slice(0, initialVisibleCount);
@@ -32,7 +31,6 @@ const ResumeCard = ({
   const cardSlug = slugify(title);
   const gradients = experienceGradientMap[cardSlug];
 
-  // Hover state for the card
   const [isHovered, setIsHovered] = useState(false);
   const computedHoverStyle =
     isHovered && gradients
@@ -54,7 +52,6 @@ const ResumeCard = ({
         <div className="w-9 h-[6px] bgOpacity dark:bg-gray-400"></div>
       </div>
 
-      {/* Apply onMouseEnter/Leave to the inner card container */}
       <div
         data-aos="zoom-in"
         onMouseEnter={() => setIsHovered(true)}
@@ -88,7 +85,6 @@ const ResumeCard = ({
           </div>
         </div>
 
-        {/* Description */}
         <p className="text-sm md:text-base font-medium text-gray-500 dark:text-gray-400 group-hover:text-black dark:group-hover:text-gray-300 duration-300 break-all font-bodyFont">
           {des ? (
             <>
@@ -105,7 +101,6 @@ const ResumeCard = ({
           ) : null}
         </p>
 
-        {/* Tags Section */}
         {tags && tags.length > 0 && (
           <div className="flex items-center gap-4 flex-wrap">
             {visibleTags.map((tag, index) => (

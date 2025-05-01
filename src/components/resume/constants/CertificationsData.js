@@ -27,7 +27,6 @@ export const certificationsData = [
   },
 ];
 
-// src/constants/certificationsGradients.js
 export const certificationsGradientMap = {
   "certification-1": {
     light: "linear-gradient(to bottom right, #f062a3, #f9f586)",

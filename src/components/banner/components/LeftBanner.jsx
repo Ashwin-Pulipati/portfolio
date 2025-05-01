@@ -40,12 +40,11 @@ const LeftBanner = () => {
       AOS.refresh();
     };
   }, []);
-
-  // Smooth scroll function with an offset (adjust headerOffset if necessary)
+ 
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
     if (element) {
-      const headerOffset = 70; // Adjust if there's a fixed header
+      const headerOffset = 70;
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition =
         elementPosition + window.pageYOffset - headerOffset;

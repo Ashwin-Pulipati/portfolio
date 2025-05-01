@@ -6,8 +6,6 @@ import "slick-carousel/slick/slick.css";
 import UnifiedArrow from "../layouts/UnifiedArrow";
 import ProjectDetailInterest from "./components/ProjectDetailInterest";
 import projectDetailData from "./constants/ProjectDetailData";
-
-// Sample Images for Carousel
 import Image1 from "../../assets/images/Webp/projectOne.webp";
 import Image3 from "../../assets/images/Webp/projectThree.webp";
 import Image2 from "../../assets/images/Webp/projectTwo.webp";
@@ -30,16 +28,15 @@ const ProjectDetail = ({
   nextDisabled,
   prevDisabled,
   searchQuery,
-  onSearch, // receive the search query prop
+  onSearch,
 }) => {
   const navigate = useNavigate();
   const [dotActive, setDotActive] = useState(0);
 
-  const isDarkMode = useDarkMode(); // Now isDarkMode is defined
+  const isDarkMode = useDarkMode();
 
   useEffect(() => {
     if (searchQuery) {
-      // Delay scrolling to let the new highlighted elements render
       setTimeout(() => {
         const firstHighlight = document.querySelector(".highlighted");
         if (firstHighlight) {
@@ -52,7 +49,6 @@ const ProjectDetail = ({
     }
   }, [searchQuery]);
 
-  // Memoized slider settings
   const sliderSettings = useMemo(
     () => ({
       dots: true,
@@ -96,10 +92,7 @@ const ProjectDetail = ({
       ),
       customPaging: (i) => (
         <div className="relative flex items-center justify-center group">
-          {/* Gradient Border Effect (Always Exists, Only Visible on Hover) */}
           <div className="absolute top-[80%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[17px] h-[17px] rounded-full bg-gradient-to-r from-[#58eba6] via-[#1fc8de] to-[#0584d9] opacity-30 scale-0 transition-all duration-300 group-hover:opacity-100 group-hover:scale-100"></div>
-
-          {/* Main Dot */}
           <div
             style={{
               width: "10px",
@@ -125,11 +118,10 @@ const ProjectDetail = ({
     [dotActive, nextDisabled, onNext, onPrev, prevDisabled, isDarkMode]
   );
 
-  // Scroll handler that takes an element id and scrolls it into view smoothly.
   const scrollToSection = (id) => {
     const section = document.getElementById(id);
     if (section) {
-      const headerOffset = 100; // Adjust this value as needed
+      const headerOffset = 100;
       const elementPosition = section.getBoundingClientRect().top;
       const offsetPosition =
         elementPosition + window.pageYOffset - headerOffset;
@@ -149,9 +141,7 @@ const ProjectDetail = ({
 
       <ProjectSidebarNavigation onSectionClick={scrollToSection} />
 
-      {/* Project Detail Card (Main Content) */}
       <div className="px-4 md:px-20 lg:px-28 xl:px-36 flex flex-col items-center justify-start z-0 py-20">
-        {/* Container to center the card and position content */}
         <div className="relative w-full max-w-7xl">
           <div className="absolute inset-0 h-72 md:h-96 overflow-hidden z-10 rounded-tr-xl rounded-tl-xl">
             <video
@@ -162,12 +152,10 @@ const ProjectDetail = ({
               src="https://www.w3schools.com/html/mov_bbb.mp4"
             />
           </div>
-          {/* Project Detail Card */}
           <div
             className="bg-gradient-to-br from-[#dee3e7] to-white dark:bg-gradient-to-tl dark:from-[#262a2e] 
           dark:to-[#1f2022] rounded-2xl shadow-shadowTwo dark:shadow-shadowOne py-14 px-6 md:px-14 relative"
           >
-            {/* Back Button */}
             <button
               onClick={() => navigate(-1)}
               className="absolute z-10 top-4 right-4 md:top-6 md:right-6 lg:top-8 lg:right-8 w-9 h-9 md:w-12 md:h-12 rounded-full flex items-center justify-center transition-all duration-300 group shadow-shadowTwo dark:shadow-shadowOne"
@@ -181,14 +169,12 @@ const ProjectDetail = ({
                 </span>
               </div>
             </button>
-
-            {/* Project Overview Section */}
+          
             <div
               id="overview-section"
               className="flex flex-col-reverse xl:flex-row-reverse items-start gap-14 border-b border-b-gray-400 
               dark:border-b-black pb-20 mt-8"
             >
-              {/* Slider Container */}
               <div className="w-full max-w-full md:max-w-[500px] lg:max-w-[800px] xl:max-w-[500px] mx-auto rounded-xl z-20">
                 <Slider {...sliderSettings}>
                   {[Image1, Image2, Image3].map((image, index) => (
@@ -206,8 +192,7 @@ const ProjectDetail = ({
                   ))}
                 </Slider>
               </div>
-
-              {/* Project Details */}
+              
               <div className="flex flex-col gap-6  z-20">
                 <div className="flex flex-col gap-3">
                   <h1 className="font-titleFont text-3xl font-bold text-black dark:text-white">
@@ -259,8 +244,7 @@ const ProjectDetail = ({
                 </div>
               </div>
             </div>
-
-            {/* Challenges and Solutions */}
+            
             <div id="challenges-section" className="mt-14">
               <h2 className="text-2xl font-titleFont text-black dark:text-white mb-4">
                 <HighlightTextProjectDetail
@@ -291,8 +275,7 @@ const ProjectDetail = ({
                 ))}
               </ul>
             </div>
-
-            {/* Methodology and Process */}
+           
             <div id="methodology-section" className="mt-16">
               <h2 className="text-2xl font-titleFont text-black dark:text-white mb-4">
                 <HighlightTextProjectDetail
@@ -316,8 +299,7 @@ const ProjectDetail = ({
                 ))}
               </ul>
             </div>
-
-            {/* Results and Impact */}
+            
             <div id="results-section" className="mt-16">
               <h2 className="text-2xl font-titleFont text-black dark:text-white mb-4">
                 <HighlightTextProjectDetail
@@ -341,8 +323,7 @@ const ProjectDetail = ({
                 ))}
               </ul>
             </div>
-
-            {/* Learnings and Reflections */}
+            
             <div id="learnings-section" className="mt-16">
               <h2 className="text-2xl font-titleFont text-black dark:text-white mb-4">
                 <HighlightTextProjectDetail

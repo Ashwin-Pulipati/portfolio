@@ -23,7 +23,6 @@ function App() {
     });
   }, []);
 
-// Listen to window scroll and toggle `isScrolled`
 useEffect(() => {
   const handleScroll = () => {
     setIsScrolled(window.scrollY > 0);

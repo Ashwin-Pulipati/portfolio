@@ -27,8 +27,6 @@ import {
   SiRedux,
 } from "react-icons/si";
 
-
-// Images
 import MaterialUI from "../../../assets/images/SVG/materialui.svg";
 import Tensorflow from "../../../assets/images/SVG/tensorflow.svg";
 import TeachableMachine from "../../../assets/images/Webp/teachable-image.webp";
@@ -39,7 +37,7 @@ import Slack from "../../../assets/images/SVG/slack.svg";
 import OpenCV from "../../../assets/images/SVG/opencv.svg";
 import Python from "../../../assets/images/SVG/python.svg";
 import SQL from "../../../assets/images/SVG/sql.svg";
-// Single source of truth for skills
+
 export const skillsData = [
   {
     category: "Programming & Scripting",

@@ -4,7 +4,6 @@ import { BsLaptop, BsFillLaptopFill } from "react-icons/bs";
 import { FaMobileAlt, FaMobile } from "react-icons/fa";
 import { TbTags } from "react-icons/tb";
 
-// Single source for tag colors (used in Card.js)
 export const tagColorMap = {
   "frontend-development": { tagColor: "#fa8fa4", textColor: "#ffffff" },
   "machine-learning": { tagColor: "#f9b65c", textColor: "#ffffff" },
@@ -13,7 +12,6 @@ export const tagColorMap = {
   ai: { tagColor: "#85f9f9", textColor: "#ffffff" },
 };
 
-// Map slugs to Tailwind background utility classes
 export const backgroundClassMap = {
   "frontend-development": "bg-pink-100 dark:bg-pink-900 ",
   "machine-learning": "bg-yellow-100 dark:bg-yellow-900",
@@ -22,36 +20,34 @@ export const backgroundClassMap = {
   "ai": "bg-sky-100 dark:bg-sky-900",
 };
 
-// Light mode color mapping for icons and tags (using Tailwind-inspired hex values)
 export const lightModeColorMap = {
   "frontend-development": {
-    text: "#db2777", // pink-800
+    text: "#db2777",
     border: "#db2777",
-    bg: "#fff5f7", // pink-100
+    bg: "#fff5f7",
   },
   "machine-learning": {
-    text: "#ca8a04", // yellow-800
+    text: "#ca8a04",
     border: "#ca8a04",
-    bg: "#fefcbf", // yellow-100
+    bg: "#fefcbf",
   },
   "mern-stack-development": {
-    text: "#16a34a", // green-800
+    text: "#16a34a",
     border: "#16a34a",
-    bg: "#d1fae5", // green-100
+    bg: "#d1fae5",
   },
   "ui-ux": {
-    text: "#9333ea", // purple-800
+    text: "#9333ea",
     border: "#9333ea",
-    bg: "#faf5ff", // purple-100
+    bg: "#faf5ff",
   },
   ai: {
-    text: "#2563eb", // purple-800
+    text: "#2563eb",
     border: "#2563eb",
-    bg: "#dbeafe", // purple-100
+    bg: "#dbeafe",
   },
 };
 
-// Light mode gradients (unchanged)
 export const cardGradientMap = {
   "frontend-development": `linear-gradient(to bottom right, #ff9aad 0%, #f9f586 100%)`,
   "machine-learning":
@@ -62,7 +58,6 @@ export const cardGradientMap = {
   ai: "linear-gradient(to bottom right, #a0f0f4 0%, #f9f586 100%)",
 };
 
-// Dark mode gradients (customize the colors as needed)
 export const darkModeCardGradientMap = {
   "frontend-development":
     "linear-gradient(to bottom right, #6e0c19 0%, #453a94 100%)",
@@ -74,7 +69,6 @@ export const darkModeCardGradientMap = {
   ai: "linear-gradient(to bottom right, #0d7998 0%, #66009a 100%)",
 };
 
-// Helper: Convert hex to RGBA with given opacity
 export const hexToRGBA = (hex, alpha = 1) => {
   const r = parseInt(hex.slice(1, 3), 16);
   const g = parseInt(hex.slice(3, 5), 16);
@@ -82,7 +76,6 @@ export const hexToRGBA = (hex, alpha = 1) => {
   return `rgba(${r}, ${g}, ${b}, ${alpha})`;
 };
 
-// Features Data – note: the slug is not provided here; it will be computed dynamically.
 export const featuresData = [
   {
     id: 1,

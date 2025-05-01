@@ -8,23 +8,21 @@ import { useDarkMode } from "../../layouts/DarkMode";
 const CertificationsCard = React.memo(({ item }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
-  // Open the certification link in a new tab.
   const handleCardClick = useCallback(() => {
     window.open(item.link, "_blank", "noopener,noreferrer");
   }, [item.link]);
 
-  // Toggle expansion without propagating the click to the parent.
   const toggleExpand = useCallback((e) => {
     e.stopPropagation();
     setIsExpanded((prev) => !prev);
   }, []);
 
-  const isDarkMode = useDarkMode(); // Now isDarkMode is defined
-  const cardSlug = slugify(item.title); // e.g. "certification-1"
+  const isDarkMode = useDarkMode();
+  const cardSlug = slugify(item.title);
   const gradients = certificationsGradientMap[cardSlug];
 
   const [isHovered, setIsHovered] = useState(false);
-  // Compute a hover style based on dark mode and gradient mapping.
+
   const computedHoverStyle =
     isHovered && gradients
       ? { backgroundImage: isDarkMode ? gradients.dark : gradients.light }
@@ -42,7 +40,6 @@ const CertificationsCard = React.memo(({ item }) => {
     >
       <div className="w-full">
         <div className="flex flex-col gap-6">
-          {/* Image Section */}
           <div className="w-full h-48 sm:h-56 md:h-64 lg:h-72 pb-[56.25%] relative overflow-hidden rounded-xl">
             <img
               className="absolute top-0 left-0 w-full h-full object-cover group-hover:scale-105 duration-300 cursor-pointer"
@@ -56,8 +53,6 @@ const CertificationsCard = React.memo(({ item }) => {
               </div>
             )}
           </div>
-
-          {/* Title and External Link */}
           <div className="flex items-center gap-2">
             <h3 className="text-lg font-bold text-gray-700 group-hover:text-black dark:group-hover:text-white dark:text-lightText">
               {item.title}

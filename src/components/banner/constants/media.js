@@ -7,7 +7,6 @@ import {
   SiPostgresql,
 } from "react-icons/si";
 
-// Single source of truth for social icons
 export const socialIcons = [
   {
     id: "linkedin",
@@ -27,7 +26,6 @@ export const socialIcons = [
   },
 ];
 
-// Single source of truth for skill icons
 export const skills = [
   {
     id: "tailwindcss",
