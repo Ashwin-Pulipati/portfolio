@@ -50,7 +50,7 @@ const Title = ({ title, des }) => {
     Features: [
       {
         message:
-          "Sleek social sidebar inspired by Cristian Mihai’s YouTube channel!",
+          "Sleek social sidebar inspired by Cristian Mihai’s Portfolio on their YouTube channel!",
         shockTitle: "Seen This Before?",
       },
       {
@@ -59,13 +59,19 @@ const Title = ({ title, des }) => {
       },
       {
         message:
-          "Elegant, animated ribbons inspired by Tubeguruji and Coding2GO!",
+          "Elegant, animated ribbons and buttons inspired by Tubeguruji, Coding2GO, InVideo AI and Interview Coder!",
         shockTitle: "Stylish Ribbons?",
+      },
+      {
+        message:
+          "Shadowy buttons inspired from WrathChaos's react-native-floating-action-button Github repo!",
+        shockTitle: "Elegant Project buttons?",
       },
     ],
     "4 YEARS OF EXPERIENCE": [
       {
-        message: "Sleek timeline dots inspired by CodeBucks' portfolio!",
+        message:
+          "Sleek timeline dots inspired by CodeBucks' Portfolio on their YouTube channel!",
         shockTitle: "Neat & Tidy!",
       },
       {
@@ -76,6 +82,10 @@ const Title = ({ title, des }) => {
         message: "Glassy icons inspired by Icons8 for a modern, sleek effect!",
         shockTitle: "Frosty & Fancy!",
       },
+      {
+        message: "Inspired from Play Store's Candy Crush app!",
+        shockTitle: "Cinematic Effect?",
+      },
     ],
     CONTACT: [
       {
@@ -85,6 +95,10 @@ const Title = ({ title, des }) => {
       {
         message: "Adorable footer kitty inspired by Johan Mouchet’s CodePen!",
         shockTitle: "A Furry Surprise?",
+      },
+      {
+        message: "Inspired from MongoDB!",
+        shockTitle: "Shape-Shifting Smoothness?",
       },
     ],
   };

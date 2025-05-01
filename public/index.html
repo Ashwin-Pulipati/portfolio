@@ -1,6 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <script>
+      (function() {
+        const theme = localStorage.getItem("theme");
+        if (
+          theme === "dark" ||
+          (theme === "system" &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches)
+        ) {
+          document.documentElement.classList.add("dark");
+        }
+      })();
+    </script>
     <meta charset="UTF-8" />
     <link rel="icon" href="%PUBLIC_URL%/profilePhoto.png"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -16,17 +28,6 @@
     <link rel="preload" as="image" href="%PUBLIC_URL%/app-logo.webp" type="image/webp" fetchpriority="high" />
    <link rel="preload" as="image" href="%PUBLIC_URL%/banner-right.webp" type="image/webp" fetchpriority="high"/>
     <title>Ashwin Pulipati Portfolio</title>
-    <script>
-      (function() {
-        const theme = localStorage.getItem('theme') || 'light';
-        if (theme === 'dark') {
-          document.documentElement.classList.add('dark');
-        } else {
-          document.documentElement.classList.remove('dark');
-        }
-      })();
-    </script>
-
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>

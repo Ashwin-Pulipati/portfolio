@@ -12,6 +12,7 @@ import { HiArrowLeft } from "react-icons/hi";
 import MediumScreenNavbar from "./components/MediumScreenNavbar";
 import logo from "../../assets/images/Webp/app-logo.webp";
 import { createRipple } from "../layouts/RippleEffect";
+import useSystemTheme from "react-use-system-theme"; 
 
 // Original desktop nav styling for screens > md
 const getNavLinkClasses = (title, isActive) => {
@@ -79,28 +80,62 @@ const Navbar = ({ onSearch }) => {
     setShowMenu(false);
   }, []);
 
-  // Initialize from localStorage if available, otherwise default to "light"
-  const [theme, setTheme] = useState(
-    () => localStorage.getItem("theme") || "light"
-  );
+  // // Initialize from localStorage if available, otherwise default to "light"
+  // const [theme, setTheme] = useState(
+  //   () => localStorage.getItem("theme") || "light"
+  // );
 
+  // useEffect(() => {
+  //   // Persist theme changes in localStorage and update html class
+  //   localStorage.setItem("theme", theme);
+  //   if (theme === "light") {
+  //     document.documentElement.classList.remove("dark");
+  //   } else if (theme === "dark") {
+  //     document.documentElement.classList.add("dark");
+  //   }
+  // }, [theme]);
+
+  // // Toggle function cycles: system -> light -> dark -> system…
+  // const toggleTheme = () => {
+  //   if (theme === "light") {
+  //     setTheme("dark");
+  //   } else if (theme === "dark") {
+  //     setTheme("light");
+  //   }
+  // };
+
+
+  const systemTheme = useSystemTheme(); // ← detects OS light/dark
+  const [theme, setTheme] = useState(
+    () => localStorage.getItem("theme") || "system" // default to system
+  );
+  const isDarkMode =
+    theme === "dark" || (theme === "system" && systemTheme === "dark");
+
+  // whenever system setting changes *and* user is in “system” mode, reapply
   useEffect(() => {
-    // Persist theme changes in localStorage and update html class
+    if (theme === "system") {
+      document.documentElement.classList.toggle("dark", systemTheme === "dark");
+    }
+  }, [systemTheme, theme]);
+
+  // persist & apply current theme
+  useEffect(() => {
     localStorage.setItem("theme", theme);
     if (theme === "light") {
       document.documentElement.classList.remove("dark");
     } else if (theme === "dark") {
       document.documentElement.classList.add("dark");
+    } else if (theme === "system") {
+      document.documentElement.classList.toggle("dark", systemTheme === "dark");
     }
-  }, [theme]);
+  }, [theme, systemTheme]);
 
-  // Toggle function cycles: system -> light -> dark -> system…
+  // cycle light → dark → system → light ...
   const toggleTheme = () => {
-    if (theme === "light") {
-      setTheme("dark");
-    } else if (theme === "dark") {
-      setTheme("light");
-    }
+    if (theme === "light") setTheme("dark");
+    else if (theme === "dark") setTheme("system");
+    else setTheme("light");
   };
 
   const renderNavItems = (mobile = false) =>
@@ -164,7 +199,7 @@ const Navbar = ({ onSearch }) => {
               className={`relative group flex items-center gap-2 text-[15px] transition-all duration-300 ease-out ${
                 isActive
                   ? ` ${
-                      theme === "dark" ? "shadow-shadowOne" : "shadow-shadowTwo"
+                      isDarkMode ? "shadow-shadowOne" : "shadow-shadowTwo"
                     } ${backgroundActive} ripple-container`
                   : "text-gray-500 hover:text-black dark:text-gray-300 dark:hover:text-white"
               }`}
@@ -188,11 +223,11 @@ const Navbar = ({ onSearch }) => {
                 }`}
                 style={{
                   background:
-                    theme === "dark" && title === "CONTACT" && !isActive
+                    isDarkMode && title === "CONTACT" && !isActive
                       ? "linear-gradient(145deg, #1e2024, #23272b)"
                       : "",
                   backgroundImage:
-                    theme === "dark" && title === "CONTACT" && !isActive
+                    isDarkMode && title === "CONTACT" && !isActive
                       ? "linear-gradient(to top left, #262a2e, #1f2022)"
                       : "",
                 }}

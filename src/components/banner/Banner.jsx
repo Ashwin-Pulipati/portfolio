@@ -25,9 +25,9 @@ const Banner = () => {
     },
     {
       message:
-        "Inspired by WhatsApp, Play Store, and Slack for a seamless experience!",
+        "Inspired by WhatsApp, Play Store, Material UI ripple-effect buttons, and Slack for a seamless experience!",
       shockTitle: "Familiar Touch?",
-    },
+    }
   ];
 
   return (
