@@ -16,6 +16,7 @@ export const navItems = [
     backgroundActive:
       "bg-pink-100 text-pink-800 rounded-full xs:px-7 xs:pt-3.5 xs:pb-2.5 sm:px-8 sm:pt-4 sm:pb-3 md:p-2 md:pr-4 md:pl-4 dark:bg-pink-800 dark:text-pink-100",
     iconActive: "text-pink-800 dark:text-pink-100",
+    hoverBg: "hover:bg-pink-100 hover:dark:bg-pink-800",
   },
   {
     id: 1002,
@@ -28,6 +29,7 @@ export const navItems = [
     backgroundActive:
       "bg-purple-100 text-purple-800 rounded-full xs:px-7 xs:pt-3.5 xs:pb-2.5 sm:px-8 sm:pt-4 sm:pb-3 md:p-2 md:pr-4 md:pl-4 dark:bg-purple-800 dark:text-purple-100",
     iconActive: "text-purple-800 dark:text-purple-100",
+    hoverBg: "hover:bg-purple-100 hover:dark:bg-purple-800",
   },
   {
     id: 1003,
@@ -40,6 +42,7 @@ export const navItems = [
     backgroundActive:
       "bg-yellow-100 text-yellow-800 rounded-full xs:px-7 xs:pt-3.5 xs:pb-2.5 sm:px-8 sm:pt-4 sm:pb-3 md:p-2 md:pr-4 md:pl-4 dark:bg-yellow-800 dark:text-yellow-100",
     iconActive: "text-yellow-800 dark:text-yellow-100",
+    hoverBg: "hover:bg-yellow-100 hover:dark:bg-yellow-800",
   },
   {
     id: 1004,
@@ -52,6 +55,7 @@ export const navItems = [
     backgroundActive:
       "bg-green-100 text-green-800 rounded-full xs:px-7 xs:pt-3.5 xs:pb-2.5 sm:px-8 sm:pt-4 sm:pb-3 md:p-2 md:pr-4 md:pl-4 dark:bg-green-800 dark:text-green-100",
     iconActive: "text-green-800 dark:text-green-100",
+    hoverBg: "hover:bg-green-100 hover:dark:bg-green-800",
   },
 ];
 

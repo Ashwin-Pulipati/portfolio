@@ -31,7 +31,8 @@ const CertificationsCard = React.memo(({ item }) => {
   return (
     <div
       className="w-full p-6 md:p-8 lg:p-10 rounded-2xl shadow-shadowTwo dark:shadow-shadowOne flex items-center 
-                 bg-boxBgWhite dark:bg-boxBg bg-gradient-to-br dark:bg-gradient-to-tl from-[#dee3e7] to-white dark:from-[#262a2e] dark:to-[#1f2022]
+                 bg-boxBgWhite dark:bg-boxBg bg-gradient-to-br dark:bg-gradient-to-tl from-[#dee3e7] 
+                 to-white dark:from-[#262a2e] dark:to-[#1f2022]
                  transition-colors duration-300 group cursor-pointer"
       onClick={handleCardClick}
       onMouseEnter={() => setIsHovered(true)}

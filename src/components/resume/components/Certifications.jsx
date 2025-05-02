@@ -96,22 +96,18 @@ const Certifications = ({ onNext, onPrev, nextDisabled, prevDisabled }) => {
           </h2>
         </div>
 
-        <div className="hidden sm:block w-full">
+        <div className="hidden xs:block w-full">
           <Slider {...settings}>
             {certificationsData.map((item) => (
-              <div key={item.id} className="p-6" data-aos="zoom-in">
+              <div
+                key={item.id}
+                className="xs:px-0 md:px-4 lg:px-6 xs:py-4 lg:py-6"
+                data-aos="zoom-in"
+              >
                 <CertificationsCard item={item} />
               </div>
             ))}
           </Slider>
-        </div>
-
-        <div className="block sm:hidden">
-          {certificationsData.map((item) => (
-            <div key={item.id} className="px-6 py-4" data-aos="zoom-in">
-              <CertificationsCard item={item} />
-            </div>
-          ))}
         </div>
       </div>
     </section>

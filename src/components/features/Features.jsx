@@ -102,7 +102,7 @@ const Features = ({ onNext, onPrev, nextDisabled, prevDisabled }) => {
           <Title title="Features" des="What I Do" />
         </div>
 
-        <div className="hidden sm:block w-full">
+        <div className="hidden xs:block w-full">
           <Slider {...settings}>
             {featuresData.map((item) => (
               <div key={item.id} className="p-6" data-aos="zoom-in">
@@ -110,14 +110,6 @@ const Features = ({ onNext, onPrev, nextDisabled, prevDisabled }) => {
               </div>
             ))}
           </Slider>
-        </div>
-
-        <div className="block sm:hidden">
-          {featuresData.map((item) => (
-            <div key={item.id} className="px-6 py-4" data-aos="zoom-in">
-              <Card item={item} />
-            </div>
-          ))}
         </div>
       </div>
     </section>

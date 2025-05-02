@@ -32,33 +32,34 @@ const Navbar = ({ onSearch }) => {
   const isFeaturesPage = location.pathname.startsWith("/features/");
   
   useEffect(() => {
-    const handleScroll = debounce(() => {
-      setIsScrolled(window.scrollY > 0);
+    const checkSections = debounce(() => {
       const sections = navItems.map((nav) => document.getElementById(nav.link));
-      let newActiveIndex = 0;
-      sections.forEach((section, index) => {
-        if (section) {
-          const { top, bottom } = section.getBoundingClientRect();
-          if (top <= 100 && bottom >= 100) {
-            newActiveIndex = index;
-          }
+      let newActive = 0;
+      sections.forEach((sec, idx) => {
+        if (sec) {
+          const { top, bottom } = sec.getBoundingClientRect();
+          if (top <= 100 && bottom >= 100) newActive = idx;
         }
       });
-      setActiveIndex((prevIndex) => {
-        if (prevIndex !== newActiveIndex) {
-          localStorage.setItem("activeIndex", newActiveIndex);
-          return newActiveIndex;
+      setActiveIndex((prev) => {
+        if (prev !== newActive) {
+          localStorage.setItem("activeIndex", newActive);
+          return newActive;
         }
-        return prevIndex;
+        return prev;
       });
     }, 100);
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 0);
+      checkSections();
+    };
 
     window.addEventListener("scroll", handleScroll);
-    handleScroll(); 
+    handleScroll();
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
-      handleScroll.cancel();
+      checkSections.cancel();
     };
   }, []);
   
@@ -118,6 +119,7 @@ const Navbar = ({ onSearch }) => {
           backgroundActive,
           iconActive,
           darkModeTextColor,
+          hoverBg,
         },
         index
       ) => {
@@ -163,10 +165,12 @@ const Navbar = ({ onSearch }) => {
               key={id}
               className={`relative group flex items-center gap-2 text-[15px] transition-all duration-300 ease-out ${
                 isActive
-                  ? ` ${
-                      isDarkMode ? "shadow-shadowOne" : "shadow-shadowTwo"
-                    } ${backgroundActive} ripple-container`
-                  : "text-gray-500 hover:text-black dark:text-gray-300 dark:hover:text-white"
+                ? `${isDarkMode ? "shadow-shadowOne" : "shadow-shadowTwo"} ${backgroundActive} ripple-container`
+                : `text-gray-500 ${
+                    title !== "CONTACT"
+                      ? `${hoverBg} hover:px-3 hover:py-2 hover:rounded-full`
+                      : ""
+                  } hover:text-black dark:text-gray-300 dark:hover:text-white`
               }`}
               {...(isActive && { onMouseDown: createRipple })}
             >
@@ -240,7 +244,7 @@ const Navbar = ({ onSearch }) => {
       `
         : "bg-[#ECF0F3] dark:bg-bodyColor"
     }
-    transition-shadow duration-300
+    transition-all duration-300 ease-out
   `}
     >
       <div className="flex items-center gap-3">
