@@ -1,9 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta http-equiv="refresh" content="0; URL=/portfolio/" />
+    <meta charset="utf-8" />
+    <title>Redirecting…</title>
+    <script type="text/javascript">
+      const fullPath = window.location.pathname + window.location.search + window.location.hash;
+      const relative = fullPath.replace(/^\/portfolio/, "");
+      window.location.replace("/portfolio" + relative);
+    </script>
   </head>
   <body>
-    <p>Redirecting...</p>
+    <p>Redirecting…</p>
   </body>
 </html>
