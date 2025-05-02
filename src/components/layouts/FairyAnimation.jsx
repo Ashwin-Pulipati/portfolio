@@ -6,7 +6,7 @@ import "./FairyAnimation.css";
 const FairyAnimation = ({
   section,
   messages = ["Default message"],
-  displayTime = 5000,
+  displayTime = 10000,
   minInterval = 20000,
   maxInterval = 60000,
   shockTitle = "Did you know?",
@@ -106,7 +106,7 @@ const FairyAnimation = ({
 
   return (
     <div
-      className={`relative inline-block transition-opacity duration-500 ${
+      className={`relative inline-block transition-opacity duration-1000 ${
         showFairy ? "opacity-100" : "opacity-0"
       }`}
     >
