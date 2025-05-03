@@ -57,29 +57,34 @@ function BottomNavbar() {
     setActiveIndex(idx);
   };
 
-  useEffect(() => {
-    const handleActiveOnScroll = debounce(() => {
-      const scrollPos = window.pageYOffset + headerOffset + 1;
-      const newIndex = sectionIds.findIndex((id) => {
-        const sec = document.getElementById(id);
-        if (!sec) return false;
-        return (
-          scrollPos >= sec.offsetTop &&
-          scrollPos < sec.offsetTop + sec.offsetHeight
-        );
-      });
-      if (newIndex !== -1 && newIndex !== activeIndex) {
-        setActiveIndex(newIndex);
-      }
-    }, 100);
-
-    window.addEventListener("scroll", handleActiveOnScroll);
-    handleActiveOnScroll();
-    return () => {
-      window.removeEventListener("scroll", handleActiveOnScroll);
-      handleActiveOnScroll.cancel();
-    };
-  }, [activeIndex, sectionIds]);
+    useEffect(() => {
+      const handleActiveOnScroll = debounce(() => {
+        const scrollPos = window.pageYOffset + headerOffset + 1;
+        let newIndex = sectionIds.findIndex((id) => {
+          const sec = document.getElementById(id);
+          if (!sec) return false;
+          return (
+            scrollPos >= sec.offsetTop &&
+            scrollPos < sec.offsetTop + sec.offsetHeight
+          );
+        });
+        if (newIndex === -1) {
+          const first = document.getElementById(sectionIds[0]);
+          if (first && scrollPos < first.offsetTop) {
+            newIndex = 0;
+          }
+        }
+        if (newIndex !== activeIndex) {
+          setActiveIndex(newIndex);
+        }
+      }, 100);
+      window.addEventListener("scroll", handleActiveOnScroll);
+      handleActiveOnScroll();
+      return () => {
+        window.removeEventListener("scroll", handleActiveOnScroll);
+        handleActiveOnScroll.cancel();
+      };
+    }, [activeIndex, sectionIds]);
 
   return (
     <div
