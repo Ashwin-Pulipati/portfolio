@@ -2,10 +2,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Link as ScrollLink } from "react-scroll";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 import { CrossIcon } from "./CrossIcon";
-import { RiSunLine, RiMoonLine } from "react-icons/ri";
 import logo from "../../../assets/images/Webp/app-logo.webp";
 import React from "react";
 import { createRipple } from "../../layouts/RippleEffect";
+import ThemeToggle from "./ThemeToggle";
 
 function MediumScreenNavbar({
   showMenu,
@@ -19,7 +19,7 @@ function MediumScreenNavbar({
       {showMenu && (
         <motion.div
           className="sm:w-full md:w-2/5 xs:hidden md:block lg:hidden h-screen overflow-auto absolute top-0 left-0 
-              bg-gray-100 dark:bg-[#191B1E] p-4 backdrop-blur-xl rounded-xl scrollbar-hide"
+              bg-gray-100 dark:bg-[#191B1E] p-4 backdrop-blur-xl rounded-tr-xl rounded-br-xl scrollbar-hide"
           initial={{ x: "-100%" }}
           animate={{ x: 0 }}
           exit={{ x: "-100%" }}
@@ -96,50 +96,7 @@ function MediumScreenNavbar({
                 className="hover:bg-gradient-to-r focus-within:bg-gradient-to-r from-[#58eba6] via-[#1fc8de] to-[#0584d9] 
                rounded-full p-0.5 shadow-shadowTwo dark:shadow-shadowOne lg:hidden block"
               >
-                <div
-                  onClick={() => {
-                    toggleTheme();
-                    setShowMenu(false);
-                  }}
-                  className="cursor-pointer px-3 py-3 rounded-full transition-colors duration-300
-                 text-gray-800 dark:text-white flex items-center justify-center bg-boxBgWhite dark:bg-boxBg 
-                 bg-gradient-to-br dark:bg-gradient-to-tl from-[#dee3e7] to-white dark:from-[#262a2e] 
-                 dark:to-[#1f2022] relative group"
-                >
-                  {theme === "light" ? (
-                    <>
-                      <RiSunLine size={24} className="text-orange-600" />
-                      {/* Tooltip arrow */}
-                      <div
-                        className="z-10 opacity-0 group-hover:opacity-100 absolute top-1/2 left-14 transform -translate-y-1/2 
-                                    rotate-45 w-2 h-2 bg-orange-100 border border-orange-800 border-t-0 border-r-0"
-                      ></div>
-                      {/* Tooltip box */}
-                      <span
-                        className="absolute left-full ml-3 top-1/2 transform -translate-y-1/2
-                                    px-2 py-1 text-xs text-orange-800 bg-orange-100 border border-orange-800 rounded-md 
-                                    opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap"
-                      >
-                        Light Mode
-                      </span>
-                    </>
-                  ) : (
-                    <>
-                      <RiMoonLine size={24} />
-                      <div
-                        className="z-10 opacity-0 group-hover:opacity-100 absolute top-1/2 left-14 transform -translate-y-1/2 
-                                    rotate-45 w-2 h-2 bg-gray-800 border border-white border-t-0 border-r-0"
-                      ></div>
-                      <span
-                        className="absolute left-full ml-3 top-1/2 transform -translate-y-1/2
-                                    px-2 py-1 text-xs text-white bg-gray-800 border border-white rounded-md opacity-0 
-                     group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap "
-                      >
-                        Dark Mode
-                      </span>
-                    </>
-                  )}
-                </div>
+                <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
               </div>
             </div>
 
