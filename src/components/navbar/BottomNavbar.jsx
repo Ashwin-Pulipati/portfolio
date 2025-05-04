@@ -58,6 +58,11 @@ function BottomNavbar() {
   };
 
     useEffect(() => {
+      const isHomepage =
+        location.pathname === "/" || location.pathname === "/portfolio";
+
+      if (!isHomepage) return; // don't attach scroll logic on non-home pages
+
       const handleActiveOnScroll = debounce(() => {
         const scrollPos = window.pageYOffset + headerOffset + 1;
         let newIndex = sectionIds.findIndex((id) => {
@@ -68,23 +73,27 @@ function BottomNavbar() {
             scrollPos < sec.offsetTop + sec.offsetHeight
           );
         });
+
         if (newIndex === -1) {
           const first = document.getElementById(sectionIds[0]);
           if (first && scrollPos < first.offsetTop) {
             newIndex = 0;
           }
         }
+
         if (newIndex !== activeIndex) {
           setActiveIndex(newIndex);
         }
       }, 100);
+
       window.addEventListener("scroll", handleActiveOnScroll);
       handleActiveOnScroll();
+
       return () => {
         window.removeEventListener("scroll", handleActiveOnScroll);
         handleActiveOnScroll.cancel();
       };
-    }, [activeIndex, sectionIds]);
+    }, [activeIndex, sectionIds, location.pathname]);
 
   return (
     <div

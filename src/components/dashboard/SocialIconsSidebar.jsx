@@ -1,16 +1,14 @@
 import React, { useState } from "react";
 import { FaGithub, FaLinkedinIn, FaEnvelope } from "react-icons/fa";
+import { GiFox } from "react-icons/gi";
 import { createRipple } from "../layouts/RippleEffect";
 
-const displayName = {
-  email: "Email",
-  linkedin: "LinkedIn",
-  github: "GitHub",
-};
+const displayName = { email: "Email", linkedin: "LinkedIn", github: "GitHub" };
 
-function SocialIconsSidebar() {
+function SocialIconsRadial() {
   const [copied, setCopied] = useState(null);
   const [hovered, setHovered] = useState(null);
+  const [open, setOpen] = useState(false);
 
   const copyText = (text, type) => {
     navigator.clipboard.writeText(text);
@@ -21,118 +19,142 @@ function SocialIconsSidebar() {
   const Tooltip = ({ type }) => (
     <>
       <div
-        className={`
-          z-10 absolute ml-2 top-1/2 left-full transform -translate-y-1/2 rotate-45
-          w-2 h-2
-          ${
-            type === "email"
-              ? " bg-red-100 border-red-800 dark:bg-red-800 dark:border-red-100"
-              : type === "linkedin"
-              ? "bg-blue-100 border-blue-800 dark:bg-blue-800 dark:border-blue-100"
-              : "bg-white border-black dark:bg-black dark:border-white"
-          }
-          border border-t-0 border-r-0 shadow-md
-        `}
+        className={`z-20 absolute ml-2 top-1/2 left-full transform -translate-y-1/2 rotate-45 w-2 h-2 border border-t-0 border-r-0 shadow-md
+          ${type === "email"
+            ? "bg-red-100 border-red-800 dark:bg-red-800 dark:border-red-100"
+            : type === "linkedin"
+            ? "bg-blue-100 border-blue-800 dark:bg-blue-800 dark:border-blue-100"
+            : "bg-white border-black dark:bg-black dark:border-white"}`
+        }
       />
       <span
-        className={`
-          absolute left-full ml-3 top-1/2 transform -translate-y-1/2
-          px-2 py-1 text-xs whitespace-nowrap font-medium
-          ${
-            type === "email"
-              ? "text-red-600 dark:text-red-100 bg-red-100 border-red-800 dark:bg-red-800 dark:border-red-100"
-              : type === "linkedin"
-              ? "text-blue-700 dark:text-blue-100 bg-blue-100 border-blue-800 dark:bg-blue-800 dark:border-blue-100"
-              : "text-black dark:text-white bg-white border-black dark:bg-black dark:border-white"
-          }
-          border rounded-md pointer-events-none transition-opacity shadow-md dark:shadow-gray-600
-        `}
+        className={`z-10 absolute left-full ml-3 top-1/2 transform -translate-y-1/2 px-2 py-1 text-xs whitespace-nowrap font-medium border rounded-md shadow-md dark:shadow-gray-600 pointer-events-none
+          ${type === "email"
+            ? "text-red-600 dark:text-red-100 bg-red-100 border-red-800 dark:bg-red-800 dark:border-red-100"
+            : type === "linkedin"
+            ? "text-blue-700 dark:text-blue-100 bg-blue-100 border-blue-800 dark:bg-blue-800 dark:border-blue-100"
+            : "text-black dark:text-white bg-white border-black dark:bg-black dark:border-white"}`
+        }
       >
         {copied === type ? "Copied!!" : displayName[type]}
       </span>
     </>
   );
 
+  const items = [
+    {
+      type: "email",
+      icon: <FaEnvelope className="w-6 h-6 text-red-600 dark:text-red-300" />,
+      action: () => copyText("ashwinpulipati@gmail.com", "email"),
+    },
+    {
+      type: "linkedin",
+      icon: (
+        <FaLinkedinIn className="w-6 h-6 text-blue-700 dark:text-blue-300" />
+      ),
+      href: "https://www.linkedin.com/in/ashwinpulipati",
+    },
+    {
+      type: "github",
+      icon: <FaGithub className="w-6 h-6 text-black dark:text-white" />,
+      href: "https://github.com/Ashwin-Pulipati",
+    },
+  ];
+
+  const angles = [-60, 0, 60]; // deg
+  const radius = 4.5; // rem units
+
   return (
-    <div className="hidden lg:block fixed top-1/2 -translate-y-1/2 left-0 z-20 ml-1.5 opacity-25 hover:opacity-100 transition-all duration-300">
+    <div className="hidden lg:block fixed top-1/2 lg:left-0 transform -translate-y-1/2 md:mr-2 lg:ml-2 z-10">
+      {/* Trigger Button */}
       <div
-        className="rounded-lg px-2 py-3 flex flex-col items-center space-y-2.5
-          bg-boxBgWhite dark:bg-boxBg bg-gradient-to-br from-[#dee3e7] to-white
-          dark:from-[#262a2e] dark:to-[#1f2022]
-          shadow-shadowTwo dark:shadow-shadowOne transition-colors duration-300"
+        className={`hover:bg-gradient-to-r focus-within:bg-gradient-to-r from-[#58eba6] via-[#1fc8de] to-[#0584d9] 
+    rounded-full p-0.5 shadow-shadowTwo dark:shadow-shadowOne transition-transform duration-300`}
       >
-        {/* Email */}
-        <div
-          className="relative"
-          onMouseEnter={() => setHovered("email")}
-          onMouseLeave={() => setHovered(null)}
+        <button
+          className={`relative w-12 h-12 rounded-full bg-gradient-to-br from-[#dee3e7] to-white dark:from-[#262a2e] 
+      dark:to-[#1f2022] flex items-center justify-center overflow-hidden transition-transform duration-300`}
+          onClick={(e) => {
+            createRipple(e);
+            setOpen(!open);
+          }}
+          aria-label="Social actions"
         >
-          <div
-            className="w-fit p-2 rounded-xl hover:scale-110 hover:border hover:border-red-800 
-            dark:hover:border-red-100 hover:bg-red-100 dark:hover:bg-red-800 ripple-container"
-            onMouseDown={createRipple}
-          >
-            <button
-              onClick={() => copyText("ashwinpulipati@gmail.com", "email")}
-              aria-label="Email"
-              className="block outline-none"
-            >
-              <FaEnvelope className="w-6 h-6 text-red-600 dark:text-red-300" />
-            </button>
-          </div>
-          {(copied === "email" || hovered === "email") && (
-            <Tooltip type="email" />
-          )}
-        </div>
-
-        {/* LinkedIn */}
-        <div
-          className="relative"
-          onMouseEnter={() => setHovered("linkedin")}
-          onMouseLeave={() => setHovered(null)}
-        >
-          <div
-            className="ripple-container w-fit p-2 rounded-xl hover:scale-110 hover:border hover:border-blue-800 dark:hover:border-blue-100 hover:bg-blue-100 dark:hover:bg-blue-800"
-            onMouseDown={createRipple}
-          >
-            <a
-              href="https://www.linkedin.com/in/ashwinpulipati"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LinkedIn"
-              className="block"
-            >
-              <FaLinkedinIn className="w-6 h-6 text-blue-700 dark:text-blue-300" />
-            </a>
-          </div>
-          {hovered === "linkedin" && <Tooltip type="linkedin" />}
-        </div>
-
-        {/* GitHub */}
-        <div
-          className="relative"
-          onMouseEnter={() => setHovered("github")}
-          onMouseLeave={() => setHovered(null)}
-        >
-          <div
-            className="ripple-container w-fit p-2 rounded-xl hover:scale-110 hover:border hover:border-black dark:hover:border-white hover:bg-white dark:hover:bg-black"
-            onMouseDown={createRipple}
-          >
-            <a
-              href="https://github.com/Ashwin-Pulipati"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="GitHub"
-              className="block"
-            >
-              <FaGithub className="w-6 h-6 text-black dark:text-white" />
-            </a>
-          </div>
-          {hovered === "github" && <Tooltip type="github" />}
-        </div>
+          <GiFox
+            className={`w-6 h-6 ${
+              open
+                ? "text-fuchsia-600 dark:text-fuchsia-300"
+                : "text-orange-600 dark:text-orange-300"
+            } `}
+          />
+        </button>
       </div>
+
+      {/* Radial Items */}
+      {open &&
+        items.map((item, idx) => {
+          const angle = (angles[idx] * Math.PI) / 180;
+          const x = radius * Math.cos(angle);
+          const y = -radius * Math.sin(angle);
+
+          return (
+            <div
+              key={item.type}
+              className="absolute"
+              style={{
+                top: "50%",
+                left: "50%",
+                transform: `translate(calc(-50% + ${x}rem), calc(-50% + ${y}rem))`,
+                transition: "transform 0.3s ease",
+              }}
+            >
+              {/* Outer wrapper triggers group hover */}
+              <div className="group transition-transform duration-200 hover:scale-75">
+                {/* Gradient border */}
+                <div
+                  className="relative hover:bg-gradient-to-r focus-within:bg-gradient-to-r 
+      from-[#58eba6] via-[#1fc8de] to-[#0584d9] rounded-full p-0.5 shadow-shadowTwo dark:shadow-shadowOne"
+                >
+                  {/* Icon wrapper */}
+                  <div
+                    className="relative w-14 h-14 rounded-full"
+                    onMouseEnter={() => setHovered(item.type)}
+                    onMouseLeave={() => setHovered(null)}
+                  >
+                    {item.href ? (
+                      <a
+                        href={item.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={displayName[item.type]}
+                        onMouseDown={createRipple}
+                        className="ripple-container relative w-full h-full flex items-center justify-center rounded-full bg-gradient-to-br from-[#dee3e7] to-white dark:from-[#262a2e] dark:to-[#1f2022] transition-transform duration-200"
+                      >
+                        {React.cloneElement(item.icon)}
+                      </a>
+                    ) : (
+                      <button
+                        onClick={() => item.action()}
+                        aria-label={displayName[item.type]}
+                        onMouseDown={createRipple}
+                        className="ripple-container relative w-full h-full flex items-center justify-center rounded-full bg-gradient-to-br from-[#dee3e7] to-white dark:from-[#262a2e] dark:to-[#1f2022] transition-transform duration-200"
+                      >
+                        {React.cloneElement(item.icon)}
+                      </button>
+                    )}
+
+                    {(hovered === item.type || copied === item.type) && (
+                      <Tooltip type={item.type} />
+                    )}
+                  </div>
+                </div>
+              </div>
+            </div>
+          );
+        })}
     </div>
   );
+
 }
 
-export default React.memo(SocialIconsSidebar);
+export default React.memo(SocialIconsRadial);
