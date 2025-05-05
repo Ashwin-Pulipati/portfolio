@@ -65,7 +65,7 @@ function SocialIconsRadial() {
   const radius = 4.5; // rem units
 
   return (
-    <div className="hidden lg:block fixed top-1/2 lg:left-0 transform -translate-y-1/2 md:mr-2 lg:ml-2 z-10">
+    <div className="hidden lg:block fixed top-1/2 lg:left-0 transform -translate-y-1/2 md:mr-2 lg:ml-2 z-20">
       {/* Trigger Button */}
       <div
         className={`hover:bg-gradient-to-r focus-within:bg-gradient-to-r from-[#58eba6] via-[#1fc8de] to-[#0584d9] 
