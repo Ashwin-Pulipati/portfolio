@@ -68,12 +68,16 @@ function SocialIconsRadial() {
     <div className="hidden lg:block fixed top-1/2 lg:left-0 transform -translate-y-1/2 md:mr-2 lg:ml-2 z-20">
       {/* Trigger Button */}
       <div
-        className={`hover:bg-gradient-to-r focus-within:bg-gradient-to-r from-[#58eba6] via-[#1fc8de] to-[#0584d9] 
-    rounded-full p-0.5 shadow-shadowTwo dark:shadow-shadowOne transition-transform duration-300`}
+        className={`${
+          open ? "opacity-100" : "opacity-30 hover:opacity-100"
+        } hover:bg-gradient-to-r focus-within:bg-gradient-to-r from-[#58eba6] via-[#1fc8de] to-[#0584d9] 
+        rounded-full p-0.5 shadow-shadowTwo dark:shadow-shadowOne transition-transform duration-300`}
       >
         <button
           className={`relative w-12 h-12 rounded-full bg-gradient-to-br from-[#dee3e7] to-white dark:from-[#262a2e] 
-      dark:to-[#1f2022] flex items-center justify-center overflow-hidden transition-transform duration-300`}
+      dark:to-[#1f2022] flex items-center justify-center overflow-hidden transition-transform duration-300 ${
+        open ? "opacity-100" : ""
+      }`}
           onClick={(e) => {
             createRipple(e);
             setOpen(!open);
