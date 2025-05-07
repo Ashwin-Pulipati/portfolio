@@ -118,12 +118,15 @@ function ProjectSidebarNavigation({ onSectionClick }) {
 
   return (
     <div
-      className="fixed xs:right-2 sm:right-3 lg:right-3.5 xs:bottom-[26%] sm:bottom-[29%] md:bottom-[14%] lg:bottom-[12%] 
-                    w-12 flex flex-col-reverse items-center gap-1
-                    bg-boxBgWhite dark:bg-boxBg bg-gradient-to-br dark:bg-gradient-to-tl
-                    from-[#dee3e7] to-white dark:from-[#262a2e] dark:to-[#1f2022]
-                    shadow-shadowTwo dark:shadow-shadowOne transition-colors duration-300 rounded-full z-30
-                    opacity-25 hover:opacity-100 cursor-pointer"
+      className={`
+    fixed xs:right-2 sm:right-3 lg:right-3.5 xs:bottom-[26%] sm:bottom-[29%] 
+    md:bottom-[14%] lg:bottom-[12%] w-12 flex flex-col-reverse items-center gap-1
+    bg-boxBgWhite dark:bg-boxBg bg-gradient-to-br dark:bg-gradient-to-tl
+    from-[#dee3e7] to-white dark:from-[#262a2e] dark:to-[#1f2022]
+    shadow-shadowTwo dark:shadow-shadowOne transition-colors duration-300 rounded-full z-30
+    ${navOpen ? "opacity-100" : "opacity-25 hover:opacity-100"}
+    cursor-pointer
+  `}
     >
       <div
         onClick={toggleNav}
