@@ -3,7 +3,6 @@ import { FaArrowUpLong } from "react-icons/fa6";
 import { createRipple } from "../layouts/RippleEffect";
 
 function ScrollTo() {
-  const [scrollDirection, setScrollDirection] = useState("up");
   const [position, setPosition] = useState("top");
   const lastY = useRef(window.pageYOffset);
 
@@ -14,8 +13,7 @@ function ScrollTo() {
       const y = window.pageYOffset;
       const maxY =
         document.documentElement.scrollHeight - window.innerHeight;
-     
-      setScrollDirection(y > lastY.current ? "down" : "up");
+
       lastY.current = y;
      
       if (!ticking) {
