@@ -53,7 +53,7 @@ export const projectsData = [
     ],
   },
   {
-    "mern-stack-development": [
+    "full-stack-development": [
       {
         id: "ms1",
         src: projectTwo,

@@ -7,7 +7,7 @@ import { TbTags } from "react-icons/tb";
 export const tagColorMap = {
   "frontend-development": { tagColor: "#fa8fa4", textColor: "#ffffff" },
   "machine-learning": { tagColor: "#f9b65c", textColor: "#ffffff" },
-  "mern-stack-development": { tagColor: "#a6d36e", textColor: "#ffffff" },
+  "full-stack-development": { tagColor: "#a6d36e", textColor: "#ffffff" },
   "ui-ux": { tagColor: "#c785f9", textColor: "#ffffff" },
   ai: { tagColor: "#85f9f9", textColor: "#ffffff" },
 };
@@ -15,7 +15,7 @@ export const tagColorMap = {
 export const backgroundClassMap = {
   "frontend-development": "bg-pink-100 dark:bg-pink-900 ",
   "machine-learning": "bg-yellow-100 dark:bg-yellow-900",
-  "mern-stack-development": "bg-green-100 dark:bg-green-900",
+  "full-stack-development": "bg-green-100 dark:bg-green-900",
   "ui-ux": "bg-purple-100 dark:bg-purple-900",
   "ai": "bg-sky-100 dark:bg-sky-900",
 };
@@ -31,7 +31,7 @@ export const lightModeColorMap = {
     border: "#ca8a04",
     bg: "#fefcbf",
   },
-  "mern-stack-development": {
+  "full-stack-development": {
     text: "#16a34a",
     border: "#16a34a",
     bg: "#d1fae5",
@@ -52,7 +52,7 @@ export const cardGradientMap = {
   "frontend-development": `linear-gradient(to bottom right, #ff9aad 0%, #f9f586 100%)`,
   "machine-learning":
     "linear-gradient(to bottom right, #ffbfa7 0%, #f9f586 100%)",
-  "mern-stack-development":
+  "full-stack-development":
     "linear-gradient(to bottom right, #96fbc4 0%, #f9f586 100%)",
   "ui-ux": "linear-gradient(to bottom right, #b78fff 0%, #f9f586 100%)",
   ai: "linear-gradient(to bottom right, #a0f0f4 0%, #f9f586 100%)",
@@ -63,7 +63,7 @@ export const darkModeCardGradientMap = {
     "linear-gradient(to bottom right, #6e0c19 0%, #453a94 100%)",
   "machine-learning":
     "linear-gradient(to bottom right, #7e6c10  0%, #6a0d4b 100%)",
-  "mern-stack-development":
+  "full-stack-development":
     "linear-gradient(to bottom right, #226346 0%, #6b5b1d 100%)",
   "ui-ux": "linear-gradient(to bottom right, #66009a 0%, #0d7998 100%)",
   ai: "linear-gradient(to bottom right, #0d7998 0%, #66009a 100%)",
@@ -139,9 +139,9 @@ export const featuresData = [
     iconFilled: <RiStackFill />,
     color: "text-[#a6d36e]",
     hoverColor: "group-hover:text-[#8dc653]",
-    title: "MERN Stack Development",
+    title: "Full Stack Development",
     tags: ["MongoDB", "Express", "React", "Node.js"],
-    bgClass: backgroundClassMap["mern-stack-development"],
+    bgClass: backgroundClassMap["full-stack-development"],
     tagIconOutlined: (
       <TbTags className="w-4 h-4 text-green-600 dark:text-[#8dc653]" />
     ),

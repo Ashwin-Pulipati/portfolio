@@ -64,7 +64,7 @@ export const cardGradientMap = {
   "frontend-development": `linear-gradient(to bottom right, #ff9aad 0%, #f9f586 100%)`,
   "machine-learning":
     "linear-gradient(to bottom right, #ffbfa7 0%, #f9f586 100%)",
-  "mern-stack-development":
+  "full-stack-development":
     "linear-gradient(to bottom right, #96fbc4 0%, #f9f586 100%)",
   "ui-ux": "linear-gradient(to bottom right, #b78fff 0%, #f9f586 100%)",
   ai: "linear-gradient(to bottom right, #a0f0f4 0%, #f9f586 100%)",
@@ -74,7 +74,7 @@ export const darkModeCardGradientMap = {
   "all-categories": "linear-gradient(to bottom right, #0d7998, #4f2a7a)",
   "frontend-development": "linear-gradient(to bottom right, #6e0c19 0%, #453a94 100%)",
   "machine-learning": "linear-gradient(to bottom right, #7e6c10  0%, #6a0d4b 100%)",
-  "mern-stack-development": "linear-gradient(to bottom right, #226346 0%, #6b5b1d 100%)",
+  "full-stack-development": "linear-gradient(to bottom right, #226346 0%, #6b5b1d 100%)",
   "ui-ux": "linear-gradient(to bottom right, #66009a 0%, #0d7998 100%)",
   ai: "linear-gradient(to bottom right, #0d7998 0%, #66009a 100%)",
 };
