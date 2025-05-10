@@ -134,7 +134,7 @@ const ProjectsCard = ({
       {projectAgeText && (
         <div className="w-fit h-fit ribbon-animated absolute z-10 xs:top-7 sm:top-8 left-1/2 transform -translate-x-1/2 
         -translate-y-1/2 flex justify-center items-center rounded-full p-[2px]">
-          <div className="relative flex items-center gap-2 px-3 py-1.5 rounded-full bg-bodyColorWhite dark:bg-boxBg 
+          <div className="relative flex items-center gap-2 px-3 py-1 rounded-full bg-bodyColorWhite dark:bg-boxBg 
           dark:bg-gradient-to-tl bg-gradient-br from-[#dee3e7] to-white dark:from-[#262a2e] dark:to-[#1f2022]
           transition-colors duration-100">
             <img
