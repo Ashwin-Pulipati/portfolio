@@ -3,7 +3,11 @@ import { useParams, useNavigate } from "react-router-dom";
 import Pagination from "../features/components/FeaturesPagination";
 import Searchbar from "../navbar/components/Searchbar";
 import { slugify } from "../layouts/Utils";
-import { projectsData } from "./constants/ProjectsCardData";
+import {
+  allProjectsList,
+  projectsByCategory,
+  projectsBySubcategory,
+} from "./constants/ProjectDataUtils";
 import { TiChevronRight, TiChevronRightOutline, TiThSmall } from "react-icons/ti";
 import { FaReact, FaAngular, FaPython, FaJava } from "react-icons/fa";
 import { SiPostgresql, SiOpenai } from "react-icons/si";   
@@ -98,29 +102,25 @@ const ProjectsList = ({ searchQuery, onSearch }) => {
   );
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [categoryProjects, setCategoryProjects] = useState([]);
+  const [categoryProjects, setCategoryProjects] = useState(allProjectsList);
 
   useEffect(() => {
-    const selectedCategory = projectsData.find((project) => project[category]);
-    if (!selectedCategory) return;
+    const catSlug = slugify(category);
+    const baseList = projectsByCategory[catSlug] || [];
 
-    const rawCategoryData = selectedCategory[category];
-    if (
-      typeof rawCategoryData === "object" &&
-      !Array.isArray(rawCategoryData)
-    ) {
-      if (subcategory && rawCategoryData[slugify(subcategory)]) {
-        setCategoryProjects(rawCategoryData[slugify(subcategory)]);
+    if (category === "full-stack-development" || category === "ai") {
+      const subSlug = slugify(
+        selectedSub === defaultSubLabel ? "" : selectedSub
+      );
+      if (subSlug && projectsBySubcategory[`${catSlug}||${subSlug}`]) {
+        setCategoryProjects(projectsBySubcategory[`${catSlug}||${subSlug}`]);
       } else {
-        const defaultKey = Object.keys(rawCategoryData)[0];
-        setCategoryProjects(rawCategoryData[defaultKey] || []);
+        setCategoryProjects(baseList);
       }
-    } else if (Array.isArray(rawCategoryData)) {
-      setCategoryProjects(rawCategoryData);
     } else {
-      setCategoryProjects([]);
+      setCategoryProjects(baseList);
     }
-  }, [category, subcategory]);
+  }, [category, selectedSub, defaultSubLabel]);
 
   useEffect(() => {
     setCurrentPage(1);
@@ -151,12 +151,16 @@ const ProjectsList = ({ searchQuery, onSearch }) => {
     if (currentPage > 1) setCurrentPage((prev) => prev - 1);
   }, [ currentPage ]);
   
-  const getSubCount = (category, sub) => {
-    const slug = slugify(category);
-    const entry = projectsData.find((item) => item[slug])[slug];
-    const key = slugify(sub);
-    return Array.isArray(entry[key]) ? entry[key].length : 0;
-  };
+    const getSubCount = (cat, sub) => {
+        const catSlug = slugify(cat);
+        const defaultLabel = cat === "ai" ? "All AI" : "All Stacks";
+        if (sub === defaultLabel) {
+          return (projectsByCategory[catSlug] || []).length;
+        }
+        const subSlug = slugify(sub);
+        const key = `${catSlug}||${subSlug}`;
+        return (projectsBySubcategory[key] || []).length;
+      };
 
   return (
     <section className="w-full min-h-screen bg-bodyColorWhite dark:bg-bodyColor text-lightText sm:pt-4 lg:pt-0">
@@ -165,26 +169,25 @@ const ProjectsList = ({ searchQuery, onSearch }) => {
       </div>
       {(category === "full-stack-development" || category === "ai") && (
         <div className="xs:hidden lg:flex flex justify-end items-center cursor-pointer mr-11">
-          <div className="relative w-48 rounded-full">
+          <div className="relative w-48 rounded-lg">
             <div
-              className="relative p-0.5 rounded-full flex items-center w-full hover:bg-gradient-to-r focus-within:bg-gradient-to-r 
+              className="relative p-0.5 rounded-lg flex items-center w-full hover:bg-gradient-to-r focus-within:bg-gradient-to-r 
           from-[#58eba6] via-[#1fc8de] to-[#0584d9] shadow-shadowTwo dark:shadow-shadowOne"
               tabIndex="0"
               onBlur={() => setSubOpen(false)}
             >
               <div
-                className="group flex gap-2 justify-center items-center bg-boxBgWhite dark:bg-boxBg bg-gradient-to-br 
-             dark:bg-gradient-to-tl from-[#dee3e7] to-white dark:from-[#262a2e] dark:to-[#1f2022]
-             transition-colors duration-100 px-3 py-3 rounded-full text-gray-700 dark:text-gray-300 text-sm 
+                className="group flex gap-2 justify-center items-center bg-gray-50 bg-gradient-br 
+      from-[#dee3e7] to-white dark:bg-bodyColor dark:bg-gradient-to-tl dark:from-[#262a2e] dark:to-[#1f2022]
+      transition-colors 
+                px-3 py-3 rounded-lg text-gray-700 dark:text-gray-300 text-sm 
              lg:text-base w-full ripple-container"
                 onClick={() => setSubOpen((p) => !p)}
               >
                 {React.createElement(subIconMap[selectedSub] || FaReact, {
                   className: `w-5 h-5 ${subColorMap[selectedSub]}`,
                 })}
-                <span className="capitalize">
-                  {selectedSub} 
-                </span>
+                <span className="capitalize">{selectedSub}</span>
                 {isSubOpen ? (
                   <TiChevronRight className="w-5 h-5 text-blue-800 dark:text-blue-300 -rotate-90" />
                 ) : (

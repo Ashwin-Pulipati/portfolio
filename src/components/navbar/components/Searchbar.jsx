@@ -17,7 +17,11 @@ import {
 } from "../constants/NavItems";
 import SearchIcon from "../../../assets/images/SVG/search.svg";
 import { createRipple } from "../../layouts/RippleEffect";
-import { projectsData } from "../../projects/constants/ProjectsCardData";
+import {
+  projectsByCategory,
+  projectsBySubcategory,
+} from "../../projects/constants/ProjectDataUtils";
+
 import { FaAngular, FaJava, FaPython, FaReact } from "react-icons/fa";
 
 const CATEGORY_LIST = [
@@ -54,22 +58,14 @@ const categoryIconMap = {
 };
 
 const getCategoryCount = (category) => {
-  const slug = slugify(category);
-  const entry = projectsData.find((item) => item[slug]);
-  if (!entry) return 0;
-  const data = entry[slug];
-  if (Array.isArray(data)) return data.length;
-  const allKey = Object.keys(data).find((k) => k.startsWith("all"));
-  return data[allKey]?.length || 0;
+  const key = slugify(category);
+  return projectsByCategory[key]?.length || 0;
 };
 
 const getSubCount = (category, sub) => {
-  const slug = slugify(category);
-  const entry = projectsData.find((item) => item[slug])[slug];
-  const key = slugify(sub);
-  return Array.isArray(entry[key]) ? entry[key].length : 0;
+  const key = `${slugify(category)}||${slugify(sub)}`;
+  return projectsBySubcategory[key]?.length || 0;
 };
-
 
 function Searchbar({ onSearch }) {
   const navigate = useNavigate();
@@ -112,7 +108,7 @@ function Searchbar({ onSearch }) {
   const handleSearchChange = useCallback(
     (e) => {
       setSearchQuery(e.target.value);
-      onSearch(e.target.value);
+      onSearch(e.target.value); 
     },
     [onSearch]
   );

@@ -1,30 +1,21 @@
 import React, { useMemo } from "react";
 import { useParams } from "react-router-dom";
-import { projectsData } from "./constants/ProjectsCardData";
 import { slugify } from "../layouts/Utils";
+import {projectsByCategory} from "./constants/ProjectDataUtils";
 
 const ProjectDetailLoader = ({ searchQuery, onSearch }) => {
   const { category, title } = useParams();
-
-  const categoryDataObj = useMemo(
-    () => projectsData.find((catObj) => Object.keys(catObj)[0] === category),
+  const projectsArray = useMemo(
+    () => projectsByCategory[category] || [],
     [category]
   );
-
-  const projectsArray = useMemo(
-    () => categoryDataObj && categoryDataObj[category],
-    [categoryDataObj, category]
-  );
-
   const project = useMemo(
-    () =>
-      projectsArray &&
-      projectsArray.find((proj) => slugify(proj.title) === title),
+    () => projectsArray.find((proj) => slugify(proj.title) === title),
     [projectsArray, title]
   );
 
-  if (!categoryDataObj) return <div>Category not found</div>;
-  if (!project) return <div>Project not found</div>;
+  if (!projectsArray.length) return <div>Category “{category}” not found</div>;
+  if (!project) return <div>Project “{title}” not found</div>;
 
   const DetailComponent = project.component;
   return (
