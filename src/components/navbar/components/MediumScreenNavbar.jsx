@@ -3,8 +3,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Link as ScrollLink } from "react-scroll";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 import { CrossIcon } from "./CrossIcon";
-import logoSVG from "../app-logo/app-logo.svg";
-import logoWEBP from "../app-logo/app-logo.webp";
 import logoPNG from "../app-logo/app-logo.png";
 import { createRipple } from "../../layouts/RippleEffect";
 import ThemeToggle from "./ThemeToggle";
@@ -36,20 +34,11 @@ function MediumScreenNavbar({
                 duration={500}
                 onClick={() => setShowMenu(false)}
               >
-                <picture>
-                              <source srcSet={logoSVG} type="image/svg+xml" />
-                              <source srcSet={logoWEBP} type="image/webp" />
-                              <source srcSet={logoPNG} type="image/png" />
-                              <img
-                                src={logoPNG}
-                                alt="Portfolio Logo"
-                                width={64}
-                                height={64}
-                                className="w-16 h-16 aspect-square object-contain"
-                                decoding="async"
-                                loading="eager"
-                              />
-                            </picture>
+                <div
+                  className="w-16 h-16 bg-no-repeat bg-center bg-contain"
+                  style={{ backgroundImage: `url(${logoPNG})` }}
+                  aria-label="Portfolio Logo"
+                />
               </ScrollLink>
               <p className="text-sm text-gray-600 dark:text-gray-400 mt-4 leading-loose">
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum
