@@ -266,18 +266,12 @@ const Navbar = ({ onSearch }) => {
         )}
 
         <RouterLink to="/" smooth="true" offset={-70} duration={500}>
-          <div className="w-16 h-16">
-            <img
-              src={logoSVG}
-              alt="Logo"
-              width={64}
-              height={64}
-              className="w-16 h-16"
-              loading="eager"
-              decoding="async"
-              fetchPriority="high"
-            />
-          </div>
+          <div
+            className="w-16 h-16 bg-contain bg-no-repeat bg-center"
+            style={{
+              backgroundImage: `url(${logoSVG})`,
+            }}
+          />
         </RouterLink>
 
         <div className="hidden lg:block">
