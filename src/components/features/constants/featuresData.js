@@ -3,6 +3,7 @@ import { RiRobot2Line, RiRobot2Fill, RiStackLine, RiStackFill } from "react-icon
 import { BsLaptop, BsFillLaptopFill } from "react-icons/bs";
 import { FaMobileAlt, FaMobile } from "react-icons/fa";
 import { TbTags } from "react-icons/tb";
+import { AiFillAliwangwang, AiOutlineAliwangwang } from "react-icons/ai";
 
 export const tagColorMap = {
   "frontend-development": { tagColor: "#fa8fa4", textColor: "#ffffff" },
@@ -79,62 +80,6 @@ export const hexToRGBA = (hex, alpha = 1) => {
 export const featuresData = [
   {
     id: 1,
-    iconOutlined: <BsLaptop />,
-    iconFilled: <BsFillLaptopFill />,
-    color: "text-[#fa8fa4]",
-    hoverColor: "group-hover:text-[#f78c9a]",
-    title: "Frontend Development",
-    tags: ["React", "TypeScript", "HTML", "CSS"],
-    bgClass: backgroundClassMap["frontend-development"],
-    tagIconOutlined: (
-      <TbTags className="w-4 h-4 text-pink-600 dark:text-[#fa8fa4]" />
-    ),
-    tagIconFilled: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        width="1em"
-        height="1em"
-        className="w-4 h-4 text-pink-600 dark:text-[#fa8fa4]"
-      >
-        <g fill="currentColor">
-          <path d="M9.172 5a3 3 0 0 1 2.121.879l5.71 5.71a3.41 3.41 0 0 1 0 4.822l-3.592 3.592a3.41 3.41 0 0 1-4.822 0l-5.71-5.71A3 3 0 0 1 2 12.172V8a3 3 0 0 1 3-3zM7 9h-.01A1 1 0 1 0 7 11a1 1 0 0 0 0-2" />
-          <path d="M14.293 5.293a1 1 0 0 1 1.414 0L20.3 9.885a5.82 5.82 0 0 1 0 8.23l-1.592 1.592a1 1 0 0 1-1.414-1.414l1.592-1.592a3.82 3.82 0 0 0 0-5.402l-4.592-4.592a1 1 0 0 1 0-1.414" />
-        </g>
-      </svg>
-    ),
-    des: "Proficient in React, TypeScript, and HTML/CSS for creating responsive web apps.",
-  },
-  {
-    id: 2,
-    iconOutlined: <RiRobot2Line />,
-    iconFilled: <RiRobot2Fill />,
-    color: "text-[#f9b65c]",
-    hoverColor: "group-hover:text-[#f5a442]",
-    title: "Machine Learning",
-    tags: ["Python", "TensorFlow", "scikit-learn", "NumPy"],
-    bgClass: backgroundClassMap["machine-learning"],
-    tagIconOutlined: (
-      <TbTags className="w-4 h-4 text-yellow-600 dark:text-[#f5a442]" />
-    ),
-    tagIconFilled: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        width="1em"
-        height="1em"
-        className="w-4 h-4 text-yellow-600 dark:text-[#f5a442]"
-      >
-        <g fill="currentColor">
-          <path d="M9.172 5a3 3 0 0 1 2.121.879l5.71 5.71a3.41 3.41 0 0 1 0 4.822l-3.592 3.592a3.41 3.41 0 0 1-4.822 0l-5.71-5.71A3 3 0 0 1 2 12.172V8a3 3 0 0 1 3-3zM7 9h-.01A1 1 0 1 0 7 11a1 1 0 0 0 0-2" />
-          <path d="M14.293 5.293a1 1 0 0 1 1.414 0L20.3 9.885a5.82 5.82 0 0 1 0 8.23l-1.592 1.592a1 1 0 0 1-1.414-1.414l1.592-1.592a3.82 3.82 0 0 0 0-5.402l-4.592-4.592a1 1 0 0 1 0-1.414" />
-        </g>
-      </svg>
-    ),
-    des: "Implementing machine learning models and AI-driven solutions in real-world applications.",
-  },
-  {
-    id: 3,
     iconOutlined: <RiStackLine />,
     iconFilled: <RiStackFill />,
     color: "text-[#a6d36e]",
@@ -162,7 +107,92 @@ export const featuresData = [
     des: "Experience with full-stack development using MongoDB, Express, React, and Node.js.",
   },
   {
+    id: 2,
+    iconOutlined: <AiOutlineAliwangwang />,
+    iconFilled: <AiFillAliwangwang />,
+    color: "text-[#85f9f9]",
+    hoverColor: "group-hover:text-[#85f9f9]",
+    title: "AI",
+    tags: ["Figma", "Photoshop"],
+    bgClass: backgroundClassMap["ai"],
+    tagIconOutlined: (
+      <TbTags className="w-4 h-4 text-blue-600 dark:text-[#85f9f9]" />
+    ),
+    tagIconFilled: (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        width="1em"
+        height="1em"
+        className="w-4 h-4 text-blue-600 dark:text-[#85f9f9]"
+      >
+        <g fill="currentColor">
+          <path d="M9.172 5a3 3 0 0 1 2.121.879l5.71 5.71a3.41 3.41 0 0 1 0 4.822l-3.592 3.592a3 3 0 0 1-4.822 0l-5.71-5.71A3 3 0 0 1 2 12.172V8a3 3 0 0 1 3-3zM7 9h-.01A1 1 0 1 0 7 11a1 1 0 0 0 0-2" />
+          <path d="M14.293 5.293a1 1 0 0 1 1.414 0L20.3 9.885a5.82 5.82 0 0 1 0 8.23l-1.592 1.592a1 1 0 0 1-1.414-1.414l1.592-1.592a3.82 3.82 0 0 0 0-5.402l-4.592-4.592a1 1 0 0 1 0-1.414" />
+        </g>
+      </svg>
+    ),
+    des: "Designing user interfaces and complex UI flows using tools like Figma and Photoshop.",
+  },
+  {
+    id: 3,
+    iconOutlined: <BsLaptop />,
+    iconFilled: <BsFillLaptopFill />,
+    color: "text-[#fa8fa4]",
+    hoverColor: "group-hover:text-[#f78c9a]",
+    title: "Frontend Development",
+    tags: ["React", "TypeScript", "HTML", "CSS"],
+    bgClass: backgroundClassMap["frontend-development"],
+    tagIconOutlined: (
+      <TbTags className="w-4 h-4 text-pink-600 dark:text-[#fa8fa4]" />
+    ),
+    tagIconFilled: (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        width="1em"
+        height="1em"
+        className="w-4 h-4 text-pink-600 dark:text-[#fa8fa4]"
+      >
+        <g fill="currentColor">
+          <path d="M9.172 5a3 3 0 0 1 2.121.879l5.71 5.71a3.41 3.41 0 0 1 0 4.822l-3.592 3.592a3.41 3.41 0 0 1-4.822 0l-5.71-5.71A3 3 0 0 1 2 12.172V8a3 3 0 0 1 3-3zM7 9h-.01A1 1 0 1 0 7 11a1 1 0 0 0 0-2" />
+          <path d="M14.293 5.293a1 1 0 0 1 1.414 0L20.3 9.885a5.82 5.82 0 0 1 0 8.23l-1.592 1.592a1 1 0 0 1-1.414-1.414l1.592-1.592a3.82 3.82 0 0 0 0-5.402l-4.592-4.592a1 1 0 0 1 0-1.414" />
+        </g>
+      </svg>
+    ),
+    des: "Proficient in React, TypeScript, and HTML/CSS for creating responsive web apps.",
+  },
+  {
     id: 4,
+    iconOutlined: <RiRobot2Line />,
+    iconFilled: <RiRobot2Fill />,
+    color: "text-[#f9b65c]",
+    hoverColor: "group-hover:text-[#f5a442]",
+    title: "Machine Learning",
+    tags: ["Python", "TensorFlow", "scikit-learn", "NumPy"],
+    bgClass: backgroundClassMap["machine-learning"],
+    tagIconOutlined: (
+      <TbTags className="w-4 h-4 text-yellow-600 dark:text-[#f5a442]" />
+    ),
+    tagIconFilled: (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        width="1em"
+        height="1em"
+        className="w-4 h-4 text-yellow-600 dark:text-[#f5a442]"
+      >
+        <g fill="currentColor">
+          <path d="M9.172 5a3 3 0 0 1 2.121.879l5.71 5.71a3.41 3.41 0 0 1 0 4.822l-3.592 3.592a3.41 3.41 0 0 1-4.822 0l-5.71-5.71A3 3 0 0 1 2 12.172V8a3 3 0 0 1 3-3zM7 9h-.01A1 1 0 1 0 7 11a1 1 0 0 0 0-2" />
+          <path d="M14.293 5.293a1 1 0 0 1 1.414 0L20.3 9.885a5.82 5.82 0 0 1 0 8.23l-1.592 1.592a1 1 0 0 1-1.414-1.414l1.592-1.592a3.82 3.82 0 0 0 0-5.402l-4.592-4.592a1 1 0 0 1 0-1.414" />
+        </g>
+      </svg>
+    ),
+    des: "Implementing machine learning models and AI-driven solutions in real-world applications.",
+  },
+
+  {
+    id: 5,
     iconOutlined: <FaMobileAlt />,
     iconFilled: <FaMobile />,
     color: "text-[#c785f9]",
@@ -180,34 +210,6 @@ export const featuresData = [
         width="1em"
         height="1em"
         className="w-4 h-4 text-purple-600 dark:text-[#b06ce5]"
-      >
-        <g fill="currentColor">
-          <path d="M9.172 5a3 3 0 0 1 2.121.879l5.71 5.71a3.41 3.41 0 0 1 0 4.822l-3.592 3.592a3 3 0 0 1-4.822 0l-5.71-5.71A3 3 0 0 1 2 12.172V8a3 3 0 0 1 3-3zM7 9h-.01A1 1 0 1 0 7 11a1 1 0 0 0 0-2" />
-          <path d="M14.293 5.293a1 1 0 0 1 1.414 0L20.3 9.885a5.82 5.82 0 0 1 0 8.23l-1.592 1.592a1 1 0 0 1-1.414-1.414l1.592-1.592a3.82 3.82 0 0 0 0-5.402l-4.592-4.592a1 1 0 0 1 0-1.414" />
-        </g>
-      </svg>
-    ),
-    des: "Designing user interfaces and complex UI flows using tools like Figma and Photoshop.",
-  },
-  {
-    id: 5,
-    iconOutlined: <FaMobileAlt />,
-    iconFilled: <FaMobile />,
-    color: "text-[#85f9f9]",
-    hoverColor: "group-hover:text-[#85f9f9]",
-    title: "AI",
-    tags: ["Figma", "Photoshop"],
-    bgClass: backgroundClassMap["ai"],
-    tagIconOutlined: (
-      <TbTags className="w-4 h-4 text-blue-600 dark:text-text-[#85f9f9]" />
-    ),
-    tagIconFilled: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        width="1em"
-        height="1em"
-        className="w-4 h-4 text-blue-600 dark:text-text-[#85f9f9]"
       >
         <g fill="currentColor">
           <path d="M9.172 5a3 3 0 0 1 2.121.879l5.71 5.71a3.41 3.41 0 0 1 0 4.822l-3.592 3.592a3 3 0 0 1-4.822 0l-5.71-5.71A3 3 0 0 1 2 12.172V8a3 3 0 0 1 3-3zM7 9h-.01A1 1 0 1 0 7 11a1 1 0 0 0 0-2" />

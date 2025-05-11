@@ -52,7 +52,7 @@ function ScrollTo() {
     <div
       className="fixed xs:bottom-24 sm:bottom-28 md:bottom-5 xs:right-2 sm:right-4
                 group opacity-25 hover:opacity-100 transition-all duration-300
-                shadow-shadowTwo dark:shadow-shadowOne rounded-full"
+                shadow-shadowTwo dark:shadow-shadowOne rounded-full animate-bounce"
     >
       <div
         className="absolute -inset-0.5 p-0.5 rounded-full

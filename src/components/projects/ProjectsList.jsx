@@ -12,7 +12,8 @@ import { TiChevronRight, TiChevronRightOutline, TiThSmall } from "react-icons/ti
 import { FaReact, FaAngular, FaPython, FaJava } from "react-icons/fa";
 import { SiPostgresql, SiOpenai } from "react-icons/si";   
 import { MdCodeOff } from "react-icons/md";                  
-import { AiOutlineCode } from "react-icons/ai";             
+import { AiOutlineCode } from "react-icons/ai"; 
+import { useLocation } from "react-router-dom";            
 
 
 const ProjectsCardLazy = lazy(() => import("./ProjectsCard"));
@@ -91,15 +92,34 @@ const DelayedFallback = () => {
 const ITEMS_PER_PAGE = 9;
 
 const ProjectsList = ({ searchQuery, onSearch }) => {
+  const location = useLocation();
   const { category } = useParams();
   const navigate = useNavigate();
-  const subcategory = new URLSearchParams(window.location.search).get("sub");
   const [isSubOpen, setSubOpen] = useState(false);
   const [hoveredSub, setHoveredSub] = useState(null);
   const defaultSubLabel = category === "ai" ? "All AI" : "All Stacks";
-  const [selectedSub, setSelectedSub] = useState(
-    subcategory ? subcategory.replace(/-/g, " ") : defaultSubLabel
-  );
+  const [selectedSub, setSelectedSub] = useState(defaultSubLabel);
+  useEffect(() => {
+    const subParam = new URLSearchParams(location.search).get("sub");
+
+    const options =
+      category === "full-stack-development"
+        ? [
+            "All Stacks",
+            "MERN Stack",
+            "MEAN Stack",
+            "PERN Stack",
+            "Python",
+            "Java",
+          ]
+        : ["All AI", "No-Code", "Code-Based"];
+    
+    const match = subParam
+      ? options.find((opt) => slugify(opt) === subParam)
+      : null;
+
+    setSelectedSub(match || defaultSubLabel);
+  }, [location.search, category, defaultSubLabel]);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [categoryProjects, setCategoryProjects] = useState(allProjectsList);
@@ -149,18 +169,30 @@ const ProjectsList = ({ searchQuery, onSearch }) => {
 
   const handlePrev = useCallback(() => {
     if (currentPage > 1) setCurrentPage((prev) => prev - 1);
-  }, [ currentPage ]);
-  
-    const getSubCount = (cat, sub) => {
-        const catSlug = slugify(cat);
-        const defaultLabel = cat === "ai" ? "All AI" : "All Stacks";
-        if (sub === defaultLabel) {
-          return (projectsByCategory[catSlug] || []).length;
-        }
-        const subSlug = slugify(sub);
-        const key = `${catSlug}||${subSlug}`;
-        return (projectsBySubcategory[key] || []).length;
-      };
+  }, [currentPage]);
+
+  const getSubCount = (cat, sub) => {
+    const catSlug = slugify(cat);
+    const defaultLabel = cat === "ai" ? "All AI" : "All Stacks";
+    if (sub === defaultLabel) {
+      return (projectsByCategory[catSlug] || []).length;
+    }
+    const subSlug = slugify(sub);
+    const key = `${catSlug}||${subSlug}`;
+    return (projectsBySubcategory[key] || []).length;
+  };
+
+  const subs = 
+    category === "full-stack-development"
+      ? [
+          "All Stacks",
+          "MERN Stack",
+          "MEAN Stack",
+          "PERN Stack",
+          "Python",
+          "Java",
+        ]
+      : ["All AI", "No-Code", "Code-Based"]
 
   return (
     <section className="w-full min-h-screen bg-bodyColorWhite dark:bg-bodyColor text-lightText sm:pt-4 lg:pt-0">
@@ -179,15 +211,15 @@ const ProjectsList = ({ searchQuery, onSearch }) => {
               <div
                 className="group flex gap-2 justify-center items-center bg-gray-50 bg-gradient-br 
       from-[#dee3e7] to-white dark:bg-bodyColor dark:bg-gradient-to-tl dark:from-[#262a2e] dark:to-[#1f2022]
-      transition-colors 
-                px-3 py-3 rounded-lg text-gray-700 dark:text-gray-300 text-sm 
-             lg:text-base w-full ripple-container"
+      transition-colors px-3 py-3 rounded-lg text-gray-700 dark:text-gray-300 text-sm lg:text-base w-full ripple-container"
                 onClick={() => setSubOpen((p) => !p)}
               >
                 {React.createElement(subIconMap[selectedSub] || FaReact, {
                   className: `w-5 h-5 ${subColorMap[selectedSub]}`,
                 })}
-                <span className="capitalize">{selectedSub}</span>
+                <span className="font-titleFont text-sm md:text-base mb-0.5 text-gray-700 dark:text-gray-300 xs:font-semibold lg:font-normal">
+                  {selectedSub}
+                </span>
                 {isSubOpen ? (
                   <TiChevronRight className="w-5 h-5 text-blue-800 dark:text-blue-300 -rotate-90" />
                 ) : (
@@ -197,17 +229,7 @@ const ProjectsList = ({ searchQuery, onSearch }) => {
 
               {isSubOpen && (
                 <ul className="absolute z-50 top-14 left-0 w-full bg-gray-50 dark:bg-bodyColor shadow-md rounded-md py-2 text-gray-700 dark:text-gray-300 transition-colors duration-100">
-                  {(category === "full-stack-development"
-                    ? [
-                        "All Stacks",
-                        "MERN Stack",
-                        "MEAN Stack",
-                        "PERN Stack",
-                        "Python",
-                        "Java",
-                      ]
-                    : ["All AI", "No-Code", "Code-Based"]
-                  ).map((sub, i) => {
+                  {subs.filter(s => s !== selectedSub).map((sub, i) => {
                     const Icon = subIconMap[sub] || FaReact;
                     const colorClass =
                       subColorMap[sub] || "text-gray-700 dark:text-gray-300";
@@ -216,7 +238,7 @@ const ProjectsList = ({ searchQuery, onSearch }) => {
                         key={i}
                         className={`
             flex items-center gap-2 px-4 py-2 text-sm md:text-base 
-            font-semibold cursor-pointer ripple-container
+            font-semibold cursor-pointer ripple-container font-titleFont
             ${
               hoveredSub === sub
                 ? category === "full-stack-development"
@@ -227,8 +249,7 @@ const ProjectsList = ({ searchQuery, onSearch }) => {
           `}
                         onClick={() => {
                           const slugSub = slugify(sub);
-                          setSelectedSub(sub);
-                          navigate(`?sub=${slugSub}`);
+                          navigate(`${location.pathname}?sub=${slugSub}`);
                           setSubOpen(false);
                         }}
                         onMouseEnter={() => setHoveredSub(sub)}

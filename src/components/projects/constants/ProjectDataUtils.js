@@ -11,10 +11,11 @@ export const groupBy = (arr, keyFn) =>
 
 export const allProjectsList = allProjects;
 
-export const projectsByCategory = groupBy(allProjects, (p) =>
-  slugify(p.category)
-);
-
+export const projectsByCategory = {
+    "all-categories": allProjectsList,
+    ...groupBy(allProjects, p => slugify(p.category)),
+};
+  
 export const projectsBySubcategory = groupBy(
   allProjects.filter((p) => p.sub),
   (p) => `${slugify(p.category)}||${slugify(p.sub)}`

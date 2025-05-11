@@ -116,9 +116,9 @@ const ProjectsCard = ({
 
   return (
     <div
-      className="group relative w-full p-4 lg:p-8 lg:pt-1 sm:p-7 sm:pt-1 xs:p-6 xs:pt-1 rounded-2xl flex flex-col transition-colors duration-100 
-    shadow-shadowTwo dark:shadow-shadowOne bg-boxBgWhite dark:bg-boxBg bg-gradient-to-br dark:bg-gradient-to-tl from-[#dee3e7] to-white
-    dark:from-[#262a2e] dark:to-[#1f2022]"
+      className="group relative w-full p-4 lg:p-8 sm:p-7 xs:p-6 rounded-2xl flex flex-col transition-colors 
+      duration-100 shadow-shadowTwo dark:shadow-shadowOne bg-boxBgWhite dark:bg-boxBg bg-gradient-to-br dark:bg-gradient-to-tl 
+      from-[#dee3e7] to-white dark:from-[#262a2e] dark:to-[#1f2022]"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       style={
@@ -132,24 +132,22 @@ const ProjectsCard = ({
       }
     >
       {projectAgeText && (
-        <div className="w-fit h-fit ribbon-animated absolute z-10 xs:top-7 sm:top-8 left-1/2 transform -translate-x-1/2 
-        -translate-y-1/2 flex justify-center items-center rounded-full p-[2px]">
-          <div className="relative flex items-center gap-2 px-3 py-1 rounded-full bg-bodyColorWhite dark:bg-boxBg 
+        <div
+          className="w-fit h-fit absolute z-10 xs:top-7 sm:top-8 left-1/2 transform -translate-x-1/2 
+        -translate-y-1/2 flex justify-center items-center rounded-full p-[2px]"
+        >
+          <div
+            className="relative flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-bodyColorWhite dark:bg-boxBg 
           dark:bg-gradient-to-tl bg-gradient-br from-[#dee3e7] to-white dark:from-[#262a2e] dark:to-[#1f2022]
-          transition-colors duration-100">
-            <img
-              src="https://img.icons8.com/glassmorphism/48/storm.png"
-              alt="storm"
-              className="w-4 h-4"
-            />
+          transition-colors duration-100"
+          >
+            <span className="relative flex size-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan-400 dark:bg-cyan-300 opacity-75"></span>
+              <span className="relative inline-flex size-2 rounded-full bg-cyan-500 dark:bg-cyan-300"></span>
+            </span>
             <span className="text-black dark:text-white text-xs font-bodyFont">
               {projectAgeText}
             </span>
-            <img
-              src="https://img.icons8.com/glassmorphism/48/storm.png"
-              alt="storm"
-              className="w-4 h-4"
-            />
           </div>
         </div>
       )}
