@@ -38,7 +38,7 @@ const Banner = () => {
       <div className="grid grid-cols-1 xl:grid-cols-5 w-full border-b border-b-gray-400 dark:border-b-black pb-24">
         <div className="lg:col-span-3 flex flex-col justify-center items-start order-2 xl:order-1 md:pt-11 relative">
           <LeftBanner />
-          <div className="absolute hidden md:block md:top-16 md:left-[16rem] md:z-50 ">
+          <div className="absolute hidden md:block md:top-16 lg:top-[6.5rem] xl:top-16 md:left-[16rem] md:z-50 ">
             <FairyAnimation section="banner" messages={bannerMessages} />
           </div>
         </div>

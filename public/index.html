@@ -20,33 +20,29 @@
       name="description"
       content="Web site created using create-react-app"
     />
-    <link rel="icon" href="/favicon.ico" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="icon" type="image/svg+xml" href="%PUBLIC_URL%/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="96x96" href="%PUBLIC_URL%/favicon-96x96.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="%PUBLIC_URL%/apple-touch-icon.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/site.webmanifest" />
 
     <!-- in your <head>, before any other CSS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <!-- preload the stylesheet, then swap in on load -->
     <link
       rel="preload"
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap&family=Poppins:wght@400;700&display=swap"
       as="style"
       onload="this.onload=null;this.rel='stylesheet'"
     />
-    <!-- fallback for no-JS -->
     <noscript>
       <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap&family=Poppins:wght@400;700&display=swap"
         rel="stylesheet"
       />
     </noscript>
-
    <link rel="preload" as="image" href="%PUBLIC_URL%/banner-right.webp" type="image/webp" fetchpriority="high"/>
-   
+   <link rel="preload" as="image" href="%PUBLIC_URL%/app-logo.png" type="image/png" fetchpriority="high" />
     <title>Ashwin Pulipati Portfolio</title>
   </head>
   <body>
