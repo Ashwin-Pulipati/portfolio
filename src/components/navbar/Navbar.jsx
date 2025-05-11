@@ -266,11 +266,11 @@ const Navbar = ({ onSearch }) => {
         )}
 
         <RouterLink to="/" smooth="true" offset={-70} duration={500}>
-            <div
-              className="w-16 h-16 bg-no-repeat bg-center bg-contain"
-              style={{ backgroundImage: `url(${logoPNG})` }}
-              aria-label="Portfolio Logo"
-            />
+          <div
+            className="w-16 h-16 bg-no-repeat bg-center bg-contain aspect-square"
+            style={{ backgroundImage: `url(${logoPNG})` }}
+            aria-label="Portfolio Logo"
+          />
         </RouterLink>
 
         <div className="hidden lg:block">

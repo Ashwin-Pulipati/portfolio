@@ -35,7 +35,7 @@ function MediumScreenNavbar({
                 onClick={() => setShowMenu(false)}
               >
                 <div
-                  className="w-16 h-16 bg-no-repeat bg-center bg-contain"
+                  className="w-16 h-16 bg-no-repeat bg-center bg-contain aspect-square"
                   style={{ backgroundImage: `url(${logoPNG})` }}
                   aria-label="Portfolio Logo"
                 />
