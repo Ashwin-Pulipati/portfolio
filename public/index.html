@@ -26,9 +26,25 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
 
+    <!-- in your <head>, before any other CSS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- preload the stylesheet, then swap in on load -->
+    <link
+      rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap&family=Poppins:wght@400;700&display=swap"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <!-- fallback for no-JS -->
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap&family=Poppins:wght@400;700&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
+
    <link rel="preload" as="image" href="%PUBLIC_URL%/banner-right.webp" type="image/webp" fetchpriority="high"/>
    
     <title>Ashwin Pulipati Portfolio</title>
