@@ -59,7 +59,7 @@ const LeftBanner = () => {
 
   return (
     <div
-      className="flex flex-col gap-8 md:gap-10 lg:gap-12 w-full md:w-11/12 xl:gap-12 mt-6 md:mt-0"
+      className="flex flex-col gap-8 md:gap-10 lg:gap-12 w-full md:w-11/12 xl:gap-12 xs:mt-0 lg:mt-10 xl:mt-0"
       data-aos="fade-up"
     >
       <div className="flex flex-col gap-4 md:gap-5">
