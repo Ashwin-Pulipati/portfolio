@@ -3,8 +3,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Link as ScrollLink } from "react-scroll";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 import { CrossIcon } from "./CrossIcon";
-import logoPNG from "../app-logo/app-logo.png";
-import logoSVG from "../app-logo/app-logo.svg";
 import logoWEBP from "../app-logo/app-logo.webp";
 import { createRipple } from "../../layouts/RippleEffect";
 import ThemeToggle from "./ThemeToggle";
@@ -38,17 +36,15 @@ function MediumScreenNavbar({
               >
                 <div className="w-16 h-16">
                   <picture>
-                    <source srcSet={logoSVG} type="image/svg+xml" />
                     <source srcSet={logoWEBP} type="image/webp" />
-                    <source srcSet={logoPNG} type="image/png" />
                     <img
-                      src={logoPNG}
+                      src={logoWEBP}
                       alt="Portfolio Logo"
                       width={64}
                       height={64}
                       className="w-16 h-16 aspect-square object-contain"
-                      decoding="async"
                       loading="eager"
+                      decoding="async"
                     />
                   </picture>
                 </div>

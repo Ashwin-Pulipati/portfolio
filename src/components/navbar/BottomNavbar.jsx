@@ -131,7 +131,7 @@ function BottomNavbar() {
               className={`text-xs capitalize pt-1.5 ${
                 activeIndex === idx
                   ? nav.iconActive
-                  : "text-gray-500 dark:text-lightText"
+                  : "text-gray-600 dark:text-lightText"
               }`}
             >
               {nav.bottomNavTitle}
