@@ -5,7 +5,7 @@ import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 import { CrossIcon } from "./CrossIcon";
 import { createRipple } from "../../layouts/RippleEffect";
 import ThemeToggle from "./ThemeToggle";
-import Logo from "./Logo";
+import logoWEBP from "../app-logo/app-logo.webp";
 
 function MediumScreenNavbar({
   showMenu,
@@ -34,9 +34,13 @@ function MediumScreenNavbar({
                 duration={500}
                 onClick={() => setShowMenu(false)}
               >
-                <div className="w-16 h-16">
-                  <Logo />
-                </div>
+                <div
+                  className="w-16 bg-cover bg-center bg-no-repeat z-30"
+                  style={{
+                    backgroundImage: `url(${logoWEBP})`,
+                    aspectRatio: "1 / 1",
+                  }}
+                />
               </ScrollLink>
               <p className="text-sm text-gray-600 dark:text-gray-400 mt-4 leading-loose">
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum

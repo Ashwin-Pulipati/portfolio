@@ -11,7 +11,7 @@ import { HiArrowLeft } from "react-icons/hi";
 import MediumScreenNavbar from "./components/MediumScreenNavbar";
 import { createRipple } from "../layouts/RippleEffect";
 import useSystemTheme from "react-use-system-theme"; 
-import Logo from "./components/Logo";
+import logoWEBP from "./app-logo/app-logo.webp";
 
 const getNavLinkClasses = (title, isActive) => {
   if (title === "CONTACT") {
@@ -266,9 +266,13 @@ const Navbar = ({ onSearch }) => {
         )}
 
         <RouterLink to="/" smooth="true" offset={-70} duration={500}>
-          <div className="w-16 h-16">
-            <Logo />
-          </div>
+          <div
+            className="w-14 bg-cover bg-center bg-no-repeat z-30"
+            style={{
+              backgroundImage: `url(${logoWEBP})`,
+              aspectRatio: "1 / 1",
+            }}
+          />
         </RouterLink>
 
         <div className="hidden lg:block">
