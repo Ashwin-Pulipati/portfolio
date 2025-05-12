@@ -313,9 +313,9 @@ const LeftBanner = () => {
           </div>
         </div>
 
-        <div>
+        <>
           <Media />
-        </div>
+        </>
       </div>
     </div>
   );
