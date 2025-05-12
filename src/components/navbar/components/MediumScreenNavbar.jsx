@@ -5,7 +5,7 @@ import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 import { CrossIcon } from "./CrossIcon";
 import { createRipple } from "../../layouts/RippleEffect";
 import ThemeToggle from "./ThemeToggle";
-import logoWEBP from "../app-logo/app-logo.webp";
+import logoSVG from "../../../assets/images/app-logo/app-logo.svg";
 
 function MediumScreenNavbar({
   showMenu,
@@ -35,13 +35,9 @@ function MediumScreenNavbar({
                 onClick={() => setShowMenu(false)}
               >
                 <img
-                  src={logoWEBP}
-                  width={56} // actual pixel dims
-                  height={56} // same
-                  style={{ objectFit: "cover" }}
-                  loading="eager"
-                  decoding="async"
-                  alt="Logo"
+                  src={logoSVG}
+                  alt="App Logo"
+                  className="w-[60px] cursor-pointer"
                 />
               </ScrollLink>
               <p className="text-sm text-gray-600 dark:text-gray-400 mt-4 leading-loose">
