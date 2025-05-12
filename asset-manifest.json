@@ -1,12 +1,12 @@
 {
   "files": {
-    "main.css": "/portfolio/static/css/main.1ff26b7c.css",
-    "main.js": "/portfolio/static/js/main.3574c32e.js",
+    "main.css": "/portfolio/static/css/main.198f39ab.css",
+    "main.js": "/portfolio/static/js/main.cd4bbaf4.js",
     "static/js/519.47fc315d.chunk.js": "/portfolio/static/js/519.47fc315d.chunk.js",
     "static/media/banner-right.webp": "/portfolio/static/media/banner-right.7af22a8475ab700bcf43.webp",
+    "static/media/app-logo.svg": "/portfolio/static/media/app-logo.88db6710dd95c53123272a83ae391e5c.svg",
     "static/media/kitty2.webp": "/portfolio/static/media/kitty2.fcf0e091a4570bae4a38.webp",
     "static/media/kitty3.webp": "/portfolio/static/media/kitty3.2c614c352af3bccc492c.webp",
-    "static/media/app-logo.webp": "/portfolio/static/media/app-logo.067aa9bb14e7e7788700.webp",
     "static/media/VisbyRoundCF-Bold.ttf": "/portfolio/static/media/VisbyRoundCF-Bold.e48013f8232e85447d54.ttf",
     "static/media/Arizonia-Regular.ttf": "/portfolio/static/media/Arizonia-Regular.f420d64b78d3a3994c1b.ttf",
     "static/media/projectThree.webp": "/portfolio/static/media/projectThree.c4c5c3567e13c7955873.webp",
@@ -32,12 +32,12 @@
     "static/media/tensorflow.svg": "/portfolio/static/media/tensorflow.cbbee40dfc23131b3232ce7146730958.svg",
     "static/media/figma.svg": "/portfolio/static/media/figma.4c7c72690bda96207f676a0d84c261a3.svg",
     "static/media/materialui.svg": "/portfolio/static/media/materialui.35c1f68232f56950a73a1b2484869ec2.svg",
-    "main.1ff26b7c.css.map": "/portfolio/static/css/main.1ff26b7c.css.map",
-    "main.3574c32e.js.map": "/portfolio/static/js/main.3574c32e.js.map",
+    "main.198f39ab.css.map": "/portfolio/static/css/main.198f39ab.css.map",
+    "main.cd4bbaf4.js.map": "/portfolio/static/js/main.cd4bbaf4.js.map",
     "519.47fc315d.chunk.js.map": "/portfolio/static/js/519.47fc315d.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.1ff26b7c.css",
-    "static/js/main.3574c32e.js"
+    "static/css/main.198f39ab.css",
+    "static/js/main.cd4bbaf4.js"
   ]
 }
