@@ -35,18 +35,16 @@ function MediumScreenNavbar({
                 onClick={() => setShowMenu(false)}
               >
                 <div className="w-16 h-16">
-                  <picture>
-                    <source srcSet={logoWEBP} type="image/webp" />
-                    <img
-                      src={logoWEBP}
-                      alt="Portfolio Logo"
-                      width={64}
-                      height={64}
-                      className="w-16 h-16 aspect-square object-contain"
-                      loading="eager"
-                      decoding="async"
-                    />
-                  </picture>
+                  <img
+                    src={logoWEBP}
+                    alt="Portfolio Logo"
+                    width={64}
+                    height={64}
+                    className="w-16 h-16 aspect-square object-contain"
+                    loading="lazy"           // ← tell Chrome “not critical”
+                    decoding="async"
+                    fetchPriority="low"
+                  />
                 </div>
               </ScrollLink>
               <p className="text-sm text-gray-600 dark:text-gray-400 mt-4 leading-loose">
