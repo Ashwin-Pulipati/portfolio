@@ -90,7 +90,7 @@ const LeftBanner = () => {
           experience.
         </p>
       </div>
-      <div className="flex flex-col xs:gap-16 lg:gap-18 ">
+      <div className="flex flex-col xs:gap-16 lg:gap-20 ">
         <div className="flex items-center gap-4 xs:flex-wrap sm:flex-nowrap">
           {/* "View Projects" Button */}
           <div
