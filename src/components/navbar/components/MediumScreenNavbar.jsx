@@ -3,9 +3,9 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Link as ScrollLink } from "react-scroll";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 import { CrossIcon } from "./CrossIcon";
-import logoWEBP from "../app-logo/app-logo.webp";
 import { createRipple } from "../../layouts/RippleEffect";
 import ThemeToggle from "./ThemeToggle";
+import Logo from "./Logo";
 
 function MediumScreenNavbar({
   showMenu,
@@ -35,16 +35,7 @@ function MediumScreenNavbar({
                 onClick={() => setShowMenu(false)}
               >
                 <div className="w-16 h-16">
-                  <img
-                    src={logoWEBP}
-                    alt="Portfolio Logo"
-                    width={64}
-                    height={64}
-                    className="w-16 h-16 aspect-square object-contain"
-                    loading="lazy"           // ← tell Chrome “not critical”
-                    decoding="async"
-                    fetchPriority="low"
-                  />
+                  <Logo />
                 </div>
               </ScrollLink>
               <p className="text-sm text-gray-600 dark:text-gray-400 mt-4 leading-loose">
