@@ -34,12 +34,14 @@ function MediumScreenNavbar({
                 duration={500}
                 onClick={() => setShowMenu(false)}
               >
-                <div
-                  className="w-16 bg-cover bg-center bg-no-repeat z-30"
-                  style={{
-                    backgroundImage: `url(${logoWEBP})`,
-                    aspectRatio: "1 / 1",
-                  }}
+                <img
+                  src={logoWEBP}
+                  width={56} // actual pixel dims
+                  height={56} // same
+                  style={{ objectFit: "cover" }}
+                  loading="eager"
+                  decoding="async"
+                  alt="Logo"
                 />
               </ScrollLink>
               <p className="text-sm text-gray-600 dark:text-gray-400 mt-4 leading-loose">

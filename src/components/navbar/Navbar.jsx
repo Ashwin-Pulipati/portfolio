@@ -266,12 +266,14 @@ const Navbar = ({ onSearch }) => {
         )}
 
         <RouterLink to="/" smooth="true" offset={-70} duration={500}>
-          <div
-            className="w-14 bg-cover bg-center bg-no-repeat z-30"
-            style={{
-              backgroundImage: `url(${logoWEBP})`,
-              aspectRatio: "1 / 1",
-            }}
+          <img
+            src={logoWEBP}
+            width={56} // actual pixel dims
+            height={56} // same
+            style={{ objectFit: "cover" }}
+            loading="eager"
+            decoding="async"
+            alt="Logo"
           />
         </RouterLink>
 
