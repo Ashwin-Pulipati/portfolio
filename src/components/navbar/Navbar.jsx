@@ -3,7 +3,7 @@ import { Link as ScrollLink } from "react-scroll";
 import debounce from "lodash.debounce";
 import Searchbar from "./components/Searchbar";
 import { navItems } from "./constants/NavItems";
-import { HamburgerMenu } from "./components/HamburgerMenu";
+import HamburgerMenu from "./components/HamburgerMenu";
 import { Link as RouterLink, useLocation, useNavigate } from "react-router-dom";
 import "./Navbar.css";
 import ThemeToggle from "./components/ThemeToggle";
@@ -323,4 +323,4 @@ const Navbar = ({ onSearch }) => {
   );
 };
 
-export default Navbar;
+export default React.memo(Navbar)

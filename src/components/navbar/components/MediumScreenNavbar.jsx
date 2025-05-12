@@ -2,7 +2,7 @@ import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link as ScrollLink } from "react-scroll";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
-import { CrossIcon } from "./CrossIcon";
+import  CrossIcon  from "./CrossIcon";
 import { createRipple } from "../../layouts/RippleEffect";
 import ThemeToggle from "./ThemeToggle";
 import logoSVG from "../../../assets/images/app-logo/app-logo.svg";
@@ -112,4 +112,4 @@ function MediumScreenNavbar({
   );
 }
 
-export default MediumScreenNavbar;
+export default React.memo(MediumScreenNavbar);

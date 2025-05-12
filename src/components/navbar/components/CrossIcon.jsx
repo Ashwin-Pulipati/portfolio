@@ -1,7 +1,7 @@
 import React from 'react'
 import { createRipple } from '../../layouts/RippleEffect';
 
-export const CrossIcon = () => {
+function CrossIcon() {
   return (
     <>
       <div
@@ -23,3 +23,5 @@ export const CrossIcon = () => {
     </>
   );
 }
+
+export default React.memo(CrossIcon);

@@ -81,4 +81,4 @@ const UnifiedArrow = React.memo(
   }
 );
 
-export default UnifiedArrow;
+export default React.memo(UnifiedArrow);

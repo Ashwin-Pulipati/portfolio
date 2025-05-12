@@ -161,4 +161,4 @@ const FairyAnimation = ({
   );
 };
 
-export default FairyAnimation;
+export default React.memo(FairyAnimation);

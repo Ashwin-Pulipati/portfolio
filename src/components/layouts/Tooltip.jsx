@@ -10,4 +10,4 @@ const Tootip = ({text}) => {
   );
 }
 
-export default Tootip
+export default React.memo(Tootip); 

@@ -1,7 +1,7 @@
 import React from 'react'
 import { createRipple } from '../../layouts/RippleEffect';
 
-export const HamburgerMenu = ({showMenu}) => {
+function HamburgerMenu ({showMenu}) {
     return (
       <>
         <div
@@ -25,3 +25,5 @@ export const HamburgerMenu = ({showMenu}) => {
       </>
     );
 }
+
+export default React.memo(HamburgerMenu)
