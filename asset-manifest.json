@@ -1,11 +1,9 @@
 {
   "files": {
     "main.css": "/portfolio/static/css/main.843db6a9.css",
-    "main.js": "/portfolio/static/js/main.31043904.js",
+    "main.js": "/portfolio/static/js/main.afad5544.js",
     "static/js/519.47fc315d.chunk.js": "/portfolio/static/js/519.47fc315d.chunk.js",
     "static/media/banner-right.webp": "/portfolio/static/media/banner-right.7af22a8475ab700bcf43.webp",
-    "static/media/app-logo.svg": "/portfolio/static/media/app-logo.88db6710dd95c53123272a83ae391e5c.svg",
-    "static/media/app-logo.png": "/portfolio/static/media/app-logo.9bb87211221b46d6f0e5.png",
     "static/media/kitty2.webp": "/portfolio/static/media/kitty2.fcf0e091a4570bae4a38.webp",
     "static/media/kitty3.webp": "/portfolio/static/media/kitty3.2c614c352af3bccc492c.webp",
     "static/media/app-logo.webp": "/portfolio/static/media/app-logo.067aa9bb14e7e7788700.webp",
@@ -35,11 +33,11 @@
     "static/media/figma.svg": "/portfolio/static/media/figma.4c7c72690bda96207f676a0d84c261a3.svg",
     "static/media/materialui.svg": "/portfolio/static/media/materialui.35c1f68232f56950a73a1b2484869ec2.svg",
     "main.843db6a9.css.map": "/portfolio/static/css/main.843db6a9.css.map",
-    "main.31043904.js.map": "/portfolio/static/js/main.31043904.js.map",
+    "main.afad5544.js.map": "/portfolio/static/js/main.afad5544.js.map",
     "519.47fc315d.chunk.js.map": "/portfolio/static/js/519.47fc315d.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.843db6a9.css",
-    "static/js/main.31043904.js"
+    "static/js/main.afad5544.js"
   ]
 }
