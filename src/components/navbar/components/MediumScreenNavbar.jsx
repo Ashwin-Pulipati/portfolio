@@ -6,6 +6,8 @@ import { CrossIcon } from "./CrossIcon";
 import { createRipple } from "../../layouts/RippleEffect";
 import ThemeToggle from "./ThemeToggle";
 import logoSVG from "../../../assets/images/app-logo/app-logo.svg";
+import logoWEBP from "../../../assets/images/app-logo/app-logo.webp";
+import logoPNG from "../../../assets/images/app-logo/app-logo.png";
 
 function MediumScreenNavbar({
   showMenu,
@@ -34,11 +36,20 @@ function MediumScreenNavbar({
                 duration={500}
                 onClick={() => setShowMenu(false)}
               >
-                <img
-                  src={logoSVG}
-                  alt="App Logo"
-                  className="w-[60px] cursor-pointer"
-                />
+                <picture>
+                  <source srcSet={logoSVG} type="image/svg+xml" />
+                  <source srcSet={logoWEBP} type="image/webp" />
+                  <source srcSet={logoPNG} type="image/png" />
+                  <img
+                    src={logoSVG}
+                    alt="Portfolio Logo"
+                    width={64}
+                    height={64}
+                    className="w-16 h-16 aspect-square object-contain"
+                    decoding="async"
+                    loading="eager"
+                  />
+                </picture>
               </ScrollLink>
               <p className="text-sm text-gray-600 dark:text-gray-400 mt-4 leading-loose">
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum

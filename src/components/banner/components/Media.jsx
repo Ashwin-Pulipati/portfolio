@@ -21,7 +21,7 @@ const Media = () => {
         };
       }, []);
   return (
-    <div className="flex flex-col lg:flex-row xl:gap-48 md:gap-12 sm:gap-12 justify-between pt-8 lg:gap-14">
+    <div className="flex flex-col lg:flex-row xl:gap-32 md:gap-12 sm:gap-12 justify-between pt-8 lg:gap-14">
       {/* Social Icons Section */}
       <div>
         <h2 className="tracking-[1px] text-sm sm:text-base uppercase font-titleFont mb-4">

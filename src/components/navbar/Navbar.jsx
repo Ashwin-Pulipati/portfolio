@@ -12,6 +12,8 @@ import MediumScreenNavbar from "./components/MediumScreenNavbar";
 import { createRipple } from "../layouts/RippleEffect";
 import useSystemTheme from "react-use-system-theme"; 
 import logoSVG from "../../assets/images/app-logo/app-logo.svg";
+import logoWEBP from "../../assets/images/app-logo/app-logo.webp";
+import logoPNG from "../../assets/images/app-logo/app-logo.png";
 
 const getNavLinkClasses = (title, isActive) => {
   if (title === "CONTACT") {
@@ -266,11 +268,20 @@ const Navbar = ({ onSearch }) => {
         )}
 
         <RouterLink to="/" smooth="true" offset={-70} duration={500}>
-          <img
-            src={logoSVG}
-            alt="App Logo"
-            className="w-[60px] cursor-pointer"
-          />
+          <picture>
+            <source srcSet={logoSVG} type="image/svg+xml" />
+            <source srcSet={logoWEBP} type="image/webp" />
+            <source srcSet={logoPNG} type="image/png" />
+            <img
+              src={logoSVG}
+              alt="Portfolio Logo"
+              width={64}
+              height={64}
+              className="w-16 h-16 aspect-square object-contain"
+              decoding="async"
+              loading="eager"
+            />
+          </picture>
         </RouterLink>
 
         <div className="hidden lg:block">

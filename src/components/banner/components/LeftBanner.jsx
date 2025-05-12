@@ -181,7 +181,6 @@ import "aos/dist/aos.css";
 import { HiArrowRight } from "react-icons/hi2";
 import { createRipple } from "../../layouts/RippleEffect";
 
-// Helper to render each word as a flex container of letter spans
 const AnimatedText = ({ text }) => {
   const words = text.split(" ");
   return (
