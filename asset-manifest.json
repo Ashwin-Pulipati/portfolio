@@ -1,14 +1,12 @@
 {
   "files": {
-    "main.css": "/portfolio/static/css/main.83af8846.css",
-    "main.js": "/portfolio/static/js/main.9a126f20.js",
+    "main.css": "/portfolio/static/css/main.20b16c48.css",
+    "main.js": "/portfolio/static/js/main.751dfeaa.js",
     "static/js/519.47fc315d.chunk.js": "/portfolio/static/js/519.47fc315d.chunk.js",
     "static/media/banner-right.webp": "/portfolio/static/media/banner-right.7af22a8475ab700bcf43.webp",
     "static/media/app-logo.svg": "/portfolio/static/media/app-logo.88db6710dd95c53123272a83ae391e5c.svg",
-    "static/media/app-logo.png": "/portfolio/static/media/app-logo.9bb87211221b46d6f0e5.png",
     "static/media/kitty2.webp": "/portfolio/static/media/kitty2.fcf0e091a4570bae4a38.webp",
     "static/media/kitty3.webp": "/portfolio/static/media/kitty3.2c614c352af3bccc492c.webp",
-    "static/media/app-logo.webp": "/portfolio/static/media/app-logo.067aa9bb14e7e7788700.webp",
     "static/media/VisbyRoundCF-Bold.ttf": "/portfolio/static/media/VisbyRoundCF-Bold.e48013f8232e85447d54.ttf",
     "static/media/Arizonia-Regular.ttf": "/portfolio/static/media/Arizonia-Regular.f420d64b78d3a3994c1b.ttf",
     "static/media/projectThree.webp": "/portfolio/static/media/projectThree.c4c5c3567e13c7955873.webp",
@@ -34,12 +32,12 @@
     "static/media/tensorflow.svg": "/portfolio/static/media/tensorflow.cbbee40dfc23131b3232ce7146730958.svg",
     "static/media/figma.svg": "/portfolio/static/media/figma.4c7c72690bda96207f676a0d84c261a3.svg",
     "static/media/materialui.svg": "/portfolio/static/media/materialui.35c1f68232f56950a73a1b2484869ec2.svg",
-    "main.83af8846.css.map": "/portfolio/static/css/main.83af8846.css.map",
-    "main.9a126f20.js.map": "/portfolio/static/js/main.9a126f20.js.map",
+    "main.20b16c48.css.map": "/portfolio/static/css/main.20b16c48.css.map",
+    "main.751dfeaa.js.map": "/portfolio/static/js/main.751dfeaa.js.map",
     "519.47fc315d.chunk.js.map": "/portfolio/static/js/519.47fc315d.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.83af8846.css",
-    "static/js/main.9a126f20.js"
+    "static/css/main.20b16c48.css",
+    "static/js/main.751dfeaa.js"
   ]
 }
