@@ -28,8 +28,6 @@ module.exports = {
         designColor: "#5AC9F8", //earlier: #35BDFD
       },
       boxShadow: {
-        glowEffect:
-          "0 0 5px 2px rgba(88, 186, 166, 0.4), 0 0 10px 4px rgba(31, 200, 222, 0.4), 0 0 15px 5px rgba(5, 132, 217, 0.4)",
         shadowOne: "10px 10px 19px #1c1e22, -10px -10px 19px #262a2e",
         "custom-inset":
           "1px 4px 2px -3px rgba(0, 0, 0, 0.7) inset, -1px -3px 3px -2px rgba(255, 255, 255, 0.2) inset",
@@ -37,12 +35,8 @@ module.exports = {
         "custom-inset-white":
           "1px 4px 2px -3px #D1D9E6 inset, -1px -3px 3px -2px #ffffff inset",
       },
-      fontSize: {
-        fontSizeb1: "18px",
-      },
       animation: {
         blink: "blink 1.2s ease-in-out infinite",
-        scroll: "scrollLikeCount 1s ease-in-out infinite",
         fadeInBounce: "fadeInBounce 5s ease-in-out infinite",
       },
       keyframes: {
@@ -55,17 +49,6 @@ module.exports = {
           "50%": { opacity: "1", transform: "translateY(0px)" },
           "75%": { transform: "translateY(-3px)" },
           "100%": { transform: "translateY(0px)" },
-        },
-      },
-      scrollLikeCount: {
-        "0%": {
-          transform: "translateY(0)",
-        },
-        "50%": {
-          transform: "translateY(-50%)",
-        },
-        "100%": {
-          transform: "translateY(0)",
         },
       },
     },

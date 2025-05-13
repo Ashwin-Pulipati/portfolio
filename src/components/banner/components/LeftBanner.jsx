@@ -261,7 +261,7 @@ const LeftBanner = () => {
         </p>
       </div>
 
-      <div className="flex flex-col xs:gap-16 lg:gap-20">
+      <div className="flex flex-col gap-16 lg:gap-20">
         <div className="flex items-center gap-4 xs:flex-wrap sm:flex-nowrap">
           {/* View Projects */}
           <div className="group hover:cursor-pointer" onClick={() => scrollToSection("features")}>
