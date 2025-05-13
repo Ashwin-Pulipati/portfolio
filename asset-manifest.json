@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/portfolio/static/css/main.6f928a5c.css",
-    "main.js": "/portfolio/static/js/main.c3d458ae.js",
+    "main.css": "/portfolio/static/css/main.1376c94c.css",
+    "main.js": "/portfolio/static/js/main.5333b16b.js",
     "static/js/519.303591f0.chunk.js": "/portfolio/static/js/519.303591f0.chunk.js",
     "static/media/banner-right.webp": "/portfolio/static/media/banner-right.7af22a8475ab700bcf43.webp",
     "static/media/app-logo.svg": "/portfolio/static/media/app-logo.88db6710dd95c53123272a83ae391e5c.svg",
@@ -32,12 +32,12 @@
     "static/media/tensorflow.svg": "/portfolio/static/media/tensorflow.cbbee40dfc23131b3232ce7146730958.svg",
     "static/media/figma.svg": "/portfolio/static/media/figma.4c7c72690bda96207f676a0d84c261a3.svg",
     "static/media/materialui.svg": "/portfolio/static/media/materialui.35c1f68232f56950a73a1b2484869ec2.svg",
-    "main.6f928a5c.css.map": "/portfolio/static/css/main.6f928a5c.css.map",
-    "main.c3d458ae.js.map": "/portfolio/static/js/main.c3d458ae.js.map",
+    "main.1376c94c.css.map": "/portfolio/static/css/main.1376c94c.css.map",
+    "main.5333b16b.js.map": "/portfolio/static/js/main.5333b16b.js.map",
     "519.303591f0.chunk.js.map": "/portfolio/static/js/519.303591f0.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.6f928a5c.css",
-    "static/js/main.c3d458ae.js"
+    "static/css/main.1376c94c.css",
+    "static/js/main.5333b16b.js"
   ]
 }
