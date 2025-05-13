@@ -11,7 +11,8 @@ import { HiArrowLeft } from "react-icons/hi";
 import MediumScreenNavbar from "./components/MediumScreenNavbar";
 import { createRipple } from "../layouts/RippleEffect";
 import useSystemTheme from "react-use-system-theme"; 
-import logoSVG from "../../assets/images/app-logo/app-logo.svg";
+// import logoSVG from "../../assets/images/app-logo/app-logo.svg";
+import { ReactComponent as LogoSVG } from "../../assets/images/app-logo/app-logo.svg";
 
 const getNavLinkClasses = (title, isActive) => {
   if (title === "CONTACT") {
@@ -312,15 +313,20 @@ const Navbar = ({ onSearch }) => {
         )}
 
         <RouterLink to="/" smooth="true" offset={-70} duration={500}>
-          <img
+          {/* <img
             src={logoSVG}
             alt="Logo"
             width={64}
             height={64}
-            className="w-16 h-16"
+            className="w-16 h-16 hidden lg:block"
             loading="eager"
             decoding="async"
             fetchPriority="high"
+          /> */}
+
+          <LogoSVG
+            className="w-16 h-16"
+            aria-label="App logo"
           />
         </RouterLink>
 

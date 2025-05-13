@@ -5,7 +5,8 @@ import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 import CrossIcon from "./CrossIcon";
 import { createRipple } from "../../layouts/RippleEffect";
 import ThemeToggle from "./ThemeToggle";
-import logoSVG from "../../../assets/images/app-logo/app-logo.svg";
+// import logoSVG from "../../assets/images/app-logo/app-logo.svg";
+import { ReactComponent as LogoSVG } from "../../../assets/images/app-logo/app-logo.svg";
 
 const MotionSidebar = motion.div;
 
@@ -65,7 +66,7 @@ const MediumScreenNavbar = ({
               duration={500}
               onClick={handleClose}
             >
-              <img
+              {/* <img
                 src={logoSVG}
                 alt="Logo"
                 width={64}
@@ -73,7 +74,12 @@ const MediumScreenNavbar = ({
                 className="w-16 h-16"
                 loading="eager"
                 decoding="async"
-              />
+              /> */}
+
+              <LogoSVG
+                          className="w-16 h-16"
+                          aria-label="App logo"
+                        />
             </ScrollLink>
 
             <p className="text-sm text-gray-600 dark:text-gray-400 mt-4 leading-loose">
