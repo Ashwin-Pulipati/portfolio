@@ -5,12 +5,11 @@ import ContactBanner from "./components/ContactBanner";
 import emailjs from "emailjs-com";
 import { PiSealCheckFill } from "react-icons/pi";
 import { BsPatchExclamationFill } from "react-icons/bs";
-import AOS from "aos";
-import "aos/dist/aos.css";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./toastStyles.css";
 import { createRipple } from "../layouts/RippleEffect";
+import useAOS from "../layouts/UseAOSHook";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -136,17 +135,7 @@ const Contact = () => {
     [formData]
   );
 
-  useEffect(() => {
-    AOS.init({
-      duration: 1000,
-      easing: "ease-in-out",
-      once: false,
-    });
-    AOS.refresh();
-    return () => {
-      AOS.refresh();
-    };
-  }, []);
+  useAOS({ duration: 1000, easing: "ease-in-out", once: false });
 
   const renderField = (field) => {
     const value = formData[field.name];

@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from "react";
+import React, { useState, useCallback} from "react";
 import {
   FaEnvelope,
   FaLinkedinIn,
@@ -6,9 +6,8 @@ import {
   FaGithub,
 } from "react-icons/fa";
 import ContactMe from "../../../assets/images/Webp/contact-left.webp";
-import AOS from "aos";
-import "aos/dist/aos.css";
 import { createRipple } from "../../layouts/RippleEffect";
+import useAOS from "../../layouts/UseAOSHook";
 
 const ContactLeft = () => {
   const [copied, setCopied] = useState("");
@@ -23,13 +22,7 @@ const ContactLeft = () => {
     [setCopied]
   );
 
-  useEffect(() => {
-    AOS.init({
-      duration: 1000,
-      easing: "ease-in-out",
-      once: false,
-    });
-  }, []);
+  useAOS({ duration: 1000, easing: "ease-in-out", once: false });
 
   return (
     <div
