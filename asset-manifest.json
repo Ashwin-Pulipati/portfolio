@@ -1,8 +1,22 @@
 {
   "files": {
-    "main.css": "/portfolio/static/css/main.1376c94c.css",
-    "main.js": "/portfolio/static/js/main.0019e9c5.js",
-    "static/js/519.303591f0.chunk.js": "/portfolio/static/js/519.303591f0.chunk.js",
+    "main.css": "/portfolio/static/css/main.e779e05a.css",
+    "main.js": "/portfolio/static/js/main.a24a1888.js",
+    "static/css/29.bb3edf9d.chunk.css": "/portfolio/static/css/29.bb3edf9d.chunk.css",
+    "static/js/29.a4251375.chunk.js": "/portfolio/static/js/29.a4251375.chunk.js",
+    "static/js/93.2a41c31b.chunk.js": "/portfolio/static/js/93.2a41c31b.chunk.js",
+    "static/css/313.09ad85d4.chunk.css": "/portfolio/static/css/313.09ad85d4.chunk.css",
+    "static/js/313.6a4d449a.chunk.js": "/portfolio/static/js/313.6a4d449a.chunk.js",
+    "static/css/543.7f525844.chunk.css": "/portfolio/static/css/543.7f525844.chunk.css",
+    "static/js/543.8c53a970.chunk.js": "/portfolio/static/js/543.8c53a970.chunk.js",
+    "static/css/740.7f525844.chunk.css": "/portfolio/static/css/740.7f525844.chunk.css",
+    "static/js/740.8aa7f745.chunk.js": "/portfolio/static/js/740.8aa7f745.chunk.js",
+    "static/css/439.85d3aff9.chunk.css": "/portfolio/static/css/439.85d3aff9.chunk.css",
+    "static/js/439.d4e40b84.chunk.js": "/portfolio/static/js/439.d4e40b84.chunk.js",
+    "static/js/115.5a1999ae.chunk.js": "/portfolio/static/js/115.5a1999ae.chunk.js",
+    "static/js/519.585d1153.chunk.js": "/portfolio/static/js/519.585d1153.chunk.js",
+    "static/js/79.54920d55.chunk.js": "/portfolio/static/js/79.54920d55.chunk.js",
+    "static/js/966.ce18af5d.chunk.js": "/portfolio/static/js/966.ce18af5d.chunk.js",
     "static/media/app-logo.svg": "/portfolio/static/media/app-logo.88db6710dd95c53123272a83ae391e5c.svg",
     "static/media/kitty2.webp": "/portfolio/static/media/kitty2.fcf0e091a4570bae4a38.webp",
     "static/media/kitty3.webp": "/portfolio/static/media/kitty3.2c614c352af3bccc492c.webp",
@@ -32,12 +46,26 @@
     "static/media/tensorflow.svg": "/portfolio/static/media/tensorflow.cbbee40dfc23131b3232ce7146730958.svg",
     "static/media/figma.svg": "/portfolio/static/media/figma.4c7c72690bda96207f676a0d84c261a3.svg",
     "static/media/materialui.svg": "/portfolio/static/media/materialui.35c1f68232f56950a73a1b2484869ec2.svg",
-    "main.1376c94c.css.map": "/portfolio/static/css/main.1376c94c.css.map",
-    "main.0019e9c5.js.map": "/portfolio/static/js/main.0019e9c5.js.map",
-    "519.303591f0.chunk.js.map": "/portfolio/static/js/519.303591f0.chunk.js.map"
+    "main.e779e05a.css.map": "/portfolio/static/css/main.e779e05a.css.map",
+    "main.a24a1888.js.map": "/portfolio/static/js/main.a24a1888.js.map",
+    "29.bb3edf9d.chunk.css.map": "/portfolio/static/css/29.bb3edf9d.chunk.css.map",
+    "29.a4251375.chunk.js.map": "/portfolio/static/js/29.a4251375.chunk.js.map",
+    "93.2a41c31b.chunk.js.map": "/portfolio/static/js/93.2a41c31b.chunk.js.map",
+    "313.09ad85d4.chunk.css.map": "/portfolio/static/css/313.09ad85d4.chunk.css.map",
+    "313.6a4d449a.chunk.js.map": "/portfolio/static/js/313.6a4d449a.chunk.js.map",
+    "543.7f525844.chunk.css.map": "/portfolio/static/css/543.7f525844.chunk.css.map",
+    "543.8c53a970.chunk.js.map": "/portfolio/static/js/543.8c53a970.chunk.js.map",
+    "740.7f525844.chunk.css.map": "/portfolio/static/css/740.7f525844.chunk.css.map",
+    "740.8aa7f745.chunk.js.map": "/portfolio/static/js/740.8aa7f745.chunk.js.map",
+    "439.85d3aff9.chunk.css.map": "/portfolio/static/css/439.85d3aff9.chunk.css.map",
+    "439.d4e40b84.chunk.js.map": "/portfolio/static/js/439.d4e40b84.chunk.js.map",
+    "115.5a1999ae.chunk.js.map": "/portfolio/static/js/115.5a1999ae.chunk.js.map",
+    "519.585d1153.chunk.js.map": "/portfolio/static/js/519.585d1153.chunk.js.map",
+    "79.54920d55.chunk.js.map": "/portfolio/static/js/79.54920d55.chunk.js.map",
+    "966.ce18af5d.chunk.js.map": "/portfolio/static/js/966.ce18af5d.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.1376c94c.css",
-    "static/js/main.0019e9c5.js"
+    "static/css/main.e779e05a.css",
+    "static/js/main.a24a1888.js"
   ]
 }
