@@ -5,9 +5,8 @@ import ProfessionalSkills from "./components/ProfessionalSkills";
 import Achievement from "./components/Achievement";
 import Experience from "./components/Experience";
 import Certifications from "./components/Certifications";
-import AOS from "aos";
-import "aos/dist/aos.css";
 import { createRipple } from "../layouts/RippleEffect";
+import useAOS from "../layouts/UseAOSHook";
 
 const tabData = [
   { id: "experience", label: "Experience" },
@@ -20,11 +19,10 @@ const tabData = [
 const LOCAL_STORAGE_KEY = "activeResumeTab";
 
 const Resume = () => {
-  const [activeTab, setActiveTab] = useState("experience");
+  const [ activeTab, setActiveTab ] = useState("experience");
+  useAOS({ duration: 1000, easing: "ease-in-out", once: false });
 
   useEffect(() => {
-    AOS.init({ duration: 500 });
-
     // On first render, try to restore from localStorage
     const savedTab = localStorage.getItem(LOCAL_STORAGE_KEY);
     if (savedTab && tabData.some((tab) => tab.id === savedTab)) {

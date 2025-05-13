@@ -1,12 +1,11 @@
-import AOS from "aos";
-import "aos/dist/aos.css";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Slider from "react-slick";
 import Title from "../layouts/Title";
 import UnifiedArrow from "../layouts/UnifiedArrow";
 import Card from "./components/FeaturesCard";
 import { featuresData } from "./constants/featuresData";
 import { useDarkMode } from "../layouts/DarkMode";
+import useAOS from "../layouts/UseAOSHook";
 
 const Features = ({ onNext, onPrev, nextDisabled, prevDisabled }) => {
   const [dotActive, setDotActive] = useState(0);
@@ -80,17 +79,7 @@ const Features = ({ onNext, onPrev, nextDisabled, prevDisabled }) => {
     ],
   };
 
-  useEffect(() => {
-    AOS.init({
-      duration: 1000,
-      easing: "ease-in-out",
-      once: false,
-    });
-    AOS.refresh();
-    return () => {
-      AOS.refresh();
-    };
-  }, []);
+  useAOS({ duration: 1000, easing: "ease-in-out", once: false });
 
   return (
     <section
@@ -105,7 +94,11 @@ const Features = ({ onNext, onPrev, nextDisabled, prevDisabled }) => {
         <div className="hidden xs:block w-full">
           <Slider {...settings}>
             {featuresData.map((item) => (
-              <div key={item.id} className="p-6" data-aos="zoom-in">
+              <div
+                key={item.id}
+                className="p-6"
+                data-aos="zoom-in"
+              >
                 <Card item={item} />
               </div>
             ))}

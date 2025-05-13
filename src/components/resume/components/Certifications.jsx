@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Slider from "react-slick";
-import AOS from "aos";
-import "aos/dist/aos.css";
 import {
   certificationsData,
 } from "../constants/CertificationsData";
@@ -63,12 +61,6 @@ const Certifications = ({ onNext, onPrev, nextDisabled, prevDisabled }) => {
       },
     ],
   };
-
-  useEffect(() => {
-    AOS.init({ duration: 1000, easing: "ease-in-out", once: false });
-    AOS.refresh();
-    return AOS.refresh;
-  }, []);
 
   return (
     <section id="features" className="w-full px-1 py-12">

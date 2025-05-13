@@ -1,25 +1,14 @@
-import React, { useEffect } from "react"
+import React from "react"
 
 import {
   socialIcons,
   skills,
 } from "../constants/media";
-import AOS from "aos";
-import "aos/dist/aos.css";
 import { createRipple } from "../../layouts/RippleEffect";
+import useAOS from "../../layouts/UseAOSHook";
 
 const Media = () => {
-      useEffect(() => {
-        AOS.init({
-          duration: 1000,
-          easing: "ease-in-out",
-          once: false,
-        });
-        AOS.refresh();
-        return () => {
-          AOS.refresh();
-        };
-      }, []);
+      useAOS({ duration: 1000, easing: "ease-in-out", once: false });
   return (
     <div className="flex flex-col lg:flex-row xl:gap-48 md:gap-12 sm:gap-12 justify-between pt-8 lg:gap-14">
       {/* Social Icons Section */}

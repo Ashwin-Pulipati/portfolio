@@ -1,15 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import LeftBanner from "./components/LeftBanner";
 import RightBanner from "./components/RightBanner";
-import AOS from "aos";
-import "aos/dist/aos.css";
 import FairyAnimation from "../layouts/FairyAnimation";
+import useAOS from "../layouts/UseAOSHook";
 
 const Banner = React.memo(() => {
-  useEffect(() => {
-    AOS.init({ duration: 1000, easing: "ease-in-out", once: false });
-    AOS.refresh();
-  }, []);
+  useAOS({ duration: 1000, easing: "ease-in-out", once: false });
 
   const bannerMessages = React.useMemo(
     () => [
