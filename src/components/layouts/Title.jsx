@@ -30,15 +30,6 @@ const titleStyleMap = {
 const commonTitleClasses =
   "tracking-[1.5px] uppercase text-sm font-medium font-titleFont w-fit h-fit rounded-full p-2 pr-4 pl-4 shadow-shadowTwo dark:shadow-shadowOne";
 
-const Title = ({ title, des }) => {
-  const isFeatures = title === "Features";
-  const renderTitle = () => {
-    const titleClasses = titleStyleMap[title];
-    return titleClasses ? (
-      <h3 className={`${commonTitleClasses} ${titleClasses}`}>{title}</h3>
-    ) : null;
-  };
-
   const titleMessages = {
     Features: [
       {
@@ -96,6 +87,11 @@ const Title = ({ title, des }) => {
     ],
   };
 
+
+  
+const Title = ({ title, des }) => {
+  const isFeatures = title === "Features";
+  const titleClasses = titleStyleMap[title];
   const messagesForThisTitle = titleMessages[title] || [
     { message: "Default title message", shockTitle: "Did you know?" },
   ];
@@ -107,7 +103,9 @@ const Title = ({ title, des }) => {
       }`}
     >
       <div className="relative">
-        {renderTitle()}
+        {titleClasses && (
+          <h3 className={`${commonTitleClasses} ${titleClasses}`}>{title}</h3>
+        )}
         <div className="absolute hidden md:block md:top-4 md:-right-[7.5rem] md:z-50">
           <FairyAnimation section={title} messages={messagesForThisTitle} />
         </div>

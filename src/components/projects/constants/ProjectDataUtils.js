@@ -1,13 +1,15 @@
 import { slugify } from "../../layouts/Utils";
 import { allProjects } from "./ProjectsCardData";
 
-export const groupBy = (arr, keyFn) =>
-  arr.reduce((acc, item) => {
+export const groupBy = (arr, keyFn) => {
+  const acc = new Map();
+  for (const item of arr) {
     const key = keyFn(item);
-    if (!acc[key]) acc[key] = [];
-    acc[key].push(item);
-    return acc;
-  }, {});
+    if (!acc.has(key)) acc.set(key, []);
+    acc.get(key).push(item);
+  }
+  return Object.fromEntries(acc);
+};
 
 export const allProjectsList = allProjects;
 

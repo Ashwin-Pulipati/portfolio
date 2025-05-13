@@ -6,46 +6,13 @@ import { createRipple } from "../layouts/RippleEffect";
 const displayName = { email: "Email", linkedin: "LinkedIn", github: "GitHub" };
 
 function SocialIconsRadial() {
-  const [copied, setCopied] = useState(null);
-  const [hovered, setHovered] = useState(null);
   const [open, setOpen] = useState(false);
-
-  const copyText = (text, type) => {
-    navigator.clipboard.writeText(text);
-    setCopied(type);
-    setTimeout(() => setCopied(null), 500);
-  };
-
-  const Tooltip = ({ type }) => (
-    <>
-      <div
-        className={`z-20 absolute ml-2 top-1/2 left-full transform -translate-y-1/2 rotate-45 w-2 h-2 border border-t-0 border-r-0 shadow-md
-          ${type === "email"
-            ? "bg-red-100 border-red-800 dark:bg-red-800 dark:border-red-100"
-            : type === "linkedin"
-            ? "bg-blue-100 border-blue-800 dark:bg-blue-800 dark:border-blue-100"
-            : "bg-white border-black dark:bg-black dark:border-white"}`
-        }
-      />
-      <span
-        className={`z-10 absolute left-full ml-3 top-1/2 transform -translate-y-1/2 px-2 py-1 text-xs whitespace-nowrap font-medium border rounded-md shadow-md dark:shadow-gray-600 pointer-events-none
-          ${type === "email"
-            ? "text-red-600 dark:text-red-100 bg-red-100 border-red-800 dark:bg-red-800 dark:border-red-100"
-            : type === "linkedin"
-            ? "text-blue-700 dark:text-blue-100 bg-blue-100 border-blue-800 dark:bg-blue-800 dark:border-blue-100"
-            : "text-black dark:text-white bg-white border-black dark:bg-black dark:border-white"}`
-        }
-      >
-        {copied === type ? "Copied!!" : displayName[type]}
-      </span>
-    </>
-  );
 
   const items = [
     {
       type: "email",
       icon: <FaEnvelope className="w-6 h-6 text-red-600 dark:text-red-300" />,
-      action: () => copyText("ashwinpulipati@gmail.com", "email"),
+      action: () => navigator.clipboard.writeText("ashwinpulipati@gmail.com"),
     },
     {
       type: "linkedin",
@@ -122,8 +89,6 @@ function SocialIconsRadial() {
                   {/* Icon wrapper */}
                   <div
                     className="relative w-14 h-14 rounded-full"
-                    onMouseEnter={() => setHovered(item.type)}
-                    onMouseLeave={() => setHovered(null)}
                   >
                     {item.href ? (
                       <a
@@ -146,10 +111,6 @@ function SocialIconsRadial() {
                         {React.cloneElement(item.icon)}
                       </button>
                     )}
-
-                    {(hovered === item.type || copied === item.type) && (
-                      <Tooltip type={item.type} />
-                    )}
                   </div>
                 </div>
               </div>
@@ -158,7 +119,6 @@ function SocialIconsRadial() {
         })}
     </div>
   );
-
 }
 
 export default React.memo(SocialIconsRadial);

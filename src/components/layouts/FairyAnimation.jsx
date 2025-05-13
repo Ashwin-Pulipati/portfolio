@@ -14,51 +14,29 @@ const FairyAnimation = ({
   const [showFairy, setShowFairy] = useState(false);
   const [displayMessage, setDisplayMessage] = useState("");
   const [displayShockTitle, setDisplayShockTitle] = useState(shockTitle);
-  const [isDark, setIsDark] = useState(false);
+  const [isDark, setIsDark] = useState(!!document.documentElement.classList.contains("dark"));
   const [pauseAnim, setPauseAnim] = useState(false);
   const [isHolding, setIsHolding] = useState(false);
 
-  if (typeof window.__fairyActive === "undefined") {
-    window.__fairyActive = false;
-  }
-
-  if (typeof window.__fairyMessageIndices === "undefined") {
-    window.__fairyMessageIndices = {};
-  }
-
   useEffect(() => {
-    const updateDarkMode = () =>
-      setIsDark(document.documentElement.classList.contains("dark"));
-    updateDarkMode();
-    const observer = new MutationObserver(updateDarkMode);
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ["class"],
-    });
-    return () => observer.disconnect();
-  }, []);
-
-  const randomInt = (min, max) => Math.floor(Math.random() * (max - min)) + min;
-
-  useEffect(() => {
-    let timer;
-
     const scheduleNext = () => {
-      const delay = randomInt(minInterval, maxInterval);
-      timer = setTimeout(() => {
+      const delay = Math.random() * (maxInterval - minInterval) + minInterval;
+      const timer = setTimeout(() => {
         if (!window.__fairyActive) {
           window.__fairyActive = true;
-
-          let idx = window.__fairyMessageIndices[section] || 0;
-          const selected = messages[idx];
-          if (typeof selected === "object" && selected !== null) {
+          const idx = window.__fairyMessageIndices?.[section] ?? 0;
+          const selected = messages[idx % messages.length];
+          if (selected?.message) {
             setDisplayMessage(selected.message);
             setDisplayShockTitle(selected.shockTitle || shockTitle);
           } else {
             setDisplayMessage(selected);
             setDisplayShockTitle(shockTitle);
           }
-          window.__fairyMessageIndices[section] = (idx + 1) % messages.length;
+          window.__fairyMessageIndices = {
+            ...window.__fairyMessageIndices,
+            [section]: (idx + 1) % messages.length,
+          };
           setShowFairy(true);
           const hideFairy = () => {
             if (!isHolding) {
@@ -74,10 +52,9 @@ const FairyAnimation = ({
           scheduleNext();
         }
       }, delay);
+      return () => clearTimeout(timer);
     };
-
     scheduleNext();
-    return () => clearTimeout(timer);
   }, [
     messages,
     displayTime,
@@ -103,6 +80,17 @@ const FairyAnimation = ({
     setIsHolding(false);
   };
 
+  useEffect(() => {
+    const updateDarkMode = () =>
+      setIsDark(document.documentElement.classList.contains("dark"));
+    updateDarkMode();
+    const observer = new MutationObserver(updateDarkMode);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <div

@@ -6,22 +6,16 @@ const TimelineDot = ({ reference, timelineGradient }) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (reference && reference.current) {
+      if (reference?.current) {
         const rect = reference.current.getBoundingClientRect();
-        const viewportHeight = window.innerHeight;
-        const startThreshold = viewportHeight * 1;
+        const startThreshold = window.innerHeight * 1;
 
-        let newProgress = (startThreshold - rect.top) / startThreshold;
-        newProgress = Math.max(0, Math.min(1, newProgress));
-        setProgress(newProgress);
-
-        newProgress = Math.max(0, Math.min(1, newProgress)); 
+        const newProgress = (startThreshold - rect.top) / startThreshold;
         setProgress(newProgress);
       }
     };
 
     window.addEventListener("scroll", handleScroll);
-    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, [reference]);
 
@@ -29,18 +23,13 @@ const TimelineDot = ({ reference, timelineGradient }) => {
 
   const { start, end } = useMemo(() => {
     const matches = timelineGradient.match(/#([0-9a-fA-F]{6})/g);
-    if (matches && matches.length >= 2) {
-      return { start: matches[0], end: matches[1] };
-    }
-    return { start: "blue", end: "blue" };
+    return matches ? { start: matches[0], end: matches[1] } : { start: "blue", end: "blue" };
   }, [timelineGradient]);
 
-  const gradientId = useMemo(() => {
-    const hash = timelineGradient
-      .split("")
-      .reduce((acc, char) => acc + char.charCodeAt(0), 0);
-    return `timeline-dot-gradient-${hash}`;
-  }, [timelineGradient]);
+  const gradientId = useMemo(
+    () => `timeline-dot-gradient-${timelineGradient.split("").reduce((acc, char) => acc + char.charCodeAt(0), 0)}`,
+    [timelineGradient]
+  );
 
   return (
     <figure
@@ -54,14 +43,7 @@ const TimelineDot = ({ reference, timelineGradient }) => {
             <stop offset="100%" stopColor={end} />
           </linearGradient>
         </defs>
-        <circle
-          cx="50"
-          cy="50"
-          r="20"
-          stroke="gray"
-          strokeWidth="2"
-          fill="transparent"
-        />
+        <circle cx="50" cy="50" r="20" stroke="gray" strokeWidth="2" fill="transparent" />
         <circle
           cx="50"
           cy="50"
@@ -71,19 +53,10 @@ const TimelineDot = ({ reference, timelineGradient }) => {
           fill="white"
           className="dark:fill-bodyColor"
           strokeDasharray={circumference}
-          style={{
-            strokeDashoffset,
-            transition: "stroke-dashoffset 0.3s ease-out",
-          }}
+          style={{ strokeDashoffset, transition: "stroke-dashoffset 0.3s ease-out" }}
           transform="rotate(0 50 50)"
         />
-        <circle
-          cx="50"
-          cy="50"
-          r="10"
-          fill={`url(#${gradientId})`}
-          className="animate-pulse"
-        />
+        <circle cx="50" cy="50" r="10" fill={`url(#${gradientId})`} className="animate-pulse" />
       </svg>
     </figure>
   );

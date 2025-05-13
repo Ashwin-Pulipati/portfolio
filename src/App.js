@@ -16,35 +16,24 @@ function App() {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
-    AOS.init({
-      duration: 1000,
-      easing: "ease-in-out",
-      once: true,
-    });
+    AOS.init({ duration: 1000, easing: "ease-in-out", once: true });
   }, []);
 
-useEffect(() => {
-  const handleScroll = () => {
-    setIsScrolled(window.scrollY > 0);
-  };
-  window.addEventListener("scroll", handleScroll);
-  return () => window.removeEventListener("scroll", handleScroll);
-}, []);
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 0);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <Router basename="/portfolio">
       <CursorEffect />
       <div
-        className={`
-        sticky z-50
-        bg-[#ECF0F3]/25 dark:bg-bodyColor/25 backdrop-blur-lg
-        transition-all duration-300
-        ${
+        className={`sticky z-50 bg-[#ECF0F3]/25 dark:bg-bodyColor/25 backdrop-blur-lg transition-all duration-300 ${
           isScrolled
             ? "xs:top-4 xs:mx-5 xs:rounded-full md:top-0 md:mx-0 md:rounded-none"
             : "top-0 mx-0 rounded-none"
-        }
-      `}
+        }`}
       >
         <Navbar onSearch={setSearchQuery} searchQuery={searchQuery} />
       </div>

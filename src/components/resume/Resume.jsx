@@ -17,19 +17,25 @@ const tabData = [
   { id: "education", label: "Education" },
 ];
 
+const LOCAL_STORAGE_KEY = "activeResumeTab";
+
 const Resume = () => {
   const [activeTab, setActiveTab] = useState("experience");
+
   useEffect(() => {
-    AOS.init({
-      duration: 1000,
-      easing: "ease-in-out",
-      once: false,
-    });
-    AOS.refresh();
-    return () => {
-      AOS.refresh();
-    };
+    AOS.init({ duration: 500 });
+
+    // On first render, try to restore from localStorage
+    const savedTab = localStorage.getItem(LOCAL_STORAGE_KEY);
+    if (savedTab && tabData.some((tab) => tab.id === savedTab)) {
+      setActiveTab(savedTab);
+    }
   }, []);
+
+  const handleTabClick = (id) => {
+    setActiveTab(id);
+    localStorage.setItem(LOCAL_STORAGE_KEY, id);
+  };
 
   return (
     <section
@@ -37,43 +43,40 @@ const Resume = () => {
       className="w-full xs:px-6 xl:px-20 lg:px-16 md:px-12 sm:px-8 py-8"
       data-aos="fade-up"
     >
-      <div className="border-b border-b-gray-400 dark:border-b-black pb-10">
-        <Title title="4 YEARS OF EXPERIENCE" des="My Resume" />
-        <div  data-aos="zoom-in">
-          <ul
-            className="flex w-full list-none p-0 m-0 rounded-xl boxBgWhite shadow-shadowTwo dark:bg-boxBg dark:shadow-shadowOne 
-          xs:flex-col sm:flex-col lg:flex-row md:flex-col md:gap-6 sm:gap-0 "
-          >
-            {tabData.map(({ id, label }) => (
-              <li key={id} className="flex-1 text-center hover:text-white">
-                <button
-                  onClick={() => setActiveTab(id)}
-                  className={`w-full xs:py-[20px] sm:py-[30px] lg:py-[30px] md:py-[20px] lg:text-lg font-medium outline-none border-none transition-all duration-500 ease-in-out bg-transparent rounded-xl cursor-pointer whitespace-nowrap tracking-wider ripple-container ${
+      <Title title="4 YEARS OF EXPERIENCE" des="My Resume" />
+      <div className="flex flex-col gap-6">
+        <ul className="flex flex-col xl:flex-row gap-6 w-full list-none p-0 m-0 rounded-xl boxBgWhite shadow-shadowTwo dark:bg-boxBg dark:shadow-shadowOne">
+          {tabData.map(({ id, label }) => (
+            <li key={id} className="flex-1 text-center">
+              <button
+                onClick={() => handleTabClick(id)}
+                className={`w-full xs:py-[20px] sm:py-[30px] lg:py-[30px] md:py-[20px] lg:text-lg rounded-xl font-medium outline-none border-none transition-all duration-500 ease-in-out bg-transparent cursor-pointer whitespace-nowrap tracking-wider ripple-container ${
+                  activeTab === id
+                    ? "bg-gradient-to-br from-[#dee3e7] to-white shadow-shadowTwo dark:bg-gradient-to-tl dark:from-[#262a2e] dark:to-[#1f2022] dark:shadow-shadowOne rounded-xl bg-opacity-25 text-white"
+                    : "text-lightText"
+                }`}
+                onMouseDown={createRipple}
+              >
+                <span
+                  className={`w-fit h-fit inline-block font-titleFont ${
                     activeTab === id
-                      ? "w-fit h-fit font-semibold px-5 py-3 bg-gradient-to-br from-[#dee3e7] to-white shadow-shadowTwo dark:bg-gradient-to-tl dark:from-[#262a2e] dark:to-[#1f2022] dark:shadow-shadowOne rounded-xl bg-opacity-25 text-white"
-                      : "text-lightText "
-                    }`}
-                  onMouseDown={createRipple}
+                      ? "bg-gradient-to-r from-[#46c28f] via-[#1aaabe] to-[#0584d9] dark:from-[#58eba6] dark:via-[#1fc8de] dark:to-[#0584d9] bg-clip-text text-transparent"
+                      : "text-gray-500 dark:text-lightText"
+                  }`}
                 >
-                  <span
-                    className={`w-fit h-fit inline-block font-titleFont ${
-                      activeTab === id
-                        ? "bg-gradient-to-r from-[#46c28f] via-[#1aaabe] to-[#0584d9] dark:from-[#58eba6] dark:via-[#1fc8de] dark:to-[#0584d9] bg-clip-text text-transparent"
-                        : "text-gray-500 dark:text-lightText"
-                    }`}
-                  >
-                    {label}
-                  </span>
-                </button>
-              </li>
-            ))}
-          </ul>
+                  {label}
+                </span>
+              </button>
+            </li>
+          ))}
+        </ul>
+        <div className="w-full">
+          {activeTab === "experience" && <Experience />}
+          {activeTab === "skills" && <ProfessionalSkills />}
+          {activeTab === "achievements" && <Achievement />}
+          {activeTab === "certifications" && <Certifications />}
+          {activeTab === "education" && <Education />}
         </div>
-        {activeTab === "experience" && <Experience />}
-        {activeTab === "skills" && <ProfessionalSkills />}
-        {activeTab === "achievements" && <Achievement />}
-        {activeTab === "certifications" && <Certifications />}
-        {activeTab === "education" && <Education />}
       </div>
     </section>
   );

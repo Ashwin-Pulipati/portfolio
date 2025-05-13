@@ -106,8 +106,58 @@ const Navbar = ({ onSearch }) => {
     else setTheme("light");
   };
 
-  const renderNavItems = (mobile = false) =>
-    navItems.map(
+  const getIcon = (isActive, iconActive, color, activeIcon, inactiveIcon) => (
+    <span className={`text-md ${isActive ? iconActive : color}`}>
+      {isActive ? activeIcon : inactiveIcon}
+    </span>
+  );
+
+  const getLinkText = (title, isActive, color, iconActive) => (
+    <span
+      className={`link_text text-gray-500 dark:text-gray-200 ${
+        isActive ? color : iconActive
+      }`}
+    >
+      {title}
+    </span>
+  );
+
+  const getMobileClasses = (title, isActive, theme, backgroundActive) => {
+    const desktopClasses = getNavLinkClasses(title, isActive);
+    const sidebarClasses = `link ${isActive ? "active" : ""}`;
+    const backgroundClass =
+      isActive && theme !== "dark" ? backgroundActive : "bg-transparent";
+    return `${backgroundClass} p-2 bg-none rounded-none ${desktopClasses} ${sidebarClasses} ripple-container`;
+  };
+
+  const getDesktopListItemClasses = (
+    isActive,
+    title,
+    hoverBg,
+    backgroundActive,
+    isDarkMode
+  ) => {
+    if (isActive) {
+      const shadow = isDarkMode ? "shadow-shadowOne" : "shadow-shadowTwo";
+      return `relative group flex items-center gap-2 text-[15px] transition-all duration-300 ease-out ${shadow} ${backgroundActive} ripple-container`;
+    }
+    const base = `text-gray-500 ${hoverBg} hover:px-3 hover:py-2 hover:rounded-full`;
+    return `relative group flex items-center gap-2 text-[15px] transition-all duration-300 ease-out ${
+      title === "CONTACT" ? "" : base
+    } hover:text-black dark:text-gray-300 dark:hover:text-white`;
+  };
+
+  const getContactBgStyle = (isDarkMode, title, isActive) => {
+    if (!isDarkMode || title !== "CONTACT" || isActive) return {};
+
+    return {
+      background: "linear-gradient(145deg, #1e2024, #23272b)",
+      backgroundImage: "linear-gradient(to top left, #262a2e, #1f2022)",
+    };
+  };
+
+  const renderNavItems = (mobile = false) => {
+    return navItems.map(
       (
         {
           id,
@@ -118,114 +168,110 @@ const Navbar = ({ onSearch }) => {
           color,
           backgroundActive,
           iconActive,
-          darkModeTextColor,
           hoverBg,
         },
         index
       ) => {
         const isActive = activeIndex === index;
+
+        const commonProps = {
+          to: link,
+          href: `#${link}`,
+          smooth: true,
+          offset: -70,
+          duration: 500,
+          onClick: () => handleLinkClick(index),
+          ...(isActive && { onMouseDown: createRipple }),
+        };
+
+        const icon = getIcon(
+          isActive,
+          iconActive,
+          color,
+          activeIcon,
+          inactiveIcon
+        );
+        const linkText = getLinkText(title, isActive, color, iconActive);
+
         if (mobile) {
-          const desktopClasses = getNavLinkClasses(title, isActive);
-          const sidebarClasses = `link ${isActive ? "active" : ""}`;
-          const combinedClasses = `${desktopClasses} ${sidebarClasses}`;
           return (
             <li key={id}>
               <ScrollLink
-                to={link}
-                href={`#${link}`}
-                smooth={true}
-                offset={-70}
-                duration={500}
-                onClick={() => handleLinkClick(index)}
-                className={`${
-                  isActive && theme !== "dark"
-                    ? backgroundActive
-                    : "bg-transparent"
-                } p-2 bg-none rounded-none ${combinedClasses} ripple-container`}
-                {...(isActive && { onMouseDown: createRipple })}
+                className={getMobileClasses(
+                  title,
+                  isActive,
+                  theme,
+                  backgroundActive
+                )}
+                {...commonProps}
               >
                 <div
                   className={`icon text-md ${isActive ? iconActive : color}`}
                 >
-                  {isActive ? activeIcon : inactiveIcon}
+                  {icon}
                 </div>
-                <div
-                  className={`link_text text-gray-500 dark:text-gray-200 ${
-                    isActive ? color : iconActive
-                  }`}
-                >
-                  {title}
-                </div>
-              </ScrollLink>
-            </li>
-          );
-        } else {
-          return (
-            <li
-              key={id}
-              className={`relative group flex items-center gap-2 text-[15px] transition-all duration-300 ease-out ${
-                isActive
-                ? `${isDarkMode ? "shadow-shadowOne" : "shadow-shadowTwo"} ${backgroundActive} ripple-container`
-                : `text-gray-500 ${
-                    title !== "CONTACT"
-                      ? `${hoverBg} hover:px-3 hover:py-2 hover:rounded-full`
-                      : ""
-                  } hover:text-black dark:text-gray-300 dark:hover:text-white`
-              }`}
-              {...(isActive && { onMouseDown: createRipple })}
-            >
-              {title === "CONTACT" && !isActive && (
-                <div className="absolute -inset-0.5 dark:-inset-1 rounded-lg bg-gradient-to-r from-[#58eba6] via-[#1fc8de] to-[#0584d9] dark:from-[#58eba6] dark:via-[#1fc8de] dark:to-[#0584d9] opacity-75 blur transition duration-500 group-hover:opacity-100"></div>
-              )}
-              <ScrollLink
-                to={link}
-                href={`#${link}`}
-                smooth={true}
-                offset={-70}
-                duration={500}
-                onClick={() => handleLinkClick(index)}
-                className={`relative inline-flex items-center gap-2 ${
-                  title === "CONTACT" && !isActive
-                    ? "z-10 bg-gradient-to-br from-gray-200 to-white px-4 py-[11px] rounded-lg"
-                    : ""
-                }`}
-                style={{
-                  background:
-                    isDarkMode && title === "CONTACT" && !isActive
-                      ? "linear-gradient(145deg, #1e2024, #23272b)"
-                      : "",
-                  backgroundImage:
-                    isDarkMode && title === "CONTACT" && !isActive
-                      ? "linear-gradient(to top left, #262a2e, #1f2022)"
-                      : "",
-                }}
-              >
-                <span className={`text-md ${isActive ? iconActive : color}`}>
-                  {isActive ? activeIcon : inactiveIcon}
-                </span>
-                <span className="relative">{title}</span>
+                {linkText}
               </ScrollLink>
             </li>
           );
         }
+
+        const contactGradient = title === "CONTACT" && !isActive;
+
+        return (
+          <li
+            key={id}
+            className={getDesktopListItemClasses(
+              isActive,
+              title,
+              hoverBg,
+              backgroundActive,
+              isDarkMode
+            )}
+            {...(isActive && { onMouseDown: createRipple })}
+          >
+            {contactGradient && (
+              <div className="absolute -inset-0.5 dark:-inset-1 rounded-lg bg-gradient-to-r from-[#58eba6] via-[#1fc8de] to-[#0584d9] dark:from-[#58eba6] dark:via-[#1fc8de] dark:to-[#0584d9] opacity-75 blur transition duration-500 group-hover:opacity-100"></div>
+            )}
+            <ScrollLink
+              {...commonProps}
+              className={`relative inline-flex items-center gap-2 ${
+                contactGradient
+                  ? "z-10 bg-gradient-to-br from-gray-200 to-white px-4 py-[11px] rounded-lg"
+                  : ""
+              }`}
+              style={getContactBgStyle(isDarkMode, title, isActive)}
+            >
+              {icon}
+              <span
+                className={`link_text ${
+                  isActive
+                    ? iconActive
+                    : "group-hover:text-black dark:group-hover:text-white text-gray-600 dark:text-gray-300"
+                }`}
+              >
+                {title}
+              </span>
+            </ScrollLink>
+          </li>
+        );
       }
     );
-
+  };
+  
   const navigate = useNavigate();
 
   const handleBack = () => {
-    const pathParts = location.pathname.split("/");
-    if (pathParts.includes("projects")) {
-      const category = pathParts[2];
-      navigate(`/features/${category}`);
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    } else if (location.pathname.startsWith("/features")) {
-      navigate("/");
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    } else {
-      navigate("/");
-      window.scrollTo({ top: 0, behavior: "smooth" });
+    const path = location.pathname;
+    let targetPath = "/";
+
+    if (path.includes("/projects/")) {
+      const category = path.split("/")[2];
+      targetPath = `/features/${category}`;
     }
+
+    navigate(targetPath);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (

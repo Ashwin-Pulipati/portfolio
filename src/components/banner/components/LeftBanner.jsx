@@ -227,31 +227,18 @@ const LeftBanner = () => {
       once: false,
     });
     AOS.refresh();
-    return () => {
-      AOS.refresh();
-    };
   }, []);
 
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
     if (!element) return;
-    const headerOffset = 70;
-    const elementPosition = element.getBoundingClientRect().top;
-    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-    window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+    element.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
-    <div
-      className="flex flex-col gap-8 md:gap-10 lg:gap-12 w-full md:w-11/12 xl:gap-12 xs:mt-0 lg:mt-10 xl:mt-0"
-      data-aos="fade-up"
-    >
+    <div className="flex flex-col gap-8 md:gap-10 lg:gap-12 w-full md:w-11/12 xl:gap-12 xs:mt-0 lg:mt-10 xl:mt-0" data-aos="fade-up">
       <div className="flex flex-col gap-4 md:gap-5">
-        <h4
-          className="tracking-[1px] mt-6 md:mt-0 text-sm sm:text-base font-normal font-titleFont w-fit h-fit 
-          text-pink-800 bg-pink-100 dark:text-pink-100 dark:bg-pink-800 rounded-full p-2 pr-4 pl-4
-          shadow-shadowTwo dark:shadow-shadowOne"
-        >
+        <h4 className="tracking-[1px] mt-6 md:mt-0 text-sm sm:text-base font-normal font-titleFont w-fit h-fit text-pink-800 bg-pink-100 dark:text-pink-100 dark:bg-pink-800 rounded-full p-2 pr-4 pl-4 shadow-shadowTwo dark:shadow-shadowOne">
           WELCOME TO MY WORLD
         </h4>
         <h1 className="xs:text-4xl md:text-6xl font-bold text-gray-700 dark:text-white font-titleFont">
@@ -277,16 +264,8 @@ const LeftBanner = () => {
       <div className="flex flex-col xs:gap-16 lg:gap-20">
         <div className="flex items-center gap-4 xs:flex-wrap sm:flex-nowrap">
           {/* View Projects */}
-          <div
-            className="group hover:cursor-pointer"
-            onClick={() => scrollToSection("features")}
-          >
-            <div
-              className="flex items-center gap-2 w-fit h-fit bg-boxBgWhite dark:bg-boxBg bg-orange-100 text-amber-800 
-                dark:bg-orange-800 dark:text-amber-100 shadow-shadowTwo dark:shadow-shadowOne group-hover:shadow-none font-medium
-                px-4 py-3 rounded-full text-sm sm:text-base view-projects-button ripple-container"
-              onMouseDown={createRipple}
-            >
+          <div className="group hover:cursor-pointer" onClick={() => scrollToSection("features")}>
+            <div className="flex items-center gap-2 w-fit h-fit bg-boxBgWhite dark:bg-boxBg bg-orange-100 text-amber-800 dark:bg-orange-800 dark:text-amber-100 shadow-shadowTwo dark:shadow-shadowOne group-hover:shadow-none font-medium px-4 py-3 rounded-full text-sm sm:text-base view-projects-button ripple-container" onMouseDown={createRipple}>
               <AnimatedText text="View Projects" />
               <span className="animate-on-hover">
                 <HiArrowRight className="w-4 h-4" />
@@ -295,16 +274,8 @@ const LeftBanner = () => {
           </div>
 
           {/* View Resume */}
-          <div
-            className="group hover:cursor-pointer"
-            onClick={() => scrollToSection("resume")}
-          >
-            <div
-              className="flex items-center gap-2 w-fit h-fit bg-boxBgWhite dark:bg-boxBg bg-cyan-100 font-medium 
-                dark:bg-cyan-800 dark:text-blue-100 shadow-shadowTwo dark:shadow-shadowOne group-hover:shadow-none
-                px-4 py-3 rounded-full text-blue-800 text-sm sm:text-base view-resume-button ripple-container"
-              onMouseDown={createRipple}
-            >
+          <div className="group hover:cursor-pointer" onClick={() => scrollToSection("resume")}>
+            <div className="flex items-center gap-2 w-fit h-fit bg-boxBgWhite dark:bg-boxBg bg-cyan-100 font-medium dark:bg-cyan-800 dark:text-blue-100 shadow-shadowTwo dark:shadow-shadowOne group-hover:shadow-none px-4 py-3 rounded-full text-blue-800 text-sm sm:text-base view-resume-button ripple-container" onMouseDown={createRipple}>
               <AnimatedText text="View Resume" />
               <span className="animate-on-hover">
                 <HiArrowRight className="w-4 h-4" />
@@ -313,9 +284,7 @@ const LeftBanner = () => {
           </div>
         </div>
 
-        <>
-          <Media />
-        </>
+        <Media />
       </div>
     </div>
   );

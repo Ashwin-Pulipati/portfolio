@@ -5,29 +5,31 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import FairyAnimation from "../layouts/FairyAnimation";
 
-const Banner = () => {
+const Banner = React.memo(() => {
   useEffect(() => {
     AOS.init({ duration: 1000, easing: "ease-in-out", once: false });
     AOS.refresh();
-    return () => AOS.refresh();
   }, []);
 
-  const bannerMessages = [
-    {
-      message: `I'm created from Ted McDonald's CodePen to bring magical messages to life!`,
-      shockTitle: "Meet Inspiry!",
-    },
-    {
-      message:
-        "Built with inspiration from the Inbio portfolio — minimal and modern!",
-      shockTitle: "Recognize the Style?",
-    },
-    {
-      message:
-        "Inspired by WhatsApp, Play Store, Material UI ripple-effect buttons, and Slack for a seamless experience!",
-      shockTitle: "Familiar Touch?",
-    }
-  ];
+  const bannerMessages = React.useMemo(
+    () => [
+      {
+        message: `I'm created from Ted McDonald's CodePen to bring magical messages to life!`,
+        shockTitle: "Meet Inspiry!",
+      },
+      {
+        message:
+          "Built with inspiration from the Inbio portfolio — minimal and modern!",
+        shockTitle: "Recognize the Style?",
+      },
+      {
+        message:
+          "Inspired by WhatsApp, Play Store, Material UI ripple-effect buttons, and Slack for a seamless experience!",
+        shockTitle: "Familiar Touch?",
+      }
+    ],
+    []
+  );
 
   return (
     <section
@@ -48,6 +50,6 @@ const Banner = () => {
       </div>
     </section>
   );
-};
+});
 
 export default React.memo(Banner);

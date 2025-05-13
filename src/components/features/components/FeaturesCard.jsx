@@ -35,7 +35,7 @@ const Card = ({
   const [isHovered, setIsHovered] = useState(false);
   const isDarkMode = useDarkMode();
 
-  const { tagColor, textColor } = tagColorMap[cardSlug] || {
+  const tagColors = tagColorMap[cardSlug] || {
     tagColor: "#ffffff",
     textColor: "#333",
   };
@@ -44,13 +44,12 @@ const Card = ({
     ? darkModeCardGradientMap[cardSlug]
     : cardGradientMap[cardSlug];
 
-  const computedHoverStyle =
-    isHovered && currentGradient
-      ? {
-          backgroundImage: currentGradient,
-          color: "white",
-        }
-      : {};
+  const computedHoverStyle = isHovered
+    ? {
+        backgroundImage: currentGradient,
+        color: "white",
+      }
+    : {};
 
   const lightColors = lightModeColorMap[cardSlug] || {};
 
@@ -64,15 +63,12 @@ const Card = ({
     >
       <div className="w-full">
         <div className="flex flex-col gap-6 transform transition-transform duration-300 ease-in-out group-hover:-translate-y-2.5">
-          {/* Icon with background */}
           <div
-            className={`w-16 h-16 rounded-xl flex items-center justify-center transition-colors duration-300 ${
-              bgClass
-            }`}
+            className={`w-16 h-16 rounded-xl flex items-center justify-center transition-colors duration-300 ${bgClass}`}
           >
             <div
               style={{
-                color: !isDarkMode ? lightColors.text : tagColor,
+                color: !isDarkMode ? lightColors.text : tagColors.tagColor,
               }}
               className="text-2xl md:text-3xl lg:text-4xl"
             >
@@ -81,7 +77,6 @@ const Card = ({
             </div>
           </div>
 
-          {/* Title, Tags and Description */}
           <div className="flex flex-col gap-4">
             <h2 className="text-lg md:text-xl lg:text-2xl font-titleFont font-bold text-gray-700 dark:text-gray-300 dark:group-hover:text-white">
               {title}
@@ -99,9 +94,12 @@ const Card = ({
                           backgroundColor: lightColors.bg,
                         }
                       : {
-                          borderColor: tagColor,
-                          color: textColor,
-                          backgroundColor: hexToRGBA(tagColor, 0.15),
+                          borderColor: tagColors.tagColor,
+                          color: tagColors.textColor,
+                          backgroundColor: hexToRGBA(
+                            tagColors.tagColor,
+                            0.15
+                          ),
                         }
                   }
                   onMouseEnter={() => setHoveredTag(tagIndex)}
@@ -129,7 +127,6 @@ const Card = ({
             </p>
           </div>
 
-          {/* Arrow to trigger navigation */}
           <div className="flex justify-start">
             <span className="text-2xl text-blue-700 dark:text-designColor opacity-0 group-hover:opacity-100 transition-opacity duration-300 cursor-pointer">
               <HiArrowRight />

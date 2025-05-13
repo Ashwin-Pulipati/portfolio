@@ -38,32 +38,24 @@ const Skills = () => {
                   data-aos="zoom-in"
                 >
                   {subCat.items.map((item, itemIndex) => {
-                    if (item.type === "icon") {
-                      const Icon = item.component;
-                      return (
-                        <Icon
-                          key={itemIndex}
-                          style={{
-                            color: isDarkMode
-                              ? item.color
-                              : item.color.toLowerCase() === "#ffffff"
-                              ? "#000000"
-                              : item.color,
-                          }}
-                          className={item.className || "w-11 h-11"}
-                        />
-                      );
-                    } else if (item.type === "image") {
-                      return (
-                        <img
-                          key={itemIndex}
-                          src={item.src}
-                          alt={item.alt}
-                          className={item.className || "w-11 h-11"}
-                        />
-                      );
-                    }
-                    return null;
+                    const commonProps = {
+                      key: itemIndex,
+                      className: item.className || "w-11 h-11",
+                    };
+                    return item.type === "icon" ? (
+                      <item.component
+                        {...commonProps}
+                        style={{
+                          color: isDarkMode
+                            ? item.color
+                            : item.color.toLowerCase() === "#ffffff"
+                            ? "#000000"
+                            : item.color,
+                        }}
+                      />
+                    ) : (
+                      <img {...commonProps} src={item.src} alt={item.alt} />
+                    );
                   })}
                 </div>
               </div>

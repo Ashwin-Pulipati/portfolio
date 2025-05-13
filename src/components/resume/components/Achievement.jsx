@@ -9,13 +9,14 @@ const Achievement = () => {
     target: cardsContainerRef,
     offset: ["start end", "center start"],
   });
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1, transition: { duration: 0.5 } }}
-      className="py-12 flex gap-20 sm:flex-col lg:flex-row md:flex-col xs:flex-col px-1"
+      className="py-12 flex gap-20 xs:flex-col px-1"
     >
-      <div className="w-full h-full">
+      <div className="w-full">
         <div className="pb-12 font-titleFont flex flex-col gap-4">
           <p className="text-sm text-blue-700 dark:text-designColor tracking-[2px] font-bodyFont font-semibold">
             2020 - PRESENT
@@ -28,7 +29,6 @@ const Achievement = () => {
           ref={cardsContainerRef}
           className="relative w-full flex flex-col gap-10"
         >
-          {/* Vertical timeline line (only behind the resume cards) */}
           <motion.div
             style={{ scaleY: scrollYProgress }}
             className="absolute left-0.5 top-0 w-[4px] h-full bg-none md:bg-gray-400 origin-top"

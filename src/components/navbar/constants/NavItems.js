@@ -1,4 +1,3 @@
-import React from "react";
 import { BiHomeSmile, BiSolidHomeSmile } from "react-icons/bi";
 import { MdOutlineLocalPhone, MdLocalPhone } from "react-icons/md";
 import { HiOutlineSquares2X2, HiSquares2X2 } from "react-icons/hi2";

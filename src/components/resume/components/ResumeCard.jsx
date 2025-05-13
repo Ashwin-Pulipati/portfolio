@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useMemo, useRef, useState } from "react";
 import { slugify } from "../../layouts/Utils";
 import { experienceGradientMap } from "../constants/ExperienceData";
 import TimelineDot from "./TimelineDot";
@@ -19,39 +19,46 @@ const ResumeCard = ({
   showCountry,
   tags = [],
 }) => {
-  const [isExpanded, setIsExpanded] = useState(false);
-  const toggleReadMore = () => setIsExpanded(!isExpanded);
-
-  const initialVisibleCount = 9;
-  const [tagsExpanded, setTagsExpanded] = useState(false);
-  const visibleTags = tagsExpanded ? tags : tags.slice(0, initialVisibleCount);
-  const hiddenCount = tags.length - initialVisibleCount;
-  
   const isDarkMode = useDarkMode();
   const cardSlug = slugify(title);
   const gradients = experienceGradientMap[cardSlug];
 
+  const [isExpanded, setIsExpanded] = useState(false);
+  const [tagsExpanded, setTagsExpanded] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
-  const computedHoverStyle =
-    isHovered && gradients
-      ? {
-          backgroundImage: isDarkMode ? gradients.dark : gradients.light,
-        }
-      : {};
 
   const cardRef = useRef(null);
-  const timelineGradient = isDarkMode ? gradients.dark : gradients.light;
+
+  const initialVisibleCount = 9;
+  const visibleTags = tagsExpanded ? tags : tags.slice(0, initialVisibleCount);
+  const hiddenCount = tags.length - initialVisibleCount;
+
+  const timelineGradient = useMemo(
+    () => (isDarkMode ? gradients?.dark : gradients?.light),
+    [isDarkMode, gradients]
+  );
+
+  const computedHoverStyle = useMemo(
+    () =>
+      isHovered && gradients
+        ? {
+            backgroundImage: isDarkMode ? gradients.dark : gradients.light,
+          }
+        : {},
+    [isHovered, gradients, isDarkMode]
+  );
+
+  const handleToggleTags = () => setTagsExpanded((prev) => !prev);
 
   return (
     <div ref={cardRef} className="w-full h-1/3 group flex">
+      {/* Timeline */}
       <div className="hidden w-10 md:flex flex-col items-center gap-2.5">
-        <TimelineDot
-          reference={cardRef}
-          timelineGradient={timelineGradient}
-        />
-        <div className="w-9 h-[6px] bgOpacity dark:bg-gray-400"></div>
+        <TimelineDot reference={cardRef} timelineGradient={timelineGradient} />
+        <div className="w-9 h-[6px] bgOpacity dark:bg-gray-400" />
       </div>
 
+      {/* Card */}
       <div
         data-aos="zoom-in"
         onMouseEnter={() => setIsHovered(true)}
@@ -69,39 +76,39 @@ const ResumeCard = ({
               {subTitle}
             </p>
           </div>
+
+          {/* Result and Country */}
           <div className="flex sm:justify-start gap-4">
-            <div className="w-fit h-fit px-4 py-2 bg-gradient-to-br from-[#dee3e7] to-white shadow-shadowTwo bg-boxBdWhite dark:bg-boxBg dark:bg-gradient-to-tl dark:from-[#262a2e] dark:to-[#1f2022] group group-hover:shadow-none rounded-lg flex justify-center items-center dark:shadow-shadowOne">
-              <span className="text-sm font-medium text-blue-700 dark:text-designColor font-bodyFont">
-                {result}
-              </span>
-            </div>
-            {showCountry && (
-              <div className="w-fit h-fit px-4 py-2 bg-gradient-to-br from-[#dee3e7] to-white shadow-shadowTwo bg-boxBdWhite dark:bg-boxBg dark:bg-gradient-to-tl dark:from-[#262a2e] dark:to-[#1f2022] group group-hover:shadow-none rounded-lg flex justify-center items-center dark:shadow-shadowOne">
-                <span className="text-blue-700 dark:text-designColor text-sm font-medium font-bodyFont">
-                  {country}
+            {[result, showCountry && country].filter(Boolean).map((text, i) => (
+              <div
+                key={i}
+                className="w-fit h-fit px-4 py-2 bg-gradient-to-br from-[#dee3e7] to-white shadow-shadowTwo bg-boxBdWhite dark:bg-boxBg dark:bg-gradient-to-tl dark:from-[#262a2e] dark:to-[#1f2022] group group-hover:shadow-none rounded-lg flex justify-center items-center dark:shadow-shadowOne"
+              >
+                <span className="text-sm font-medium text-blue-700 dark:text-designColor font-bodyFont">
+                  {text}
                 </span>
               </div>
-            )}
+            ))}
           </div>
         </div>
 
-        <p className="text-sm md:text-base font-medium text-gray-500 dark:text-gray-400 group-hover:text-black dark:group-hover:text-gray-300 duration-300 break-all font-bodyFont">
-          {des ? (
-            <>
-              {isExpanded ? des : `${des.slice(0, 230)}...`}
-              {des.length > 230 && (
-                <button
-                  onClick={toggleReadMore}
-                  className="text-blue-700 dark:text-blue-400 hover:underline text-sm self-start ml-1"
-                >
-                  {isExpanded ? "Read Less" : "Read More"}
-                </button>
-              )}
-            </>
-          ) : null}
-        </p>
+        {/* Description */}
+        {des && (
+          <p className="text-sm md:text-base font-medium text-gray-500 dark:text-gray-400 group-hover:text-black dark:group-hover:text-gray-300 duration-300 break-all font-bodyFont">
+            {isExpanded ? des : `${des.slice(0, 230)}...`}
+            {des.length > 230 && (
+              <button
+                onClick={() => setIsExpanded((prev) => !prev)}
+                className="text-blue-700 dark:text-blue-400 hover:underline text-sm ml-1"
+              >
+                {isExpanded ? "Read Less" : "Read More"}
+              </button>
+            )}
+          </p>
+        )}
 
-        {tags && tags.length > 0 && (
+        {/* Tags */}
+        {tags.length > 0 && (
           <div className="flex items-center gap-4 flex-wrap">
             {visibleTags.map((tag, index) => (
               <span
@@ -111,28 +118,25 @@ const ResumeCard = ({
                 {tag}
               </span>
             ))}
-            {!tagsExpanded && hiddenCount > 0 && (
+            {hiddenCount > 0 && (
               <button
-                onClick={() => setTagsExpanded(true)}
-                className="bg-blue-100 dark:bg-blue-400/15 flex items-center gap-2 text-sm text-blue-700 font-medium dark:group-hover:text-white dark:text-blue-400 font-bodyFont rounded-full px-2.5 py-1 border-2 cursor-pointer transition-all duration-300 border-blue-700 dark:border-blue-400"
+                onClick={handleToggleTags}
+                className="bg-blue-100 dark:bg-blue-400/15 flex items-center gap-2 text-sm font-medium rounded-full px-2.5 py-1 border-2 cursor-pointer transition-all duration-300 border-blue-700 dark:border-blue-400 text-blue-700 dark:text-blue-400 dark:group-hover:text-white"
               >
                 <span className="relative w-4 h-4">
-                  <FaRegSquarePlus className="absolute inset-0 w-4 h-4 opacity-100 group-hover:opacity-0 transition-opacity duration-200 text-blue-700 dark:text-blue-400" />
-                  <FaSquarePlus className="absolute inset-0 w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-blue-700 dark:text-blue-400" />
+                  {tagsExpanded ? (
+                    <>
+                      <FaRegSquareMinus className="absolute inset-0 w-4 h-4 opacity-100 group-hover:opacity-0 transition-opacity duration-200" />
+                      <FaSquareMinus className="absolute inset-0 w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+                    </>
+                  ) : (
+                    <>
+                      <FaRegSquarePlus className="absolute inset-0 w-4 h-4 opacity-100 group-hover:opacity-0 transition-opacity duration-200" />
+                      <FaSquarePlus className="absolute inset-0 w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+                    </>
+                  )}
                 </span>
-                {hiddenCount} More
-              </button>
-            )}
-            {tagsExpanded && (
-              <button
-                onClick={() => setTagsExpanded(false)}
-                className="bg-blue-100 dark:bg-blue-400/15 flex items-center gap-2 text-sm text-blue-700 font-medium font-bodyFont rounded-full px-2.5 py-1 border-2 cursor-pointer transition-all duration-300 dark:group-hover:text-white dark:text-blue-400 border-blue-700 dark:border-blue-400"
-              >
-                <span className="relative w-4 h-4">
-                  <FaRegSquareMinus className="absolute inset-0 w-4 h-4 opacity-100 group-hover:opacity-0 transition-opacity duration-200 text-blue-700 dark:text-blue-400" />
-                  <FaSquareMinus className="absolute inset-0 w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-blue-700 dark:text-blue-400" />
-                </span>
-                Show Less
+                {tagsExpanded ? "Show Less" : `${hiddenCount} More`}
               </button>
             )}
           </div>

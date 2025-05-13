@@ -13,23 +13,23 @@ import { createRipple } from "../../layouts/RippleEffect";
 const ContactLeft = () => {
   const [copied, setCopied] = useState("");
 
-  const handleCopy = useCallback((text, type) => {
-    navigator.clipboard.writeText(text);
-    setCopied(type);
-    setTimeout(() => setCopied(""), 2000);
-  }, []);
+  const handleCopy = useCallback(
+    (text, type) => {
+      navigator.clipboard.writeText(text).then(() => {
+        setCopied(type);
+        setTimeout(() => setCopied(""), 2000);
+      });
+    },
+    [setCopied]
+  );
 
-      useEffect(() => {
-        AOS.init({
-          duration: 1000,
-          easing: "ease-in-out",
-          once: false,
-        });
-        AOS.refresh();
-        return () => {
-          AOS.refresh();
-        };
-      }, []);
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      easing: "ease-in-out",
+      once: false,
+    });
+  }, []);
 
   return (
     <div

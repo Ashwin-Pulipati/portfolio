@@ -7,27 +7,20 @@ function ScrollTo() {
   const lastY = useRef(window.pageYOffset);
 
   useEffect(() => {
-    let ticking = false;
-
     const onScroll = () => {
       const y = window.pageYOffset;
       const maxY =
         document.documentElement.scrollHeight - window.innerHeight;
 
-      lastY.current = y;
-     
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          if (y === 0) {
-            setPosition("top");
-          } else if (y >= maxY) {
-            setPosition("bottom");
-          } else {
-            setPosition("middle");
-          }
-          ticking = false;
-        });
-        ticking = true;
+      if (lastY.current !== y) {
+        lastY.current = y;
+        if (y === 0) {
+          setPosition("top");
+        } else if (y >= maxY) {
+          setPosition("bottom");
+        } else {
+          setPosition("middle");
+        }
       }
     };
 
@@ -37,7 +30,7 @@ function ScrollTo() {
       window.removeEventListener("scroll", onScroll);
     };
   }, []);
- 
+
   const arrowDown = position === "top";
 
   const handleClick = () => {
@@ -47,7 +40,7 @@ function ScrollTo() {
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
-  
+
   return (
     <div
       className="fixed xs:bottom-24 sm:bottom-28 md:bottom-5 xs:right-2 sm:right-4

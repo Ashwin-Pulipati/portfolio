@@ -17,9 +17,10 @@ const Certifications = ({ onNext, onPrev, nextDisabled, prevDisabled }) => {
     slidesToScroll: 1,
     rows: 2,
     slidesPerRow: 2,
+    arrows: true,
     nextArrow: (
       <UnifiedArrow
-        variant={"features"}
+        variant="features"
         direction="next"
         onClick={onNext}
         disabled={nextDisabled}
@@ -27,37 +28,28 @@ const Certifications = ({ onNext, onPrev, nextDisabled, prevDisabled }) => {
     ),
     prevArrow: (
       <UnifiedArrow
-        variant={"features"}
+        variant="features"
         direction="prev"
         onClick={onPrev}
         disabled={prevDisabled}
       />
     ),
-    beforeChange: (prev, next) => setDotActive(next),
+    beforeChange: (_, next) => setDotActive(next),
     appendDots: (dots) => (
-      <div style={{ position: "relative", marginTop: "30px" }}>
-        <ul
-          style={{
-            display: "flex",
-            gap: "15px",
-            justifyContent: "center",
-            position: "absolute",
-            bottom: 0,
-            left: "50%",
-            transform: "translateX(-50%)",
-          }}
-        >
+      <div className="relative mt-8">
+        <ul className="flex gap-4 justify-center absolute bottom-0 left-1/2 transform -translate-x-1/2">
           {dots}
         </ul>
       </div>
     ),
     customPaging: (i) => (
       <div className="relative flex items-center justify-center group">
-        <div className="absolute w-[17px] h-[17px] rounded-full bg-gradient-to-r from-[#58eba6] via-[#1fc8de] to-[#0584d9] opacity-30 scale-0 transition-all duration-300 group-hover:opacity-100 group-hover:scale-100"></div>
+        <div className="absolute w-4 h-4 rounded-full bg-gradient-to-r from-[#58eba6] via-[#1fc8de] to-[#0584d9] opacity-30 scale-0 transition-all duration-300 group-hover:opacity-100 group-hover:scale-100"></div>
         <div
-          className="relative w-[11px] h-[11px] rounded-full cursor-pointer transition-all duration-300"
+          className={`relative w-3 h-3 rounded-full cursor-pointer transition-all duration-300 ${
+            i === dotActive ? 'bg-[#35BDFD]' : 'bg-[#23272b]'
+          }`}
           style={{
-            background: i === dotActive ? "#35BDFD" : "#23272b",
             boxShadow:
               "1px 4px 2px -3px rgba(0,0,0,0.7) inset, -1px -3px 3px -2px rgba(255,255,255,0.2) inset",
           }}
@@ -73,15 +65,9 @@ const Certifications = ({ onNext, onPrev, nextDisabled, prevDisabled }) => {
   };
 
   useEffect(() => {
-    AOS.init({
-      duration: 1000,
-      easing: "ease-in-out",
-      once: false,
-    });
+    AOS.init({ duration: 1000, easing: "ease-in-out", once: false });
     AOS.refresh();
-    return () => {
-      AOS.refresh();
-    };
+    return AOS.refresh;
   }, []);
 
   return (
