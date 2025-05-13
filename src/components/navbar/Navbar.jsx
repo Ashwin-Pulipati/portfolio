@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useCallback, Suspense } from "react";
+import React, { useState, useEffect, useCallback} from "react";
 import { Link as ScrollLink } from "react-scroll";
 import debounce from "lodash.debounce";
-// import Searchbar from "./components/Searchbar";
+import Searchbar from "./components/Searchbar";
 import { navItems } from "./constants/NavItems";
 import HamburgerMenu from "./components/HamburgerMenu";
 import { Link as RouterLink, useLocation, useNavigate } from "react-router-dom";
@@ -13,7 +13,6 @@ import { createRipple } from "../layouts/RippleEffect";
 import useSystemTheme from "react-use-system-theme"; 
 // import logoSVG from "../../assets/images/app-logo/app-logo.svg";
 import { ReactComponent as LogoSVG } from "../../assets/images/app-logo/app-logo.svg";
-const Searchbar = React.lazy(() => import("./components/Searchbar"));
 
 const getNavLinkClasses = (title, isActive) => {
   if (title === "CONTACT") {
@@ -338,14 +337,7 @@ const Navbar = ({ onSearch }) => {
       <div className="flex items-center gap-4">
         {isFeaturesPage ? (
           <div className="hidden lg:flex">
-            {/* <Searchbar onSearch={onSearch} /> */}
-            <Suspense
-              fallback={
-                <div className="w-8 h-8 bg-gray-300 rounded animate-pulse" />
-              }
-            >
               <Searchbar onSearch={onSearch} />
-            </Suspense>
           </div>
         ) : (
           <ul className="hidden lg:inline-flex items-center gap-6">
@@ -359,48 +351,20 @@ const Navbar = ({ onSearch }) => {
           onClick={() => setShowMenu((prev) => !prev)}
           className="relative text-xl xs:hidden md:block lg:hidden w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 group shadow-shadowTwo dark:shadow-shadowOne"
         >
-          {/* <HamburgerMenu showMenu={showMenu} /> */}
-          <Suspense
-            fallback={
-              <div className="w-8 h-8 bg-gray-300 rounded animate-pulse" />
-            }
-          >
             <HamburgerMenu showMenu={showMenu} />
-          </Suspense>
         </button>
 
-        {/* <MediumScreenNavbar
+        <MediumScreenNavbar
           showMenu={showMenu}
           setShowMenu={setShowMenu}
           renderNavItems={renderNavItems}
           toggleTheme={toggleTheme}
           theme={theme}
-        /> */}
-
-        <Suspense
-          fallback={
-            <div className="w-8 h-8 bg-gray-300 rounded animate-pulse" />
-          }
-        >
-          <MediumScreenNavbar
-            showMenu={showMenu}
-            setShowMenu={setShowMenu}
-            renderNavItems={renderNavItems}
-            toggleTheme={toggleTheme}
-            theme={theme}
-          />
-        </Suspense>
+        />
 
         <div className="block md:hidden">
           <div className="hover:bg-gradient-to-r focus-within:bg-gradient-to-r from-[#58eba6] via-[#1fc8de] to-[#0584d9] rounded-full p-0.5 shadow-shadowTwo dark:shadow-shadowOne">
-            {/* <ThemeToggle theme={theme} toggleTheme={toggleTheme} /> */}
-            <Suspense
-              fallback={
-                <div className="w-8 h-8 bg-gray-300 rounded animate-pulse" />
-              }
-            >
               <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
-            </Suspense>
           </div>
         </div>
       </div>
