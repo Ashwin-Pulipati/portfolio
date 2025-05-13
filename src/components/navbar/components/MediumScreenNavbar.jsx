@@ -84,7 +84,8 @@ const MediumScreenNavbar = ({
                         <LogoSVG
                                     className="w-16 h-16"
                                     aria-label="App logo"
-                                    loading="eager"
+                loading="eager"
+                decoding="async"
                                     fetchPriority="high"
                                   />
             </ScrollLink>

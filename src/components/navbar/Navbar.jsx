@@ -329,6 +329,7 @@ const Navbar = ({ onSearch }) => {
             className="w-16 h-16"
             aria-label="App logo"
             loading="eager"
+            decoding="async"
             fetchPriority="high"
           />
         </RouterLink>
