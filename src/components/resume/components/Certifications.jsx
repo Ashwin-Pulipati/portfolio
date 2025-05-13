@@ -46,8 +46,8 @@ const Certifications = ({ onNext, onPrev, nextDisabled, prevDisabled }) => {
       <div className="relative flex items-center justify-center group">
         <div className="absolute w-4 h-4 rounded-full bg-gradient-to-r from-[#58eba6] via-[#1fc8de] to-[#0584d9] opacity-30 scale-0 transition-all duration-300 group-hover:opacity-100 group-hover:scale-100"></div>
         <div
-          className={`relative w-3 h-3 rounded-full cursor-pointer transition-all duration-300 ${
-            i === dotActive ? 'bg-[#35BDFD]' : 'bg-[#23272b]'
+          className={`relative mt-8 w-3 h-3 rounded-full cursor-pointer transition-all duration-300 ${
+            i === dotActive ? 'bg-blue-700' : 'bg-gray-300'
           }`}
           style={{
             boxShadow:
@@ -90,7 +90,7 @@ const Certifications = ({ onNext, onPrev, nextDisabled, prevDisabled }) => {
                 className="xs:px-0 md:px-4 lg:px-6 xs:py-4 lg:py-6"
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, ease: "easeOut" }}
+                transition={{ duration: 0.85, ease: "easeInOut" }}
                 viewport={{ once: true }}
               >
                 <CertificationsCard item={item} />
