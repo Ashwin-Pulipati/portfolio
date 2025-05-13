@@ -1,4 +1,5 @@
-import React, { useState, useCallback, useEffect} from "react";
+
+import React, { useState, useCallback } from "react";
 import {
   FaEnvelope,
   FaLinkedinIn,
@@ -7,8 +8,8 @@ import {
 } from "react-icons/fa";
 import ContactMe from "../../../assets/images/Webp/contact-left.webp";
 import { createRipple } from "../../layouts/RippleEffect";
-import AOS from "aos";
-import "aos/dist/aos.css";
+import { motion } from "framer-motion";
+
 
 const ContactLeft = () => {
   const [copied, setCopied] = useState("");
@@ -23,27 +24,18 @@ const ContactLeft = () => {
     [setCopied]
   );
 
-  useEffect(() => {
-           AOS.init({
-             duration: 1000,
-             easing: "ease-in-out",
-             once: false,
-           });
-           AOS.refresh();
-           return () => {
-             AOS.refresh();
-           };
-         }, []);
-
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0, scale: 0.85 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 1, ease: "easeInOut" }}
+      viewport={{ once: false }}
       className="w-full xl:w-[35%] h-full xs:p-6 xl:p-9 lg:p-8 md:p-10 sm:p-6 rounded-lg shadow-shadowTwo dark:shadow-shadowOne flex flex-col gap-8 justify-center 
              bg-boxBgWhite bg-gradient-to-br  group
              hover:bg-gradient-to-br hover:from-[#a0f0f4] hover:via-[#b78fff] hover:to-[#ff9aad] 
              dark:bg-boxBg dark:bg-gradient-to-tl from-[#dee3e7] to-white dark:from-[#262a2e] dark:to-[#1f2022] 
              dark:hover:bg-gradient-to-br dark:hover:from-[#0d7998] dark:hover:via-[#4f2a7a] dark:hover:to-[#8a3a48] 
              transition-colors duration-100"
-      data-aos="zoom-in"
     >
       <div className="w-full h-4/5 overflow-hidden rounded-lg">
         <img
@@ -171,7 +163,7 @@ const ContactLeft = () => {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

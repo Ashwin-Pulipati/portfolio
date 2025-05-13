@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Slider from "react-slick";
 import Title from "../layouts/Title";
 import UnifiedArrow from "../layouts/UnifiedArrow";
 import Card from "./components/FeaturesCard";
 import { featuresData } from "./constants/featuresData";
 import { useDarkMode } from "../layouts/DarkMode";
-import AOS from "aos";
-import "aos/dist/aos.css";
+import { motion } from "framer-motion";
+
 
 const Features = ({ onNext, onPrev, nextDisabled, prevDisabled }) => {
   const [dotActive, setDotActive] = useState(0);
@@ -67,7 +67,7 @@ const Features = ({ onNext, onPrev, nextDisabled, prevDisabled }) => {
               ? "#1D4ED8"
               : "lightGray",
             boxShadow:
-              "1px 4px 2px -3px rgba(0,0,0,0.7) inset, -1px -3px 3px -2px rgba(255,255,255,0.2) inset"
+              "1px 4px 2px -3px rgba(0,0,0,0.7) inset, -1px -3px 3px -2px rgba(255,255,255,0.2) inset",
           }}
         />
       </div>
@@ -79,19 +79,7 @@ const Features = ({ onNext, onPrev, nextDisabled, prevDisabled }) => {
       },
     ],
   };
-
-  useEffect(() => {
-         AOS.init({
-           duration: 1000,
-           easing: "ease-in-out",
-           once: false,
-         });
-         AOS.refresh();
-         return () => {
-           AOS.refresh();
-         };
-       }, []);
-
+  
   return (
     <section
       id="features"
@@ -105,13 +93,16 @@ const Features = ({ onNext, onPrev, nextDisabled, prevDisabled }) => {
         <div className="hidden xs:block w-full">
           <Slider {...settings}>
             {featuresData.map((item) => (
-              <div
+              <motion.div
+              initial={{ opacity: 0, scale: 0.85 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1, ease: "easeInOut" }}
+              viewport={{ once: false }}
                 key={item.id}
                 className="p-6"
-                data-aos="zoom-in"
               >
                 <Card item={item} />
-              </div>
+               </motion.div>
             ))}
           </Slider>
         </div>

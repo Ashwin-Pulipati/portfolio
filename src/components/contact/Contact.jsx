@@ -9,8 +9,8 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./toastStyles.css";
 import { createRipple } from "../layouts/RippleEffect";
-import AOS from "aos";
-import "aos/dist/aos.css";
+import { motion } from "framer-motion";
+
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -20,18 +20,7 @@ const Contact = () => {
     subject: "",
     message: "",
   });
-  useEffect(() => {
-       AOS.init({
-         duration: 1000,
-         easing: "ease-in-out",
-         once: false,
-       });
-       AOS.refresh();
-       return () => {
-         AOS.refresh();
-       };
-     }, []);
-
+  
   useEffect(() => {
     const savedData = localStorage.getItem("contactFormData");
     if (savedData) {
@@ -146,7 +135,6 @@ const Contact = () => {
     },
     [formData]
   );
-  
 
   const renderField = (field) => {
     const value = formData[field.name];
@@ -217,7 +205,10 @@ const Contact = () => {
           >
             {field.label}{" "}
             {field.label !== "Phone Number" ? (
-              <span className="text-red-500">*</span>): (<span className="text-gray-400 italic lowercase">(Optional)</span>)}
+              <span className="text-red-500">*</span>
+            ) : (
+              <span className="text-gray-400 italic lowercase">(Optional)</span>
+            )}
           </label>
           <div className="relative">
             <div
@@ -267,9 +258,13 @@ const Contact = () => {
         <div className="w-full">
           <div className="w-full h-auto flex flex-col lg:flex-row justify-between lg:gap-8 md:gap-y-10 xs:gap-y-8">
             <ContactBanner />
-            <div
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 1, ease: "easeInOut" }}
+              viewport={{ once: false }}
               className="w-full xl:w-[60%] h-full py-10 xs:px-8 md:px-10 sm:px-6 bg-gradient-to-br from-[#dee3e7] to-white shadow-shadowTwo dark:bg-gradient-to-r dark:from-[#1e2024] dark:to-[#23272b] flex flex-col gap-8 p-4 xl:p-8 rounded-lg dark:shadow-shadowOne"
-              data-aos="zoom-in"
+              
             >
               <form
                 className="flex flex-col gap-4 xl:gap-6 py-2 xl:py-5"
@@ -284,14 +279,14 @@ const Contact = () => {
                   <button
                     type="submit"
                     className="ripple-container w-full relative uppercase z-10 px-6 py-3 text-titleFont font-medium rounded-md bg-gradient-to-br from-[#dee3e7] to-white hover:bg-none hover:rounded-full hover:bg-green-100 hover:text-green-800 dark:bg-gradient-to-tl dark:from-[#1f2022] dark:to-[#16181c] dark:hover:bg-none dark:hover:bg-green-800 dark:hover:text-green-100"
-                  onMouseDown={createRipple}
+                    onMouseDown={createRipple}
                   >
                     Send Message
                   </button>
                   <span className="absolute inset-0 z-0 rounded-md bg-gradient-to-r from-[#58eba6] via-[#1fc8de] to-[#0584d9] opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none group-hover:rounded-full"></span>
                 </div>
               </form>
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>

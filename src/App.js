@@ -4,8 +4,6 @@ import Dashboard from "./components/dashboard/Dashboard";
 import ProjectsList from "./components/projects/ProjectsList";
 import ProjectDetailLoader from "./components/projects/ProjectDetailLoader";
 import Navbar from "./components/navbar/Navbar";
-import AOS from "aos";
-import "aos/dist/aos.css";
 import CursorEffect from "./components/cursor/CustomCursor";
 import BottomNavbar from "./components/navbar/BottomNavbar";
 import Footer from "./components/footer/Footer";
@@ -14,10 +12,6 @@ import ScrollTo from "./components/dashboard/ScrollTo";
 function App() {
   const [searchQuery, setSearchQuery] = useState("");
   const [isScrolled, setIsScrolled] = useState(false);
-
-  useEffect(() => {
-    AOS.init({ duration: 1000, easing: "ease-in-out", once: true });
-  }, []);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 0);

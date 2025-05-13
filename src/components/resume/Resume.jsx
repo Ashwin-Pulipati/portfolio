@@ -6,8 +6,8 @@ import Achievement from "./components/Achievement";
 import Experience from "./components/Experience";
 import Certifications from "./components/Certifications";
 import { createRipple } from "../layouts/RippleEffect";
-import AOS from "aos";
-import "aos/dist/aos.css";
+import { motion } from "framer-motion";
+
 
 const tabData = [
   { id: "experience", label: "Experience" },
@@ -20,18 +20,7 @@ const tabData = [
 const LOCAL_STORAGE_KEY = "activeResumeTab";
 
 const Resume = () => {
-  const [ activeTab, setActiveTab ] = useState("experience");
-  useEffect(() => {
-         AOS.init({
-           duration: 1000,
-           easing: "ease-in-out",
-           once: false,
-         });
-         AOS.refresh();
-         return () => {
-           AOS.refresh();
-         };
-       }, []);
+  const [activeTab, setActiveTab] = useState("experience");
 
   useEffect(() => {
     // On first render, try to restore from localStorage
@@ -47,7 +36,11 @@ const Resume = () => {
   };
 
   return (
-    <section
+    <motion.section
+  initial={{ opacity: 0, y: 40 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  transition={{ duration: 1, ease: "easeInOut" }}
+  viewport={{ once: false }}
       id="resume"
       className="w-full xs:px-6 xl:px-20 lg:px-16 md:px-12 sm:px-8 py-8"
       data-aos="fade-up"
@@ -87,7 +80,7 @@ const Resume = () => {
           {activeTab === "education" && <Education />}
         </div>
       </div>
-    </section>
+     </motion.section>
   );
 };
 
