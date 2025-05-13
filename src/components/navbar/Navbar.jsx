@@ -328,7 +328,7 @@ const Navbar = ({ onSearch }) => {
           <LogoSVG
             className="w-16 h-16"
             aria-label="App logo"
-            loading="lazy"
+            loading="eager"
             fetchPriority="high"
           />
         </RouterLink>
