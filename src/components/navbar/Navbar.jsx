@@ -324,7 +324,13 @@ const Navbar = ({ onSearch }) => {
             fetchPriority="high"
           /> */}
 
-          <LogoSVG className="w-16 h-16" aria-label="App logo" />
+          {/* <LogoSVG className="w-16 h-16" aria-label="App logo" /> */}
+          <LogoSVG
+            className="w-16 h-16"
+            aria-label="App logo"
+            loading="lazy"
+            fetchPriority="high"
+          />
         </RouterLink>
 
         <div className="hidden lg:block">
@@ -337,7 +343,7 @@ const Navbar = ({ onSearch }) => {
       <div className="flex items-center gap-4">
         {isFeaturesPage ? (
           <div className="hidden lg:flex">
-              <Searchbar onSearch={onSearch} />
+            <Searchbar onSearch={onSearch} />
           </div>
         ) : (
           <ul className="hidden lg:inline-flex items-center gap-6">
@@ -351,7 +357,7 @@ const Navbar = ({ onSearch }) => {
           onClick={() => setShowMenu((prev) => !prev)}
           className="relative text-xl xs:hidden md:block lg:hidden w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 group shadow-shadowTwo dark:shadow-shadowOne"
         >
-            <HamburgerMenu showMenu={showMenu} />
+          <HamburgerMenu showMenu={showMenu} />
         </button>
 
         <MediumScreenNavbar
@@ -364,7 +370,7 @@ const Navbar = ({ onSearch }) => {
 
         <div className="block md:hidden">
           <div className="hover:bg-gradient-to-r focus-within:bg-gradient-to-r from-[#58eba6] via-[#1fc8de] to-[#0584d9] rounded-full p-0.5 shadow-shadowTwo dark:shadow-shadowOne">
-              <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
+            <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
           </div>
         </div>
       </div>
