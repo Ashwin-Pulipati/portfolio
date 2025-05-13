@@ -40,7 +40,7 @@ const CertificationsCard = React.memo(({ item }) => {
       style={computedHoverStyle}
     >
       <div className="w-full">
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-6 transform transition-transform duration-300 ease-in-out">
           <div className="w-full h-48 sm:h-56 md:h-64 lg:h-72 pb-[56.25%] relative overflow-hidden rounded-xl">
             <img
               className="absolute top-0 left-0 w-full h-full object-cover group-hover:scale-105 duration-300 cursor-pointer"

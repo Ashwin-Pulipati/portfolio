@@ -22,9 +22,15 @@ const Experience = () => {
           <p className="text-sm text-blue-700 dark:text-designColor tracking-[2px] font-bodyFont font-semibold">
             2020 - PRESENT
           </p>
-          <h2 className="text-4xl font-bold" data-aos="fade-up">
+          <motion.h2
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+            viewport={{ once: true }}
+            className="text-4xl font-bold"
+          >
             Manager, Engineer & Developer
-          </h2>
+          </motion.h2>
         </div>
       </div>
 

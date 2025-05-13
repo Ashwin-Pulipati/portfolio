@@ -21,9 +21,15 @@ const Achievement = () => {
           <p className="text-sm text-blue-700 dark:text-designColor tracking-[2px] font-bodyFont font-semibold">
             2020 - PRESENT
           </p>
-          <h2 className="text-4xl font-bold" data-aos="fade-up">
+          <motion.h2
+            className="text-4xl font-bold"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeInOut" }}
+            viewport={{ once: true }}
+          >
             Company Experience
-          </h2>
+          </motion.h2>
         </div>
         <div
           ref={cardsContainerRef}

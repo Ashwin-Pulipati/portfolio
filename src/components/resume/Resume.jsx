@@ -37,13 +37,12 @@ const Resume = () => {
 
   return (
     <motion.section
-  initial={{ opacity: 0, y: 40 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  transition={{ duration: 1, ease: "easeInOut" }}
-  viewport={{ once: false }}
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1, ease: "easeInOut" }}
+      viewport={{ once: false }}
       id="resume"
       className="w-full xs:px-6 xl:px-20 lg:px-16 md:px-12 sm:px-8 py-8"
-      data-aos="fade-up"
     >
       <Title title="4 YEARS OF EXPERIENCE" des="My Resume" />
       <div className="flex flex-col gap-6">

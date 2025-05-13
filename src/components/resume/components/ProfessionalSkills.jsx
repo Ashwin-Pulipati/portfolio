@@ -19,7 +19,7 @@ const Skills = () => {
               {category.category.toUpperCase()}
             </p>
             {category.subCategories.map((subCat, subIndex) => (
-              <div
+              <motion.div
                 key={subIndex}
                 className={`pt-6 flex flex-col gap-6 ${
                   category.category === "Development" && subIndex > 0
@@ -27,15 +27,21 @@ const Skills = () => {
                     : ""
                 }`}
               >
-                <h2
+                <motion.h2
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, ease: "easeInOut" }}
+                  viewport={{ once: true }}
                   className="text-3xl md:text-4xl font-bold font-titleFont"
-                  data-aos="fade-up"
                 >
                   {subCat.title}
-                </h2>
-                <div
+                </motion.h2>
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.7, ease: "easeOut" }}
+                  viewport={{ once: true }}
                   className="flex gap-6 items-center flex-wrap"
-                  data-aos="zoom-in"
                 >
                   {subCat.items.map((item, itemIndex) => {
                     const commonProps = {
@@ -57,8 +63,8 @@ const Skills = () => {
                       <img {...commonProps} src={item.src} alt={item.alt} />
                     );
                   })}
-                </div>
-              </div>
+                </motion.div>
+              </motion.div>
             ))}
           </div>
         </div>

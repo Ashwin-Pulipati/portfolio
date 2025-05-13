@@ -2,6 +2,8 @@ import React from "react";
 import Tooltip from "./Tooltip";
 import ExternalLinkIcon from "../../assets/images/SVG/external-link.svg";
 import FairyAnimation from "./FairyAnimation";
+import { motion } from "framer-motion";
+
 
 const leftLineMap = {
   "My Resume":
@@ -111,9 +113,11 @@ const Title = ({ title, des }) => {
         </div>
       </div>
 
-      <div
+      <motion.div
         className="flex items-center w-full justify-center gap-4"
-        data-aos="fade-up"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: "easeInOut" }}
       >
         {leftLineMap[des] && (
           <div className={`mt-3 flex-1 h-[2px] ${leftLineMap[des]}`}></div>
@@ -143,7 +147,7 @@ const Title = ({ title, des }) => {
         {rightLineMap[des] && (
           <div className={`mt-3 flex-1 h-[2px] ${rightLineMap[des]}`}></div>
         )}
-      </div>
+      </motion.div>
     </div>
   );
 };

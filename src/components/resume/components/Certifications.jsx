@@ -5,6 +5,8 @@ import {
 } from "../constants/CertificationsData";
 import CertificationsCard from "./CertificationsCard";
 import UnifiedArrow from "../../layouts/UnifiedArrow";
+import { motion } from "framer-motion";
+
 
 const Certifications = ({ onNext, onPrev, nextDisabled, prevDisabled }) => {
   const [dotActive, setDotActive] = useState(0);
@@ -69,21 +71,30 @@ const Certifications = ({ onNext, onPrev, nextDisabled, prevDisabled }) => {
           <p className="text-sm text-blue-700 dark:text-designColor tracking-[2px]">
             2022 - {new Date().getFullYear()}
           </p>
-          <h2 className="text-4xl font-bold" data-aos="fade-up">
+          <motion.h2
+            className="text-4xl font-bold"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeInOut" }}
+            viewport={{ once: true }}
+          >
             Certifications
-          </h2>
+          </motion.h2>
         </div>
 
         <div className="hidden xs:block w-full">
           <Slider {...settings}>
             {certificationsData.map((item) => (
-              <div
+              <motion.div
                 key={item.id}
                 className="xs:px-0 md:px-4 lg:px-6 xs:py-4 lg:py-6"
-                data-aos="zoom-in"
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
+                viewport={{ once: true }}
               >
                 <CertificationsCard item={item} />
-              </div>
+              </motion.div>
             ))}
           </Slider>
         </div>

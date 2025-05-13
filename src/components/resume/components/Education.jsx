@@ -2,6 +2,7 @@ import { motion, useScroll } from "framer-motion";
 import React, { useRef } from "react";
 import ResumeCard from "./ResumeCard";
 
+
 const Education = React.memo(() => {
   const cardsContainerRef = useRef(null);
     const { scrollYProgress } = useScroll({
@@ -19,9 +20,15 @@ const Education = React.memo(() => {
           <p className="text-sm text-blue-700 dark:text-designColor tracking-[2px]">
             2022 - 2024
           </p>
-          <h2 className="text-3xl md:text-4xl font-bold" data-aos="fade-up">
+          <motion.h2
+            className="text-3xl md:text-4xl font-bold"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.85, ease: "easeInOut" }}
+            viewport={{ once: true }}
+          >
             Graduate
-          </h2>
+          </motion.h2>
         </div>
         <div
           ref={cardsContainerRef}

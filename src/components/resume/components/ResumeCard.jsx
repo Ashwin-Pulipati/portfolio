@@ -9,6 +9,7 @@ import {
   FaSquareMinus,
 } from "react-icons/fa6";
 import { useDarkMode } from "../../layouts/DarkMode";
+import { motion} from "framer-motion";
 
 const ResumeCard = ({
   title,
@@ -51,7 +52,7 @@ const ResumeCard = ({
   const handleToggleTags = () => setTagsExpanded((prev) => !prev);
 
   return (
-    <div ref={cardRef} className="w-full h-1/3 group flex">
+    <motion.div ref={cardRef} className="w-full h-1/3 group flex">
       {/* Timeline */}
       <div className="hidden w-10 md:flex flex-col items-center gap-2.5">
         <TimelineDot reference={cardRef} timelineGradient={timelineGradient} />
@@ -59,8 +60,11 @@ const ResumeCard = ({
       </div>
 
       {/* Card */}
-      <div
-        data-aos="zoom-in"
+      <motion.div
+        initial={{ opacity: 0, scale: 0.9 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.7, ease: "easeInOut" }}
+        viewport={{ once: true }}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
         style={computedHoverStyle}
@@ -141,8 +145,8 @@ const ResumeCard = ({
             )}
           </div>
         )}
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 };
 
