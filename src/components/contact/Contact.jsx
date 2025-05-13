@@ -9,7 +9,8 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./toastStyles.css";
 import { createRipple } from "../layouts/RippleEffect";
-import useAOS from "../layouts/UseAOSHook";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -19,6 +20,17 @@ const Contact = () => {
     subject: "",
     message: "",
   });
+  useEffect(() => {
+       AOS.init({
+         duration: 1000,
+         easing: "ease-in-out",
+         once: false,
+       });
+       AOS.refresh();
+       return () => {
+         AOS.refresh();
+       };
+     }, []);
 
   useEffect(() => {
     const savedData = localStorage.getItem("contactFormData");
@@ -134,8 +146,7 @@ const Contact = () => {
     },
     [formData]
   );
-
-  useAOS({ duration: 1000, easing: "ease-in-out", once: false });
+  
 
   const renderField = (field) => {
     const value = formData[field.name];

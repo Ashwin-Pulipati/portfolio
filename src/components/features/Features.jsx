@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import Title from "../layouts/Title";
 import UnifiedArrow from "../layouts/UnifiedArrow";
 import Card from "./components/FeaturesCard";
 import { featuresData } from "./constants/featuresData";
 import { useDarkMode } from "../layouts/DarkMode";
-import useAOS from "../layouts/UseAOSHook";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const Features = ({ onNext, onPrev, nextDisabled, prevDisabled }) => {
   const [dotActive, setDotActive] = useState(0);
@@ -79,7 +80,17 @@ const Features = ({ onNext, onPrev, nextDisabled, prevDisabled }) => {
     ],
   };
 
-  useAOS({ duration: 1000, easing: "ease-in-out", once: false });
+  useEffect(() => {
+         AOS.init({
+           duration: 1000,
+           easing: "ease-in-out",
+           once: false,
+         });
+         AOS.refresh();
+         return () => {
+           AOS.refresh();
+         };
+       }, []);
 
   return (
     <section

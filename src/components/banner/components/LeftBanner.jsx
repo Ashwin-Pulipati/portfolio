@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useTypewriter } from "react-simple-typewriter";
 import Media from "./Media";
 import "../Banner.css";
 import { HiArrowRight } from "react-icons/hi2";
 import { createRipple } from "../../layouts/RippleEffect";
-import useAOS from "../../layouts/UseAOSHook";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const AnimatedText = ({ text }) => {
   const words = text.split(" ");
@@ -45,7 +46,17 @@ const LeftBanner = () => {
     delaySpeed: 3000,
   });
 
-  useAOS({ duration: 1000, easing: "ease-in-out", once: false });
+  useEffect(() => {
+           AOS.init({
+             duration: 1000,
+             easing: "ease-in-out",
+             once: false,
+           });
+           AOS.refresh();
+           return () => {
+             AOS.refresh();
+           };
+         }, []);
 
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
