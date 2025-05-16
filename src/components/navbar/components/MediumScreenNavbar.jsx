@@ -43,7 +43,7 @@ const MediumScreenNavbar = ({
                 decoding="async"
                 fetchPriority="high"
               />
-              {/* <picture className="block lg:hidden">
+              <picture className="block lg:hidden">
                 <source
                   srcSet={`${process.env.PUBLIC_URL}/app-logo.webp`}
                   type="image/webp"
@@ -66,8 +66,8 @@ const MediumScreenNavbar = ({
                   width="64"
                   height="64"
                 />
-              </picture> */}
-              <picture className="block lg:hidden">
+              </picture>
+              {/* <picture className="block lg:hidden">
                 <source
                   srcSet={`
       ${process.env.PUBLIC_URL}/app-logo.webp 1x,
@@ -94,7 +94,7 @@ const MediumScreenNavbar = ({
                   decoding="async"
                   fetchPriority="high"
                 />
-              </picture>
+              </picture> */}
             </ScrollLink>
 
             <p className="text-sm text-gray-600 dark:text-gray-400 mt-4 leading-loose">

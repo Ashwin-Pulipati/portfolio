@@ -263,7 +263,7 @@ const Navbar = ({ onSearch }) => {
             decoding="async"
             fetchPriority="high"
           />
-          {/* <picture className="block lg:hidden m-2">
+          <picture className="block lg:hidden m-2">
             <source
               srcSet={`${process.env.PUBLIC_URL}/app-logo.webp`}
               type="image/webp"
@@ -286,15 +286,15 @@ const Navbar = ({ onSearch }) => {
               width="64"
               height="64"
             />
-          </picture> */}
-          <picture className="block lg:hidden">
+          </picture>
+          {/* <picture className="block lg:hidden aspect-square">
             <source
               srcSet={`
       ${process.env.PUBLIC_URL}/app-logo.webp 1x,
       ${process.env.PUBLIC_URL}/app-logo@2x.webp 2x
     `}
               type="image/webp"
-              sizes="4rem"
+              sizes="3.5rem"
             />
             <source
               srcSet={`
@@ -302,19 +302,19 @@ const Navbar = ({ onSearch }) => {
       ${process.env.PUBLIC_URL}/app-logo-compressed@2x.png 2x
     `}
               type="image/png"
-              sizes="4rem"
+              sizes="3.5rem"
             />
             <img
               src={`${process.env.PUBLIC_URL}/app-logo-compressed.png`}
               alt="App logo"
-              className="w-16 h-16"
+              className="w-[4rem] h-[3.5rem]"
               width="64"
               height="64"
               loading="eager"
               decoding="async"
               fetchPriority="high"
             />
-          </picture>
+          </picture> */}
         </RouterLink>
 
         <button className="hidden lg:block " aria-label="Toggle Theme">
