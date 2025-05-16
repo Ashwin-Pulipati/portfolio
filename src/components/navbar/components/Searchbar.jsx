@@ -113,6 +113,7 @@ function Searchbar({ onSearch }) {
           className="relative p-0.5 rounded-lg hoverFocusGradient elevatedShadow xs:w-full lg:w-[300px]"
           tabIndex="0"
           onBlur={() => setCategoryOpen(false)}
+          aria-label="Select Category"
         >
           <div
             className="group flex justify-center gap-4 items-center cardGradient transition-colors duration-100 

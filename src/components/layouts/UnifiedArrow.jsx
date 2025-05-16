@@ -15,6 +15,7 @@ const UnifiedArrow = React.memo(
               : "gradientBorderMd"
           }`}
           onClick={!disabled ? onClick : null}
+          aria-label="pagination"
         >
           <div
             className="relative z-10 w-full h-full flex justify-center items-center rounded-md boxBgGradient 
@@ -32,6 +33,7 @@ const UnifiedArrow = React.memo(
             direction === "next" ? "-right-4 md:-right-8" : "-left-4 md:-left-8"
           } transform -translate-y-1/2 cursor-pointer z-10`}
           onClick={onClick}
+          aria-label="Project Detail arrow"
         >
           <div
             className="relative w-10 h-10 md:w-12 md:h-12 flex justify-center items-center gradientBorderLg boxBgGradient 
@@ -53,6 +55,7 @@ const UnifiedArrow = React.memo(
           } transform -translate-y-1/2 cursor-pointer z-10
         `}
           onClick={onClick}
+          aria-label="Features arrow"
         >
           <div
             className="relative flex justify-center items-center group gradientBorderMd"

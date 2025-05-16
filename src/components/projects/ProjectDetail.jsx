@@ -162,6 +162,7 @@ const ProjectDetail = ({
             <button
               onClick={() => navigate(-1)}
               className="absolute z-10 top-4 right-4 md:top-6 md:right-6 lg:top-8 lg:right-8 w-9 h-9 md:w-12 md:h-12 rounded-full flex items-center justify-center transition-all duration-300 group elevatedShadow"
+            aria-label="Back"
             >
               <div className="absolute -inset-0.5 p-0.5 rounded-full appGradient opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-300"></div>
               <div

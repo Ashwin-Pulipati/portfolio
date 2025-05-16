@@ -99,6 +99,7 @@ const ResumeCard = ({
               <button
                 onClick={() => setIsExpanded((prev) => !prev)}
                 className="arrowIcon font-semibold hover:underline text-sm ml-1"
+                aria-label="Read More"
               >
                 {isExpanded ? "Read Less" : "Read More"}
               </button>
@@ -120,6 +121,7 @@ const ResumeCard = ({
               <button
                 onClick={handleToggleTags}
                 className="bg-blue-100 dark:bg-blue-400/15 flex items-center gap-2 text-sm font-medium rounded-full px-2.5 py-1 border-2 cursor-pointer transition-all duration-300 border-blue-700 dark:border-blue-400 arrowIcon dark:group-hover:text-white"
+              aria-label="Show More"
               >
                 <span className="relative w-4 h-4">
                   {tagsExpanded ? (

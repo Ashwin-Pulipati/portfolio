@@ -12,6 +12,7 @@ function Demo({ demo }) {
       <button
         className="relative flex items-center gradientBorderFull cursor-pointer"
         onClick={() => window.open(demo, "_blank", "noopener,noreferrer")}
+      aria-label="Demo"
       >
         <div
           className={`group relative w-22 h-11 p-0.5 rounded-full flex justify-start items-center hover:shadow-none ${redStyles.baseBg}`}

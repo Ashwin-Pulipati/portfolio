@@ -32,6 +32,7 @@ const Pagination = ({
           className="relative w-10 h-10 sm:w-12 sm:h-12 flex justify-center items-center text-lg font-semibold rounded-lg 
           transition boxBgGradient cardGradient"
           onClick={() => onPageChange(i + 1)}
+          aria-label="Pagination button"
         >
           <span className="relative z-10 text-black dark:text-white">
             {i + 1}

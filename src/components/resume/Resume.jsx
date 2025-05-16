@@ -47,6 +47,7 @@ const Resume = () => {
                     : "text-lightText"
                 }`}
                 onMouseDown={createRipple}
+                aria-label="Resume Tabs"
               >
                 <span
                   className={`w-fit h-fit inline-block font-titleFont ${

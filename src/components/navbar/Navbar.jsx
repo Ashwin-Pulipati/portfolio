@@ -248,6 +248,7 @@ const Navbar = ({ onSearch }) => {
               className="rounded-lg flex justify-center items-center w-12 h-12 cardGradient transition-colors duration-300 ripple-container"
               onClick={handleBack}
               onMouseDown={createRipple}
+              aria-label="Back"
             >
               <HiArrowLeft className="w-5 h-5 arrowIcon" />
             </button>
@@ -264,7 +265,7 @@ const Navbar = ({ onSearch }) => {
           />
         </RouterLink>
 
-        <button className="hidden lg:block">
+        <button className="hidden lg:block" aria-label="Toggle Theme">
           <div className="gradientBorderFull">
             <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
           </div>
@@ -300,7 +301,7 @@ const Navbar = ({ onSearch }) => {
           theme={theme}
         />
 
-        <button className="block md:hidden">
+        <button className="block md:hidden" aria-label="Toggle Theme">
           <div className="gradientBorderFull">
             <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
           </div>

@@ -121,6 +121,7 @@ function StarRating({ projectId, temporary = false }) {
               <button
                 className={`z-10 w-12 h-12 rounded-full ${yellowStyles.bg} flex justify-center items-center focus:outline-none`}
                 onClick={toggleStarsVisibility}
+                aria-label="Close"
               >
                 <RiStarSmileFill className="w-5 h-5 text-orange-800 dark:text-orange-200" />
               </button>
@@ -149,7 +150,8 @@ function StarRating({ projectId, temporary = false }) {
             <button
               className={`group z-10 w-12 h-12 rounded-full ${yellowStyles.bg} flex justify-center items-center focus:outline-none group/button ripple-container`}
               onClick={toggleStarsVisibility}
-              onMouseDown={createRipple}
+                onMouseDown={createRipple}
+                aria-label="Open"
             >
               {avgRating > 0 ? (
                 <RiStarSmileFill className="w-5 h-5 text-orange-800 dark:text-orange-100" />
@@ -183,6 +185,7 @@ function StarRating({ projectId, temporary = false }) {
             <button
               className="z-10 w-12 h-12 rounded-full flex justify-center items-center focus:outline-none"
               onClick={toggleStarsVisibility}
+              aria-label="Close"
             >
               {avgRating > 0 ? (
                 <RiStarSmileFill className="w-5 h-5 text-orange-800 dark:text-orange-100 ml-0.5" />

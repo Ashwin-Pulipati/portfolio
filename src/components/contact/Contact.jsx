@@ -273,6 +273,7 @@ const Contact = () => {
                     cardGradient hover:bg-none hover:rounded-full hover:bg-green-100 
                     hover:text-green-800  dark:hover:bg-none dark:hover:bg-green-800 dark:hover:text-green-100"
                     onMouseDown={createRipple}
+                    aria-label="Send Message"
                   >
                     Send Message
                   </button>

@@ -37,6 +37,7 @@ function Github({ github, temporary = false }) {
         className={`ripple-container relative flex items-center cursor-pointer overflow-hidden ${purpleStyles.border}`}
         onClick={() => window.open(github, "_blank", "noopener,noreferrer")}
         onMouseDown={createRipple}
+        araia-label="GitHub"
       >
         <div className="relative hover:text-white cursor-pointer">
           <div

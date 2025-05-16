@@ -70,8 +70,9 @@ const ContactLeft = () => {
                   if (external)
                     window.open(href, "_blank", "noopener,noreferrer");
                 }}
+                aria-label="Contact Me"
               >
-                <button
+                <div
                   className="bannerIcon zoomIcon group-hover:shadow-none ripple-container"
                   onMouseDown={createRipple}
                 >
@@ -85,7 +86,7 @@ const ContactLeft = () => {
                   >
                     {icon}
                   </a>
-                </button>
+                </div>
                 {copied === id && (
                   <div
                     className={`text-xs flex items-center gap-1 mt-1 ${copiedColor}`}

@@ -69,8 +69,9 @@ const LeftBanner = () => {
           <button
             className="group hover:cursor-pointer"
             onClick={() => scrollToSection("features")}
+            aria-label="View Projects"
           >
-            <button
+            <div
               className="flex items-center gap-2 w-fit h-fit bg-orange-100 text-amber-800 
               dark:bg-orange-800 dark:text-amber-100 font-medium px-4 py-3 
               rounded-full text-sm sm:text-base view-projects-button ripple-container elevatedShadow  group-hover:shadow-none "
@@ -80,14 +81,15 @@ const LeftBanner = () => {
               <span className="animate-on-hover">
                 <HiArrowRight className="w-4 h-4" />
               </span>
-            </button>
+            </div>
           </button>
 
           <button
             className="group hover:cursor-pointer"
             onClick={() => scrollToSection("resume")}
+            aria-label="View Resume"
           >
-            <button
+            <div
               className="flex items-center gap-2 w-fit h-fit bg-cyan-100 font-medium dark:bg-cyan-800 dark:text-blue-100 
               px-4 py-3 rounded-full text-blue-800 text-sm sm:text-base 
               view-resume-button ripple-container elevatedShadow group-hover:shadow-none"
@@ -97,7 +99,7 @@ const LeftBanner = () => {
               <span className="animate-on-hover">
                 <HiArrowRight className="w-4 h-4" />
               </span>
-            </button>
+            </div>
           </button>
         </div>
 

@@ -106,6 +106,7 @@ const FairyAnimation = ({
           setShowFairy(false);
           window.__fairyActive = false;
         }}
+        aria-label="Close fairy"
       >
         <div className="relative w-5 h-5 flex items-center justify-center cardGradient transition-colors duration-300 rounded-full p-1">
           <span className="relative block w-3.5 h-3.5 arrowIcon">

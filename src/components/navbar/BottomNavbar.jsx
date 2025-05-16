@@ -118,6 +118,7 @@ function BottomNavbar() {
               }`}
               onMouseDown={createRipple}
               onClick={() => handleClick(nav, idx)}
+              aria-label="bottom nav"
             >
               <div
                 className={`w-6 h-6 ${

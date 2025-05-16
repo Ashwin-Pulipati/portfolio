@@ -82,6 +82,7 @@ const MediumScreenNavbar = ({
             <button
               className="w-fit h-fit flex items-center rounded-full mb-5 ripple-container cardView"
               onMouseDown={createRipple}
+              aria-label="Toggle theme"
             >
               <div className="gradientBorderFull lg:hidden block">
                 <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
