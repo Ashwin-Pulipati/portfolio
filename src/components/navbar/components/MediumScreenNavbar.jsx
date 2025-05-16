@@ -52,14 +52,14 @@ const MediumScreenNavbar = ({
                   srcSet={`${process.env.PUBLIC_URL}/app-logo.webp`}
                   type="image/webp"
                   width="64"
-                  height="64"
+                  height="56"
                 />
                 {/* PNG fallback */}
                 <source
                   srcSet={`${process.env.PUBLIC_URL}/app-logo.png`}
                   type="image/png"
                   width="64"
-                  height="64"
+                  height="56"
                 />
                 {/* final <img> for extra fallback */}
                 <img
@@ -70,7 +70,7 @@ const MediumScreenNavbar = ({
                   decoding="async"
                   fetchPriority="high"
                   width="64"
-                  height="64"
+                  height="56"
                 />
               </picture>
             </ScrollLink>
