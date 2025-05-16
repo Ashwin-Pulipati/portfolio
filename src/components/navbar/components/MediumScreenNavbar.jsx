@@ -44,29 +44,29 @@ const MediumScreenNavbar = ({
                 fetchPriority="high"
               />
               <picture className="block lg:hidden">
-              <source
-                srcSet="/app-logo.webp"
-                type="image/webp"
-                width="64"
-                height="64"
-              />
-              <source
-                srcSet="/app-logo-compressed.png"
-                type="image/png"
-                width="64"
-                height="64"
-              />
-              <img
-                src="/app-logo-compressed.png"
-                alt="App logo"
-                className="w-16 h-16"
-                loading="eager"
-                decoding="async"
-                fetchPriority="high"
-                width="64"
-                height="64"
-              />
-          </picture>
+                <source
+                  srcSet={`${process.env.PUBLIC_URL}/app-logo.webp`}
+                  type="image/webp"
+                  width="64"
+                  height="64"
+                />
+                <source
+                  srcSet={`${process.env.PUBLIC_URL}/app-logo-compressed.png`}
+                  type="image/png"
+                  width="64"
+                  height="64"
+                />
+                <img
+                  srcSet={`${process.env.PUBLIC_URL}/app-logo-compressed.png`}
+                  alt="App logo"
+                  className="w-16 h-16"
+                  loading="eager"
+                  decoding="async"
+                  fetchPriority="high"
+                  width="64"
+                  height="64"
+                />
+              </picture>
             </ScrollLink>
 
             <p className="text-sm text-gray-600 dark:text-gray-400 mt-4 leading-loose">

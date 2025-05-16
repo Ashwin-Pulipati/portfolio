@@ -245,7 +245,7 @@ const Navbar = ({ onSearch }) => {
         {location.pathname !== "/" && (
           <div className="gradientBorderLg">
             <button
-              className="rounded-lg flex justify-center items-center w-12 h-12 cardGradient transition-colors duration-300 ripple-container"
+              className="rounded-lg flex justify-center items-center w-12 h-12 md:w-[3.5rem] md:h-[3.5rem] cardGradient transition-colors duration-300 ripple-container"
               onClick={handleBack}
               onMouseDown={createRipple}
               aria-label="Back"
@@ -257,34 +257,62 @@ const Navbar = ({ onSearch }) => {
 
         <RouterLink to="/" smooth="true" offset={-70} duration={500}>
           <LogoSVG
-            className="w-16 h-16 hidden lg:block"
+            className="w-[4.5rem] h-[4.5rem] hidden lg:block"
             aria-label="App logo"
             loading="eager"
             decoding="async"
             fetchPriority="high"
           />
-          <picture className="block lg:hidden">
+          {/* <picture className="block lg:hidden m-2">
             <source
-              srcSet="/app-logo.webp"
+              srcSet={`${process.env.PUBLIC_URL}/app-logo.webp`}
               type="image/webp"
               width="64"
               height="64"
             />
             <source
-              srcSet="/app-logo-compressed.png"
+              srcSet={`${process.env.PUBLIC_URL}/app-logo-compressed.png`}
               type="image/png"
               width="64"
               height="64"
             />
             <img
-              src="/app-logo-compressed.png"
+              srcSet={`${process.env.PUBLIC_URL}/app-logo-compressed.png`}
               alt="App logo"
-              className="w-16 h-16"
+              className="w-16 h-14"
               loading="eager"
               decoding="async"
               fetchPriority="high"
               width="64"
               height="64"
+            />
+          </picture> */}
+          <picture className="block lg:hidden m-2 md:m-0">
+            <source
+              srcSet={`
+      ${process.env.PUBLIC_URL}/app-logo.webp 1x,
+      ${process.env.PUBLIC_URL}/app-logo@2x.webp 2x
+    `}
+              type="image/webp"
+              sizes="4rem"
+            />
+            <source
+              srcSet={`
+      ${process.env.PUBLIC_URL}/app-logo-compressed.png 1x,
+      ${process.env.PUBLIC_URL}/app-logo-compressed@2x.png 2x
+    `}
+              type="image/png"
+              sizes="4rem"
+            />
+            <img
+              src={`${process.env.PUBLIC_URL}/app-logo-compressed.png`}
+              alt="App logo"
+              className="w-16 h-14"
+              width="64"
+              height="56"
+              loading="eager"
+              decoding="async"
+              fetchPriority="high"
             />
           </picture>
         </RouterLink>
