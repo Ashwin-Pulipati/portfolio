@@ -7,7 +7,7 @@ import UnifiedArrow from "../layouts/UnifiedArrow";
 import Card from "./components/FeaturesCard";
 import { featuresData } from "./constants/featuresData";
 
-const Features = ({ onNext, onPrev, nextDisabled, prevDisabled }) => {
+const FeaturesDesktop = ({ onNext, onPrev, nextDisabled, prevDisabled }) => {
   const [dotActive, setDotActive] = useState(0);
 
   const isDarkMode = useDarkMode();
@@ -71,12 +71,12 @@ const Features = ({ onNext, onPrev, nextDisabled, prevDisabled }) => {
         />
       </div>
     ),
-    responsive: [
-      {
-        breakpoint: 640,
-        settings: "unslick",
-      },
-    ],
+    // responsive: [
+    //   {
+    //     breakpoint: 640,
+    //     settings: "unslick",
+    //   },
+    // ],
   };
 
   return (
@@ -110,4 +110,4 @@ const Features = ({ onNext, onPrev, nextDisabled, prevDisabled }) => {
   );
 };
 
-export default React.memo(Features);
+export default React.memo(FeaturesDesktop);

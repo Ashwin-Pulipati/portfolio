@@ -22,15 +22,26 @@
 // export default React.memo(Dashboard);
 
 
-import React, { Suspense } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import SocialIconsSidebar from "../../global-components/SocialIconsSidebar";
 const Banner = React.lazy(() => import("../banner/Banner"));
-const Features = React.lazy(() => import("../features/Features"));
 const Resume = React.lazy(() => import("../resume/Resume"));
 const Contact = React.lazy(() => import("../contact/Contact"));
-
+const FeaturesDesktop = React.lazy(() => import("../features/FeaturesDesktop"));
+const FeaturesMobile = React.lazy(() => import("../features/FeaturesMobile"));
 
 const Dashboard = () => {
+  const [isMobile, setIsMobile] = useState(null);
+
+  useEffect(() => {
+    const mql = window.matchMedia("(max-width: 640px)");
+    const onChange = (e) => setIsMobile(e.matches);
+    mql.addEventListener("change", onChange);
+    setIsMobile(mql.matches);
+    return () => mql.removeEventListener("change", onChange);
+  }, []);
+
+  if (isMobile === null) return null;
   return (
     <div className="w-full h-full bg-bodyColorWhite dark:bg-bodyColor text-gray-700 dark:text-white z-30 overflow-hidden">
       <SocialIconsSidebar />
@@ -38,7 +49,11 @@ const Dashboard = () => {
         <Banner />
       </Suspense>
       <Suspense fallback={<div style={{ height: 600 }}>Loading features…</div>}>
-        <Features id="features" />
+        {isMobile ? (
+          <FeaturesMobile id="features" />
+        ) : (
+          <FeaturesDesktop id="features" />
+        )}
       </Suspense>
       <Suspense fallback={<div style={{ height: 600 }}>Loading features…</div>}>
         <Resume id="features" />

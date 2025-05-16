@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Dashboard from "./components/dashboard/Dashboard";
 import ProjectsList from "./components/projects/ProjectsList";
 import ProjectDetailLoader from "./components/projects/ProjectDetailLoader";
 import Navbar from "./components/navbar/Navbar";
-import CursorEffect from "./components/cursor/CustomCursor";
 import BottomNavbar from "./components/navbar/BottomNavbar";
 import Footer from "./components/footer/Footer";
 import ScrollTo from "./global-components/ScrollTo";
+const CursorEffect = React.lazy(() =>
+  import("./components/cursor/CustomCursor")
+);
 
 function App() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -19,9 +21,23 @@ function App() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const [isMobile, setIsMobile] = useState(null);
+  useEffect(() => {
+    const mql = window.matchMedia("(max-width: 768px)");
+    const update = () => setIsMobile(mql.matches);
+    mql.addEventListener("change", update);
+    update();
+    return () => mql.removeEventListener("change", update);
+  }, []);
+  
+
   return (
     <Router basename="/portfolio">
-      <CursorEffect />
+      {isMobile === false && (
+        <Suspense fallback={null}>
+          <CursorEffect />
+        </Suspense>
+      )}
       <div
         className={`sticky z-50 bg-[#ECF0F3]/25 dark:bg-bodyColor/25 backdrop-blur-lg transition-all duration-300 ${
           isScrolled
