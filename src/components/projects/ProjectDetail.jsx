@@ -161,15 +161,18 @@ const ProjectDetail = ({
           <div className="cardView rounded-2xl py-14 px-6 md:px-14 relative">
             <button
               onClick={() => navigate(-1)}
-              className="absolute z-10 top-4 right-4 md:top-6 md:right-6 lg:top-8 lg:right-8 w-9 h-9 md:w-12 md:h-12 rounded-full flex items-center justify-center transition-all duration-300 group elevatedShadow"
+              className="absolute z-10 top-4 right-4 md:top-6 md:right-6 lg:top-8 lg:right-8 w-12 h-12 md:w-12 md:h-12 
+              rounded-full flex items-center justify-center transition-all duration-300 group elevatedShadow"
             aria-label="Back"
             >
-              <div className="absolute -inset-0.5 p-0.5 rounded-full appGradient opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-300"></div>
+              <div className="absolute -inset-0.5 p-0.5 rounded-full appGradient opacity-0 group-hover:opacity-100 
+              group-focus:opacity-100 transition-opacity duration-300"></div>
               <div
-                className="relative w-full h-full boxBgGradient cardGradient rounded-full flex items-center justify-center ripple-container"
+                className="relative w-full h-full boxBgGradient cardGradient rounded-full flex items-center justify-center 
+                ripple-container"
                 onMouseDown={createRipple}
               >
-                <span className="relative block w-4 h-4 md:w-5 md:h-5 arrowIcon">
+                <span className="relative block w-5 h-4 md:h-5 arrowIcon">
                   <span className="absolute inset-0 top-1.5 md:top-2 right-1 bg-current rotate-45 w-full h-[4px] rounded-full" />
                   <span className="absolute inset-0 top-1.5 md:top-2 right-1 bg-current -rotate-45 w-full h-[4px] rounded-full" />
                 </span>

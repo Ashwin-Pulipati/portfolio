@@ -3,37 +3,16 @@ import { FaGithub, FaLinkedinIn, FaEnvelope } from "react-icons/fa";
 import KittyLightMode from "../../assets/images/Webp/kitty3.webp";
 import KittyDarkMode from "../../assets/images/Webp/kitty2.webp";
 import { createRipple } from "../layouts/RippleEffect";
-
-const getClassName = (type) => {
-  if (type === "email") {
-    return "text-red-600 dark:text-red-100 bg-red-100 border-red-800 dark:bg-red-800 dark:border-red-100";
-  } else if (type === "linkedin") {
-    return "text-blue-700 dark:text-blue-100 bg-blue-100 border-blue-800 dark:bg-blue-800 dark:border-blue-100";
-  } else {
-    return "bg-white border-black dark:bg-black dark:border-white";
-  }
-};
-
-const getTriangleClassName = (type) => {
-  if (type === "email") {
-    return "bg-red-100 border-r border-b border-red-800 dark:bg-red-800 dark:border-red-100";
-  } else if (type === "linkedin") {
-    return "bg-blue-100 border-r border-b border-blue-800 dark:bg-blue-800 dark:border-blue-100";
-  } else {
-    return "bg-white border-r border-b border-black dark:bg-black dark:border-white";
-  }
-};
+import {
+  getClassName,
+  getTriangleClassName,
+  displayName,
+} from "./Footer.constants";  
 
 const FooterBottom = () => {
   const [copied, setCopied] = useState(null);
   const [hovered, setHovered] = useState(null);
   const [isDark, setIsDark] = useState(false);
-
-  const displayName = {
-    email: "Email",
-    linkedin: "LinkedIn",
-    github: "GitHub",
-  };
 
   const copyText = (text, type) => {
     navigator.clipboard.writeText(text);
@@ -54,7 +33,8 @@ const FooterBottom = () => {
   }, []);
 
   const Tooltip = ({ type }) => (
-    <div className="absolute left-1/2 bottom-full transform -translate-x-1/2 -translate-y-5 -mb-3 text-xs font-medium pointer-events-none transition-opacity shadow-md dark:shadow-gray-600">
+    <div className="absolute left-1/2 bottom-full transform -translate-x-1/2 -translate-y-5 -mb-3 text-xs font-medium 
+    pointer-events-none transition-opacity shadow-md dark:shadow-gray-600">
       <span
         className={`relative px-2 py-1 border rounded-md block text-center
           ${getClassName(type)}
