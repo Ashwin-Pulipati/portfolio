@@ -43,7 +43,7 @@ const MediumScreenNavbar = ({
                 decoding="async"
                 fetchPriority="high"
               />
-              <picture className="block lg:hidden">
+              {/* <picture className="block lg:hidden">
                 <source
                   srcSet={`${process.env.PUBLIC_URL}/app-logo.webp`}
                   type="image/webp"
@@ -65,6 +65,34 @@ const MediumScreenNavbar = ({
                   fetchPriority="high"
                   width="64"
                   height="64"
+                />
+              </picture> */}
+              <picture className="block lg:hidden m-2 md:m-0">
+                <source
+                  srcSet={`
+      ${process.env.PUBLIC_URL}/app-logo.webp 1x,
+      ${process.env.PUBLIC_URL}/app-logo@2x.webp 2x
+    `}
+                  type="image/webp"
+                  sizes="4rem"
+                />
+                <source
+                  srcSet={`
+      ${process.env.PUBLIC_URL}/app-logo-compressed.png 1x,
+      ${process.env.PUBLIC_URL}/app-logo-compressed@2x.png 2x
+    `}
+                  type="image/png"
+                  sizes="4rem"
+                />
+                <img
+                  src={`${process.env.PUBLIC_URL}/app-logo-compressed.png`}
+                  alt="App logo"
+                  className="w-16 h-14"
+                  width="64"
+                  height="56"
+                  loading="eager"
+                  decoding="async"
+                  fetchPriority="high"
                 />
               </picture>
             </ScrollLink>
