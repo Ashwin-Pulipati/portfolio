@@ -1,12 +1,9 @@
+import { motion } from "framer-motion";
 import React, { useState } from "react";
 import Slider from "react-slick";
-import {
-  certificationsData,
-} from "../constants/CertificationsData";
-import CertificationsCard from "./CertificationsCard";
 import UnifiedArrow from "../../layouts/UnifiedArrow";
-import { motion } from "framer-motion";
-
+import { certificationsData } from "../Resume.constants";
+import CertificationsCard from "./CertificationsCard";
 
 const Certifications = ({ onNext, onPrev, nextDisabled, prevDisabled }) => {
   const [dotActive, setDotActive] = useState(0);
@@ -44,10 +41,11 @@ const Certifications = ({ onNext, onPrev, nextDisabled, prevDisabled }) => {
     ),
     customPaging: (i) => (
       <div className="relative flex items-center justify-center group">
-        <div className="absolute w-4 h-4 rounded-full bg-gradient-to-r from-[#58eba6] via-[#1fc8de] to-[#0584d9] opacity-30 scale-0 transition-all duration-300 group-hover:opacity-100 group-hover:scale-100"></div>
+        <div className="absolute -bottom-[1.5px] w-4 h-4 rounded-full appGradient opacity-30 scale-0 transition-all duration-300 
+        group-hover:opacity-100 group-hover:scale-100"></div>
         <div
           className={`relative mt-8 w-3 h-3 rounded-full cursor-pointer transition-all duration-300 ${
-            i === dotActive ? 'bg-blue-700' : 'bg-gray-300'
+            i === dotActive ? "bg-blue-700 dark:bg-cyan-400" : "bg-gray-300"
           }`}
           style={{
             boxShadow:
@@ -68,7 +66,7 @@ const Certifications = ({ onNext, onPrev, nextDisabled, prevDisabled }) => {
     <section id="features" className="w-full px-1 py-12">
       <div>
         <div className="pb-12 font-titleFont flex flex-col gap-4">
-          <p className="text-sm text-blue-700 dark:text-designColor tracking-[2px]">
+          <p className="text-sm arrowIcon font-bodyFont font-semibold tracking-[2px]">
             2022 - {new Date().getFullYear()}
           </p>
           <motion.h2
@@ -87,7 +85,7 @@ const Certifications = ({ onNext, onPrev, nextDisabled, prevDisabled }) => {
             {certificationsData.map((item) => (
               <motion.div
                 key={item.id}
-                className="xs:px-0 md:px-4 lg:px-6 xs:py-4 lg:py-6"
+                className="px-0 md:px-4 lg:px-6 xs:py-4 lg:py-6"
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.85, ease: "easeInOut" }}

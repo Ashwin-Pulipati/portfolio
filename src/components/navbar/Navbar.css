@@ -15,7 +15,6 @@
   border-radius: 8px 0px 0px 8px;
 }
 
-/* Dark mode override */
 .dark .link:hover {
   background: linear-gradient(to left, rgba(88, 235, 166, 0.3), rgba(31, 200, 222, 0.3), rgba(5, 132, 217, 0.2));
 }
@@ -27,11 +26,9 @@
   border-radius: 8px 0px 0px 8px;
 }
 
-/* Dark mode override for active state */
 .dark .active {
   background: linear-gradient(to left, rgba(88, 235, 166, 0.3), rgba(31, 200, 222, 0.3), rgba(5, 132, 217, 0.2));
 }
-
 
 .link_text {
   white-space: nowrap;

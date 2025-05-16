@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { FaArrowUpLong } from "react-icons/fa6";
-import { createRipple } from "../layouts/RippleEffect";
+import { createRipple } from "../components/layouts/RippleEffect";
 
 function ScrollTo() {
   const [position, setPosition] = useState("top");
@@ -9,8 +9,7 @@ function ScrollTo() {
   useEffect(() => {
     const onScroll = () => {
       const y = window.pageYOffset;
-      const maxY =
-        document.documentElement.scrollHeight - window.innerHeight;
+      const maxY = document.documentElement.scrollHeight - window.innerHeight;
 
       if (lastY.current !== y) {
         lastY.current = y;
@@ -43,21 +42,17 @@ function ScrollTo() {
 
   return (
     <div
-      className="fixed xs:bottom-24 sm:bottom-28 md:bottom-5 xs:right-2 sm:right-4
+      className="fixed bottom-24 sm:bottom-28 md:bottom-5 right-2 sm:right-4
                 group opacity-25 hover:opacity-100 transition-all duration-300
-                shadow-shadowTwo dark:shadow-shadowOne rounded-full animate-bounce"
+                elevatedShadow rounded-full animate-bounce"
     >
       <div
         className="absolute -inset-0.5 p-0.5 rounded-full
-                   bg-gradient-to-r from-[#58eba6] via-[#1fc8de] to-[#0584d9]
-                   opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-      />
+                   appGradient opacity-0 group-hover:opacity-100 transition-opacity duration-300"/>
       <button
         onClick={handleClick}
         aria-label={arrowDown ? "Scroll to bottom" : "Scroll to top"}
-        className="relative w-full h-full p-3 rounded-full bg-boxBgWhite dark:bg-boxBg bg-gradient-to-br dark:bg-gradient-to-tl
-               from-[#dee3e7] to-white dark:from-[#262a2e] dark:to-[#1f2022] 
-               transition-colors duration-300 ripple-container"
+        className="relative w-full h-full p-3 rounded-full cardGradient transition-colors duration-300 ripple-container"
         onMouseDown={createRipple}
       >
         <FaArrowUpLong

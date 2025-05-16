@@ -7,23 +7,12 @@ import Experience from "./components/Experience";
 import Certifications from "./components/Certifications";
 import { createRipple } from "../layouts/RippleEffect";
 import { motion } from "framer-motion";
-
-
-const tabData = [
-  { id: "experience", label: "Experience" },
-  { id: "skills", label: "Professional Skills" },
-  { id: "achievements", label: "Achievements" },
-  { id: "certifications", label: "Certifications" },
-  { id: "education", label: "Education" },
-];
-
-const LOCAL_STORAGE_KEY = "activeResumeTab";
+import { tabData, LOCAL_STORAGE_KEY } from "./Resume.constants";
 
 const Resume = () => {
   const [activeTab, setActiveTab] = useState("experience");
 
   useEffect(() => {
-    // On first render, try to restore from localStorage
     const savedTab = localStorage.getItem(LOCAL_STORAGE_KEY);
     if (savedTab && tabData.some((tab) => tab.id === savedTab)) {
       setActiveTab(savedTab);
@@ -46,14 +35,15 @@ const Resume = () => {
     >
       <Title title="4 YEARS OF EXPERIENCE" des="My Resume" />
       <div className="flex flex-col gap-6">
-        <ul className="flex flex-col xl:flex-row gap-6 w-full list-none p-0 m-0 rounded-xl boxBgWhite shadow-shadowTwo dark:bg-boxBg dark:shadow-shadowOne">
+        <ul className="flex flex-col xl:flex-row gap-6 w-full list-none p-0 m-0 rounded-xl cardView">
           {tabData.map(({ id, label }) => (
             <li key={id} className="flex-1 text-center">
               <button
                 onClick={() => handleTabClick(id)}
-                className={`w-full xs:py-[20px] sm:py-[30px] lg:py-[30px] md:py-[20px] lg:text-lg rounded-xl font-medium outline-none border-none transition-all duration-500 ease-in-out bg-transparent cursor-pointer whitespace-nowrap tracking-wider ripple-container ${
+                className={`w-full py-5 sm:py-8 md:py-5 lg:py-8 lg:text-lg rounded-xl font-medium outline-none border-none 
+                transition-all duration-500 ease-in-out bg-transparent cursor-pointer whitespace-nowrap tracking-wider ripple-container ${
                   activeTab === id
-                    ? "bg-gradient-to-br from-[#dee3e7] to-white shadow-shadowTwo dark:bg-gradient-to-tl dark:from-[#262a2e] dark:to-[#1f2022] dark:shadow-shadowOne rounded-xl bg-opacity-25 text-white"
+                    ? "cardView rounded-xl bg-opacity-25 text-white"
                     : "text-lightText"
                 }`}
                 onMouseDown={createRipple}
@@ -61,7 +51,7 @@ const Resume = () => {
                 <span
                   className={`w-fit h-fit inline-block font-titleFont ${
                     activeTab === id
-                      ? "bg-gradient-to-r from-[#46c28f] via-[#1aaabe] to-[#0584d9] dark:from-[#58eba6] dark:via-[#1fc8de] dark:to-[#0584d9] bg-clip-text text-transparent"
+                      ? "textGradient"
                       : "text-gray-500 dark:text-lightText"
                   }`}
                 >
@@ -79,7 +69,7 @@ const Resume = () => {
           {activeTab === "education" && <Education />}
         </div>
       </div>
-     </motion.section>
+    </motion.section>
   );
 };
 

@@ -25,7 +25,13 @@ module.exports = {
         lightText: "#c4cfde",
         boxBg: "linear-gradient(145deg, #1e2024, #23272b)",
         boxBgWhite: "linear-gradient(145deg, #e2e8ec, #ffffff)",
-        designColor: "#5AC9F8", //earlier: #35BDFD
+        textShadow: "6px 6px 2px rgba(0, 0, 0, 0.1)",
+      },
+      backgroundImage: {
+        "app-gradient-light":
+          'linear-gradient(to right, theme("colors.emerald.400"), theme("colors.cyan.500"), theme("colors.blue.700"))',
+        "app-gradient-dark":
+          'linear-gradient(to right, theme("colors.emerald.500"), theme("colors.cyan.600"), theme("colors.blue.800"))',
       },
       boxShadow: {
         shadowOne: "10px 10px 19px #1c1e22, -10px -10px 19px #262a2e",

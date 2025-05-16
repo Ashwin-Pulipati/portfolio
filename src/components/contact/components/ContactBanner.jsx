@@ -1,15 +1,9 @@
-
 import React, { useState, useCallback } from "react";
-import {
-  FaEnvelope,
-  FaLinkedinIn,
-  FaCheckCircle,
-  FaGithub,
-} from "react-icons/fa";
 import ContactMe from "../../../assets/images/Webp/contact-left.webp";
 import { createRipple } from "../../layouts/RippleEffect";
 import { motion } from "framer-motion";
-
+import { contactMethods } from "../Contact.constants";
+import { FaCheckCircle } from "react-icons/fa";
 
 const ContactLeft = () => {
   const [copied, setCopied] = useState("");
@@ -30,16 +24,14 @@ const ContactLeft = () => {
       whileInView={{ opacity: 1, scale: 1 }}
       transition={{ duration: 1, ease: "easeInOut" }}
       viewport={{ once: false }}
-      className="w-full xl:w-[35%] h-full xs:p-6 xl:p-9 lg:p-8 md:p-10 sm:p-6 rounded-lg shadow-shadowTwo dark:shadow-shadowOne flex flex-col gap-8 justify-center 
-             bg-boxBgWhite bg-gradient-to-br  group
-             hover:bg-gradient-to-br hover:from-[#a0f0f4] hover:via-[#b78fff] hover:to-[#ff9aad] 
-             dark:bg-boxBg dark:bg-gradient-to-tl from-[#dee3e7] to-white dark:from-[#262a2e] dark:to-[#1f2022] 
+      className="w-full xl:w-[35%] h-full p-6 md:p-10 lg:p-8 xl:p-9 flex flex-col gap-8 justify-center 
+             group hover:bg-gradient-to-br hover:from-[#a0f0f4] hover:via-[#b78fff] hover:to-[#ff9aad] 
              dark:hover:bg-gradient-to-br dark:hover:from-[#0d7998] dark:hover:via-[#4f2a7a] dark:hover:to-[#8a3a48] 
-             transition-colors duration-100"
+             cardView rounded-lg"
     >
       <div className="w-full h-4/5 overflow-hidden rounded-lg">
         <img
-          className="w-full xs:h-44 md:h-64 object-cover hover:scale-105 duration-300 cursor-pointer"
+          className="w-full h-44 md:h-64 object-cover hover:scale-105 duration-300 cursor-pointer"
           src={ContactMe}
           width="500"
           height="300"
@@ -48,8 +40,8 @@ const ContactLeft = () => {
       </div>
       <div className="flex flex-col gap-4">
         <span
-          className="xs:pt-3 sm:pt-3 md:pt-0 lg:pt-0 xl:pt-0 xs:block sm:block md:inline lg:inline xl:inline xs:text-3xl sm:text-3xl md:text-5xl lg:text-4xl xl:text-5xl px-1 w-fit h-fit bg-gradient-to-r from-[#46c28f] via-[#1aaabe] to-[#0584d9] group-hover:text-black dark:group-hover:text-white dark:from-[#58eba6] dark:via-[#1fc8de] dark:to-[#0584d9] bg-clip-text text-transparent capitalize font-nameFont"
-          style={{ textShadow: "6px 6px 2px rgba(0, 0, 0, 0.1)" }}
+          className="pt-3 md:pt-0 lg:pt-0 xs:block md:inline text-3xl md:text-5xl lg:text-4xl xl:text-5xl px-1 w-fit h-fit 
+          textGradient group-hover:text-black dark:group-hover:text-white capitalize font-nameFont shadow-textShadow"
         >
           Ashwin Pulipati
         </span>
@@ -67,100 +59,44 @@ const ContactLeft = () => {
           REACH ME OUT
         </h2>
         <div className="flex gap-6">
-          {/* Email */}
-          <div
-            className="flex flex-col gap-3"
-            onClick={(e) => {
-              e.preventDefault();
-              handleCopy("ashwinpulipati@gmail.com", "email");
-            }}
-          >
-            <span
-              className="bannerIcon zoomIcon group-hover:shadow-none ripple-container"
-              onMouseDown={createRipple}
-            >
-              <a
-                href="mailto:ashwinpulipati@gmail.com"
-                aria-label="Email Ashwin Pulipati"
-                title="Email Ashwin Pulipati"
+          {contactMethods.map(
+            ({ id, label, icon, href, copyText, external, copiedColor }) => (
+              <button
+                key={id}
+                className="flex flex-col gap-3"
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleCopy(copyText, id);
+                  if (external)
+                    window.open(href, "_blank", "noopener,noreferrer");
+                }}
               >
-                <FaEnvelope style={{ color: "#EA4335" }} />
-              </a>
-            </span>
-            {copied === "email" && (
-              <div className="text-xs text-[#EA4335] flex items-center gap-1 mt-1">
-                <FaCheckCircle />
-                <span>Copied!</span>
-              </div>
-            )}
-          </div>
-          {/* LinkedIn */}
-          <div
-            className="flex flex-col gap-3 "
-            onClick={(e) => {
-              e.preventDefault();
-              handleCopy(
-                "https://www.linkedin.com/in/ashwinpulipati",
-                "linkedin"
-              );
-              window.open(
-                "https://www.linkedin.com/in/ashwinpulipati",
-                "_blank"
-              );
-            }}
-          >
-            <span
-              className="bannerIcon zoomIcon group-hover:shadow-none ripple-container"
-              onMouseDown={createRipple}
-            >
-              <a
-                href="https://www.linkedin.com/in/ashwinpulipati"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Visit LinkedIn profile of Ashwin Pulipati"
-                title="Visit LinkedIn profile of Ashwin Pulipati"
-              >
-                <FaLinkedinIn style={{ color: "#0A66C2" }} />
-              </a>
-            </span>
-            {copied === "linkedin" && (
-              <div className="text-xs text-[#0A66C2] flex items-center gap-1 mt-1">
-                <FaCheckCircle />
-                <span>Copied!</span>
-              </div>
-            )}
-          </div>
-
-          {/* Github */}
-          <div
-            className="flex flex-col gap-3 "
-            onClick={(e) => {
-              e.preventDefault();
-              handleCopy("https://github.com/Ashwin-Pulipati", "github");
-              window.open("https://github.com/Ashwin-Pulipati", "_blank");
-            }}
-          >
-            <span
-              className="bannerIcon zoomIcon group-hover:shadow-none ripple-container"
-              onMouseDown={createRipple}
-            >
-              <a
-                href="https://www.linkedin.com/in/ashwinpulipati"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Visit LinkedIn profile of Ashwin Pulipati"
-                title="Visit LinkedIn profile of Ashwin Pulipati"
-              >
-                <FaGithub className="text-black dark:text-white" />
-              </a>
-            </span>
-            {copied === "github" && (
-              <div className="text-xs flex items-center gap-1 mt-1">
-                <FaCheckCircle />
-                <span>Copied!</span>
-              </div>
-            )}
-          </div>
+                <button
+                  className="bannerIcon zoomIcon group-hover:shadow-none ripple-container"
+                  onMouseDown={createRipple}
+                >
+                  <a
+                    href={href}
+                    aria-label={label}
+                    title={label}
+                    {...(external
+                      ? { target: "_blank", rel: "noopener noreferrer" }
+                      : {})}
+                  >
+                    {icon}
+                  </a>
+                </button>
+                {copied === id && (
+                  <div
+                    className={`text-xs flex items-center gap-1 mt-1 ${copiedColor}`}
+                  >
+                    <FaCheckCircle />
+                    <span>Copied!</span>
+                  </div>
+                )}
+              </button>
+            )
+          )}
         </div>
       </div>
     </motion.div>

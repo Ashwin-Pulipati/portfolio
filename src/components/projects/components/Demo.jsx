@@ -2,18 +2,20 @@ import React from "react";
 import { BsPlayCircle, BsPlayCircleFill } from "react-icons/bs";
 import { FiExternalLink } from "react-icons/fi";
 import { createRipple } from "../../layouts/RippleEffect";
-
+import { redStyles } from "../constants/LinksAndInterests.constants";
 function Demo({ demo }) {
   return (
     <div
-      className="relative rounded-full bg-red-100 dark:bg-red-800  shadow-md shadow-red-400 dark:shadow-red-500 overflow-visible hover:shadow-none ripple-container"
-    onMouseDown={createRipple}
+      className={`relative rounded-full overflow-visible ripple-container ${redStyles.baseBg} ${redStyles.baseShadow} hover:shadow-none`}
+      onMouseDown={createRipple}
     >
-      <div
-        className="relative p-0.5 rounded-full flex items-center hover:bg-gradient-to-r focus-within:bg-gradient-to-r from-[#58eba6] via-[#1fc8de] to-[#0584d9] cursor-pointer"
+      <button
+        className="relative flex items-center gradientBorderFull cursor-pointer"
         onClick={() => window.open(demo, "_blank", "noopener,noreferrer")}
       >
-        <div className="group relative w-22 h-11 p-0.5 rounded-full bg-red-100 dark:bg-red-800 flex justify-start items-center hover:shadow-none">
+        <div
+          className={`group relative w-22 h-11 p-0.5 rounded-full flex justify-start items-center hover:shadow-none ${redStyles.baseBg}`}
+        >
           <a
             href={demo}
             target="_blank"
@@ -22,11 +24,15 @@ function Demo({ demo }) {
             className="relative z-10 w-12 h-11 rounded-full flex justify-center items-center focus:outline-none transition duration-200"
             aria-label="Demo"
           >
-            <BsPlayCircle className="w-5 h-5 text-red-800 dark:text-red-100 opacity-80 transition duration-200 mt-0.5 group-hover:hidden" />
-            <BsPlayCircleFill className="w-5 h-5 text-red-800 dark:text-red-100 transition duration-200 mt-0.5 hidden group-hover:inline" />
+            <BsPlayCircle
+              className={`${redStyles.icon} ${redStyles.baseText} opacity-80 transition duration-200 group-hover:hidden`}
+            />
+            <BsPlayCircleFill
+              className={`${redStyles.icon} ${redStyles.baseText} transition duration-200 hidden group-hover:inline`}
+            />
           </a>
           <div className="relative flex items-center text-sm w-fit pr-4">
-            <span className="font-bodyFont mt-0.5 text-red-800 dark:text-red-100">
+            <span className={`font-bodyFont mt-0.5 ${redStyles.baseText}`}>
               Demo
             </span>
             <a
@@ -39,7 +45,7 @@ function Demo({ demo }) {
             </a>
           </div>
         </div>
-      </div>
+      </button>
     </div>
   );
 }

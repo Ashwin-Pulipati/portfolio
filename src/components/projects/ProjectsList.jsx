@@ -1,21 +1,32 @@
-import React, { useState, useEffect, useCallback, lazy, Suspense, useMemo } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import Pagination from "../features/components/FeaturesPagination";
-import Searchbar from "../navbar/components/Searchbar";
+import React, {
+  lazy,
+  Suspense,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
+import { AiOutlineCode } from "react-icons/ai";
+import { FaAngular, FaJava, FaPython, FaReact } from "react-icons/fa";
+import { MdCodeOff } from "react-icons/md";
+import { SiOpenai, SiPostgresql } from "react-icons/si";
+import {
+  TiChevronRight,
+  TiChevronRightOutline,
+  TiThSmall,
+} from "react-icons/ti";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
+import Pagination from "./components/Pagination";
+import { createRipple } from "../layouts/RippleEffect";
 import { slugify } from "../layouts/Utils";
+import Searchbar from "../navbar/components/Searchbar";
 import {
   allProjectsList,
   projectsByCategory,
   projectsBySubcategory,
-} from "./constants/ProjectDataUtils";
-import { TiChevronRight, TiChevronRightOutline, TiThSmall } from "react-icons/ti";
-import { FaReact, FaAngular, FaPython, FaJava } from "react-icons/fa";
-import { SiPostgresql, SiOpenai } from "react-icons/si";   
-import { MdCodeOff } from "react-icons/md";                  
-import { AiOutlineCode } from "react-icons/ai"; 
-import { useLocation } from "react-router-dom";            
-import { createRipple } from "../layouts/RippleEffect";
-
+} from "./Projects.constants";
+import { darkModeDropdownItemGradientMap, lightModeDropdownItemGradientMap } from "../navbar/Navbar.constants";
+import { useDarkMode } from "../layouts/DarkMode";
 
 const ProjectsCardLazy = lazy(() => import("./ProjectsCard"));
 
@@ -29,7 +40,11 @@ const SkeletonCard = () => (
     </div>
     <div className="flex flex-col gap-2 mt-4">
       {[...Array(4)].map((_, i) => (
-        <div key={i} className="h-4 bg-gray-400 rounded-full" style={{ width: `${(4 - i) / 4 * 100}%` }}></div>
+        <div
+          key={i}
+          className="h-4 bg-gray-400 rounded-full"
+          style={{ width: `${((4 - i) / 4) * 100}%` }}
+        ></div>
       ))}
     </div>
   </div>
@@ -47,7 +62,6 @@ const subIconMap = {
   "No-Code": MdCodeOff,
   "Code-Based": AiOutlineCode,
 };
-
 
 const subColorMap = {
   "All Stacks": "text-gray-500 dark:text-gray-400",
@@ -83,11 +97,20 @@ const ProjectsList = ({ searchQuery, onSearch }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [categoryProjects, setCategoryProjects] = useState(allProjectsList);
 
-  const subs = useMemo(() => 
-    category === "full-stack-development"
-      ? ["All Stacks", "MERN Stack", "MEAN Stack", "PERN Stack", "Python", "Java"]
-      : ["All AI", "No-Code", "Code-Based"]
-  , [category]);
+  const subs = useMemo(
+    () =>
+      category === "full-stack-development"
+        ? [
+            "All Stacks",
+            "MERN Stack",
+            "MEAN Stack",
+            "PERN Stack",
+            "Python",
+            "Java",
+          ]
+        : ["All AI", "No-Code", "Code-Based"],
+    [category]
+  );
 
   useEffect(() => {
     const subParam = new URLSearchParams(location.search).get("sub");
@@ -107,7 +130,6 @@ const ProjectsList = ({ searchQuery, onSearch }) => {
         ? projectsBySubcategory[key] || baseList
         : baseList
     );
-    
   }, [category, selectedSub, defaultSubLabel]);
 
   useEffect(() => {
@@ -115,16 +137,22 @@ const ProjectsList = ({ searchQuery, onSearch }) => {
     window.scrollTo(0, 0);
   }, [searchQuery]);
 
-  const filteredProjects = useMemo(() => 
-    categoryProjects.filter(
-      (project) =>
-        project.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        project.des.toLowerCase().includes(searchQuery.toLowerCase())
-    ), [categoryProjects, searchQuery]);
+  const filteredProjects = useMemo(
+    () =>
+      categoryProjects.filter(
+        (project) =>
+          project.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          project.des.toLowerCase().includes(searchQuery.toLowerCase())
+      ),
+    [categoryProjects, searchQuery]
+  );
 
   const totalPages = Math.ceil(filteredProjects.length / ITEMS_PER_PAGE);
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
-  const displayedProjects = filteredProjects.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+  const displayedProjects = filteredProjects.slice(
+    startIndex,
+    startIndex + ITEMS_PER_PAGE
+  );
 
   const handleNext = useCallback(() => {
     if (currentPage < totalPages) setCurrentPage((prev) => prev + 1);
@@ -144,6 +172,8 @@ const ProjectsList = ({ searchQuery, onSearch }) => {
     const key = `${catSlug}||${subSlug}`;
     return (projectsBySubcategory[key] || []).length;
   }, []);
+  
+  const isDark = useDarkMode();
 
   return (
     <section className="w-full min-h-screen bg-bodyColorWhite dark:bg-bodyColor text-lightText sm:pt-4 lg:pt-0">
@@ -154,15 +184,13 @@ const ProjectsList = ({ searchQuery, onSearch }) => {
         <div className="xs:hidden lg:flex flex justify-end items-center cursor-pointer mr-11 ">
           <div className="relative w-48 rounded-lg">
             <div
-              className="relative p-0.5 rounded-lg flex items-center w-full hover:bg-gradient-to-r focus-within:bg-gradient-to-r 
-          from-[#58eba6] via-[#1fc8de] to-[#0584d9] shadow-shadowTwo dark:shadow-shadowOne"
+              className="relative flex items-center w-full gradientBorderLg "
               tabIndex="0"
               onBlur={() => setSubOpen(false)}
             >
               <div
-                className="group flex gap-2 justify-center items-center bg-gray-50 bg-gradient-br 
-      from-[#dee3e7] to-white dark:bg-bodyColor dark:bg-gradient-to-tl dark:from-[#262a2e] dark:to-[#1f2022]
-      transition-colors px-3 py-3 rounded-lg text-gray-700 dark:text-gray-300 text-base w-full ripple-container"
+                className="group flex gap-2 justify-center items-center cardGradient 
+      transition-colors px-3 py-3 rounded-lg text-gray-700 dark:text-gray-300 text-base w-full ripple-container "
                 onClick={() => setSubOpen((p) => !p)}
                 onMouseDown={createRipple}
               >
@@ -180,39 +208,50 @@ const ProjectsList = ({ searchQuery, onSearch }) => {
               </div>
 
               {isSubOpen && (
-                <ul className="absolute z-50 top-14 left-0 w-full bg-gray-50 dark:bg-bodyColor shadow-md rounded-md py-2 text-gray-700 dark:text-gray-300 transition-colors duration-100">
-                  {subs.filter(s => s !== selectedSub).map((sub, i) => {
-                    const Icon = subIconMap[sub] || FaReact;
-                    const colorClass =
-                      subColorMap[sub] || "text-gray-700 dark:text-gray-300";
-                    return (
-                      <li
-                        key={i}
-                        className={`
-            flex items-center gap-2 px-4 py-2 text-base 
-            font-semibold cursor-pointer ripple-container font-titleFont
-            ${
-              hoveredSub === sub
-                ? category === "full-stack-development"
-                  ? "bg-gradient-to-br from-[#96fbc4] to-[#f9f586] dark:from-[#226346] dark:to-[#6b5b1d] text-black"
-                  : "bg-gradient-to-br from-[#a0f0f4] to-[#f9f586] dark:from-[#0d7998] dark:to-[#66009a] text-black"
-                : "text-gray-700 dark:text-gray-300"
-            }
-          `}
-                        onClick={() => {
-                          const slugSub = slugify(sub);
-                          navigate(`${location.pathname}?sub=${slugSub}`);
-                          setSubOpen(false);
-                        }}
-                        onMouseEnter={() => setHoveredSub(sub)}
-                        onMouseLeave={() => setHoveredSub(null)}
-                        onMouseDown={(e) => e.stopPropagation()}
-                      >
-                        <Icon className={`w-5 h-5 ${colorClass}`} />
-                        {sub} ({getSubCount(category, sub)})
-                      </li>
-                    );
-                  })}
+                <ul className="absolute z-50 top-14 left-0 w-full cardGradient shadow-md rounded-md py-2 text-gray-700 dark:text-gray-300 transition-colors duration-100">
+                  {subs
+                    .filter((s) => s !== selectedSub)
+                    .map((sub, i) => {
+                      const Icon = subIconMap[sub] || FaReact;
+                      const colorClass =
+                        subColorMap[sub] || "text-gray-700 dark:text-gray-300";
+                      return (
+                        <li
+                          key={i}
+                          className={`
+    w-full flex items-center gap-2 px-4 py-2 text-base font-semibold cursor-pointer ripple-container font-titleFont
+    text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white
+  `}
+                          style={{
+                            background:
+                              hoveredSub === sub
+                                ? category === "full-stack-development"
+                                  ? isDark
+                                    ? darkModeDropdownItemGradientMap[
+                                        "full-stack-development"
+                                      ]
+                                    : lightModeDropdownItemGradientMap[
+                                        "full-stack-development"
+                                      ]
+                                  : isDark
+                                  ? darkModeDropdownItemGradientMap["ui-ux"] // or “ai” key if that’s your AI slug
+                                  : lightModeDropdownItemGradientMap["ai"]
+                                : undefined,
+                          }}
+                          onClick={() => {
+                            const slugSub = slugify(sub);
+                            navigate(`${location.pathname}?sub=${slugSub}`);
+                            setSubOpen(false);
+                          }}
+                          onMouseEnter={() => setHoveredSub(sub)}
+                          onMouseLeave={() => setHoveredSub(null)}
+                          onMouseDown={(e) => e.stopPropagation()}
+                        >
+                          <Icon className={`w-5 h-5 ${colorClass}`} />
+                          {sub} ({getSubCount(category, sub)})
+                        </li>
+                      );
+                    })}
                 </ul>
               )}
             </div>
@@ -220,7 +259,7 @@ const ProjectsList = ({ searchQuery, onSearch }) => {
         </div>
       )}
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-8 md:gap-6 lg:gap-7 xs:px-4 md:px-6 lg:px-11 py-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 md:gap-6 lg:gap-7 xs:px-4 md:px-6 lg:px-11 py-10">
         {displayedProjects.length > 0 ? (
           displayedProjects.map((project, index) => (
             <Suspense key={project.id} fallback={<DelayedFallback />}>

@@ -7,7 +7,7 @@ import Navbar from "./components/navbar/Navbar";
 import CursorEffect from "./components/cursor/CustomCursor";
 import BottomNavbar from "./components/navbar/BottomNavbar";
 import Footer from "./components/footer/Footer";
-import ScrollTo from "./components/dashboard/ScrollTo";
+import ScrollTo from "./global-components/ScrollTo";
 
 function App() {
   const [searchQuery, setSearchQuery] = useState("");

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import debounce from "lodash.debounce";
 import { useLocation, useNavigate } from "react-router-dom";
-import { navItems } from "./constants/NavItems";
+import { navItems } from "./Navbar.constants";
 import { createRipple } from "../layouts/RippleEffect";
 
 function BottomNavbar() {
@@ -61,7 +61,7 @@ function BottomNavbar() {
       const isHomepage =
         location.pathname === "/" || location.pathname === "/portfolio";
 
-      if (!isHomepage) return; // don't attach scroll logic on non-home pages
+      if (!isHomepage) return;
 
       const handleActiveOnScroll = debounce(() => {
         const scrollPos = window.pageYOffset + headerOffset + 1;
@@ -98,26 +98,26 @@ function BottomNavbar() {
   return (
     <div
       className={`w-full xs:block md:hidden fixed bottom-0 z-50 flex justify-between items-center font-titleFont backdrop-blur-lg 
-      py-[20px] md:px-[45px] sm:px-[30px] xs:px-[20px] xs:pb-[15px] rounded-tr-xl rounded-tl-xl ${
+      py-5 xs:px-5 xs:pb-3.5 sm:px-8 md:px-11 rounded-tr-xl rounded-tl-xl ${
         isScrolled
-          ? "bg-[#ECF0F3]/75 dark:bg-bodyColor/50"
-          : "bg-[#ECF0F3] dark:bg-bodyColor"
+          ? "bg-bodyColorWhite/75 dark:bg-bodyColor/50"
+          : "bg-bodyColorWhite dark:bg-bodyColor"
       } transition-shadow duration-300`}
     >
       <div className="flex justify-between items-center gap-2">
         {navItems.map((nav, idx) => (
-          <button
+          <div
             key={nav.id}
-            onClick={() => handleClick(nav, idx)}
             className="flex flex-col items-center justify-center transition-all duration-300"
           >
-            <div
+            <button
               className={`w-6 h-6 flex items-center justify-center rounded-full transition-all duration-300 ripple-container ${
                 activeIndex === idx
-                  ? `${nav.backgroundActive} shadow-shadowTwo dark:shadow-shadowOne`
+                  ? `${nav.backgroundActive} elevatedShadow`
                   : ""
-                }`}
+              }`}
               onMouseDown={createRipple}
+              onClick={() => handleClick(nav, idx)}
             >
               <div
                 className={`w-6 h-6 ${
@@ -126,7 +126,7 @@ function BottomNavbar() {
               >
                 {activeIndex === idx ? nav.activeIcon : nav.inactiveIcon}
               </div>
-            </div>
+            </button>
             <span
               className={`text-xs capitalize pt-1.5 ${
                 activeIndex === idx
@@ -136,7 +136,7 @@ function BottomNavbar() {
             >
               {nav.bottomNavTitle}
             </span>
-          </button>
+          </div>
         ))}
       </div>
     </div>

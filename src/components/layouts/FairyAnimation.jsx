@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import AnimatedFairyLightMode from "../../assets/images/Webp/fairy-trial.webp";
 import AnimatedFairyDarkMode from "../../assets/images/Webp/fairy-trial2.webp";
 import "./FairyAnimation.css";
@@ -14,7 +14,9 @@ const FairyAnimation = ({
   const [showFairy, setShowFairy] = useState(false);
   const [displayMessage, setDisplayMessage] = useState("");
   const [displayShockTitle, setDisplayShockTitle] = useState(shockTitle);
-  const [isDark, setIsDark] = useState(!!document.documentElement.classList.contains("dark"));
+  const [isDark, setIsDark] = useState(
+    !!document.documentElement.classList.contains("dark")
+  );
   const [pauseAnim, setPauseAnim] = useState(false);
   const [isHolding, setIsHolding] = useState(false);
 
@@ -98,22 +100,20 @@ const FairyAnimation = ({
         showFairy ? "opacity-100" : "opacity-0"
       }`}
     >
-      {/* Close Icon (remains outside the clickable area) */}
-      <div
-        className="absolute -top-10 left-0 z-10 cursor-pointer hover:bg-gradient-to-r from-[#58eba6] via-[#1fc8de] to-[#0584d9] 
-          rounded-full p-0.5 shadow-shadowTwo dark:shadow-shadowOne"
+      <button
+        className="absolute -top-10 left-0 z-10 cursor-pointer gradientBorderFull"
         onClick={() => {
           setShowFairy(false);
           window.__fairyActive = false;
         }}
       >
-        <div className="relative w-5 h-5 flex items-center justify-center bg-boxBgWhite dark:bg-boxBg bg-gradient-to-br dark:bg-gradient-to-tl from-[#dee3e7] to-white dark:from-[#262a2e] dark:to-[#1f2022] transition-colors duration-300 rounded-full p-1">
-          <span className="relative block w-3.5 h-3.5 text-blue-700 dark:text-designColor">
+        <div className="relative w-5 h-5 flex items-center justify-center cardGradient transition-colors duration-300 rounded-full p-1">
+          <span className="relative block w-3.5 h-3.5 arrowIcon">
             <span className="absolute inset-0 top-1.5 right-1 bg-current rotate-45 w-full h-[2px] rounded-full"></span>
             <span className="absolute inset-0 top-1.5 right-1 bg-current -rotate-45 w-full h-[2px] rounded-full"></span>
           </span>
         </div>
-      </div>
+      </button>
 
       <div
         className="fairy-hover-area"

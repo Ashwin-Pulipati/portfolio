@@ -1,7 +1,7 @@
-import React from "react";
 import { motion } from "framer-motion";
-import { skillsData } from "../constants/ProfessionalSkillsData";
+import React from "react";
 import { useDarkMode } from "../../layouts/DarkMode";
+import { skillsData } from "../Resume.constants";
 
 const Skills = () => {
   const isDarkMode = useDarkMode();
@@ -15,7 +15,7 @@ const Skills = () => {
       {skillsData.map((category, catIndex) => (
         <div key={catIndex} className="w-full">
           <div className="pt-12">
-            <p className="text-sm font-bodyFont text-blue-700 dark:text-designColor tracking-[2px] uppercase font-medium">
+            <p className="text-sm font-bodyFont arrowIcon font-semibold tracking-[2px] uppercase">
               {category.category.toUpperCase()}
             </p>
             {category.subCategories.map((subCat, subIndex) => (
@@ -48,6 +48,7 @@ const Skills = () => {
                       key: itemIndex,
                       className: item.className || "w-11 h-11",
                     };
+                    
                     return item.type === "icon" ? (
                       <item.component
                         {...commonProps}

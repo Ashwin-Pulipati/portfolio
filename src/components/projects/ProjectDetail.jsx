@@ -3,18 +3,18 @@ import { useNavigate } from "react-router-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
-import UnifiedArrow from "../layouts/UnifiedArrow";
-import ProjectDetailInterest from "./components/ProjectDetailInterest";
-import projectDetailData from "./constants/ProjectDetailData";
 import Image1 from "../../assets/images/Webp/projectOne.webp";
 import Image3 from "../../assets/images/Webp/projectThree.webp";
 import Image2 from "../../assets/images/Webp/projectTwo.webp";
-import HighlightTextProjectDetail from "./components/HighlightTextProjectDetail";
-import Searchbar from "../navbar/components/Searchbar";
-import "./Project.css";
-import ProjectSidebarNavigation from "./constants/ProjectSidebarNavigation";
 import { useDarkMode } from "../layouts/DarkMode";
 import { createRipple } from "../layouts/RippleEffect";
+import UnifiedArrow from "../layouts/UnifiedArrow";
+import Searchbar from "../navbar/components/Searchbar";
+import "./Project.css";
+import HighlightTextProjectDetail from "./components/HighlightTextProjectDetail";
+import ProjectDetailInterest from "./components/ProjectDetailInterest";
+import projectDetailData from "./constants/ProjectDetailData";
+import ProjectSidebarNavigation from "./components/ProjectSidebarNavigation";
 
 const ProjectDetail = ({
   id,
@@ -72,14 +72,21 @@ const ProjectDetail = ({
       beforeChange: (_, next) => setDotActive(next),
       appendDots: (dots) => (
         <div style={{ borderRadius: "10px", padding: "10px" }}>
-          <ul style={{ display: "flex", gap: "10px", justifyContent: "center", marginTop: "20px" }}>
+          <ul
+            style={{
+              display: "flex",
+              gap: "10px",
+              justifyContent: "center",
+              marginTop: "20px",
+            }}
+          >
             {dots}
           </ul>
         </div>
       ),
       customPaging: (i) => (
         <div className="relative flex items-center justify-center group">
-          <div className="absolute top-[80%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[17px] h-[17px] rounded-full bg-gradient-to-r from-[#58eba6] via-[#1fc8de] to-[#0584d9] opacity-30 scale-0 transition-all duration-300 group-hover:opacity-100 group-hover:scale-100"></div>
+          <div className="absolute top-[80%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[17px] h-[17px] rounded-full bg-gradient-to-r from-emerald-300 via-cyan-400 to-blue-600 opacity-30 scale-0 transition-all duration-300 group-hover:opacity-100 group-hover:scale-100"></div>
           <div
             style={{
               width: "10px",
@@ -94,7 +101,8 @@ const ProjectDetail = ({
               borderRadius: "50%",
               cursor: "pointer",
               marginTop: "15px",
-              boxShadow: "1px 4px 2px -3px rgba(0, 0, 0, 0.7) inset, -1px -3px 3px -2px rgba(255, 255, 255, 0.2) inset",
+              boxShadow:
+                "1px 4px 2px -3px rgba(0, 0, 0, 0.7) inset, -1px -3px 3px -2px rgba(255, 255, 255, 0.2) inset",
               zIndex: "1",
             }}
           />
@@ -107,7 +115,8 @@ const ProjectDetail = ({
   const scrollToSection = (id) => {
     const section = document.getElementById(id);
     if (section) {
-      const offsetPosition = section.getBoundingClientRect().top + window.pageYOffset - 100;
+      const offsetPosition =
+        section.getBoundingClientRect().top + window.pageYOffset - 100;
       window.scrollTo({ top: offsetPosition, behavior: "smooth" });
     }
   };
@@ -119,9 +128,12 @@ const ProjectDetail = ({
       </h2>
       <ul className="list-disc ml-6 font-bodyFont">
         {data.map((point, idx) => (
-          <li key={idx} className="text-blue-700 dark:text-designColor mb-2">
+          <li key={idx} className="text-blue-700 dark:text-cyan-400 mb-2">
             <div className="text-gray-700 dark:text-gray-400">
-              <HighlightTextProjectDetail text={point} highlight={searchQuery} />
+              <HighlightTextProjectDetail
+                text={point}
+                highlight={searchQuery}
+              />
             </div>
           </li>
         ))}
@@ -146,17 +158,17 @@ const ProjectDetail = ({
               src="https://www.w3schools.com/html/mov_bbb.mp4"
             />
           </div>
-          <div className="bg-gradient-to-br from-[#dee3e7] to-white dark:bg-gradient-to-tl dark:from-[#262a2e] dark:to-[#1f2022] rounded-2xl shadow-shadowTwo dark:shadow-shadowOne py-14 px-6 md:px-14 relative">
+          <div className="cardView rounded-2xl py-14 px-6 md:px-14 relative">
             <button
               onClick={() => navigate(-1)}
-              className="absolute z-10 top-4 right-4 md:top-6 md:right-6 lg:top-8 lg:right-8 w-9 h-9 md:w-12 md:h-12 rounded-full flex items-center justify-center transition-all duration-300 group shadow-shadowTwo dark:shadow-shadowOne"
+              className="absolute z-10 top-4 right-4 md:top-6 md:right-6 lg:top-8 lg:right-8 w-9 h-9 md:w-12 md:h-12 rounded-full flex items-center justify-center transition-all duration-300 group elevatedShadow"
             >
-              <div className="absolute -inset-0.5 p-0.5 rounded-full bg-gradient-to-r from-[#58eba6] via-[#1fc8de] to-[#0584d9] opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-300"></div>
+              <div className="absolute -inset-0.5 p-0.5 rounded-full appGradient opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-300"></div>
               <div
-                className="relative w-full h-full bg-bgBoxWhite dark:bg-boxBg bg-gradient-to-br dark:bg-gradient-to-tl from-[#dee3e7] to-white dark:from-[#262a2e] dark:to-[#1f2022] rounded-full flex items-center justify-center ripple-container"
+                className="relative w-full h-full boxBgGradient cardGradient rounded-full flex items-center justify-center ripple-container"
                 onMouseDown={createRipple}
               >
-                <span className="relative block w-4 h-4 md:w-5 md:h-5 text-blue-700 dark:text-designColor">
+                <span className="relative block w-4 h-4 md:w-5 md:h-5 arrowIcon">
                   <span className="absolute inset-0 top-1.5 md:top-2 right-1 bg-current rotate-45 w-full h-[4px] rounded-full" />
                   <span className="absolute inset-0 top-1.5 md:top-2 right-1 bg-current -rotate-45 w-full h-[4px] rounded-full" />
                 </span>
@@ -166,12 +178,12 @@ const ProjectDetail = ({
               id="overview-section"
               className="flex flex-col-reverse xl:flex-row-reverse justify-between items-start gap-14 border-b border-b-gray-400 dark:border-b-black pb-20 mt-8"
             >
-              <div className="w-full max-w-full md:max-w-[500px] lg:max-w-[800px] xl:max-w-[500px]  rounded-xl z-20">
+              <div className="w-full max-w-full md:max-w-[500px] lg:max-w-[800px] xl:max-w-[500px] rounded-xl z-20">
                 <Slider {...sliderSettings}>
                   {[Image1, Image2, Image3].map((image, index) => (
                     <div
                       key={index}
-                      className="w-full xs:h-[200px] sm:h-[250px] md:h-[400px] lg:h-[500px] xl:h-[400px] flex justify-center items-center rounded-xl"
+                      className="w-full h-[200px] sm:h-[250px] md:h-[400px] lg:h-[500px] xl:h-[400px] flex justify-center items-center rounded-xl"
                     >
                       <img
                         src={image}
@@ -182,7 +194,7 @@ const ProjectDetail = ({
                   ))}
                 </Slider>
               </div>
-              <div className="flex flex-col gap-6 z-20">
+              <div className="w-full h-full flex flex-col gap-6 z-20">
                 <div className="flex flex-col gap-3">
                   <h1 className="font-titleFont text-3xl font-bold text-black dark:text-white">
                     <HighlightTextProjectDetail

@@ -1,9 +1,11 @@
-import React, { useState, useCallback } from "react";
+import React, { useCallback, useState } from "react";
 import { GoHeart, GoHeartFill } from "react-icons/go";
-import { useFeedback } from "./FeedbackContext";
 import { createRipple } from "../../layouts/RippleEffect";
+import { useFeedback } from "./FeedbackContext";
+import { pinkStyles } from "../constants/LinksAndInterests.constants";
 
-function Likes({ projectId, temporary = false}) {
+
+function Likes({ projectId, temporary = false }) {
   const { getProjectFeedback, toggleLike } = useFeedback();
   const { likes, isLiked } = getProjectFeedback(projectId);
   const [showLikes, setShowLikes] = useState(false);
@@ -19,42 +21,53 @@ function Likes({ projectId, temporary = false}) {
   if (temporary) {
     return (
       <div
-        className="shadow-md shadow-pink-400 dark:shadow-pink-500 hover:shadow-none relative p-0.5 rounded-full flex items-center 
-        bg-pink-100 dark:bg-pink-800 hover:bg-gradient-to-r 
-      focus-within:bg-gradient-to-r from-[#58eba6] via-[#1fc8de] to-[#0584d9]"
+        className={`relative p-0.5 rounded-full flex items-center ${pinkStyles.baseBg} ${pinkStyles.baseShadow} ${pinkStyles.gradientHover}`}
       >
         {showLikes ? (
           <div className="relative">
-            <div className="absolute -inset-0.5 rounded-full bg-gradient-to-r from-[#58eba6] via-[#1fc8de] to-[#0584d9] opacity-60 blur"></div>
-            <div className="relative w-22 h-12 p-0.5 rounded-full bg-pink-100 dark:bg-pink-800 flex justify-start items-center">
+            <div className="absolute -inset-0.5 rounded-full bg-gradient-to-r from-emerald-300 via-cyan-400 to-blue-600 opacity-60 blur"></div>
+            <div
+              className={`relative w-22 h-12 p-0.5 rounded-full flex justify-start items-center ${pinkStyles.baseBg}`}
+            >
               <button
-                className="relative z-10 w-12 h-12 rounded-full bg-pink-100 dark:bg-pink-800 flex justify-center items-center focus:outline-none transition duration-200"
+                className={`relative z-10 w-12 h-12 rounded-full flex justify-center items-center focus:outline-none ${pinkStyles.baseBg} ${pinkStyles.icon}`}
                 onClick={handleLikeClick}
               >
                 {isLiked ? (
-                  <GoHeartFill className="w-5 h-5 text-[#ff4586] dark:text-pink-200 transition duration-200 mt-0.5" />
+                  <GoHeartFill
+                    className={`${pinkStyles.icon} ${pinkStyles.heartActive}`}
+                  />
                 ) : (
-                  <GoHeartFill className="w-5 h-5 text-pink-300 dark:text-pink-100 opacity-80 transition duration-200" />
+                  <GoHeartFill
+                    className={`${pinkStyles.icon} ${pinkStyles.heartInactive}`}
+                  />
                 )}
               </button>
-              <span className="text-sm pb-0.5 w-fit h-fit px-2 pr-4 font-medium text-pink-800 dark:text-pink-100">
+              <span
+                className={`text-sm pb-0.5 w-fit h-fit px-2 pr-4 font-medium ${pinkStyles.baseText}`}
+              >
                 {likes}
               </span>
             </div>
           </div>
         ) : (
           <button
-              className="relative z-10 w-12 h-12 rounded-full bg-pink-100 dark:bg-pink-800 flex justify-center items-center 
-            focus:outline-none transition duration-200 group/button ripple-container"
-              onClick={handleLikeClick}
-              onMouseDown={createRipple}
+            className={`relative z-10 w-12 h-12 rounded-full flex justify-center items-center focus:outline-none transition duration-200 group/button ripple-container ${pinkStyles.baseBg}`}
+            onClick={handleLikeClick}
+            onMouseDown={createRipple}
           >
             {isLiked ? (
-              <GoHeartFill className="w-5 h-5 text-[#ff4586] dark:text-pink-200 transition duration-200 mt-0.5" />
+              <GoHeartFill
+                className={`${pinkStyles.icon} ${pinkStyles.heartActive}`}
+              />
             ) : (
               <span className="group">
-                <GoHeart className="w-5 h-5 text-pink-800 dark:text-pink-100 group-hover/button:hidden transition duration-200 mt-0.5" />
-                <GoHeartFill className="w-5 h-5 hidden group-hover/button:inline text-pink-300 dark:text-pink-100 transition duration-200" />
+                <GoHeart
+                  className={`${pinkStyles.icon} ${pinkStyles.baseText} group-hover/button:hidden`}
+                />
+                <GoHeartFill
+                  className={`${pinkStyles.icon} ${pinkStyles.heartInactive} hidden group-hover/button:inline`}
+                />
               </span>
             )}
           </button>
@@ -65,29 +78,35 @@ function Likes({ projectId, temporary = false}) {
 
   return (
     <div
-      className="relative rounded-full bg-pink-100 dark:bg-pink-800 shadow-md shadow-pink-400 dark:shadow-pink-500 ripple-container
-      overflow-visible hover:shadow-none"
+      className={`relative rounded-full overflow-visible ripple-container ${pinkStyles.baseBg} ${pinkStyles.baseShadow}`}
       onMouseDown={createRipple}
     >
       <div
-        className="relative p-0.5 rounded-full flex items-center hover:bg-gradient-to-r focus-within:bg-gradient-to-r 
-        from-[#58eba6] via-[#1fc8de] to-[#0584d9] cursor-pointer"
+        className={`relative p-0.5 rounded-full flex items-center cursor-pointer ${pinkStyles.gradientHover}`}
         onClick={handleLikeClick}
       >
-        <div className="group relative w-22 h-11 p-0.5 rounded-full bg-pink-100 dark:bg-pink-800 flex justify-start 
-        items-center hover:shadow-none">
-          <button className="relative z-10 w-12 h-11 rounded-full flex justify-center items-center focus:outline-none 
-          transition duration-200">
+        <div
+          className={`group relative w-22 h-11 p-0.5 rounded-full flex justify-start items-center hover:shadow-none ${pinkStyles.baseBg}`}
+        >
+          <button className="relative z-10 w-12 h-11 rounded-full flex justify-center items-center focus:outline-none transition duration-200">
             {!isLiked ? (
               <>
-                <GoHeart className="w-5 h-5 text-[#ff4586] dark:text-pink-200 opacity-80 transition duration-200 mt-0.5 group-hover:hidden" />
-                <GoHeartFill className="w-5 h-5 hidden group-hover:inline text-pink-300 dark:text-pink-100 transition duration-200 mt-0.5" />
+                <GoHeart
+                  className={`${pinkStyles.icon} ${pinkStyles.heartActive} opacity-80 group-hover:hidden`}
+                />
+                <GoHeartFill
+                  className={`${pinkStyles.icon} ${pinkStyles.heartInactive} hidden group-hover:inline`}
+                />
               </>
             ) : (
-              <GoHeartFill className="w-5 h-5 text-[#ff4586] dark:text-pink-200 transition duration-200 mt-0.5" />
+              <GoHeartFill
+                className={`${pinkStyles.icon} ${pinkStyles.heartActive}`}
+              />
             )}
           </button>
-          <span className="text-sm pb-0.5 w-fit h-fit px-2 pr-4 text-pink-800 dark:text-pink-100">
+          <span
+            className={`text-sm pb-0.5 w-fit h-fit px-2 pr-4 ${pinkStyles.baseText}`}
+          >
             {likes}
           </span>
         </div>

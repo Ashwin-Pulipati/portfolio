@@ -1,6 +1,6 @@
 import { motion, useScroll } from "framer-motion";
 import React, { useRef } from "react";
-import { achievementData } from "../constants/AchievementData";
+import { achievementData } from "../Resume.constants";
 import ResumeCard from "./ResumeCard";
 
 const Achievement = () => {
@@ -18,7 +18,7 @@ const Achievement = () => {
     >
       <div className="w-full">
         <div className="pb-12 font-titleFont flex flex-col gap-4">
-          <p className="text-sm text-blue-700 dark:text-designColor tracking-[2px] font-bodyFont font-semibold">
+          <p className="text-sm arrowIcon tracking-[2px] font-bodyFont font-semibold">
             2020 - PRESENT
           </p>
           <motion.h2

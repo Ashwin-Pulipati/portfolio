@@ -5,69 +5,77 @@ import { FaMobileAlt, FaMobile } from "react-icons/fa";
 import { TbTags } from "react-icons/tb";
 import { AiFillAliwangwang, AiOutlineAliwangwang } from "react-icons/ai";
 
-export const tagColorMap = {
-  "frontend-development": { tagColor: "#fa8fa4", textColor: "#ffffff" },
-  "machine-learning": { tagColor: "#f9b65c", textColor: "#ffffff" },
-  "full-stack-development": { tagColor: "#a6d36e", textColor: "#ffffff" },
-  "ui-ux": { tagColor: "#c785f9", textColor: "#ffffff" },
-  ai: { tagColor: "#85f9f9", textColor: "#ffffff" },
-};
-
-export const backgroundClassMap = {
-  "frontend-development": "bg-pink-100 dark:bg-pink-900 ",
-  "machine-learning": "bg-yellow-100 dark:bg-yellow-900",
-  "full-stack-development": "bg-green-100 dark:bg-green-900",
-  "ui-ux": "bg-purple-100 dark:bg-purple-900",
-  "ai": "bg-sky-100 dark:bg-sky-900",
-};
-
-export const lightModeColorMap = {
+export const tagStyleMap = {
   "frontend-development": {
-    text: "#db2777",
-    border: "#db2777",
-    bg: "#fff5f7",
+    tagColor: "#fa8fa4",
+    textColor: "#ffffff",
+    backgroundClass: "bg-pink-100 dark:bg-pink-900",
+    lightMode: {
+      text: "#db2777",
+      border: "#db2777",
+      bg: "#fff5f7",
+    },
+    gradient: {
+      light: "linear-gradient(to bottom right, #ff9aad 0%, #f9f586 100%)",
+      dark: "linear-gradient(to bottom right, #6e0c19 0%, #453a94 100%)",
+    },
   },
   "machine-learning": {
-    text: "#ca8a04",
-    border: "#ca8a04",
-    bg: "#fefcbf",
+    tagColor: "#f9b65c",
+    textColor: "#ffffff",
+    backgroundClass: "bg-yellow-100 dark:bg-yellow-900",
+    lightMode: {
+      text: "#ca8a04",
+      border: "#ca8a04",
+      bg: "#fefcbf",
+    },
+    gradient: {
+      light: "linear-gradient(to bottom right, #ffbfa7 0%, #f9f586 100%)",
+      dark: "linear-gradient(to bottom right, #7e6c10  0%, #6a0d4b 100%)",
+    },
   },
   "full-stack-development": {
-    text: "#16a34a",
-    border: "#16a34a",
-    bg: "#d1fae5",
+    tagColor: "#a6d36e",
+    textColor: "#ffffff",
+    backgroundClass: "bg-green-100 dark:bg-green-900",
+    lightMode: {
+      text: "#16a34a",
+      border: "#16a34a",
+      bg: "#d1fae5",
+    },
+    gradient: {
+      light: "linear-gradient(to bottom right, #96fbc4 0%, #f9f586 100%)",
+      dark: "linear-gradient(to bottom right, #226346 0%, #6b5b1d 100%)",
+    },
   },
   "ui-ux": {
-    text: "#9333ea",
-    border: "#9333ea",
-    bg: "#faf5ff",
+    tagColor: "#c785f9",
+    textColor: "#ffffff",
+    backgroundClass: "bg-purple-100 dark:bg-purple-900",
+    lightMode: {
+      text: "#9333ea",
+      border: "#9333ea",
+      bg: "#faf5ff",
+    },
+    gradient: {
+      light: "linear-gradient(to bottom right, #b78fff 0%, #f9f586 100%)",
+      dark: "linear-gradient(to bottom right, #66009a 0%, #0d7998 100%)",
+    },
   },
   ai: {
-    text: "#2563eb",
-    border: "#2563eb",
-    bg: "#dbeafe",
+    tagColor: "#85f9f9",
+    textColor: "#ffffff",
+    backgroundClass: "bg-sky-100 dark:bg-sky-900",
+    lightMode: {
+      text: "#2563eb",
+      border: "#2563eb",
+      bg: "#dbeafe",
+    },
+    gradient: {
+      light: "linear-gradient(to bottom right, #a0f0f4 0%, #f9f586 100%)",
+      dark: "linear-gradient(to bottom right, #0d7998 0%, #66009a 100%)",
+    },
   },
-};
-
-export const cardGradientMap = {
-  "frontend-development": `linear-gradient(to bottom right, #ff9aad 0%, #f9f586 100%)`,
-  "machine-learning":
-    "linear-gradient(to bottom right, #ffbfa7 0%, #f9f586 100%)",
-  "full-stack-development":
-    "linear-gradient(to bottom right, #96fbc4 0%, #f9f586 100%)",
-  "ui-ux": "linear-gradient(to bottom right, #b78fff 0%, #f9f586 100%)",
-  ai: "linear-gradient(to bottom right, #a0f0f4 0%, #f9f586 100%)",
-};
-
-export const darkModeCardGradientMap = {
-  "frontend-development":
-    "linear-gradient(to bottom right, #6e0c19 0%, #453a94 100%)",
-  "machine-learning":
-    "linear-gradient(to bottom right, #7e6c10  0%, #6a0d4b 100%)",
-  "full-stack-development":
-    "linear-gradient(to bottom right, #226346 0%, #6b5b1d 100%)",
-  "ui-ux": "linear-gradient(to bottom right, #66009a 0%, #0d7998 100%)",
-  ai: "linear-gradient(to bottom right, #0d7998 0%, #66009a 100%)",
 };
 
 export const hexToRGBA = (hex, alpha = 1) => {
@@ -86,7 +94,7 @@ export const featuresData = [
     hoverColor: "group-hover:text-[#8dc653]",
     title: "Full Stack Development",
     tags: ["MongoDB", "Express", "React", "Node.js"],
-    bgClass: backgroundClassMap["full-stack-development"],
+    bgClass: tagStyleMap["full-stack-development"].backgroundClass,
     tagIconOutlined: (
       <TbTags className="w-4 h-4 text-green-600 dark:text-[#8dc653]" />
     ),
@@ -114,7 +122,7 @@ export const featuresData = [
     hoverColor: "group-hover:text-[#85f9f9]",
     title: "AI",
     tags: ["Figma", "Photoshop"],
-    bgClass: backgroundClassMap["ai"],
+    bgClass: tagStyleMap["ai"].backgroundClass,
     tagIconOutlined: (
       <TbTags className="w-4 h-4 text-blue-600 dark:text-[#85f9f9]" />
     ),
@@ -142,7 +150,7 @@ export const featuresData = [
     hoverColor: "group-hover:text-[#f78c9a]",
     title: "Frontend Development",
     tags: ["React", "TypeScript", "HTML", "CSS"],
-    bgClass: backgroundClassMap["frontend-development"],
+    bgClass: tagStyleMap["frontend-development"].backgroundClass,
     tagIconOutlined: (
       <TbTags className="w-4 h-4 text-pink-600 dark:text-[#fa8fa4]" />
     ),
@@ -170,7 +178,7 @@ export const featuresData = [
     hoverColor: "group-hover:text-[#f5a442]",
     title: "Machine Learning",
     tags: ["Python", "TensorFlow", "scikit-learn", "NumPy"],
-    bgClass: backgroundClassMap["machine-learning"],
+    bgClass: tagStyleMap["machine-learning"].backgroundClass,
     tagIconOutlined: (
       <TbTags className="w-4 h-4 text-yellow-600 dark:text-[#f5a442]" />
     ),
@@ -199,7 +207,7 @@ export const featuresData = [
     hoverColor: "group-hover:text-[#b06ce5]",
     title: "UI/UX",
     tags: ["Figma", "Photoshop"],
-    bgClass: backgroundClassMap["ui-ux"],
+    bgClass: tagStyleMap["ui-ux"].backgroundClass,
     tagIconOutlined: (
       <TbTags className="w-4 h-4 text-purple-600 dark:text-[#b06ce5]" />
     ),

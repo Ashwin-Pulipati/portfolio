@@ -2,18 +2,11 @@ import React, { useCallback, useState} from "react";
 import { HiArrowRight } from "react-icons/hi";
 import { useNavigate } from "react-router-dom";
 import { slugify } from "../../layouts/Utils";
-import {
-  hexToRGBA,
-  tagColorMap,
-  lightModeColorMap,
-  darkModeCardGradientMap,
-  cardGradientMap,
-} from "../constants/featuresData";
+import { hexToRGBA, tagStyleMap} from "../constants/featuresData";
 import { useDarkMode } from "../../layouts/DarkMode";
 
 const Card = ({
   item: {
-    id,
     title,
     des,
     iconOutlined,
@@ -21,7 +14,6 @@ const Card = ({
     tags,
     tagIconFilled,
     tagIconOutlined,
-    bgClass,
   },
 }) => {
   const navigate = useNavigate();
@@ -35,23 +27,25 @@ const Card = ({
   const [isHovered, setIsHovered] = useState(false);
   const isDarkMode = useDarkMode();
 
-  const tagColors = tagColorMap[cardSlug] || {
+  // get style object or default
+  const style = tagStyleMap[cardSlug] || {
     tagColor: "#ffffff",
-    textColor: "#333",
+    textColor: "#333333",
+    backgroundClass: "",
+    lightMode: {},
+    gradient: { light: "", dark: "" },
   };
 
+  const bgClass = style.backgroundClass;
+  const tagColors = { tagColor: style.tagColor, textColor: style.textColor };
+  const lightColors = style.lightMode;
+
   const currentGradient = isDarkMode
-    ? darkModeCardGradientMap[cardSlug]
-    : cardGradientMap[cardSlug];
-
+    ? style.gradient.dark
+    : style.gradient.light;
   const computedHoverStyle = isHovered
-    ? {
-        backgroundImage: currentGradient,
-        color: "white",
-      }
+    ? { backgroundImage: currentGradient, color: "#ffffff" }
     : {};
-
-  const lightColors = lightModeColorMap[cardSlug] || {};
 
   return (
     <div
@@ -59,7 +53,7 @@ const Card = ({
       onMouseLeave={() => setIsHovered(false)}
       onClick={handleCardClick}
       style={computedHoverStyle}
-      className="w-full p-6 md:p-8 lg:p-10 rounded-lg flex items-center bg-boxBgWhite dark:bg-boxBg shadow-shadowTwo dark:shadow-shadowOne transition-colors duration-300 group cursor-pointer"
+      className="w-full p-6 md:p-8 lg:p-10 rounded-lg flex items-center cardView group cursor-pointer"
     >
       <div className="w-full">
         <div className="flex flex-col gap-6 transform transition-transform duration-300 ease-in-out group-hover:-translate-y-2.5">
@@ -78,13 +72,13 @@ const Card = ({
           </div>
 
           <div className="flex flex-col gap-4">
-            <h2 className="text-lg md:text-xl lg:text-2xl font-titleFont font-bold text-gray-700 dark:text-gray-300 dark:group-hover:text-white">
+            <h2 className="text-lg lg:text-2xl md:text-xl font-titleFont font-bold text-gray-700 dark:text-gray-300 dark:group-hover:text-white">
               {title}
             </h2>
             <div className="flex flex-wrap items-center gap-2">
-              {tags.map((tag, tagIndex) => (
-                <span
-                  key={tagIndex}
+              {tags.map((tag, idx) => (
+                <div
+                  key={idx}
                   className="text-xs font-medium font-bodyFont rounded-full px-2.5 py-1 border-2 cursor-pointer transition-all duration-300 dark:group-hover:text-white"
                   style={
                     !isDarkMode && lightColors.border && lightColors.bg
@@ -96,24 +90,19 @@ const Card = ({
                       : {
                           borderColor: tagColors.tagColor,
                           color: tagColors.textColor,
-                          backgroundColor: hexToRGBA(
-                            tagColors.tagColor,
-                            0.15
-                          ),
+                          backgroundColor: hexToRGBA(tagColors.tagColor, 0.15),
                         }
                   }
-                  onMouseEnter={() => setHoveredTag(tagIndex)}
+                  onMouseEnter={() => setHoveredTag(idx)}
                   onMouseLeave={() => setHoveredTag(null)}
                 >
                   <div className="flex items-center gap-1">
                     <span className="transition-all duration-300 dark:group-hover:text-white">
-                      {hoveredTag === tagIndex
-                        ? tagIconFilled
-                        : tagIconOutlined}
+                      {hoveredTag === idx ? tagIconFilled : tagIconOutlined}
                     </span>
                     {tag}
                   </div>
-                </span>
+                </div>
               ))}
             </div>
             <p
@@ -128,7 +117,7 @@ const Card = ({
           </div>
 
           <div className="flex justify-start">
-            <span className="text-2xl text-blue-700 dark:text-designColor opacity-0 group-hover:opacity-100 transition-opacity duration-300 cursor-pointer">
+            <span className="text-2xl arrowIcon opacity-0 group-hover:opacity-100 transition-opacity duration-300 cursor-pointer">
               <HiArrowRight />
             </span>
           </div>

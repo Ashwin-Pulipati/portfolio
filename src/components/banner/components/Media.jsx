@@ -1,20 +1,12 @@
 import React from "react";
 import { motion } from "framer-motion";
-
-import { socialIcons, skills } from "../constants/media";
+import { socialIcons, skills } from "../Banner.constants";
 import { createRipple } from "../../layouts/RippleEffect";
-
-const fadeUpProps = {
-  initial: { opacity: 0, y: 50 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, amount: 0.3 },
-  transition: { duration: 0.8, ease: "easeInOut" },
-};
+import { fadeUpProps } from "../Banner.utils";
 
 const Media = () => {
   return (
-    <div className="flex flex-col lg:flex-row xl:gap-48 md:gap-12 sm:gap-12 justify-between pt-8 lg:gap-14">
-      {/* Social Icons Section */}
+    <div className="flex flex-col lg:flex-row justify-between gap-8 sm:gap-12 lg:gap-14 xl:gap-48 pt-8">
       <div>
         <h2 className="tracking-[1px] text-sm sm:text-base uppercase font-titleFont mb-4">
           Find me on
@@ -37,14 +29,12 @@ const Media = () => {
           )}
         </motion.div>
       </div>
-
-      {/* Skills Icons Section */}
       <div className="flex flex-col mt-10 lg:mt-0">
         <h2 className="tracking-[1px] text-sm sm:text-base uppercase font-titleFont mb-4">
           BEST SKILL IN
         </h2>
         <motion.div
-          className="flex w-fit h-fit flex-wrap gap-6 justify-start"
+          className="w-fit h-fit flex justify-start flex-wrap gap-6 "
           {...fadeUpProps}
         >
           {skills.map(({ id, Icon, containerClass, iconClass, style }) => (

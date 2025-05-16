@@ -1,27 +1,31 @@
-import React from "react";
 import { GlobeAmericasIcon } from "@heroicons/react/24/outline";
 import { GlobeAmericasIcon as GlobeAmericasSolidIcon } from "@heroicons/react/24/solid";
+import React from "react";
 import { FiExternalLink } from "react-icons/fi";
 import { createRipple } from "../../layouts/RippleEffect";
+import { greenStyles } from "../constants/LinksAndInterests.constants";
 
-function Website({ website, temporary = false}) {
+
+function Website({ website, temporary = false }) {
   if (temporary) {
     return (
       <div
-        className="shadow-md shadow-green-400 dark:shadow-green-500 hover:shadow-none relative p-0.5 rounded-full flex justify-center items-center 
-        bg-green-100 dark:bg-green-800 
-      hover:bg-gradient-to-r focus-within:bg-gradient-to-r from-[#58eba6] via-[#1fc8de] to-[#0584d9]"
+        className={`relative p-0.5 rounded-full flex justify-center items-center ${greenStyles.baseBg} ${greenStyles.baseShadow} ${greenStyles.gradientHover}`}
       >
         <a
           href={website}
           target="_blank"
           rel="noopener noreferrer"
-          className="z-10 w-12 h-12 rounded-full bg-green-100 dark:bg-green-800 flex justify-center items-center focus:outline-none group/link ripple-container "
+          className={`z-10 w-12 h-12 rounded-full flex justify-center items-center focus:outline-none group/link ripple-container ${greenStyles.baseBg}`}
           aria-label="Website"
           onMouseDown={createRipple}
         >
-          <GlobeAmericasSolidIcon className="w-5 h-5 text-green-800 dark:text-green-100 hidden group-hover/link:inline" />
-          <GlobeAmericasIcon className="w-5 h-5 text-green-800 dark:text-green-100 group-hover/link:hidden" />
+          <GlobeAmericasSolidIcon
+            className={`${greenStyles.icon} ${greenStyles.baseText} hidden group-hover/link:inline`}
+          />
+          <GlobeAmericasIcon
+            className={`${greenStyles.icon} ${greenStyles.baseText} group-hover/link:hidden`}
+          />
         </a>
       </div>
     );
@@ -29,14 +33,16 @@ function Website({ website, temporary = false}) {
 
   return (
     <div
-      className="relative rounded-full bg-green-100 dark:bg-green-800 shadow-md shadow-green-400 dark:shadow-green-500 overflow-visible hover:shadow-none"
+      className={`relative rounded-full overflow-visible ${greenStyles.baseBg} ${greenStyles.baseShadow}`}
     >
       <div
-        className="relative p-0.5 rounded-full flex items-center hover:bg-gradient-to-r focus-within:bg-gradient-to-r from-[#58eba6] via-[#1fc8de] to-[#0584d9] cursor-pointer"
+        className={`relative p-0.5 rounded-full flex items-center cursor-pointer ${greenStyles.gradientHover}`}
         onClick={() => window.open(website, "_blank", "noopener,noreferrer")}
       >
         <div className="relative hover:text-white cursor-pointer">
-          <div className="group relative w-22 h-11 p-0.5 rounded-full bg-green-100 dark:bg-green-800 flex justify-start items-center hover:shadow-none">
+          <div
+            className={`group relative w-22 h-11 p-0.5 rounded-full flex justify-start items-center hover:shadow-none ${greenStyles.baseBg}`}
+          >
             <a
               href={website}
               target="_blank"
@@ -45,12 +51,16 @@ function Website({ website, temporary = false}) {
               className="relative z-10 w-12 h-12 rounded-full flex justify-center items-center focus:outline-none transition duration-200"
               aria-label="Website"
             >
-              <GlobeAmericasIcon className="w-5 h-5 text-green-800 dark:text-green-100 opacity-80 transition duration-200 mt-0.5 group-hover:hidden" />
-              <GlobeAmericasSolidIcon className="w-5 h-5 text-green-800 dark:text-green-100 transition duration-200 mt-0.5 hidden group-hover:inline" />
+              <GlobeAmericasIcon
+                className={`${greenStyles.icon} ${greenStyles.baseText} opacity-80 transition duration-200 group-hover:hidden`}
+              />
+              <GlobeAmericasSolidIcon
+                className={`${greenStyles.icon} ${greenStyles.baseText} transition duration-200 hidden group-hover:inline`}
+              />
             </a>
 
             <div className="relative flex items-center text-sm w-fit pr-4">
-              <span className="font-bodyFont mt-0.5 text-green-800 dark:text-green-100">
+              <span className={`font-bodyFont mt-0.5 ${greenStyles.baseText}`}>
                 Website
               </span>
               <a

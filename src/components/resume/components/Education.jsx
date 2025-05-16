@@ -2,13 +2,12 @@ import { motion, useScroll } from "framer-motion";
 import React, { useRef } from "react";
 import ResumeCard from "./ResumeCard";
 
-
 const Education = React.memo(() => {
   const cardsContainerRef = useRef(null);
-    const { scrollYProgress } = useScroll({
-      target: cardsContainerRef,
-      offset: ["start end", "center start"],
-    });
+  const { scrollYProgress } = useScroll({
+    target: cardsContainerRef,
+    offset: ["start end", "center start"],
+  });
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -17,7 +16,7 @@ const Education = React.memo(() => {
     >
       <div className="w-full h-full">
         <div className="pb-12 font-titleFont flex flex-col gap-4">
-          <p className="text-sm text-blue-700 dark:text-designColor tracking-[2px]">
+          <p className="text-sm arrowIcon tracking-[2px] font-bodyFont font-semibold">
             2022 - 2024
           </p>
           <motion.h2
@@ -36,7 +35,7 @@ const Education = React.memo(() => {
         >
           <motion.div
             style={{ scaleY: scrollYProgress }}
-            className="absolute left-0.5 top-0 w-[4px] h-full bg-none md:bg-gray-400 origin-top"
+            className="absolute left-0.5 top-0 w-1 h-full bg-none md:bg-gray-400 origin-top"
           />
           <ResumeCard
             title="Masters in Computer Science"

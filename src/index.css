@@ -1,12 +1,12 @@
 @font-face {
-  font-family: 'VisbyRoundCF';
-  src: url('./assets/fonts/VisbyRoundCF-Bold.ttf') format('truetype');
+  font-family: "VisbyRoundCF";
+  src: url("./assets/fonts/VisbyRoundCF-Bold.ttf") format("truetype");
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Arizonia';
-  src: url('./assets/fonts/Arizonia-Regular.ttf') format('truetype');
+  font-family: "Arizonia";
+  src: url("./assets/fonts/Arizonia-Regular.ttf") format("truetype");
   font-display: swap;
 }
 
@@ -15,19 +15,48 @@
 @tailwind utilities;
 
 @layer base {
-  html, body, #root {
+  html,
+  body,
+  #root {
     @apply bg-bodyColorWhite dark:bg-bodyColor;
   }
 }
 
 @layer components {
+  .appGradient{
+    @apply bg-app-gradient-light dark:bg-app-gradient-dark
+  }
+  .textGradient{
+    @apply appGradient bg-clip-text text-transparent
+  }
+  .hoverFocusGradient{
+    @apply hover:appGradient focus-within:appGradient 
+  }
+  .gradientBorder{
+    @apply hoverFocusGradient p-0.5
+  }
+  .gradientBorderMd{
+    @apply gradientBorder elevatedShadow rounded-md
+  }
+  .gradientBorderFull{
+    @apply gradientBorder elevatedShadow rounded-full
+  }
+  .gradientBorderFullNoShadow{
+    @apply gradientBorder rounded-full
+  }
+  .gradientBorderLg{
+    @apply gradientBorder elevatedShadow rounded-lg
+  }
+  .arrowIcon{
+    @apply text-blue-700 dark:text-cyan-400
+  }
   .bannerIcon {
     @apply w-16 h-16 bg-opacity-25 text-gray-200 text-xl inline-flex items-center justify-center rounded-lg shadow-shadowTwo dark:shadow-shadowOne hover:bg-opacity-40 hover:-translate-y-1 transition-all cursor-pointer bg-boxBgWhite dark:bg-boxBg bg-gradient-to-br from-[#dee3e7] to-white dark:bg-gradient-to-tl dark:from-[#262a2e] dark:to-[#1f2022] dark:hover:bg-gradient-to-br dark:hover:from-[#212428] dark:hover:to-[#16181c] duration-100;
   }
 
   .zoomIcon:hover {
-  transform: scale(1.15); /* Icons will zoom in when hovered */
-  transition: transform 0.3s ease-in-out;
+    transform: scale(1.15);
+    transition: transform 0.3s ease-in-out;
   }
 
   .skillIcon {
@@ -41,6 +70,21 @@
   }
   .contactTextArea {
     @apply w-full rounded-lg border-[2px] border-[#dee3e7] bg-[white] dark:border-[#1e1f1f] dark:bg-[#191b1e] text-lightText px-4 py-2 active:outline-none outline-none focus-visible:border-b-transparent duration-300 resize-none shadow-custom-inset-white dark:shadow-custom-inset;
+  }
+  .elevatedShadow {
+    @apply shadow-shadowTwo dark:shadow-shadowOne;
+  }
+  .boxBgGradient{
+    @apply bg-boxBgWhite dark:bg-boxBg
+  }
+  .cardGradient{
+    @apply bg-gradient-to-br dark:bg-gradient-to-tl from-[#dee3e7] to-white dark:from-[#262a2e] dark:to-[#1f2022] 
+  }
+  .cardView{
+    @apply boxBgGradient cardGradient elevatedShadow transition-colors duration-300
+  }
+  .sectionSeparator{
+    @apply border-b border-b-gray-400 dark:border-b-black pb-24
   }
 }
 
@@ -66,12 +110,12 @@
   position: absolute;
   border-radius: 50%;
   transform: scale(0);
-  background: rgba(0,0,0,0.2);
+  background: rgba(0, 0, 0, 0.2);
   animation: ripple 600ms linear;
   pointer-events: none;
 }
-.dark .ripple{
-  background: rgba(255,255,255,0.5);
+.dark .ripple {
+  background: rgba(255, 255, 255, 0.5);
 }
 @keyframes ripple {
   to {
@@ -79,5 +123,3 @@
     opacity: 0;
   }
 }
-
-

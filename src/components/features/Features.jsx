@@ -1,12 +1,11 @@
+import { motion } from "framer-motion";
 import React, { useState } from "react";
 import Slider from "react-slick";
+import { useDarkMode } from "../layouts/DarkMode";
 import Title from "../layouts/Title";
 import UnifiedArrow from "../layouts/UnifiedArrow";
 import Card from "./components/FeaturesCard";
 import { featuresData } from "./constants/featuresData";
-import { useDarkMode } from "../layouts/DarkMode";
-import { motion } from "framer-motion";
-
 
 const Features = ({ onNext, onPrev, nextDisabled, prevDisabled }) => {
   const [dotActive, setDotActive] = useState(0);
@@ -55,7 +54,7 @@ const Features = ({ onNext, onPrev, nextDisabled, prevDisabled }) => {
     ),
     customPaging: (i) => (
       <div className="relative flex items-center justify-center group">
-        <div className="absolute w-[17px] h-[17px] rounded-full bg-gradient-to-r from-[#58eba6] via-[#1fc8de] to-[#0584d9] opacity-30 scale-0 transition-all duration-300 group-hover:opacity-100 group-hover:scale-100"></div>
+        <div className="absolute w-[17px] h-[17px] rounded-full bg-gradient-to-r from-emerald-300 via-cyan-400 to-blue-600 opacity-30 scale-0 transition-all duration-300 group-hover:opacity-100 group-hover:scale-100"></div>
         <div
           className="relative w-[11px] h-[11px] rounded-full cursor-pointer transition-all duration-300"
           style={{
@@ -79,30 +78,30 @@ const Features = ({ onNext, onPrev, nextDisabled, prevDisabled }) => {
       },
     ],
   };
-  
+
   return (
     <section
       id="features"
-      className="w-full xl:px-20 lg:px-16 md:px-6 sm:px-2 py-14"
+      className="w-full px-2 md:px-6 lg:px-16 xl:px-20 py-14"
     >
       <div className="border-b border-b-gray-400 dark:border-b-black pb-24">
-        <div className="px-6 md:px-0 md:mr-4">
+        <div className="px-6 md:px-0 mr-0 md:mr-4">
           <Title title="Features" des="What I Do" />
         </div>
-
+        {/**Place the arrows buttonshere */}
         <div className="hidden xs:block w-full">
           <Slider {...settings}>
             {featuresData.map((item) => (
               <motion.div
-              initial={{ opacity: 0, scale: 0.85 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1, ease: "easeInOut" }}
-              viewport={{ once: false }}
+                initial={{ opacity: 0, scale: 0.85 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 1, ease: "easeInOut" }}
+                viewport={{ once: false }}
                 key={item.id}
                 className="p-6"
               >
                 <Card item={item} />
-               </motion.div>
+              </motion.div>
             ))}
           </Slider>
         </div>

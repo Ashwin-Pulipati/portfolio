@@ -1,22 +1,22 @@
 .speech-bubble {
   position: absolute;
   top: -55px;
-  right: -24px; /* anchors it relative to the container */
-  width: 250px;  /* fixed width so it doesn't expand left */
+  right: -24px;
+  width: 250px;
   background: rgba(255, 255, 255, 0.95);
   border: 1px solid #ddd;
   border-radius: 0.75rem;
   padding: 0.7rem;
   z-index: 5;
   white-space: normal;
-  word-break: break-word;      /* allow long words to break */
-  overflow-wrap: break-word;   /* ensure text wraps properly */
+  word-break: break-word;  
+  overflow-wrap: break-word;  
 }
 
 .speech-arrow {
   position: absolute;
   bottom: -7px;
-  right: 200px; /* adjust this value as needed */
+  right: 200px;
   width: 0;
   height: 0;
   border-top: 8px solid rgba(255, 255, 255, 0.95);
