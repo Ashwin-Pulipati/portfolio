@@ -279,7 +279,7 @@ const Navbar = ({ onSearch }) => {
             <img
               srcSet={`${process.env.PUBLIC_URL}/app-logo-compressed.png`}
               alt="App logo"
-              className="w-16 h-14"
+              className="w-16 h-16"
               loading="eager"
               decoding="async"
               fetchPriority="high"
