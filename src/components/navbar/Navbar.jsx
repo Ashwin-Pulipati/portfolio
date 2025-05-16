@@ -255,7 +255,14 @@ const Navbar = ({ onSearch }) => {
           </div>
         )}
 
-        <RouterLink to="/" smooth="true" offset={-70} duration={500}>
+        <RouterLink
+          to="/"
+          smooth="true"
+          offset={-70}
+          duration={500}
+          className="flex items-center"
+        >
+          {/* SVG for large screens */}
           <LogoSVG
             className="w-16 h-16 hidden lg:block"
             aria-label="App logo"
@@ -263,58 +270,35 @@ const Navbar = ({ onSearch }) => {
             decoding="async"
             fetchPriority="high"
           />
-          <picture className="block lg:hidden m-2">
+
+          {/* Raster fallback for small screens */}
+          <picture className="block lg:hidden">
+            {/* WebP if supported */}
             <source
               srcSet={`${process.env.PUBLIC_URL}/app-logo.webp`}
               type="image/webp"
               width="64"
-              height="64"
+              height="56"
             />
+            {/* PNG fallback */}
             <source
-              srcSet={`${process.env.PUBLIC_URL}/app-logo-compressed.png`}
+              srcSet={`${process.env.PUBLIC_URL}/app-logo.png`}
               type="image/png"
               width="64"
-              height="64"
+              height="56"
             />
+            {/* final <img> for extra fallback */}
             <img
-              srcSet={`${process.env.PUBLIC_URL}/app-logo-compressed.png`}
+              src={`${process.env.PUBLIC_URL}/app-logo.png`}
               alt="App logo"
-              className="w-16 h-16"
+              className="w-16 h-14"
               loading="eager"
               decoding="async"
               fetchPriority="high"
               width="64"
-              height="64"
+              height="56"
             />
           </picture>
-          {/* <picture className="block lg:hidden aspect-square">
-            <source
-              srcSet={`
-      ${process.env.PUBLIC_URL}/app-logo.webp 1x,
-      ${process.env.PUBLIC_URL}/app-logo@2x.webp 2x
-    `}
-              type="image/webp"
-              sizes="3.5rem"
-            />
-            <source
-              srcSet={`
-      ${process.env.PUBLIC_URL}/app-logo-compressed.png 1x,
-      ${process.env.PUBLIC_URL}/app-logo-compressed@2x.png 2x
-    `}
-              type="image/png"
-              sizes="3.5rem"
-            />
-            <img
-              src={`${process.env.PUBLIC_URL}/app-logo-compressed.png`}
-              alt="App logo"
-              className="w-[4rem] h-[3.5rem]"
-              width="64"
-              height="64"
-              loading="eager"
-              decoding="async"
-              fetchPriority="high"
-            />
-          </picture> */}
         </RouterLink>
 
         <button className="hidden lg:block " aria-label="Toggle Theme">

@@ -36,6 +36,7 @@ const MediumScreenNavbar = ({
               duration={500}
               onClick={handleClose}
             >
+              {/* SVG for large screens */}
               <LogoSVG
                 className="w-16 h-16 hidden lg:block"
                 aria-label="App logo"
@@ -43,21 +44,26 @@ const MediumScreenNavbar = ({
                 decoding="async"
                 fetchPriority="high"
               />
+
+              {/* Raster fallback for small screens */}
               <picture className="block lg:hidden">
+                {/* WebP if supported */}
                 <source
                   srcSet={`${process.env.PUBLIC_URL}/app-logo.webp`}
                   type="image/webp"
                   width="64"
                   height="64"
                 />
+                {/* PNG fallback */}
                 <source
-                  srcSet={`${process.env.PUBLIC_URL}/app-logo-compressed.png`}
+                  srcSet={`${process.env.PUBLIC_URL}/app-logo.png`}
                   type="image/png"
                   width="64"
                   height="64"
                 />
+                {/* final <img> for extra fallback */}
                 <img
-                  srcSet={`${process.env.PUBLIC_URL}/app-logo-compressed.png`}
+                  src={`${process.env.PUBLIC_URL}/app-logo.png`}
                   alt="App logo"
                   className="w-16 h-16"
                   loading="eager"
@@ -67,34 +73,6 @@ const MediumScreenNavbar = ({
                   height="64"
                 />
               </picture>
-              {/* <picture className="block lg:hidden">
-                <source
-                  srcSet={`
-      ${process.env.PUBLIC_URL}/app-logo.webp 1x,
-      ${process.env.PUBLIC_URL}/app-logo@2x.webp 2x
-    `}
-                  type="image/webp"
-                  sizes="4rem"
-                />
-                <source
-                  srcSet={`
-      ${process.env.PUBLIC_URL}/app-logo-compressed.png 1x,
-      ${process.env.PUBLIC_URL}/app-logo-compressed@2x.png 2x
-    `}
-                  type="image/png"
-                  sizes="4rem"
-                />
-                <img
-                  src={`${process.env.PUBLIC_URL}/app-logo-compressed.png`}
-                  alt="App logo"
-                  className="w-16 h-16"
-                  width="64"
-                  height="64"
-                  loading="eager"
-                  decoding="async"
-                  fetchPriority="high"
-                />
-              </picture> */}
             </ScrollLink>
 
             <p className="text-sm text-gray-600 dark:text-gray-400 mt-4 leading-loose">
