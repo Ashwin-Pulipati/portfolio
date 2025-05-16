@@ -257,12 +257,36 @@ const Navbar = ({ onSearch }) => {
 
         <RouterLink to="/" smooth="true" offset={-70} duration={500}>
           <LogoSVG
-            className="w-16 h-16"
+            className="w-16 h-16 hidden lg:block"
             aria-label="App logo"
             loading="eager"
             decoding="async"
             fetchPriority="high"
           />
+          <picture className="block lg:hidden">
+            <source
+              srcSet="/app-logo.webp"
+              type="image/webp"
+              width="64"
+              height="64"
+            />
+            <source
+              srcSet="/app-logo-compressed.png"
+              type="image/png"
+              width="64"
+              height="64"
+            />
+            <img
+              src="/app-logo-compressed.png"
+              alt="App logo"
+              className="w-16 h-16"
+              loading="eager"
+              decoding="async"
+              fetchPriority="high"
+              width="64"
+              height="64"
+            />
+          </picture>
         </RouterLink>
 
         <button className="hidden lg:block " aria-label="Toggle Theme">
