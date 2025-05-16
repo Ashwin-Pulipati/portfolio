@@ -257,7 +257,7 @@ const Navbar = ({ onSearch }) => {
 
         <RouterLink to="/" smooth="true" offset={-70} duration={500}>
           <LogoSVG
-            className="w-[4.5rem] h-[4.5rem] hidden lg:block"
+            className="w-16 h-16 hidden lg:block"
             aria-label="App logo"
             loading="eager"
             decoding="async"
@@ -287,7 +287,7 @@ const Navbar = ({ onSearch }) => {
               height="64"
             />
           </picture> */}
-          <picture className="block lg:hidden m-2 md:m-0">
+          <picture className="block lg:hidden">
             <source
               srcSet={`
       ${process.env.PUBLIC_URL}/app-logo.webp 1x,
@@ -307,9 +307,9 @@ const Navbar = ({ onSearch }) => {
             <img
               src={`${process.env.PUBLIC_URL}/app-logo-compressed.png`}
               alt="App logo"
-              className="w-16 h-14"
+              className="w-16 h-16"
               width="64"
-              height="56"
+              height="64"
               loading="eager"
               decoding="async"
               fetchPriority="high"

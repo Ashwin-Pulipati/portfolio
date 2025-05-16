@@ -67,7 +67,7 @@ const MediumScreenNavbar = ({
                   height="64"
                 />
               </picture> */}
-              <picture className="block lg:hidden m-2 md:m-0">
+              <picture className="block lg:hidden">
                 <source
                   srcSet={`
       ${process.env.PUBLIC_URL}/app-logo.webp 1x,
@@ -87,9 +87,9 @@ const MediumScreenNavbar = ({
                 <img
                   src={`${process.env.PUBLIC_URL}/app-logo-compressed.png`}
                   alt="App logo"
-                  className="w-16 h-14"
+                  className="w-16 h-16"
                   width="64"
-                  height="56"
+                  height="64"
                   loading="eager"
                   decoding="async"
                   fetchPriority="high"
