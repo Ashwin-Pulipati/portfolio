@@ -52,7 +52,7 @@ function ScrollTo() {
       <button
         onClick={handleClick}
         aria-label={arrowDown ? "Scroll to bottom" : "Scroll to top"}
-        className="relative w-full h-full p-3 rounded-full cardGradient transition-colors duration-300 ripple-container"
+        className="relative w-full h-full p-3.5 rounded-full cardGradient transition-colors duration-300 ripple-container"
         onMouseDown={createRipple}
       >
         <FaArrowUpLong

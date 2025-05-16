@@ -265,8 +265,8 @@ const Navbar = ({ onSearch }) => {
           />
         </RouterLink>
 
-        <button className="hidden lg:block" aria-label="Toggle Theme">
-          <div className="gradientBorderFull">
+        <button className="hidden lg:block " aria-label="Toggle Theme">
+          <div className="gradientBorderFull ">
             <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
           </div>
         </button>

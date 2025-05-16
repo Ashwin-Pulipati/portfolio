@@ -11,7 +11,7 @@ function ThemeToggle({ theme, toggleTheme }) {
       <button
         onClick={toggleTheme}
         onMouseDown={createRipple}
-        className="ripple-container px-3 py-3 rounded-full text-gray-800 dark:text-white flex items-center justify-center cardGradient cursor-pointer transition-colors duration-300 overflow-hidden"
+        className="ripple-container px-3.5 py-3.5 rounded-full text-gray-800 dark:text-white flex items-center justify-center cardGradient cursor-pointer transition-colors duration-300 overflow-hidden"
       aria-label="Theme Toggle"
       >
         {icon}

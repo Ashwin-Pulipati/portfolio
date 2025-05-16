@@ -43,7 +43,7 @@ function ProjectSidebarNavigation({ onSectionClick }) {
 
   return (
     <div
-      className={`fixed xs:right-2 sm:right-3 lg:right-3.5 xs:bottom-[26%] sm:bottom-[29%] md:bottom-[14%] lg:bottom-[12%] w-12 flex 
+      className={`fixed xs:right-2 sm:right-3 lg:right-3.5 xs:bottom-[26%] sm:bottom-[29%] md:bottom-[14%] lg:bottom-[12%] w-[3.5rem] flex 
       flex-col-reverse items-center gap-1 cardView rounded-full z-30 ${
         navOpen ? "opacity-100" : "opacity-25 hover:opacity-100"
       }
@@ -51,7 +51,7 @@ function ProjectSidebarNavigation({ onSectionClick }) {
     >
       <button
         onClick={toggleNav}
-        className="relative w-12 h-12 rounded-full ripple-container gradientBorderFull"
+        className="relative w-[3.5rem] h-[3.5rem] rounded-full ripple-container gradientBorderFull"
         onMouseDown={createRipple}
         aria-label={navOpen ? "Close navigation" : "Open navigation"}
       >

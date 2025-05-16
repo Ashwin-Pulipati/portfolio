@@ -17,7 +17,7 @@ function SocialIconsRadial() {
         } gradientBorderFull transition-transform duration-300`}
       >
         <button
-          className={`relative w-12 h-12 rounded-full cardGradient flex items-center justify-center overflow-hidden transition-transform duration-300 ${
+          className={`relative p-3.5 rounded-full cardGradient flex items-center justify-center overflow-hidden transition-transform duration-300 ${
             open ? "opacity-100" : ""
           }`}
           onClick={(e) => {
@@ -55,7 +55,7 @@ function SocialIconsRadial() {
             >
               <div className="group transition-transform duration-200 hover:scale-75">
                 <div className="relative gradientBorderFull">
-                  <div className="relative w-14 h-14 rounded-full">
+                  <div className="relative w-[3.5rem] h-[3.5rem] rounded-full">
                     {item.href ? (
                       <a
                         href={item.href}

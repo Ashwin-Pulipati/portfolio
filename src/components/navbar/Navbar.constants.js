@@ -205,19 +205,19 @@ export const socialLinks = [
 
 export const themeConfig = {
   light: {
-    icon: <RiSunLine size={24} className="text-orange-600" />,
+    icon: <RiSunLine size={25} className="text-orange-600" />,
     label: "Light Mode",
     styles: "text-orange-800 bg-orange-100 border-orange-800",
   },
   dark: {
-    icon: <RiMoonLine size={24} />,
+    icon: <RiMoonLine size={25} />,
     label: "Dark Mode",
     styles: "text-white bg-gray-800 border-white",
   },
   system: {
     icon: (
       <RiComputerLine
-        size={24}
+        size={25}
         className="text-stone-600 dark:text-stone-100"
       />
     ),
