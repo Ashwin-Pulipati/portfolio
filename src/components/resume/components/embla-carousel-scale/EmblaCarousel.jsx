@@ -150,7 +150,7 @@
 
 
 
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef} from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import {
   NextButton,
