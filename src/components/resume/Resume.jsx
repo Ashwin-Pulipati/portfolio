@@ -31,10 +31,10 @@ const Resume = () => {
       transition={{ duration: 1, ease: "easeInOut" }}
       viewport={{ once: false }}
       id="resume"
-      className="w-full xs:px-6 xl:px-20 lg:px-16 md:px-12 sm:px-8 py-8"
+      className="w-full xs:px-6 xl:px-20 lg:px-16 md:px-12 sm:px-8 py-8 "
     >
       <Title title="4 YEARS OF EXPERIENCE" des="My Resume" />
-      <div className="flex flex-col gap-6">
+      <div className="flex flex-col gap-6 border-b border-b-gray-400 dark:border-b-black pb-16">
         <ul className="flex flex-col xl:flex-row gap-6 w-full list-none p-0 m-0 rounded-xl cardView">
           {tabData.map(({ id, label }) => (
             <li key={id} className="flex-1 text-center">

@@ -136,18 +136,18 @@ export const certificationsData = [
     title: "Certification 4",
     link: "https://example.com/certification3",
   },
-  {
-    id: 5,
-    image: projectOne,
-    title: "Certification 4",
-    link: "https://example.com/certification3",
-  },
-  {
-    id: 6,
-    image: projectOne,
-    title: "Certification 4",
-    link: "https://example.com/certification3",
-  },
+  // {
+  //   id: 5,
+  //   image: projectOne,
+  //   title: "Certification 5",
+  //   link: "https://example.com/certification3",
+  // },
+  // {
+  //   id: 6,
+  //   image: projectOne,
+  //   title: "Certification 6",
+  //   link: "https://example.com/certification3",
+  // },
 ];
 
 export const certificationsGradientMap = {
