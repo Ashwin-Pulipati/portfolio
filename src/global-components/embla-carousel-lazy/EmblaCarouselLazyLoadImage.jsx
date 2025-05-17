@@ -1,0 +1,27 @@
+import React, { useState, useCallback } from "react";
+
+const PLACEHOLDER =
+  "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D";
+
+export const LazyLoadImage = ({ imgSrc, inView, index }) => {
+  const [loaded, setLoaded] = useState(false);
+  const onLoad = useCallback(() => inView && setLoaded(true), [inView]);
+
+  return (
+    <div className="flex-none w-full pl-4 translate-z-0">
+      <div className="relative h-[12rem] sm:h-[16rem] md:h-[23rem] lg:h-[28rem] xl:h-[23rem]">
+        {!loaded && (
+          <div className="absolute inset-0 m-auto w-20 h-20 border-4 border-gray-300 border-t-current rounded-full animate-spin" />
+        )}
+        <img
+          className={`block w-full h-full object-cover rounded-2xl transition-opacity duration-200 ${
+            loaded ? "opacity-100" : "opacity-0"
+          }`}
+          src={inView ? imgSrc : PLACEHOLDER}
+          onLoad={onLoad}
+          alt={`slide ${index}`}
+        />
+      </div>
+    </div>
+  );
+};
