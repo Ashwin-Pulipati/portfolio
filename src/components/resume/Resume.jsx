@@ -1,13 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React, { lazy, Suspense, useEffect, useState } from "react";
 import Title from "../layouts/Title";
-import Education from "./components/Education";
-import ProfessionalSkills from "./components/ProfessionalSkills";
-import Achievement from "./components/Achievement";
-import Experience from "./components/Experience";
-import Certifications from "./components/Certifications";
+// import Education from "./components/Education";
+// import ProfessionalSkills from "./components/ProfessionalSkills";
+// import Achievement from "./components/Achievement";
+// import Experience from "./components/Experience";
+// import Certifications from "./components/Certifications";
 import { createRipple } from "../layouts/RippleEffect";
 import { motion } from "framer-motion";
 import { tabData, LOCAL_STORAGE_KEY } from "./Resume.constants";
+import { CertificationsSkeleton, SkillsSkeleton, TimelineSectionSkeleton } from "../../global-components/SkeletonComponents";
+
+const Experience = lazy(() => import("./components/Experience"));
+const ProfessionalSkills = lazy(() =>
+  import("./components/ProfessionalSkills")
+);
+const Achievement = lazy(() => import("./components/Achievement"));
+const Certifications = lazy(() => import("./components/Certifications"));
+const Education = lazy(() => import("./components/Education"));
+
 
 const Resume = () => {
   const [activeTab, setActiveTab] = useState("experience");
@@ -62,12 +72,39 @@ const Resume = () => {
             </li>
           ))}
         </ul>
-        <div className="w-full">
+        {/* <div className="w-full">
           {activeTab === "experience" && <Experience />}
           {activeTab === "skills" && <ProfessionalSkills />}
           {activeTab === "achievements" && <Achievement />}
           {activeTab === "certifications" && <Certifications />}
           {activeTab === "education" && <Education />}
+        </div> */}
+        <div className="w-full">
+          {activeTab === "experience" && (
+            <Suspense fallback={<TimelineSectionSkeleton />}>
+              <Experience />
+            </Suspense>
+          )}
+          {activeTab === "skills" && (
+            <Suspense fallback={<SkillsSkeleton />}>
+              <ProfessionalSkills />
+            </Suspense>
+          )}
+          {activeTab === "achievements" && (
+            <Suspense fallback={<TimelineSectionSkeleton />}>
+              <Achievement />
+            </Suspense>
+          )}
+          {activeTab === "certifications" && (
+            <Suspense fallback={<CertificationsSkeleton />}>
+              <Certifications />
+            </Suspense>
+          )}
+          {activeTab === "education" && (
+            <Suspense fallback={<TimelineSectionSkeleton />}>
+              <Education />
+            </Suspense>
+          )}
         </div>
       </div>
     </motion.section>

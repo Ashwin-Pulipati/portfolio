@@ -3,15 +3,16 @@ import useEmblaCarousel from "embla-carousel-react";
 import AutoScroll from "embla-carousel-auto-scroll";
 
 const EmblaCarouselAutoScroll = ({ options, children }) => {
-  const [emblaRef, emblaApi] = useEmblaCarousel(options, [
-    AutoScroll({ playOnInit: true }),
-  ]);
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    options,
+    [AutoScroll({ playOnInit: true })]
+  );
 
   useEffect(() => {
     if (!emblaApi) return;
     const plugin = emblaApi.plugins().autoScroll;
     if (!plugin) return;
-    const sync = () => plugin.isPlaying();
+    const sync = () => plugin.isPlaying(); // Still syncs with lifecycle
     emblaApi.on("autoScroll:play", sync);
     emblaApi.on("autoScroll:stop", sync);
     emblaApi.on("reInit", sync);

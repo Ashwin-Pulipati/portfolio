@@ -24,6 +24,12 @@
 
 import React, { Suspense } from "react";
 import SocialIconsSidebar from "../../global-components/SocialIconsSidebar";
+import {
+  BannerSkeleton,
+  ContactFormSkeleton,
+  FeaturesSectionSkeleton,
+  ResumeSkeleton,
+} from "../../global-components/SkeletonComponents";
 const Banner = React.lazy(() => import("../banner/Banner"));
 const Features = React.lazy(() => import("../features/Features"));
 const Resume = React.lazy(() => import("../resume/Resume"));
@@ -34,19 +40,17 @@ const Dashboard = () => {
   
   return (
     <div className="w-full h-full bg-bodyColorWhite dark:bg-bodyColor text-gray-700 dark:text-white z-30 overflow-hidden">
-      
           <SocialIconsSidebar />
-        
-      <Suspense fallback={<div style={{ height: 300 }}>Loading banner…</div>}>
+      <Suspense fallback={<BannerSkeleton/>}>
         <Banner />
       </Suspense>
-      <Suspense fallback={<div style={{ height: 600 }}>Loading features…</div>}>
+      <Suspense fallback={<FeaturesSectionSkeleton/>}>
         <Features id="features" />
       </Suspense>
-      <Suspense fallback={<div style={{ height: 600 }}>Loading features…</div>}>
+      <Suspense fallback={<ResumeSkeleton />}>
         <Resume id="features" />
       </Suspense>
-      <Suspense fallback={<div style={{ height: 300 }}>Loading banner…</div>}>
+      <Suspense fallback={<ContactFormSkeleton/>}>
         <Contact />
       </Suspense>
     </div>
