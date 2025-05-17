@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import React from "react";
-import EmblaCarouselScale from "../../../global-components/embla-carousel-scale/EmblaCarousel";
+import EmblaCarouselScale from "./embla-carousel-scale/EmblaCarousel";
 import EmblaCarouselAutoScroll from "./embla-carousel-autoscroll/EmblaCarousel";
 import CertificationsCard from "./CertificationsCard";
 import { certificationsData } from "../Resume.constants";

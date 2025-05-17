@@ -3,7 +3,7 @@ import useEmblaCarousel from "embla-carousel-react";
 import { LazyLoadImage } from "./EmblaCarouselLazyLoadImage";
 import { PrevButton, NextButton } from "./EmblaCarouselArrowButtons";
 import { DotButton, useDotButton } from "./EmblaCarouselDotButton";
-import { useDarkMode } from "../../components/layouts/DarkMode"; 
+import { useDarkMode } from "../../../layouts/DarkMode"; 
 
 const EmblaCarousel = ({ slides, options }) => {
   const isDarkMode = useDarkMode(); // get dark/light

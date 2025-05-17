@@ -6,7 +6,7 @@ import {
   usePrevNextButtons,
 } from "./EmblaCarouselArrowButtons";
 import { DotButton, useDotButton } from "./EmblaCarouselDotButton";
-import { useDarkMode } from "../../components/layouts/DarkMode";
+import { useDarkMode } from "../../../layouts/DarkMode";
 
 const TWEEN_FACTOR_BASE = 0.52;
 const numberWithinRange = (number, min, max) =>

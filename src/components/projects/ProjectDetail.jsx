@@ -285,7 +285,7 @@
 
 import React, { useEffect, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
-import EmblaCarousel from "../../global-components/embla-carousel-lazy/EmblaCarousel";
+import EmblaCarousel from "./components/embla-carousel-lazy/EmblaCarousel";
 import Image1 from "../../assets/images/Webp/projectOne.webp";
 import Image2 from "../../assets/images/Webp/projectTwo.webp";
 import Image3 from "../../assets/images/Webp/projectThree.webp";
