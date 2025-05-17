@@ -84,7 +84,7 @@ const EmblaCarousel = ({ options, children }) => {
   }, [emblaApi, setTweenNodes, setTweenFactor, tweenScale]);
 
   return (
-    <div className="md:max-w-6xl mx-auto">
+    <div className="hidden md:block md:max-w-6xl mx-auto">
       <div
         ref={emblaRef}
         className={`overflow-hidden transition-opacity duration-200 ${

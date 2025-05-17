@@ -1,11 +1,5 @@
 import { motion } from "framer-motion";
 import React, { useMemo, useRef, useState } from "react";
-import {
-  FaRegSquareMinus,
-  FaRegSquarePlus,
-  FaSquareMinus,
-  FaSquarePlus,
-} from "react-icons/fa6";
 import { useDarkMode } from "../../layouts/DarkMode";
 import { slugify } from "../../layouts/Utils";
 import { experienceGradientMap } from "../Resume.constants";
@@ -19,20 +13,17 @@ const ResumeCard = ({
   country,
   showCountry,
   tags = [],
+  points = [],
 }) => {
   const isDarkMode = useDarkMode();
   const cardSlug = slugify(title);
   const gradients = experienceGradientMap[cardSlug];
 
   const [isExpanded, setIsExpanded] = useState(false);
-  const [tagsExpanded, setTagsExpanded] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
 
   const cardRef = useRef(null);
 
-  const initialVisibleCount = 9;
-  const visibleTags = tagsExpanded ? tags : tags.slice(0, initialVisibleCount);
-  const hiddenCount = tags.length - initialVisibleCount;
 
   const timelineGradient = useMemo(
     () => (isDarkMode ? gradients?.dark : gradients?.light),
@@ -49,10 +40,9 @@ const ResumeCard = ({
     [isHovered, gradients, isDarkMode]
   );
 
-  const handleToggleTags = () => setTagsExpanded((prev) => !prev);
 
   return (
-    <motion.div ref={cardRef} className="w-full h-1/3 group flex">
+    <motion.div ref={cardRef} className="w-full group flex">
       <div className="hidden w-10 md:flex flex-col items-center gap-2.5">
         <TimelineDot reference={cardRef} timelineGradient={timelineGradient} />
         <div className="w-9 h-[6px] bgOpacity dark:bg-gray-400" />
@@ -93,7 +83,11 @@ const ResumeCard = ({
         </div>
 
         {des && (
-          <p className="text-sm md:text-base font-medium text-gray-500 dark:text-gray-400 group-hover:text-black dark:group-hover:text-gray-300 duration-300 break-all font-bodyFont">
+          <p
+            className="text-sm md:text-base font-medium text-gray-500
+            dark:text-gray-400 group-hover:text-black
+            dark:group-hover:text-gray-300 duration-300 break-all
+            font-bodyFont">
             {isExpanded ? des : `${des.slice(0, 230)}...`}
             {des.length > 230 && (
               <button
@@ -107,39 +101,29 @@ const ResumeCard = ({
           </p>
         )}
 
-        {tags.length > 0 && (
-          <div className="flex items-center gap-4 flex-wrap">
-            {visibleTags.map((tag, index) => (
-              <span
-                key={index}
-                className="bg-blue-100 dark:bg-blue-400/15 dark:bg-opacity-60 border-blue-700 dark:border-blue-400 text-sm font-bodyFont rounded-full px-2.5 py-1 border-2 cursor-pointer transition-all duration-300 text-gray-700 dark:text-gray-300 group-hover:text-black dark:group-hover:text-white"
+        {points.length > 0 && (
+          <ul  className="list-disc ml-6 font-bodyFont group">
+            {(isExpanded ? points : points.slice(0, 3)).map((point, idx) => (
+              <li
+                key={idx}
+                className="arrowIcon0 mb-2 marker:text-blue-700 dark:marker:text-cyan-400"
               >
-                {tag}
-              </span>
+                <div className="text-sm md:text-base font-medium text-gray-500 dark:text-gray-400 group-hover:text-black dark:group-hover:text-gray-300 duration-300 break-all font-bodyFont">
+                  {point}
+                </div>
+              </li>
             ))}
-            {hiddenCount > 0 && (
-              <button
-                onClick={handleToggleTags}
-                className="bg-blue-100 dark:bg-blue-400/15 flex items-center gap-2 text-sm font-medium rounded-full px-2.5 py-1 border-2 cursor-pointer transition-all duration-300 border-blue-700 dark:border-blue-400 arrowIcon dark:group-hover:text-white"
-              aria-label="Show More"
-              >
-                <span className="relative w-4 h-4">
-                  {tagsExpanded ? (
-                    <>
-                      <FaRegSquareMinus className="absolute inset-0 w-4 h-4 opacity-100 group-hover:opacity-0 transition-opacity duration-200" />
-                      <FaSquareMinus className="absolute inset-0 w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
-                    </>
-                  ) : (
-                    <>
-                      <FaRegSquarePlus className="absolute inset-0 w-4 h-4 opacity-100 group-hover:opacity-0 transition-opacity duration-200" />
-                      <FaSquarePlus className="absolute inset-0 w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
-                    </>
-                  )}
-                </span>
-                {tagsExpanded ? "Show Less" : `${hiddenCount} More`}
-              </button>
-            )}
-          </div>
+          </ul>
+        )}
+
+        {points.length > 3 && (
+          <button
+            onClick={() => setIsExpanded((prev) => !prev)}
+            className="arrowIcon text-sm text-center font-semibold font-bodyFont hover:underline mt-1"
+            aria-label="Toggle Bullet Points"
+          >
+            {isExpanded ? "Read Less" : "Read More"}
+          </button>
         )}
       </motion.div>
     </motion.div>

@@ -1,13 +1,12 @@
 import { motion } from "framer-motion";
 import React from "react";
-import EmblaCarousel from "../../../global-components/embla-carousel-scale/EmblaCarousel";
+import EmblaCarouselScale from "../../../global-components/embla-carousel-scale/EmblaCarousel";
+import EmblaCarouselAutoScroll from "./embla-carousel-autoscroll/EmblaCarousel";
 import CertificationsCard from "./CertificationsCard";
 import { certificationsData } from "../Resume.constants";
 
-const OPTIONS = {
-  loop: true,
-  align: "center",
-};
+const SCALE_OPTIONS = { align: "center", loop: true };
+const AUTOSCROLL_OPTIONS = { loop: true };
 
 const Certifications = () => (
   <section id="features" className="w-full px-4 py-12">
@@ -25,14 +24,24 @@ const Certifications = () => (
         Certifications
       </motion.h2>
     </div>
+    <div className="w-full">
 
-    <div className="hidden xs:block w-full">
-      <EmblaCarousel options={OPTIONS}>
-        {certificationsData.map((item) => (
-          <CertificationsCard key={item.id} item={item} />
-        ))}
-      </EmblaCarousel>
-    </div>
+  <div className="hidden md:block">
+    <EmblaCarouselScale options={SCALE_OPTIONS}>
+      {certificationsData.map((item) => (
+        <CertificationsCard key={item.id} item={item} />
+      ))}
+    </EmblaCarouselScale>
+  </div>
+
+  <div className="block md:hidden">
+    <EmblaCarouselAutoScroll options={AUTOSCROLL_OPTIONS}>
+      {certificationsData.map((item) => (
+        <CertificationsCard key={item.id} item={item} />
+      ))}
+    </EmblaCarouselAutoScroll>
+  </div>
+</div>
   </section>
 );
 

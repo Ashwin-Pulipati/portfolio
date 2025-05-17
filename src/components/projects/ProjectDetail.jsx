@@ -337,7 +337,7 @@ const ProjectDetail = ({
       </h2>
       <ul className="list-disc ml-6 font-bodyFont">
         {data.map((point, idx) => (
-          <li key={idx} className="text-blue-700 dark:text-cyan-400 mb-2">
+          <li key={idx} className="arrowIcon mb-2">
             <div className="text-gray-700 dark:text-gray-400">
               <HighlightTextProjectDetail
                 text={point}

@@ -7,6 +7,7 @@
     "@heroicons/react": "^2.2.0",
     "ajv": "^8.17.1",
     "emailjs-com": "^3.2.0",
+    "embla-carousel-auto-scroll": "^8.6.0",
     "embla-carousel-react": "^8.6.0",
     "framer-motion": "^8.4.2",
     "lodash.debounce": "^4.0.8",
