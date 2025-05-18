@@ -1,10 +1,5 @@
 import React, { lazy, Suspense, useEffect, useState } from "react";
 import Title from "../layouts/Title";
-// import Education from "./components/Education";
-// import ProfessionalSkills from "./components/ProfessionalSkills";
-// import Achievement from "./components/Achievement";
-// import Experience from "./components/Experience";
-// import Certifications from "./components/Certifications";
 import { createRipple } from "../layouts/RippleEffect";
 import { motion } from "framer-motion";
 import { tabData, LOCAL_STORAGE_KEY } from "./Resume.constants";
@@ -43,7 +38,7 @@ const Resume = () => {
       id="resume"
       className="w-full xs:px-6 xl:px-20 lg:px-16 md:px-12 sm:px-8 py-8 "
     >
-      <Title title="4 YEARS OF EXPERIENCE" des="My Resume" />
+      <Title title="3 YEARS OF EXPERIENCE" des="My Resume" />
       <div className="flex flex-col gap-6 border-b border-b-gray-400 dark:border-b-black pb-16">
         <ul className="flex flex-col xl:flex-row gap-6 w-full list-none p-0 m-0 rounded-xl cardView">
           {tabData.map(({ id, label }) => (
@@ -72,13 +67,6 @@ const Resume = () => {
             </li>
           ))}
         </ul>
-        {/* <div className="w-full">
-          {activeTab === "experience" && <Experience />}
-          {activeTab === "skills" && <ProfessionalSkills />}
-          {activeTab === "achievements" && <Achievement />}
-          {activeTab === "certifications" && <Certifications />}
-          {activeTab === "education" && <Education />}
-        </div> */}
         <div className="w-full">
           {activeTab === "experience" && (
             <Suspense fallback={<TimelineSectionSkeleton />}>

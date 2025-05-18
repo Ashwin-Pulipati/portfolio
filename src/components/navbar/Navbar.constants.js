@@ -1,32 +1,29 @@
-import { BiHomeSmile, BiSolidHomeSmile, BiCategory } from "react-icons/bi";
 import {
-  MdOutlineLocalPhone,
-  MdLocalPhone,
-  MdCodeOff,
-  MdOutlineDesignServices,
-} from "react-icons/md";
+  AiFillAliwangwang,
+  AiFillMessage,
+  AiOutlineAliwangwang,
+  AiOutlineCode,
+  AiOutlineMessage,
+} from "react-icons/ai";
+import { BiCategory, BiHomeSmile, BiSolidHomeSmile } from "react-icons/bi";
+import { BsFillLaptopFill, BsLaptop } from "react-icons/bs";
 import {
-  HiOutlineSquares2X2,
-  HiSquares2X2,
-  HiInboxStack,
-} from "react-icons/hi2";
-import { IoDocuments, IoDocumentsOutline } from "react-icons/io5";
-import {
-  FaGithub,
-  FaLinkedinIn,
   FaAngular,
+  FaGithub,
   FaJava,
+  FaLinkedinIn,
   FaPython,
   FaReact,
 } from "react-icons/fa";
-import { RiSunLine, RiMoonLine, RiComputerLine } from "react-icons/ri";
-import { AiFillAliwangwang, AiFillCode, AiOutlineCode } from "react-icons/ai";
-import { SiAiqfome, SiOpenai, SiPostgresql } from "react-icons/si";
 import {
-  projectsByCategory,
-  projectsBySubcategory,
-} from "../projects/Projects.constants";
-import { slugify } from "../layouts/Utils";
+  HiOutlineSquares2X2,
+  HiSquares2X2,
+} from "react-icons/hi2";
+import { IoDocuments, IoDocumentsOutline } from "react-icons/io5";
+import { MdCodeOff, MdDesignServices, MdOutlineDesignServices } from "react-icons/md";
+import { RiComputerLine, RiMoonLine, RiRobot2Fill, RiRobot2Line, RiStackFill, RiStackLine, RiSunLine } from "react-icons/ri";
+import { SiOpenai, SiPostgresql } from "react-icons/si";
+import { TbGridDots } from "react-icons/tb";
 import { TiThSmall } from "react-icons/ti";
 
 export const navItems = [
@@ -71,11 +68,11 @@ export const navItems = [
   },
   {
     id: 1004,
-    title: "CONTACT",
+    title: "HIRE ME",
     bottomNavTitle: "Contact",
     link: "contact",
-    activeIcon: <MdLocalPhone className="w-5 h-5" />,
-    inactiveIcon: <MdOutlineLocalPhone className="w-5 h-5" />,
+    activeIcon: <AiFillMessage className="w-6 h-6" />,
+    inactiveIcon: <AiOutlineMessage className="w-6 h-6" />,
     color: "text-green-600 dark:text-green-400",
     backgroundActive:
       "bg-green-100 text-green-800 rounded-full xs:px-7 xs:pt-3.5 xs:pb-2.5 sm:px-8 sm:pt-4 sm:pb-3 md:p-2 md:pr-4 md:pl-4 dark:bg-green-800 dark:text-green-100",
@@ -119,75 +116,6 @@ export const darkModeDropdownItemGradientMap = Object.fromEntries(
   Object.entries(gradientBase).map(([key, value]) => [key, value.dark])
 );
 
-
-export const getIcon = (
-  isActive,
-  iconActive,
-  color,
-  activeIcon,
-  inactiveIcon
-) => (
-  <span className={`text-md ${isActive ? iconActive : color}`}>
-    {isActive ? activeIcon : inactiveIcon}
-  </span>
-);
-
-export const getLinkText = (title, isActive, color, iconActive) => (
-  <span
-    className={`link_text text-gray-500 dark:text-gray-200 ${
-      isActive ? color : iconActive
-    }`}
-  >
-    {title}
-  </span>
-);
-
-export const getNavLinkClasses = (title, isActive) => {
-  if (title === "CONTACT") {
-    return isActive
-      ? "font-semibold text-white"
-      : "w-fit h-fit font-normal text-[#c3cedd] tracking-wide cursor-pointer";
-  }
-  return isActive
-    ? "font-semibold text-white"
-    : "font-normal text-[#c3cedd] tracking-wide cursor-pointer group-hover:bg-clip-text group-hover:text-transparent group-hover:from-[#58eba6] group-hover:via-[#1fc8de] group-hover:to-[#0584d9]";
-};
-
-export const getMobileClasses = (title, isActive, theme, backgroundActive) => {
-  const desktopClasses = getNavLinkClasses(title, isActive);
-  const sidebarClasses = `link ${isActive ? "active" : ""}`;
-  const backgroundClass =
-    isActive && theme !== "dark" ? backgroundActive : "bg-transparent";
-  return `${backgroundClass} p-2 bg-none rounded-none ${desktopClasses} ${sidebarClasses} ripple-container`;
-};
-
-export const getDesktopListItemClasses = (
-  isActive,
-  title,
-  hoverBg,
-  backgroundActive,
-  isDarkMode
-) => {
-  if (isActive) {
-    const shadow = isDarkMode ? "shadow-shadowOne" : "shadow-shadowTwo";
-    return `relative group flex items-center gap-2 text-[15px] transition-all duration-300 ease-out ${shadow} ${backgroundActive} ripple-container`;
-  }
-  const base = `text-gray-500 ${hoverBg} hover:px-3 hover:py-2 hover:rounded-full`;
-  return `relative group flex items-center gap-2 text-[15px] transition-all duration-300 ease-out ${
-    title === "CONTACT" ? "" : base
-  } hover:text-black dark:text-gray-300 dark:hover:text-white`;
-};
-
-export const getContactBgStyle = (isDarkMode, title, isActive) => {
-  if (!isDarkMode || title !== "CONTACT" || isActive) return {};
-
-  return {
-    background: "linear-gradient(145deg, #1e2024, #23272b)",
-    backgroundImage: "linear-gradient(to top left, #262a2e, #1f2022)",
-  };
-};
-
-
 export const socialLinks = [
   {
     href: "https://www.linkedin.com/in/ashwinpulipati/",
@@ -201,7 +129,6 @@ export const socialLinks = [
     icon: <FaGithub className="zoomIcon text-black dark:text-white" />,
   },
 ];
-
 
 export const themeConfig = {
   light: {
@@ -226,7 +153,6 @@ export const themeConfig = {
   },
 };
 
-
 export const CATEGORY_LIST = [
   "All Categories",
   "Frontend Development",
@@ -238,43 +164,35 @@ export const CATEGORY_LIST = [
 
 export const categoryIconMap = {
   "All Categories": {
-    icon: BiCategory,
+    iconOutlined: BiCategory,
+    iconFilled: TbGridDots,
     color: "text-stone-600 dark:text-stone-400",
   },
   "Frontend Development": {
-    icon: AiFillCode,
+    iconOutlined: BsLaptop,
+    iconFilled: BsFillLaptopFill,
     color: "text-pink-600 dark:text-pink-400",
   },
   "Machine Learning": {
-    icon: AiFillAliwangwang,
+    iconOutlined: RiRobot2Line,
+    iconFilled: RiRobot2Fill,
     color: "text-orange-600 dark:text-orange-400",
   },
   "Full Stack Development": {
-    icon: HiInboxStack,
+    iconOutlined: RiStackLine,
+    iconFilled: RiStackFill,
     color: "text-green-600 dark:text-green-400",
   },
   "UI/UX": {
-    icon: MdOutlineDesignServices,
+    iconOutlined: MdOutlineDesignServices,
+    iconFilled: MdDesignServices,
     color: "text-purple-600 dark:text-purple-400",
   },
-  AI: { icon: SiAiqfome, color: "text-blue-600 dark:text-blue-400" },
-};
-
-export const getCategoryCount = (category) => {
-  const key = slugify(category);
-  return projectsByCategory[key]?.length || 0;
-};
-
-export const getSubCount = (category, sub) => {
-  const catSlug = slugify(category);
-  if (
-    (category === "Full Stack Development" && sub === "All Stacks") ||
-    (category === "AI" && sub === "All AI")
-  ) {
-    return projectsByCategory[catSlug]?.length || 0;
-  }
-  const key = `${catSlug}||${slugify(sub)}`;
-  return projectsBySubcategory[key]?.length || 0;
+  AI: {
+    iconOutlined: AiOutlineAliwangwang,
+    iconFilled: AiFillAliwangwang,
+    color: "text-blue-600 dark:text-blue-400",
+  },
 };
 
 export const subCategoryMap = {
@@ -304,14 +222,14 @@ export const subCategoryMap = {
   },
   "All AI": {
     icon: SiOpenai,
-    color: "text-purple-500 dark:text-purple-400",
+    color: "text-purple-700 dark:text-purple-400",
   },
   "No-Code": {
     icon: MdCodeOff,
-    color: "text-indigo-500 dark:text-indigo-400",
+    color: "text-indigo-700 dark:text-indigo-400",
   },
   "Code-Based": {
     icon: AiOutlineCode,
-    color: "text-teal-500 dark:text-teal-400",
+    color: "text-teal-700 dark:text-teal-400",
   },
 };

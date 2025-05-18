@@ -86,7 +86,7 @@ const MediumScreenNavbar = ({
             <hr className="border-gray-300 dark:border-gray-700" />
 
             <div className="flex flex-col gap-4">
-              <h2 className="text-base uppercase font-titleFont dark:text-white">
+              <h2 className="text-base uppercase font-titleFont dark:text-white tracking-[2px]">
                 Find me on
               </h2>
               <div className="flex gap-4">

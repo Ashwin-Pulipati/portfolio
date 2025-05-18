@@ -24,7 +24,7 @@ import {
   allProjectsList,
   projectsByCategory,
   projectsBySubcategory,
-} from "./Projects.constants";
+} from "./Projects.Utils";
 import { darkModeDropdownItemGradientMap, lightModeDropdownItemGradientMap } from "../navbar/Navbar.constants";
 import { useDarkMode } from "../layouts/DarkMode";
 

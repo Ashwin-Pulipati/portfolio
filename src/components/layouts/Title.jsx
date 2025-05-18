@@ -26,7 +26,11 @@ const Title = ({ title, des }) => {
     >
       <div className="relative">
         {titleClasses && (
-          <h3 className={`${commonTitleClasses} ${titleClasses}`}>{title}</h3>
+          <h3
+            className={`${commonTitleClasses} ${titleClasses} tracking-[2px]`}
+          >
+            {title}
+          </h3>
         )}
         <div className="absolute hidden md:block md:top-4 md:-right-[7.5rem] md:z-50">
           <FairyAnimation section={title} messages={messagesForThisTitle} />

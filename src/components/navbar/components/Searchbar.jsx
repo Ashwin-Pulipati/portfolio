@@ -5,7 +5,7 @@ import React, {
   useRef,
   useState,
 } from "react";
-import {TiChevronRight,TiChevronRightOutline,} from "react-icons/ti";
+import { TiChevronRight, TiChevronRightOutline } from "react-icons/ti";
 import { useLocation, useNavigate } from "react-router-dom";
 import SearchIcon from "../../../assets/images/SVG/search.svg";
 import { createRipple } from "../../layouts/RippleEffect";
@@ -15,12 +15,10 @@ import {
   darkModeDropdownItemGradientMap,
   CATEGORY_LIST,
   categoryIconMap,
-  getCategoryCount,
-  getSubCount,
   subCategoryMap,
 } from "../Navbar.constants";
+import { getCategoryCount, getSubCount } from "../Navbar.Utils";
 import { useDarkMode } from "../../layouts/DarkMode";
-
 
 function Searchbar({ onSearch }) {
   const navigate = useNavigate();
@@ -47,7 +45,6 @@ function Searchbar({ onSearch }) {
       ),
     [location.pathname]
   );
-
   const dropdownCategories = useMemo(
     () => CATEGORY_LIST.filter((cat) => cat !== currentCategory),
     [currentCategory]
@@ -61,10 +58,12 @@ function Searchbar({ onSearch }) {
     [location.pathname]
   );
 
-  const SelectedIcon =
-    categoryIconMap[currentCategory || "All Categories"].icon;
-  const selectedColor =
-    categoryIconMap[currentCategory || "All Categories"].color;
+  // Trigger icons
+  const {
+    iconOutlined: SelectedOutlinedIcon,
+    iconFilled: SelectedFilledIcon,
+    color: selectedColor,
+  } = categoryIconMap[currentCategory || "All Categories"];
 
   const handleSearchChange = useCallback(
     (e) => {
@@ -76,7 +75,7 @@ function Searchbar({ onSearch }) {
   );
 
   useEffect(() => {
-    const handleClickOrTypeOutside = (event) => {
+    const handleClickOutside = (event) => {
       if (
         subDropdownRef.current &&
         !subDropdownRef.current.contains(event.target)
@@ -84,13 +83,11 @@ function Searchbar({ onSearch }) {
         setSubOpen(false);
       }
     };
-
-    document.addEventListener("mousedown", handleClickOrTypeOutside);
-    document.addEventListener("keydown", handleClickOrTypeOutside);
-
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("keydown", handleClickOutside);
     return () => {
-      document.removeEventListener("mousedown", handleClickOrTypeOutside);
-      document.removeEventListener("keydown", handleClickOrTypeOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("keydown", handleClickOutside);
     };
   }, []);
 
@@ -104,11 +101,12 @@ function Searchbar({ onSearch }) {
           "Python",
           "Java",
         ]
-      : [ "All AI", "No-Code", "Code-Based" ];
+      : ["All AI", "No-Code", "Code-Based"];
 
   return (
     <div className="flex justify-center items-center w-full px-4 md:px-12 pt-4 lg:px-0 lg:py-0">
       <div className="flex max-w-4xl w-full flex-col lg:flex-row items-start lg:items-center rounded-lg cardView gap-2 lg:gap-4 xs:p-2 lg:p-1">
+        {/* Category selector */}
         <button
           className="relative p-0.5 rounded-lg hoverFocusGradient elevatedShadow xs:w-full lg:w-[300px]"
           tabIndex="0"
@@ -116,28 +114,35 @@ function Searchbar({ onSearch }) {
           aria-label="Select Category"
         >
           <div
-            className="group flex justify-center gap-4 items-center cardGradient transition-colors duration-100 
-            px-4 py-3 rounded-lg text-gray-300 font-semibold cursor-pointer text-base ripple-container "
+            className="group flex justify-center gap-4 items-center cardGradient transition-colors duration-100 px-4 py-3 rounded-lg text-gray-300 font-semibold ripple-container cursor-pointer"
             onClick={() => setCategoryOpen((p) => !p)}
             onMouseDown={createRipple}
           >
-            <SelectedIcon className={`w-5 h-5 ${selectedColor}`} />
-            <span className="w-fit h-fit text-left text-base mb-0.5 text-gray-700 dark:text-gray-300 xs:font-semibold lg:font-normal font-titleFont">
-              {currentCategory || "All Categories"}
-            </span>
+            <div className="flex items-center gap-2">
+              {isCategoryOpen ? (
+                <SelectedFilledIcon className={`w-5 h-5 ${selectedColor}`} />
+              ) : (
+                <SelectedOutlinedIcon className={`w-5 h-5 ${selectedColor}`} />
+              )}
+              <span className="w-fit h-fit text-left text-base mb-0.5 text-gray-700 dark:text-gray-300 xs:font-semibold lg:font-normal font-titleFont">
+                {currentCategory || "All Categories"}
+              </span>
+            </div>
             {isCategoryOpen ? (
               <TiChevronRight className="w-5 h-5 text-blue-800 dark:text-blue-300 -rotate-90" />
             ) : (
               <TiChevronRightOutline className="w-5 h-5 text-blue-800 dark:text-blue-300 rotate-90" />
             )}
           </div>
-
           {isCategoryOpen && (
             <ul className="absolute z-50 xs:top-16 lg:top-14 left-0 w-full cardGradient transition-colors duration-100 shadow-md rounded-br-md rounded-bl-md py-2 text-gray-700 dark:text-gray-300">
               {dropdownCategories.map((cat, i) => {
                 const slug = slugify(cat);
-                const { icon: Icon, color } = categoryIconMap[cat];
-
+                const { iconOutlined, iconFilled, color } =
+                  categoryIconMap[cat];
+                const OutlinedIcon = iconOutlined;
+                const FilledIcon = iconFilled;
+                const isHovered = hoveredCategory === cat;
                 return (
                   <li
                     key={i}
@@ -149,20 +154,21 @@ function Searchbar({ onSearch }) {
                     onMouseEnter={() => setHoveredCategory(cat)}
                     onMouseLeave={() => setHoveredCategory(null)}
                     onMouseDown={createRipple}
-                    className={`
-                      w-full flex items-center gap-2 px-4 py-2 text-base font-semibold cursor-pointer ripple-container
-                      text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white 
-                    `}
+                    className="w-full flex items-center gap-2 px-4 py-2 text-base font-semibold cursor-pointer ripple-container
+                      text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white"
                     style={{
-                      background:
-                        hoveredCategory === cat
-                          ? isDark
-                            ? darkModeDropdownItemGradientMap[slug]
-                            : lightModeDropdownItemGradientMap[slug]
-                          : undefined,
+                      background: isHovered
+                        ? isDark
+                          ? darkModeDropdownItemGradientMap[slug]
+                          : lightModeDropdownItemGradientMap[slug]
+                        : undefined,
                     }}
                   >
-                    <Icon className={`w-5 h-5 ${color}`} />
+                    {isHovered ? (
+                      <FilledIcon className={`w-5 h-5 ${color}`} />
+                    ) : (
+                      <OutlinedIcon className={`w-5 h-5 ${color}`} />
+                    )}
                     {cat} ({getCategoryCount(cat)})
                   </li>
                 );
@@ -178,6 +184,7 @@ function Searchbar({ onSearch }) {
           <div className="h-px w-full bg-gray-600 dark:bg-gray-300" />
         </div>
 
+        {/* Subcategory dropdown unchanged */}
         {(currentCategory === "Full Stack Development" ||
           currentCategory === "AI") && (
           <>
@@ -203,7 +210,6 @@ function Searchbar({ onSearch }) {
                   <TiChevronRightOutline className="w-5 h-5 text-blue-800 dark:text-blue-300 rotate-90" />
                 )}
               </div>
-
               {isSubOpen && (
                 <ul className="absolute z-50 top-16 left-0 w-full cardGradient shadow-md rounded-br-md rounded-bl-md py-2 text-base transition-colors duration-100">
                   {subs
@@ -211,10 +217,8 @@ function Searchbar({ onSearch }) {
                     .map((sub, i) => (
                       <li
                         key={i}
-                        className={`
-                          w-full flex items-center gap-2 px-4 py-2 font-semibold cursor-pointer ripple-container
-                          text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white
-                        `}
+                        className="w-full flex items-center gap-2 px-4 py-2 font-semibold cursor-pointer ripple-container
+                          text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white"
                         style={{
                           background:
                             hoveredSub === sub
@@ -255,6 +259,7 @@ function Searchbar({ onSearch }) {
           </>
         )}
 
+        {/* Search input */}
         <div className="relative gradientBorderLg xs:w-full lg:w-[300px]">
           <div className="flex items-center cardGradient transition-colors duration-100 px-4 py-3 rounded-lg w-full">
             <img

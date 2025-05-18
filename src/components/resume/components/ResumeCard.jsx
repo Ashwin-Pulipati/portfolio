@@ -87,12 +87,13 @@ const ResumeCard = ({
             className="text-sm md:text-base font-medium text-gray-500
             dark:text-gray-400 group-hover:text-black
             dark:group-hover:text-gray-300 duration-300 break-all
-            font-bodyFont">
+            font-bodyFont"
+          >
             {isExpanded ? des : `${des.slice(0, 230)}...`}
             {des.length > 230 && (
               <button
                 onClick={() => setIsExpanded((prev) => !prev)}
-                className="arrowIcon font-semibold hover:underline text-sm ml-1"
+                className="arrowIcon font-semibold hover:underline text-sm ml-1 tracking-[1px]"
                 aria-label="Read More"
               >
                 {isExpanded ? "Read Less" : "Read More"}
@@ -102,7 +103,7 @@ const ResumeCard = ({
         )}
 
         {points.length > 0 && (
-          <ul  className="list-disc ml-6 font-bodyFont group">
+          <ul className="list-disc ml-6 font-bodyFont group">
             {(isExpanded ? points : points.slice(0, 3)).map((point, idx) => (
               <li
                 key={idx}
@@ -119,7 +120,7 @@ const ResumeCard = ({
         {points.length > 3 && (
           <button
             onClick={() => setIsExpanded((prev) => !prev)}
-            className="arrowIcon text-sm text-center font-semibold font-bodyFont hover:underline mt-1"
+            className="arrowIcon text-sm text-center font-semibold font-bodyFont hover:underline mt-1 tracking-[1px]"
             aria-label="Toggle Bullet Points"
           >
             {isExpanded ? "Read Less" : "Read More"}

@@ -1,109 +1,123 @@
+import React from "react";
+import useEmblaCarousel from "embla-carousel-react";
+import {
+  PrevButton,
+  NextButton,
+  usePrevNextButtons,
+} from "./components/embla-carousel-default/EmblaCarouselArrowButtons";
+import {
+  DotButton,
+  useDotButton,
+} from "./components/embla-carousel-default/EmblaCarouselDotButton";
 import { motion } from "framer-motion";
-import React, { useState } from "react";
-import Slider from "react-slick";
-import { useDarkMode } from "../layouts/DarkMode";
 import Title from "../layouts/Title";
-import UnifiedArrow from "../layouts/UnifiedArrow";
 import Card from "./components/FeaturesCard";
 import { featuresData } from "./constants/featuresData";
 
-const Features = ({ onNext, onPrev, nextDisabled, prevDisabled }) => {
-  const [dotActive, setDotActive] = useState(0);
+// split features into chunks of 4
+const chunkData = (data, size) => {
+  const chunks = [];
+  for (let i = 0; i < data.length; i += size) {
+    chunks.push(data.slice(i, i + size));
+  }
+  return chunks;
+};
 
-  const isDarkMode = useDarkMode();
-
-  const settings = {
-    dots: true,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    rows: 2,
-    slidesPerRow: 2,
-    nextArrow: (
-      <UnifiedArrow
-        variant={"features"}
-        direction="next"
-        onClick={onNext}
-        disabled={nextDisabled}
-      />
-    ),
-    prevArrow: (
-      <UnifiedArrow
-        variant={"features"}
-        direction="prev"
-        onClick={onPrev}
-        disabled={prevDisabled}
-      />
-    ),
-    beforeChange: (prev, next) => setDotActive(next),
-    appendDots: (dots) => (
-      <div style={{ position: "relative", marginTop: "30px" }}>
-        <ul
-          style={{
-            display: "flex",
-            gap: "15px",
-            justifyContent: "center",
-            position: "absolute",
-            bottom: 0,
-            left: "50%",
-            transform: "translateX(-50%)",
-          }}
-        >
-          {dots}
-        </ul>
-      </div>
-    ),
-    customPaging: (i) => (
-      <div className="relative flex items-center justify-center group">
-        <div className="absolute w-[17px] h-[17px] rounded-full bg-gradient-to-r from-emerald-300 via-cyan-400 to-blue-600 opacity-30 scale-0 transition-all duration-300 group-hover:opacity-100 group-hover:scale-100"></div>
-        <div
-          className="relative w-[11px] h-[11px] rounded-full cursor-pointer transition-all duration-300"
-          style={{
-            background: isDarkMode
-              ? i === dotActive
-                ? "#35BDFD"
-                : "#23272b"
-              : i === dotActive
-              ? "#1D4ED8"
-              : "lightGray",
-            boxShadow:
-              "1px 4px 2px -3px rgba(0,0,0,0.7) inset, -1px -3px 3px -2px rgba(255,255,255,0.2) inset",
-          }}
-        />
-      </div>
-    ),
-    responsive: [
-      {
-        breakpoint: 640,
-        settings: "unslick",
-      },
-    ],
-  };
+const Features = () => {
+  const featureChunks = chunkData(featuresData, 4);
+  const [emblaRef, emblaApi] = useEmblaCarousel({});
+  const {
+    prevBtnDisabled,
+    nextBtnDisabled,
+    onPrevButtonClick,
+    onNextButtonClick,
+  } = usePrevNextButtons(emblaApi);
+  const { selectedIndex, scrollSnaps, onDotButtonClick } =
+    useDotButton(emblaApi);
 
   return (
     <section
       id="features"
-      className="w-full px-2 md:px-6 lg:px-16 xl:px-20 py-14"
+      className="w-full px-4 md:px-6 lg:px-16 xl:px-20 py-14"
     >
-      <div className="border-b border-b-gray-400 dark:border-b-black pb-24">
-        <div className="px-6 md:px-0 mr-0 md:mr-4">
+      <div className="border-b border-gray-400 dark:border-black pb-24">
+        <div className="mb-8 px-6 md:px-0">
           <Title title="Features" des="What I Do" />
         </div>
-        {/**Place the arrows buttonshere */}
-        <div className="hidden xs:block w-full">
-          <Slider {...settings}>
-            {featuresData.map((item) => (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.85 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 1, ease: "easeInOut" }}
-                viewport={{ once: false }}
-                key={item.id}
-                className="p-6"
-              >
-                <Card item={item} />
-              </motion.div>
-            ))}
-          </Slider>
+
+        {/* simple list on small screens */}
+        <div className="flex flex-col gap-6 md:hidden px-4">
+          {featuresData.map((item) => (
+            <motion.div
+              key={item.id}
+              initial={{ opacity: 0, scale: 0.85 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1, ease: "easeInOut" }}
+              viewport={{ once: false }}
+            >
+              <Card item={item} />
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Embla carousel for md+ screens */}
+        <div className="hidden md:block">
+          <div className="relative">
+            {/* Slides viewport */}
+            <div ref={emblaRef} className="overflow-hidden">
+              <div className="flex -ml-4">
+                {featureChunks.map((chunk, idx) => (
+                  <div key={idx} className="flex-none w-full pl-4">
+                    {/* 2x2 CSS grid for cards */}
+                    <div className="grid grid-cols-2 grid-rows-2 gap-10 p-6">
+                      {chunk.map((item) => (
+                        <motion.div
+                          key={item.id}
+                          initial={{ opacity: 0, scale: 0.85 }}
+                          whileInView={{ opacity: 1, scale: 1 }}
+                          transition={{ duration: 1, ease: "easeInOut" }}
+                          viewport={{ once: false }}
+                        >
+                          <Card item={item} />
+                        </motion.div>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Arrows centered vertically at ends */}
+            <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center">
+              <div className="pointer-events-auto">
+                <PrevButton
+                  onClick={onPrevButtonClick}
+                  disabled={prevBtnDisabled}
+                />
+              </div>
+            </div>
+            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center">
+              <div className="pointer-events-auto">
+                <NextButton
+                  onClick={onNextButtonClick}
+                  disabled={nextBtnDisabled}
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Dots centered below */}
+          <div className="flex justify-center mt-6">
+            <div className="flex gap-2">
+              {scrollSnaps.map((_, index) => (
+                <DotButton
+                  key={index}
+                  active={index === selectedIndex}
+                  onClick={() => onDotButtonClick(index)}
+                />
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>

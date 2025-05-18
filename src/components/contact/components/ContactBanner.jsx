@@ -45,17 +45,17 @@ const ContactLeft = () => {
         >
           Ashwin Pulipati
         </span>
-        <p className="text-xl font-normal text-gray-700 dark:text-gray-400 dark:group-hover:text-gray-300">
-          MERN Stack Developer
+        <p className="text-xl font-medium text-gray-700 dark:text-gray-400 group-hover:text-black dark:group-hover:text-text-gray-300">
+          Full Stack Software Engineer
         </p>
-        <p className="text-md font-normal text-gray-700 dark:text-gray-400 dark:group-hover:text-gray-300">
+        <p className="text-md font-normal text-gray-700 dark:text-gray-400 group-hover:text-black dark:group-hover:text-gray-300">
           Reach out to me effortlessly through the preferred communication
           channels below. I value clear and seamless connections, ensuring every
           interaction is straightforward and efficient.
         </p>
       </div>
       <div className="flex flex-col gap-4 group">
-        <h2 className="text-base uppercase font-titleFont mb-4">
+        <h2 className="text-base uppercase font-titleFont mb-4 tracking-[2px] group-hover:text-black dark:group-hover:text-gray-300">
           REACH ME OUT
         </h2>
         <div className="flex gap-6">

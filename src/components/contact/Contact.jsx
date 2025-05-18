@@ -149,7 +149,7 @@ const Contact = () => {
         >
           <label
             htmlFor={field.id}
-            className="text-sm text-gray-500 dark:text-gray-400 font-semibold uppercase tracking-wide"
+            className="text-sm text-gray-500 dark:text-gray-400 font-semibold uppercase tracking-[2px]"
           >
             {field.label} <span className="text-red-500">*</span>
           </label>
@@ -193,7 +193,7 @@ const Contact = () => {
         >
           <label
             htmlFor={field.id}
-            className="text-sm text-gray-500 dark:text-gray-400 font-semibold uppercase tracking-wide"
+            className="text-sm text-gray-500 dark:text-gray-400 font-semibold uppercase tracking-[2px]"
           >
             {field.label}{" "}
             {field.label !== "Phone Number" ? (
@@ -216,7 +216,7 @@ const Contact = () => {
                 {...(field.name === "phoneNumber"
                   ? { maxLength: 10 }
                   : { required: true })}
-                className="contactInput text-gray-600 dark:text-gray-200"
+                className="contactInput text-gray-600 dark:text-gray-200 "
               />
               {touched[field.name] &&
                 (errorMessage ? (
@@ -246,7 +246,7 @@ const Contact = () => {
       className="w-full py-14 px-6 sm:px-8 md:px-12 lg:px-16  xl:px-20 "
     >
       <div className="border-b border-b-gray-400 dark:border-b-black pb-20">
-        <Title title="CONTACT" des="Contact Me" />
+        <Title title="HIRE ME" des="Contact Me" />
         <div className="w-full">
           <div className="w-full h-auto flex flex-col lg:flex-row justify-between xs:gap-y-8 md:gap-y-10 lg:gap-8 ">
             <ContactBanner />
@@ -271,7 +271,7 @@ const Contact = () => {
                     type="submit"
                     className="ripple-container w-full relative uppercase z-10 px-6 py-3 text-titleFont font-medium rounded-md 
                     cardGradient hover:bg-none hover:rounded-full hover:bg-green-100 
-                    hover:text-green-800  dark:hover:bg-none dark:hover:bg-green-800 dark:hover:text-green-100"
+                    hover:text-green-800  dark:hover:bg-none dark:hover:bg-green-800 dark:hover:text-green-100 tracking-[2px]"
                     onMouseDown={createRipple}
                     aria-label="Send Message"
                   >

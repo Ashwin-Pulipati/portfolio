@@ -1,9 +1,9 @@
 import React from "react";
 import { RiRobot2Line, RiRobot2Fill, RiStackLine, RiStackFill } from "react-icons/ri";
 import { BsLaptop, BsFillLaptopFill } from "react-icons/bs";
-import { FaMobileAlt, FaMobile } from "react-icons/fa";
 import { TbTags } from "react-icons/tb";
 import { AiFillAliwangwang, AiOutlineAliwangwang } from "react-icons/ai";
+import { MdDesignServices, MdOutlineDesignServices } from "react-icons/md";
 
 export const tagStyleMap = {
   "frontend-development": {
@@ -201,8 +201,8 @@ export const featuresData = [
 
   {
     id: 5,
-    iconOutlined: <FaMobileAlt />,
-    iconFilled: <FaMobile />,
+    iconOutlined: <MdOutlineDesignServices />,
+    iconFilled: <MdDesignServices />,
     color: "text-[#c785f9]",
     hoverColor: "group-hover:text-[#b06ce5]",
     title: "UI/UX",

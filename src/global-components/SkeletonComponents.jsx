@@ -99,17 +99,52 @@ export const FeaturesCardSkeleton = () => (
 );
 
 export const FeaturesSectionSkeleton = () => (
-  <section className="w-full px-2 md:px-6 lg:px-16 xl:px-20 py-14 animate-pulse">
+  <section className="w-full px-2 md:px-6 lg:px-16 xl:px-20 py-14">
     {/* Header skeleton */}
-    <div className="border-b border-b-gray-400 dark:border-b-black pb-24 mb-8">
+    <div className="border-b border-b-gray-400 dark:border-b-black pb-24 mb-8 animate-pulse">
       <div className="w-48 h-8 bg-gray-200 dark:bg-gray-700 rounded mb-4"></div>
       <div className="w-32 h-6 bg-gray-200 dark:bg-gray-700 rounded"></div>
     </div>
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-      <FeaturesCardSkeleton />
-      <FeaturesCardSkeleton />
-      <FeaturesCardSkeleton />
-      <FeaturesCardSkeleton />
+
+    {/* Small screens: vertical list skeletons */}
+    <div className="flex flex-col gap-6 md:hidden">
+      {[...Array(4)].map((_, idx) => (
+        <FeaturesCardSkeleton key={idx} />
+      ))}
+    </div>
+
+    {/* Carousel skeleton for md+ screens */}
+    <div className="hidden md:block">
+      <div className="relative">
+        <div className="overflow-hidden animate-pulse">
+          <div className="flex space-x-4 -ml-4">
+            <div className="flex-none w-full pl-4">
+              <div className="grid grid-cols-2 grid-rows-2 gap-10 p-6">
+                <FeaturesCardSkeleton />
+                <FeaturesCardSkeleton />
+                <FeaturesCardSkeleton />
+                <FeaturesCardSkeleton />
+              </div>
+            </div>
+          </div>
+        </div>
+        {/* Arrow skeletons */}
+        <div className="absolute inset-y-0 left-0 flex items-center pointer-events-none">
+          <div className="w-16 h-16 rounded-lg bg-gray-200 dark:bg-gray-700" />
+        </div>
+        <div className="absolute inset-y-0 right-0 flex items-center pointer-events-none">
+          <div className="w-16 h-16 rounded-lg bg-gray-200 dark:bg-gray-700" />
+        </div>
+      </div>
+      {/* Dots skeletons */}
+      <div className="flex justify-center mt-6 space-x-2">
+        {[...Array(3)].map((_, idx) => (
+          <div
+            key={idx}
+            className="w-6 h-6 rounded-full bg-gray-200 dark:bg-gray-700"
+          />
+        ))}
+      </div>
     </div>
   </section>
 );

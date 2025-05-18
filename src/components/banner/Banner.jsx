@@ -38,7 +38,7 @@ const Banner = React.memo(() => {
       <div className="grid grid-cols-1 xl:grid-cols-5 w-full sectionSeparator">
         <div className="lg:col-span-3 flex flex-col justify-center items-start order-2 xl:order-1 pt-0 md:pt-11 relative">
           <LeftBanner />
-          <div className="absolute hidden md:block top-0 md:top-16 lg:top-[6.5rem] xl:top-16 left-0 z-0 md:left-[16rem] md:z-50">
+          <div className="absolute hidden md:block top-0 md:top-16 lg:top-[6.5rem] xl:top-16 left-0 z-0 md:left-[17rem] md:z-50">
             <FairyAnimation section="banner" messages={bannerMessages} />
           </div>
         </div>

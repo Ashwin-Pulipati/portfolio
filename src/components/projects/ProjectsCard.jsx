@@ -4,7 +4,8 @@ import { Link } from "react-router-dom";
 import { slugify } from "../layouts/Utils";
 import ProjectsCardInterest from "./components/ProjectsCardInterest";
 import ViewCardImage from "./components/ViewCardImage";
-import { gradients, getProjectAgeText } from "./Projects.constants";
+import { gradients } from "./Projects.constants";
+import { getProjectAgeText } from "./Projects.Utils";
 import "./Project.css";
 
 const useProjectAgeText = (createdAt) => {

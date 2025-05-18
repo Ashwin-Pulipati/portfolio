@@ -41,7 +41,7 @@ const LeftBanner = () => {
       className="flex flex-col gap-8 md:gap-10 lg:gap-12 w-full md:w-11/12 mt-0 lg:mt-10 xl:mt-0"
     >
       <div className="flex flex-col gap-4 md:gap-5">
-        <h4 className="tracking-[1px] mt-6 md:mt-0 text-sm sm:text-base font-normal font-titleFont w-fit h-fit text-pink-800 bg-pink-100 dark:text-pink-100 dark:bg-pink-800 rounded-full py-2 px-4 shadow-shadowTwo dark:shadow-shadowOne">
+        <h4 className="tracking-[2px] mt-6 md:mt-0 text-sm sm:text-base font-normal font-titleFont w-fit h-fit text-pink-800 bg-pink-100 dark:text-pink-100 dark:bg-pink-800 rounded-full py-2 px-4 shadow-shadowTwo dark:shadow-shadowOne">
           WELCOME TO MY WORLD
         </h4>
         <h1 className="text-4xl md:text-6xl font-bold text-gray-700 dark:text-white font-titleFont">

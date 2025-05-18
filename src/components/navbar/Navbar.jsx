@@ -4,21 +4,21 @@ import { HiArrowLeft } from "react-icons/hi";
 import { Link as RouterLink, useLocation, useNavigate } from "react-router-dom";
 import { Link as ScrollLink } from "react-scroll";
 import useSystemTheme from "react-use-system-theme";
+import { ReactComponent as LogoSVG } from "../../assets/images/app-logo/app-logo.svg";
 import { createRipple } from "../layouts/RippleEffect";
-import "./Navbar.css";
 import HamburgerMenu from "./components/HamburgerMenu";
 import MediumScreenNavbar from "./components/MediumScreenNavbar";
 import Searchbar from "./components/Searchbar";
 import ThemeToggle from "./components/ThemeToggle";
+import { navItems } from "./Navbar.constants";
+import "./Navbar.css";
 import {
-  navItems,
+  getContactBgStyle,
+  getDesktopListItemClasses,
   getIcon,
   getLinkText,
   getMobileClasses,
- getDesktopListItemClasses,
-  getContactBgStyle
-} from "./Navbar.constants";
-import { ReactComponent as LogoSVG } from "../../assets/images/app-logo/app-logo.svg";
+} from "./Navbar.Utils";
 
 const Navbar = ({ onSearch }) => {
   const [showMenu, setShowMenu] = useState(false);
@@ -102,7 +102,6 @@ const Navbar = ({ onSearch }) => {
     else setTheme("light");
   };
 
-  
   const renderNavItems = (mobile = false) => {
     return navItems.map(
       (
@@ -153,7 +152,7 @@ const Navbar = ({ onSearch }) => {
                 {...commonProps}
               >
                 <div
-                  className={`icon text-md ${isActive ? iconActive : color}`}
+                  className={`icon text-md tracking-[2px] ${isActive ? iconActive : color}`}
                 >
                   {icon}
                 </div>
@@ -163,7 +162,7 @@ const Navbar = ({ onSearch }) => {
           );
         }
 
-        const contactGradient = title === "CONTACT" && !isActive;
+        const contactGradient = title === "HIRE ME" && !isActive;
 
         return (
           <li
@@ -182,7 +181,7 @@ const Navbar = ({ onSearch }) => {
             )}
             <ScrollLink
               {...commonProps}
-              className={`relative inline-flex items-center gap-2 ${
+              className={`relative inline-flex items-center gap-2 tracking-[2px] ${
                 contactGradient
                   ? "z-10 bg-gradient-to-br from-gray-200 to-white px-4 py-[11px] rounded-lg"
                   : ""
@@ -237,7 +236,6 @@ const Navbar = ({ onSearch }) => {
         "bg-bodyColorWhite/75 dark:bg-bodyColor/50 backdrop-blur-lg",
       ].join(" ")
     : "bg-bodyColorWhite dark:bg-bodyColor";
-
 
   return (
     <nav className={`${baseClasses} ${scrolledClasses}`}>
