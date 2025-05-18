@@ -78,7 +78,7 @@ const LeftBanner = () => {
               onMouseDown={createRipple}
             >
               <div className="flex items-center gap-2 justify-center md:hidden">
-                <span>View Projects </span>
+                <span className="mb-0.5">View Projects </span>
                 <HiArrowRight className="w-4 h-4" />
               </div>
 
@@ -103,7 +103,7 @@ const LeftBanner = () => {
               onMouseDown={createRipple}
             >
               <div className="flex items-center gap-2 justify-center md:hidden">
-                <span>View Projects </span>
+                <span className="mb-0.5">View Projects </span>
                 <HiArrowRight className="w-4 h-4" />
               </div>
 
@@ -113,7 +113,6 @@ const LeftBanner = () => {
                   <HiArrowRight className="w-4 h-4" />
                 </span>
               </div>
-              
             </div>
           </button>
         </div>
