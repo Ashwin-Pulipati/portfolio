@@ -272,22 +272,19 @@ const Navbar = ({ onSearch }) => {
           />
 
           {/* Raster fallback for small screens */}
-          <picture className="block lg:hidden">
-            {/* WebP if supported */}
+          {/* <picture className="block lg:hidden">
             <source
               srcSet={`${process.env.PUBLIC_URL}/app-logo.webp`}
               type="image/webp"
               width="64"
               height="56"
             />
-            {/* PNG fallback */}
             <source
               srcSet={`${process.env.PUBLIC_URL}/app-logo.png`}
               type="image/png"
               width="64"
               height="56"
             />
-            {/* final <img> for extra fallback */}
             <img
               src={`${process.env.PUBLIC_URL}/app-logo.png`}
               alt="App logo"
@@ -297,6 +294,26 @@ const Navbar = ({ onSearch }) => {
               fetchPriority="high"
               width="64"
               height="56"
+            />
+          </picture> */}
+          <picture className="block lg:hidden">
+            <source
+              srcSet={`${process.env.PUBLIC_URL}/app-logo.webp`}
+              type="image/webp"
+            />
+            <source
+              srcSet={`${process.env.PUBLIC_URL}/app-logo.png`}
+              type="image/png"
+            />
+            <img
+              src={`${process.env.PUBLIC_URL}/app-logo.png`}
+              alt="App logo"
+              className="w-16 h-auto"
+              width="64"
+              height="64"
+              loading="eager"
+              decoding="async"
+              fetchPriority="high"
             />
           </picture>
         </RouterLink>

@@ -37,44 +37,61 @@ const MediumScreenNavbar = ({
               onClick={handleClose}
             >
               {/* SVG for large screens */}
-              <LogoSVG
-                className="w-16 h-16 hidden lg:block"
-                aria-label="App logo"
-                loading="eager"
-                decoding="async"
-                fetchPriority="high"
-                width="64"
-                height="64"
-              />
-
-              {/* Raster fallback for small screens */}
-              <picture className="block lg:hidden">
-                {/* WebP if supported */}
-                <source
-                  srcSet={`${process.env.PUBLIC_URL}/app-logo.webp`}
-                  type="image/webp"
-                  width="64"
-                  height="56"
-                />
-                {/* PNG fallback */}
-                <source
-                  srcSet={`${process.env.PUBLIC_URL}/app-logo.png`}
-                  type="image/png"
-                  width="64"
-                  height="56"
-                />
-                {/* final <img> for extra fallback */}
-                <img
-                  src={`${process.env.PUBLIC_URL}/app-logo.png`}
-                  alt="App logo"
-                  className="w-16 h-16"
-                  loading="eager"
-                  decoding="async"
-                  fetchPriority="high"
-                  width="64"
-                  height="56"
-                />
-              </picture>
+                        <LogoSVG
+                          className="w-16 h-16 hidden lg:block"
+                          aria-label="App logo"
+                          loading="eager"
+                          decoding="async"
+                          fetchPriority="high"
+                          width="64"
+                          height="64"
+                        />
+              
+                        {/* Raster fallback for small screens */}
+                        {/* <picture className="block lg:hidden">
+                          <source
+                            srcSet={`${process.env.PUBLIC_URL}/app-logo.webp`}
+                            type="image/webp"
+                            width="64"
+                            height="56"
+                          />
+                          <source
+                            srcSet={`${process.env.PUBLIC_URL}/app-logo.png`}
+                            type="image/png"
+                            width="64"
+                            height="56"
+                          />
+                          <img
+                            src={`${process.env.PUBLIC_URL}/app-logo.png`}
+                            alt="App logo"
+                            className="w-16 h-14"
+                            loading="eager"
+                            decoding="async"
+                            fetchPriority="high"
+                            width="64"
+                            height="56"
+                          />
+                        </picture> */}
+                        <picture className="block lg:hidden">
+                          <source
+                            srcSet={`${process.env.PUBLIC_URL}/app-logo.webp`}
+                            type="image/webp"
+                          />
+                          <source
+                            srcSet={`${process.env.PUBLIC_URL}/app-logo.png`}
+                            type="image/png"
+                          />
+                          <img
+                            src={`${process.env.PUBLIC_URL}/app-logo.png`}
+                            alt="App logo"
+                            className="w-16 h-auto"
+                            width="64"
+                            height="64"
+                            loading="eager"
+                            decoding="async"
+                            fetchPriority="high"
+                          />
+                        </picture>
             </ScrollLink>
 
             <p className="text-sm text-gray-600 dark:text-gray-400 mt-4 leading-loose">
