@@ -51,6 +51,13 @@ html[data-theme='dark'] .gradient-animation {
   animation: move-out 1.2s ease infinite;
 }
 
+/* Disable for small screens */
+@media (max-width: 767px) {
+  .group:hover .animate-on-hover {
+    animation: none !important;
+  }
+}
+
 .group:hover .animate-on-hover:nth-child(1) {
   animation-delay: 0s;
 }
