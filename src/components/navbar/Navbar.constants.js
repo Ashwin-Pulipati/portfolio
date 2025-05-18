@@ -71,8 +71,12 @@ export const navItems = [
     title: "HIRE ME",
     bottomNavTitle: "Hire Me",
     link: "contact",
-    activeIcon: <AiFillMessage className="w-5 h-5 md:w-6 md:h-6" />,
-    inactiveIcon: <AiOutlineMessage className="w-5 h-5 md:w-6 md:h-6" />,
+    activeIcon: (
+      <AiFillMessage className="w-[1.30rem] h-[1.30rem] md:w-6 md:h-6 mb-0.5" />
+    ),
+    inactiveIcon: (
+      <AiOutlineMessage className="w-[1.30rem] h-[1.30rem] md:w-6 md:h-6 " />
+    ),
     color: "text-green-600 dark:text-green-400",
     backgroundActive:
       "bg-green-100 text-green-800 rounded-full px-7 pt-3.5 pb-2.5 sm:px-8 sm:pt-4 sm:pb-3 md:p-2 md:pr-4 md:pl-4 dark:bg-green-800 dark:text-green-100",
