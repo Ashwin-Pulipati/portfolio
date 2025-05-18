@@ -77,10 +77,17 @@ const LeftBanner = () => {
               rounded-full text-sm sm:text-base view-projects-button ripple-container elevatedShadow  group-hover:shadow-none "
               onMouseDown={createRipple}
             >
-              <AnimatedText text="View Projects" />
-              <span className="animate-on-hover">
+              <div className="flex items-center gap-2 justify-center md:hidden">
+                <span>View Projects </span>
                 <HiArrowRight className="w-4 h-4" />
-              </span>
+              </div>
+
+              <div className="md:flex items-center gap-2 justify-center hidden">
+                <AnimatedText text="View Projects" />
+                <span className="animate-on-hover">
+                  <HiArrowRight className="w-4 h-4" />
+                </span>
+              </div>
             </div>
           </button>
 
@@ -95,10 +102,18 @@ const LeftBanner = () => {
               view-resume-button ripple-container elevatedShadow group-hover:shadow-none"
               onMouseDown={createRipple}
             >
-              <AnimatedText text="View Resume" />
-              <span className="animate-on-hover">
+              <div className="flex items-center gap-2 justify-center md:hidden">
+                <span>View Projects </span>
                 <HiArrowRight className="w-4 h-4" />
-              </span>
+              </div>
+
+              <div className="md:flex items-center gap-2 justify-center hidden">
+                <AnimatedText text="View Resume" />
+                <span className="animate-on-hover">
+                  <HiArrowRight className="w-4 h-4" />
+                </span>
+              </div>
+              
             </div>
           </button>
         </div>
