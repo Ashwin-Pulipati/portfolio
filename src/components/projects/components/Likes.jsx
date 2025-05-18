@@ -27,7 +27,7 @@ function Likes({ projectId, temporary = false }) {
           <div className="relative">
             <div className="absolute -inset-0.5 rounded-full bg-gradient-to-r from-emerald-300 via-cyan-400 to-blue-600 opacity-60 blur"></div>
             <div
-              className={`relative w-22 h-12 p-0.5 rounded-full flex justify-start items-center ${pinkStyles.baseBg}`}
+              className={`relative w-22 h-12 p-0.5 rounded-full flex justify-start px-4 space-x-4 items-center ${pinkStyles.baseBg}`}
             >
               <button
                 className={`relative z-10 w-12 h-12 rounded-full flex justify-center items-center focus:outline-none ${pinkStyles.baseBg} ${pinkStyles.icon}`}
@@ -45,7 +45,7 @@ function Likes({ projectId, temporary = false }) {
                 )}
               </button>
               <span
-                className={`text-sm pb-0.5 w-fit h-fit px-2 pr-4 font-medium ${pinkStyles.baseText}`}
+                className={`text-sm pb-0.5 w-fit h-fit px-2 font-medium ${pinkStyles.baseText}`}
               >
                 {likes}
               </span>
@@ -55,8 +55,8 @@ function Likes({ projectId, temporary = false }) {
           <button
             className={`relative z-10 w-12 h-12 rounded-full flex justify-center items-center focus:outline-none transition duration-200 group/button ripple-container ${pinkStyles.baseBg}`}
             onClick={handleLikeClick}
-              onMouseDown={createRipple}
-              aria-label="Like"
+            onMouseDown={createRipple}
+            aria-label="Like"
           >
             {isLiked ? (
               <GoHeartFill

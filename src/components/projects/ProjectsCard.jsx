@@ -108,8 +108,8 @@ const ProjectsCard = React.memo(
           >
             <div className="relative flex items-center gap-2 px-3.5 py-1.5 rounded-full cardGradient transition-colors duration-300">
               <span className="relative flex size-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan-400 dark:bg-cyan-300 opacity-75"></span>
-                <span className="relative inline-flex size-2 rounded-full bg-cyan-500 dark:bg-cyan-300"></span>
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full appGradient opacity-75"></span>
+                <span className="relative inline-flex size-2 rounded-full appGradient"></span>
               </span>
               <span className="text-black dark:text-white text-xs font-bodyFont">
                 {projectAgeText}
