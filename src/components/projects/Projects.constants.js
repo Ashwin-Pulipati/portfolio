@@ -3,44 +3,85 @@ import { FaDiagramProject } from "react-icons/fa6";
 import { VscPreview } from "react-icons/vsc";
 import { BiTargetLock } from "react-icons/bi";
 
+// export const gradients = [
+//   {
+//     light: "linear-gradient(to bottom right, #ff7f92, #fff98f)",
+//     dark: "linear-gradient(to bottom right, #6e0c19 0%, #453a94 100%)",
+//   },
+//   {
+//     light: "linear-gradient(to bottom right, #fff98f,  #ffb98d)",
+//     dark: "linear-gradient(to bottom right, #7e6c10 0%, #6a0d4b 100%)",
+//   },
+//   {
+//     light: "linear-gradient(to bottom right, #4af1c8, #fff98f)",
+//     dark: "linear-gradient(to bottom right, #226346 0%, #6b5b1d 100%)",
+//   },
+//   {
+//     light: "linear-gradient(to bottom right, #c07bff, #fff98f)",
+//     dark: "linear-gradient(to bottom right, #8f3244, #2e3f8c)",
+//   },
+//   {
+//     light: "linear-gradient(to bottom right, #5df5ff, #fff98f)",
+//     dark: "linear-gradient(to bottom right, #0c7688, #723db4)",
+//   },
+//   {
+//     light: "linear-gradient(to bottom right, #ff7f92, #c07bff)",
+//     dark: "linear-gradient(to bottom right, #723db4, #8f3244 )",
+//   },
+//   {
+//     light: "linear-gradient(to bottom right, #5df5ff, #c07bff)",
+//     dark: "linear-gradient(to bottom right, #166f3b, #2e3f8c)",
+//   },
+//   {
+//     light: "linear-gradient(to bottom right, #c07bff, #4af1c8 )",
+//     dark: "linear-gradient(to bottom right, #6c4fb5, #1e7b56 )",
+//   },
+//   {
+//     light: "linear-gradient(to bottom right, #c07bff, #ffb98d)",
+//     dark: "linear-gradient(to bottom right, #8a523a, #3e54ba)"
+
+//   },
+// ];
+
 export const gradients = [
   {
-    light: "linear-gradient(to bottom right, #ff9aad 0%, #f9f586 100%)",
+    light: "linear-gradient(to bottom right, #ff7f92, #fff98f)",
     dark: "linear-gradient(to bottom right, #6e0c19 0%, #453a94 100%)",
   },
   {
-    light: "linear-gradient(to bottom right, #ffbfa7 0%, #f9f586 100%)",
+    light: "linear-gradient(to bottom right, #fff98f,  #ffb98d)",
     dark: "linear-gradient(to bottom right, #7e6c10 0%, #6a0d4b 100%)",
   },
   {
-    light: "linear-gradient(to bottom right, #96fbc4 0%, #f9f586 100%)",
+    light: "linear-gradient(to bottom right, #4af1c8, #fff98f)",
     dark: "linear-gradient(to bottom right, #226346 0%, #6b5b1d 100%)",
   },
   {
-    light: "linear-gradient(to bottom right, #b78fff 0%, #f9f586 100%)",
-    dark: "linear-gradient(to bottom right, #66009a 0%, #0d7998 100%)",
+    light: "linear-gradient(to bottom right, #c07bff, #fff98f)",
+    dark: "linear-gradient(to bottom right, #6b2837, #2f3570)",
   },
   {
-    light: "linear-gradient(to bottom right, #a0f0f4 0%, #f9f586 100%)",
-    dark: "linear-gradient(to bottom right, #0d7998 0%, #66009a 100%)",
+    light: "linear-gradient(to bottom right, #5df5ff, #fff98f)",
+    dark: "linear-gradient(to bottom right, #0a5c68, #523d86)",
   },
   {
-    light: "linear-gradient(to bottom right, #ff9aad, #b78fff)",
-    dark: "linear-gradient(to bottom right, #8a3a48, #4f2a7a)",
+    light: "linear-gradient(to bottom right, #ff7f92, #c07bff)",
+    dark: "linear-gradient(to bottom right, #7e6c10,  #6b2837)",
   },
   {
-    light: "linear-gradient(to bottom right, #a0f0f4, #b78fff)",
-    dark: "linear-gradient(to bottom right, #0d7998, #4f2a7a)",
+    light: "linear-gradient(to bottom right, #5df5ff, #c07bff)",
+    dark: "linear-gradient(to bottom right, #164f30, #2f3570)",
   },
   {
-    light: "linear-gradient(to bottom right, #96fbc4, #b78fff)",
-    dark: "linear-gradient(to bottom right, #226346, #4f2a7a)",
+    light: "linear-gradient(to bottom right, #c07bff, #4af1c8 )",
+    dark: "linear-gradient(to bottom right, #593e8a, #1a603b)",
   },
   {
-    light: "linear-gradient(to bottom right, #ffbfa7, #b78fff)",
-    dark: "linear-gradient(to bottom right, #8a4637, #4f2a7a)",
+    light: "linear-gradient(to bottom right, #c07bff, #ffb98d)",
+    dark: "linear-gradient(to bottom right, #6a442a, #453a94)",
   },
 ];
+
 
 
 export const typeStyles = {
