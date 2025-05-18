@@ -45,7 +45,10 @@ function StarRating({ projectId, temporary = false }) {
   }, []);
 
   const FeedbackTooltipCard = (
-    <div className="relative right-1/2 bottom-9">
+    <div
+      className="relative right-1/2 bottom-9"
+      onMouseDown={(e) => e.stopPropagation()}
+    >
       <div
         className={`whitespace-nowrap absolute left-1/2 bottom-full transform -translate-x-1/2 bg-bodyColor 
       text-white dark:bg-white dark:text-black text-sm px-2 py-1 rounded shadow-md
@@ -66,7 +69,10 @@ function StarRating({ projectId, temporary = false }) {
   );
 
   const FeedbackTooltipDetail = (
-    <div className="relative top-4 -left-[5%]">
+    <div
+      className="relative top-4 -left-[5%]"
+      onMouseDown={(e) => e.stopPropagation()}
+    >
       <div
         className={`whitespace-nowrap absolute left-1/2 top-full transform -translate-x-1/2 bg-black text-white dark:bg-white 
       dark:text-black text-sm px-2 py-1 rounded shadow-md z-20 hover:text-green-300 dark:hover:text-green-600`}
