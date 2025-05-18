@@ -267,6 +267,8 @@ const Navbar = ({ onSearch }) => {
             loading="eager"
             decoding="async"
             fetchPriority="high"
+            width="64"
+            height="64"
           />
 
           {/* Raster fallback for small screens */}

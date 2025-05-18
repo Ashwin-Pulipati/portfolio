@@ -69,13 +69,13 @@ export const navItems = [
   {
     id: 1004,
     title: "HIRE ME",
-    bottomNavTitle: "Contact",
+    bottomNavTitle: "Hire Me",
     link: "contact",
-    activeIcon: <AiFillMessage className="w-6 h-6" />,
-    inactiveIcon: <AiOutlineMessage className="w-6 h-6" />,
+    activeIcon: <AiFillMessage className="w-5 h-5 md:w-6 md:h-6" />,
+    inactiveIcon: <AiOutlineMessage className="w-5 h-5 md:w-6 md:h-6" />,
     color: "text-green-600 dark:text-green-400",
     backgroundActive:
-      "bg-green-100 text-green-800 rounded-full xs:px-7 xs:pt-3.5 xs:pb-2.5 sm:px-8 sm:pt-4 sm:pb-3 md:p-2 md:pr-4 md:pl-4 dark:bg-green-800 dark:text-green-100",
+      "bg-green-100 text-green-800 rounded-full px-7 pt-3.5 pb-2.5 sm:px-8 sm:pt-4 sm:pb-3 md:p-2 md:pr-4 md:pl-4 dark:bg-green-800 dark:text-green-100",
     iconActive: "text-green-800 dark:text-green-100",
     hoverBg: "hover:bg-green-100 hover:dark:bg-green-800",
   },
