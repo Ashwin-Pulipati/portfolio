@@ -258,7 +258,7 @@ const Navbar = ({ onSearch }) => {
           smooth="true"
           offset={-70}
           duration={500}
-          className="flex items-center"
+          className="flex justify-between items-center m-2 md:m-0"
         >
           {/* SVG for large screens */}
           <LogoSVG
