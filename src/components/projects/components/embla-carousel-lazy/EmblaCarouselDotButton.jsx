@@ -49,6 +49,7 @@ export const DotButton = React.memo(({ onClick, isSelected, isDarkMode }) => {
         onClick={onClick}
         className="relative w-[11px] h-[11px] md:w-[13px] md:h-[13px] rounded-full cursor-pointer transition-all duration-300 focus:outline-none"
         style={styles}
+        aria-label="Go to slide"
       />
     </div>
   );

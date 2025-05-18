@@ -44,6 +44,7 @@ export const DotButton = ({ active, onClick }) => {
       onClick={onClick}
       className="flex items-center justify-center mx-2"
       type="button"
+      aria-label="Go to slide"
     >
       <span
         className="w-[13px] h-[13px] rounded-full "

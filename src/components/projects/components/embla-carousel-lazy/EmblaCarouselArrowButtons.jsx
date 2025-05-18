@@ -24,6 +24,7 @@ export const PrevButton = React.memo(({ emblaApi }) => {
         pointer-events-auto
         focus:outline-none
       `}
+      aria-label="Previous"
     >
       <span
         className="
@@ -70,6 +71,7 @@ export const NextButton = React.memo(({ emblaApi }) => {
         pointer-events-auto
         focus:outline-none
       "
+      aria-label="Next"
     >
       <span
         className="

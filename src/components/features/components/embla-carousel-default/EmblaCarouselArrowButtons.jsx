@@ -40,6 +40,7 @@ export const PrevButton = ({ disabled, ...props }) => (
       type="button"
       className="cardGradient rounded-lg w-16 h-16 flex items-center justify-center 
                  disabled:opacity-50 cursor-pointer disabled:cursor-not-allowed"
+      aria-label="Previous"
     >
       <svg className="w-5 h-5 arrowIcon" viewBox="0 0 532 532">
         <path
@@ -59,6 +60,7 @@ export const NextButton = ({ disabled, ...props }) => (
       type="button"
       className="cardGradient rounded-lg w-16 h-16 flex items-center justify-center 
                  disabled:opacity-50 cursor-pointer disabled:cursor-not-allowed"
+      aria-label="Next"
     >
       <svg className="w-5 h-5 arrowIcon" viewBox="0 0 532 532">
         <path
