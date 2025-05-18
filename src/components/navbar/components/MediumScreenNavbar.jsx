@@ -84,7 +84,7 @@ const MediumScreenNavbar = ({
                           <img
                             src={`${process.env.PUBLIC_URL}/app-logo.png`}
                             alt="App logo"
-                            className="w-16 h-auto"
+                            className="w-16 h-16"
                             width="64"
                             height="64"
                             loading="eager"
