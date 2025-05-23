@@ -1,4 +1,3 @@
-import projectOne from "../../assets/images/Webp/projectOne.webp";
 import {
   FaHtml5,
   FaCss3Alt,
