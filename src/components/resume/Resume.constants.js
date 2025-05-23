@@ -38,6 +38,13 @@ import Slack from "../../assets/images/SVG/slack.svg";
 import OpenCV from "../../assets/images/SVG/opencv.svg";
 import Python from "../../assets/images/SVG/python.svg";
 import SQL from "../../assets/images/SVG/sql.svg";
+import HuggingFace from "../../assets/images/SVG/hugging-face-icon.svg";
+
+import cybersecurity from "../../assets/images/Other Formats/cybersecurity.png";
+import uiux  from "../../assets/images/Other Formats/ui-ux.png";
+import huggingFace from "../../assets/images/Other Formats/hugging-face.png";
+import outskill from "../../assets/images/Other Formats/outskill.png";
+import webDevBootcamp from "../../assets/images/Other Formats/web-dev-bootcamp.png";
 
 export const tabData = [
   { id: "experience", label: "Experience" },
@@ -51,46 +58,28 @@ export const LOCAL_STORAGE_KEY = "activeResumeTab";
 
 export const achievementData = [
   {
-    title: "Product Manager",
-    subTitle: "Phygtl. (Feb 2025 - Present)",
-    result: "Coming Soon...",
-    des: "Recently selected as an Intern with responsibilities that will evolve further. More details coming soon.",
-  },
-  {
     title: "Software Engineer",
-    subTitle: "Flowscript.AI (Oct 2024 - Present)",
+    subTitle: "Flowscript.AI (Oct 2024 - Apr 2025)",
     result: "Success",
     des: "",
-    tags: [
-      "App Development",
-      "UI/UX Consistency",
-      "Cross-Device Compatibility",
-      "Security Enhancement",
-      "REST API Integration",
-      "Navigation Improvement",
-      "Visual Hierarchy Optimization",
-      "Responsive Design",
-      "UI Component Optimization",
-      "User Experience Enhancement",
-      "Agile Collaboration",
-      "Code Reviews",
-      "Backend Integration",
-      "Technical Documentation",
-      "Onboarding Support",
-    ],
     points: [
-      "Fixed critical UI breakages across modules used by 2000+ users",
-      "Implemented theme-aware gradient tagging system",
-      "Reduced component bugs by ~40% through refactoring",
-      "Mentored two junior devs and set up internal Storybook docs",
-      "Fixed critical UI breakages across modules used by 2000+ users",
-      "Implemented theme-aware gradient tagging system",
-      "Reduced component bugs by ~40% through refactoring",
-      "Mentored two junior devs and set up internal Storybook docs",
-      "Fixed critical UI breakages across modules used by 2000+ users",
-      "Implemented theme-aware gradient tagging system",
-      "Reduced component bugs by ~40% through refactoring",
-      "Mentored two junior devs and set up internal Storybook docs",
+      "Automated 200+ weekly data entries by replacing manual workflows, cutting processing time by 70%.",
+      "Boosted user efficiency by 25% and reduced support tickets by 30% through new UI features and REST API enhancements.",
+      "Increased form completion rates by 20% and halved load times, improving UX across devices.",
+      "Reduced new-user onboarding time by 35% with simplified navigation and embedded documentation.",
+      "Caught 15% more bugs pre-release via 30+ code reviews; halved new hire ramp-up time with a comprehensive developer guide.",
+    ],
+  },
+  {
+    title: "Product Manager",
+    subTitle: "Phygtl. (Feb 2025 - Mar 2025)",
+    result: "Coming Soon...",
+    points: [
+      "Uncovered key UX issues that led to improved tooltip help and email validation processes.",
+      "Decreased user-reported issues by 20% through data-driven UX enhancements.",
+      "Improved onboarding efficiency by 15% by addressing key user pain points.",
+      "Lowered new user drop-off rates by 15% through redesigning Discord navigation and onboarding flow.",
+      "Reduced user friction and accelerated account activations by integrating SSO with SMS backup and troubleshooting.",
     ],
   },
   {
@@ -98,124 +87,192 @@ export const achievementData = [
     subTitle: "JS Associates (May 2020 - May 2022)",
     result: "Success",
     des: "",
-    tags: [
-      "Performance Optimization",
-      "Page Load Speed Improvement",
-      "Boost User Engagement",
-      "Refactor Legacy Code",
-      "UI/UX Collaboration",
-      "Responsive Web Design",
-      "Reduce Bounce Rates",
-      "Cross-Browser Compatibility",
-      "Build Reusable Components",
-      "Build Design Systems",
-      "API Integration & State Management",
-      "Backend Collaboration",
-      "Production Issue Troubleshoots",
-      "Downtime Reduction",
-      "Automated Testing",
-      "Version Control",
-      "Code Reviews",
-      "Mentorship",
-      "Agile Methodologies",
-      "Project Management",
-      "Documentation",
-      "Onboarding Optimization",
-    ],
     points: [
-      "Fixed critical UI breakages across modules used by 2000+ users",
-      "Implemented theme-aware gradient tagging system",
-      "Reduced component bugs by ~40% through refactoring",
-      "Mentored two junior devs and set up internal Storybook docs",
-      "Fixed critical UI breakages across modules used by 2000+ users",
-      "Implemented theme-aware gradient tagging system",
-      "Reduced component bugs by ~40% through refactoring",
-      "Mentored two junior devs and set up internal Storybook docs",
-      "Fixed critical UI breakages across modules used by 2000+ users",
-      "Implemented theme-aware gradient tagging system",
-      "Reduced component bugs by ~40% through refactoring",
-      "Mentored two junior devs and set up internal Storybook docs",
+      "Reduced page load time by 10% and increased session duration by 12% through code refactoring.",
+      "Cut bounce rate by 15% and achieved 95% WCAG compliance via responsive UI and GraphQL integration.",
+      "Accelerated feature delivery by 15% and deployment speed by 20% with 30+ reusable components and CI/CD pipelines.",
+      "Reduced downtime by 10% and cut regressions by 10% by resolving production issues quickly and implementing automated testing.",
+      "Boosted team sprint velocity by 5% through Agile workshops and mentorship.",
     ],
   },
 ];
+
+// export const certificationsData = [
+//   {
+//     id: 1,
+//     image: huggingFace,
+//     title: "Hugging Face Bootcamp",
+//     platform: "Udemy, May 2025",
+//     // link: "https://example.com/certification1",
+//   },
+//   {
+//     id: 2,
+//     image: outskill,
+//     title: "Generative AI Masterminds",
+//     platform: "OutSkill, Apr 2025",
+//     // link: "https://example.com/certification2",
+//   },
+//   {
+//     id: 3,
+//     image: uiux,
+//     title: "Complete Web & Mobile Designer",
+//     platform: "Udemy, Aug 2024",
+//     // link: "https://example.com/certification3",
+//   },
+//   {
+//     id: 4,
+//     image: webDevBootcamp,
+//     title: "Web Development Bootcamp",
+//     platform: "Udemy, Aug 2024",
+//     // link: "https://example.com/certification3",
+//   },
+//   {
+//     id: 5,
+//     image: cybersecurity,
+//     title: "Google Cybersecurity Professional Certificate",
+//     platform: "Udemy, May 2024",
+//     // link: "https://example.com/certification3",
+//   },
+// ];
 
 export const certificationsData = [
   {
     id: 1,
-    image: projectOne,
-    title: "Certification 1",
-    link: "https://example.com/certification1",
+    image: huggingFace,
+    title: "Hugging Face Bootcamp",
+    platform: "Udemy, May 2025",
+    points: [
+      "Mastered the Hugging Face platform: models, datasets, spaces, and tokens.",
+      "Set up AI development environments on Hugging Face and Google Colab.",
+      "Applied Transformers for text classification, entity recognition, and text generation.",
+      "Developed and fine‑tuned image generation pipelines using the Diffusers library.",
+      "Explored video and audio generation models for dynamic media creation.",
+      "Built interactive ML applications with Gradio for user‑friendly demos.",
+      "Implemented advanced LLM techniques and prompt engineering strategies.",
+      "Initiated, managed, and deployed end‑to‑end machine learning projects.",
+    ],
   },
   {
     id: 2,
-    image: projectOne,
-    title: "Certification 2",
-    link: "https://example.com/certification2",
+    image: outskill,
+    title: "Generative AI Masterminds",
+    platform: "OutSkill, Apr 2025",
+    points: [
+      "Analyzed the AI industry landscape and emerging career roles in AI generalism.",
+      "Defined and applied generative AI principles across text, image, video, and audio.",
+      "Practiced structured prompt engineering: zero‑shot, few‑shot, Chain‑of‑Thought, and GRWC framework.",
+      "Created and refined custom GPT agents, including a Retrieval‑Augmented AI mentor.",
+      "Integrated Eleven Labs API for voice‑enabled AI interactions.",
+      "Designed and deployed Make.com automation workflows for onboarding and content posting.",
+      "Developed monetization strategies: service offerings, consulting, and community branding.",
+      "Worked with low‑code/no‑code tools to prototype AI‑powered applications rapidly.",
+    ],
   },
   {
     id: 3,
-    image: projectOne,
-    title: "Certification 3",
-    link: "https://example.com/certification3",
+    image: uiux,
+    title: "Complete Web & Mobile Designer",
+    platform: "Udemy, Aug 2024",
+    points: [
+      "Mastered design principles from sketching and wireframing to hi‑fi prototypes in Figma.",
+      "Created responsive web and mobile layouts using auto layout, grids, and breakpoints.",
+      "Applied UI/UX best practices and accessibility guidelines throughout the workflow.",
+      "Built and managed comprehensive design systems with components, variants, and assets.",
+      "Converted Figma designs into live HTML5/CSS3 websites and interactive prototypes.",
+      "Designed logos, branding elements, and visual assets with industry‑standard tools.",
+      "Tested and iterated designs through usability feedback and prototyping sessions.",
+    ],
   },
   {
     id: 4,
-    image: projectOne,
-    title: "Certification 4",
-    link: "https://example.com/certification3",
+    image: webDevBootcamp,
+    title: "Web Development Bootcamp",
+    platform: "Udemy, Aug 2024",
+    points: [
+      "Built 16 real‑world web projects covering both frontend and backend stacks.",
+      "Mastered JavaScript ES6+, React.js with hooks, and state management.",
+      "Developed RESTful APIs using Node.js, Express.js, and MongoDB/PostgreSQL.",
+      "Implemented user authentication and authorization with JWT and OAuth.",
+      "Deployed full‑stack applications and Web3 demos with blockchain and smart contracts.",
+      "Automated development workflows using Git, GitHub, and continuous deployment tools.",
+    ],
   },
   {
     id: 5,
-    image: projectOne,
-    title: "Certification 5",
-    link: "https://example.com/certification3",
-  },
-  {
-    id: 6,
-    image: projectOne,
-    title: "Certification 6",
-    link: "https://example.com/certification3",
+    image: cybersecurity,
+    title: "Google Cybersecurity Professional Certificate",
+    platform: "Coursera, May 2024",
+    points: [
+      "Gained proficiency in Python, Linux, and SQL for automated security tasks.",
+      "Configured SIEM tools and intrusion detection systems to monitor threats.",
+      "Conducted vulnerability assessments and system hardening with Kali Linux.",
+      "Developed incident response playbooks and managed security incidents.",
+      "Analyzed cyber threat intelligence and implemented threat mitigation strategies.",
+      "Simulated real‑world cybersecurity scenarios in hands‑on labs and projects.",
+    ],
   },
 ];
 
 export const certificationsGradientMap = {
-  "certification-1": {
+  "hugging-face-bootcamp": {
     light: "linear-gradient(to bottom right, #f062a3, #f9f586)",
     dark: "linear-gradient(to bottom right, #7d2352, #7a732f)",
   },
-  "certification-2": {
+  "generative-ai-masterminds": {
     light: "linear-gradient(to bottom right, #61d4a3, #b78fff)",
     dark: "linear-gradient(to bottom right, #4db27a, #4f2a7a)",
   },
-  "certification-3": {
+  "complete-web-&-mobile-designer": {
     light: "linear-gradient(to bottom right, #73d5e2, #96fbc4)",
     dark: "linear-gradient(to bottom right, #1d5ea4, #226346)",
   },
-  "certification-4": {
+  "web-development-bootcamp": {
     light: "linear-gradient(to bottom right, #f1e15e, #96fbc4)",
     dark: "linear-gradient(to bottom right, #8e8f4c, #226346)",
+  },
+  "google-cybersecurity-professional-certificate": {
+    light: "linear-gradient(to bottom right, #ff7f92, #fff98f)",
+    dark: "linear-gradient(to bottom right, #6e0c19, #453a94)",
   },
 };
 
 
 export const experienceData = [
   {
-    title: "Product Manager",
-    subTitle: "Phygtl. (Feb 2025 - Present)",
+    title: "Software Engineer",
+    subTitle: "Flowscript.AI (Oct 2024 - Apr 2025)",
     result: "USA",
-    des: "Recently selected as an Intern with responsibilities that have grown rapidly over the past few months. I am actively contributing to key projects and have taken on additional responsibilities that underscore my capability in managing and engineering solutions.",
+    points: [
+      "Developed two web apps to automate data entry workflows, replacing manual Google Forms and Excel processes.",
+      "Implemented UI features like password toggles, resizable tables, and REST endpoints for app configuration.",
+      "Redesigned responsive App Info Forms for mobile and desktop to improve usability and performance.",
+      "Streamlined navigation by adding embedded documentation and improving user flows.",
+      "Led bi-weekly code reviews and authored developer guides to accelerate new hire onboarding.",
+    ],
   },
   {
-    title: "Software Engineer",
-    subTitle: "Flowscript.AI (Oct 2024 - Present)",
+    title: "Product Manager",
+    subTitle: "Phygtl. (Feb 2025 - Mar 2025)",
     result: "USA",
-    des: "Developed key applications like the Job Application Management Portal and Lead Generation App, optimizing workflows and client data management. Improved UI consistency, responsiveness, and navigation across devices. Led the redesign of key sections, integrated features like password visibility and resizable panels, and collaborated with backend teams on robust logic. Enhanced app performance and usability while supporting project delivery through documentation and Agile collaboration.",
+    points: [
+      "Conducted UX research through surveys and live user observation to identify onboarding pain points.",
+      "Worked with cross-functional teams to analyze user feedback and implement product improvements.",
+      "Collaborated on optimizing user flows, tooltips, and validation processes for better engagement.",
+      "Redesigned community support structure through Discord, improving clarity and guidance for new users.",
+      "Supported verification and account setup improvements including SSO and backup mechanisms.",
+    ],
   },
   {
     title: "Full Stack Web Developer",
     subTitle: "JS Associates (May 2020 - May 2022)",
     result: "IN",
-    des: "Contributed to the development of a high-traffic e-commerce platform, which significantly improved performance and user engagement. Collaborated closely with UI/UX designers and backend developers, optimized the codebase, and implemented automated testing frameworks. My contributions enhanced maintainability, reduced bugs, and streamlined development processes, resulting in improved project delivery and overall team productivity.",
+    points: [
+      "Developed and maintained full-stack web applications using React, Material-UI, and JavaScript (ES6+).",
+      "Worked with backend technologies and services to build and integrate REST/GraphQL APIs.",
+      "Utilized AWS and Docker to support scalable deployment and infrastructure management.",
+      "Created modular frontend components and microservices to support product features.",
+      "Engaged in Agile ceremonies and contributed to ongoing team development practices.",
+    ],
   },
 ];
 
@@ -336,6 +393,12 @@ export const skillsData = [
             src: TeachableMachine,
             alt: "Teachable Machine",
             className: "w-12 h-12",
+          },
+          {
+            type: "image",
+            src: HuggingFace,
+            alt: "Hugging Face",
+            className: "w-14 h-14",
           },
         ],
       },
