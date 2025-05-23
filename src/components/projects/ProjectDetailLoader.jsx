@@ -1,8 +1,8 @@
 import React from "react";
 import { useParams, useLocation } from "react-router-dom";
-import ProjectDetail from "./ProjectDetail";
 import { allProjectsList } from "./Projects.Utils";
 import { slugify } from "../layouts/Utils";
+import ProjectDetail from "./ProjectDetail";
 
 export default function ProjectDetailLoader({ onSearch, searchQuery }) {
   const { category, title } = useParams();

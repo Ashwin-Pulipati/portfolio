@@ -24,28 +24,23 @@ export const projectsBySubcategory = groupBy(
 );
 
 export const getProjectAgeText = (createdAt) => {
-  if (!createdAt) return null;
-
   const projectDate = new Date(createdAt);
-  const currentDate = Date.now();
-  const diffTime = (currentDate - projectDate.getTime()) / 1000;
+  const diffTime = Date.now() - projectDate.getTime();
+  const seconds = Math.floor(diffTime / 1000);
 
-  if (diffTime < 60)
-    return `${Math.floor(diffTime)} sec${diffTime > 1 ? "s" : ""} ago`;
-  if (diffTime < 3600)
-    return `${Math.floor(diffTime / 60)} min${
-      Math.floor(diffTime / 60) > 1 ? "s" : ""
-    } ago`;
-  if (diffTime < 86400)
-    return `${Math.floor(diffTime / 3600)} hr${
-      Math.floor(diffTime / 3600) > 1 ? "s" : ""
-    } ago`;
+  if (seconds < 60) return `${seconds} sec${seconds !== 1 ? "s" : ""} ago`;
+  if (seconds < 3600) return `${Math.floor(seconds / 60)} min${Math.floor(seconds / 60) !== 1 ? "s" : ""} ago`;
+  if (seconds < 86400) return `${Math.floor(seconds / 3600)} hr${Math.floor(seconds / 3600) !== 1 ? "s" : ""} ago`;
 
-  const days = Math.floor(diffTime / 86400);
-  if (days % 7 === 0) {
-    const weeks = days / 7;
-    return `${weeks} week${weeks > 1 ? "s" : ""} ago`;
+  const days = Math.floor(seconds / 86400);
+
+  if (days < 14) {
+    return `${days} day${days > 1 ? "s" : ""} ago`;
   }
 
-  return `${days} day${days > 1 ? "s" : ""} ago`;
+  // After 14 days, show absolute date
+  return projectDate.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "short",
+  });
 };

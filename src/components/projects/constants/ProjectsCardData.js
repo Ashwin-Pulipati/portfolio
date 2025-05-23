@@ -7,12 +7,12 @@ export const allProjects = [
   // Frontend Development
   {
     id: "f1",
-    src: projectThree,
-    title: "E-commerce Product Page",
-    des: "A responsive and interactive product page with filters, sorting, and real-time price updates.",
+    src: projectOne,
+    title: "Multiplication Worksheet Generator",
+    des: "A web app aimed at automating the process of generating multiplication worksheets, simplifying the workflow for educators and students.",
     github: "https://github.com/Ashwin-Pulipati",
-    website: "https://ecommerce-product-page.netlify.app/",
-    createdAt: new Date().toISOString(),
+    website: "https://ashwin-pulipati.github.io/Multiplication-Worksheet-Generator/",
+    createdAt: "Jan 2024",
     component: ProjectDetail,
     category: "frontend-development",
     sub: null,

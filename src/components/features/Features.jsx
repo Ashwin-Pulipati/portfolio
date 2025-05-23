@@ -1,18 +1,18 @@
-import React from "react";
 import useEmblaCarousel from "embla-carousel-react";
+import { motion } from "framer-motion";
+import React from "react";
+import Title from "../layouts/Title";
 import {
-  PrevButton,
   NextButton,
+  PrevButton,
   usePrevNextButtons,
 } from "./components/embla-carousel-default/EmblaCarouselArrowButtons";
 import {
   DotButton,
   useDotButton,
 } from "./components/embla-carousel-default/EmblaCarouselDotButton";
-import { motion } from "framer-motion";
-import Title from "../layouts/Title";
 import Card from "./components/FeaturesCard";
-import { featuresData } from "./constants/featuresData";
+import { featuresData } from "./Features.constants";
 
 // split features into chunks of 4
 const chunkData = (data, size) => {

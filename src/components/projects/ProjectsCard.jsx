@@ -140,7 +140,7 @@ const ProjectsCard = React.memo(
             </div>
           </Link>
           <div className="relative flex flex-col gap-2">
-            <p className="text-sm capitalize tracking-wide text-gray-700 dark:text-lightText text-justify group-hover:text-black dark:group-hover:text-gray-100 duration-300 group-hover:cursor-pointer">
+            <p className="text-sm tracking-wide text-gray-700 dark:text-lightText text-justify group-hover:text-black dark:group-hover:text-gray-100 duration-300 group-hover:cursor-pointer">
               {highlightedText(des)}
             </p>
           </div>

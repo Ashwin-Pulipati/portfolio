@@ -125,11 +125,15 @@ const ProjectsList = ({ searchQuery, onSearch }) => {
     const baseList = projectsByCategory[catSlug] || [];
     const subSlug = slugify(selectedSub === defaultSubLabel ? "" : selectedSub);
     const key = `${catSlug}||${subSlug}`;
-    setCategoryProjects(
-      category === "full-stack-development" || (category === "ai" && subSlug)
+    const sortedList = [
+      ...(category === "full-stack-development" ||
+      (category === "ai" && subSlug)
         ? projectsBySubcategory[key] || baseList
-        : baseList
-    );
+        : baseList),
+    ].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+
+    setCategoryProjects(sortedList);
+    
   }, [category, selectedSub, defaultSubLabel]);
 
   useEffect(() => {

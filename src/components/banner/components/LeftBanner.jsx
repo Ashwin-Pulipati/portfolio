@@ -22,6 +22,7 @@ const LeftBanner = () => {
       "Full Stack Developer.",
       "Software Engineer.",
       "UI/UX Developer.",
+      "Designer.",
     ],
     loop: true,
     typeSpeed: 20,

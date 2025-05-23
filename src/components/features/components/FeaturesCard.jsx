@@ -1,9 +1,9 @@
-import React, { useCallback, useState} from "react";
+import React, { useCallback, useState } from "react";
 import { HiArrowRight } from "react-icons/hi";
 import { useNavigate } from "react-router-dom";
-import { slugify } from "../../layouts/Utils";
-import { hexToRGBA, tagStyleMap} from "../constants/featuresData";
 import { useDarkMode } from "../../layouts/DarkMode";
+import { slugify } from "../../layouts/Utils";
+import { hexToRGBA, tagStyleMap } from "../Features.constants";
 
 const Card = ({
   item: {
