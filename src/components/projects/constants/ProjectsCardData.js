@@ -1,19 +1,24 @@
 import projectOne from "../../../assets/images/Webp/projectOne.webp";
-import projectTwo from "../../../assets/images/Webp/projectTwo.webp";
 import projectThree from "../../../assets/images/Webp/projectThree.webp";
+import projectTwo from "../../../assets/images/Webp/projectTwo.webp";
+import MultiplicationWorksheetGeneratorProjectDetail from "../../DB/Multiplication-Worksheet-Generator/MultiplicationWorksheetGeneratorProjectDetail";
 import ProjectDetail from "../ProjectDetail";
+import MWGThumbnail from "../../../assets/images/DB Images/MWG/Thumbnail.png"
 
 export const allProjects = [
   // Frontend Development
   {
     id: "f1",
-    src: projectOne,
+    src: MWGThumbnail,
     title: "Multiplication Worksheet Generator",
     des: "A web app aimed at automating the process of generating multiplication worksheets, simplifying the workflow for educators and students.",
-    github: "https://github.com/Ashwin-Pulipati",
-    website: "https://ashwin-pulipati.github.io/Multiplication-Worksheet-Generator/",
+    github:
+      "https://github.com/Ashwin-Pulipati/Multiplication-Worksheet-Generator",
+    website:
+      "https://ashwin-pulipati.github.io/Multiplication-Worksheet-Generator/",
+    demo: "https://github.com/Ashwin-Pulipati/Multiplication-Worksheet-Generator?tab=readme-ov-file#multiplication-worksheet-generator",
     createdAt: "Jan 2024",
-    component: ProjectDetail,
+    component: MultiplicationWorksheetGeneratorProjectDetail,
     category: "frontend-development",
     sub: null,
   },

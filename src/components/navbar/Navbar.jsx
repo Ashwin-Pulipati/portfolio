@@ -266,7 +266,7 @@ const Navbar = ({ onSearch }) => {
             aria-label="App logo"
             loading="eager"
             decoding="async"
-            fetchPriority="high"
+            fetchpriority="high"
             width="64"
             height="64"
           />
@@ -291,7 +291,7 @@ const Navbar = ({ onSearch }) => {
               className="w-16 h-14"
               loading="eager"
               decoding="async"
-              fetchPriority="high"
+              fetchpriority="high"
               width="64"
               height="56"
             />
@@ -313,7 +313,7 @@ const Navbar = ({ onSearch }) => {
               height="64"
               loading="eager"
               decoding="async"
-              fetchPriority="high"
+              fetchpriority="high"
             />
           </picture>
         </RouterLink>

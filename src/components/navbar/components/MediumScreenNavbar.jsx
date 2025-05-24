@@ -42,7 +42,7 @@ const MediumScreenNavbar = ({
                           aria-label="App logo"
                           loading="eager"
                           decoding="async"
-                          fetchPriority="high"
+                          fetchpriority="high"
                           width="64"
                           height="64"
                         />
@@ -67,7 +67,7 @@ const MediumScreenNavbar = ({
                             className="w-16 h-14"
                             loading="eager"
                             decoding="async"
-                            fetchPriority="high"
+                            fetchpriority="high"
                             width="64"
                             height="56"
                           />
@@ -89,7 +89,7 @@ const MediumScreenNavbar = ({
                             height="64"
                             loading="eager"
                             decoding="async"
-                            fetchPriority="high"
+                            fetchpriority="high"
                           />
                         </picture>
             </ScrollLink>

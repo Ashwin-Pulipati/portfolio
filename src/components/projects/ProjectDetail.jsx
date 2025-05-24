@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
+import projectDetailData from "./constants/ProjectDetailData";
 import EmblaCarousel from "./components/embla-carousel-lazy/EmblaCarousel";
 import Image1 from "../../assets/images/Webp/projectOne.webp";
 import Image2 from "../../assets/images/Webp/projectTwo.webp";
@@ -8,7 +9,6 @@ import { createRipple } from "../layouts/RippleEffect";
 import Searchbar from "../navbar/components/Searchbar";
 import HighlightTextProjectDetail from "./components/HighlightTextProjectDetail";
 import ProjectDetailInterest from "./components/ProjectDetailInterest";
-import projectDetailData from "./constants/ProjectDetailData";
 import ProjectSidebarNavigation from "./components/ProjectSidebarNavigation";
 
 const ProjectDetail = ({

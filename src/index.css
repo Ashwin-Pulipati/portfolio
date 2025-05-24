@@ -50,6 +50,9 @@
   .arrowIcon{
     @apply text-blue-700 dark:text-cyan-400
   }
+  .linkDot{
+    @apply arrowIcon mb-2 marker:text-blue-700 dark:marker:text-cyan-400
+  }
   .bannerIcon {
     @apply w-16 h-16 bg-opacity-25 text-gray-200 text-xl inline-flex items-center justify-center rounded-lg shadow-shadowTwo dark:shadow-shadowOne hover:bg-opacity-40 hover:-translate-y-1 transition-all cursor-pointer bg-boxBgWhite dark:bg-boxBg bg-gradient-to-br from-[#dee3e7] to-white dark:bg-gradient-to-tl dark:from-[#262a2e] dark:to-[#1f2022] dark:hover:bg-gradient-to-br dark:hover:from-[#212428] dark:hover:to-[#16181c] duration-100;
   }

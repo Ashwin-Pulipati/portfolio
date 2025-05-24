@@ -107,7 +107,7 @@ const ResumeCard = ({
             {(isExpanded ? points : points.slice(0, 3)).map((point, idx) => (
               <li
                 key={idx}
-                className="arrowIcon0 mb-2 marker:text-blue-700 dark:marker:text-cyan-400"
+                className="arrowIcon mb-2 marker:text-blue-700 dark:marker:text-cyan-400"
               >
                 <div className="text-sm md:text-base font-medium text-gray-500 dark:text-gray-400 group-hover:text-black dark:group-hover:text-gray-300 duration-300 break-all font-bodyFont">
                   {point}
