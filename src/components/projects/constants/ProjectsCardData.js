@@ -3,7 +3,9 @@ import projectThree from "../../../assets/images/Webp/projectThree.webp";
 import projectTwo from "../../../assets/images/Webp/projectTwo.webp";
 import MultiplicationWorksheetGeneratorProjectDetail from "../../DB/Multiplication-Worksheet-Generator/MultiplicationWorksheetGeneratorProjectDetail";
 import ProjectDetail from "../ProjectDetail";
-import MWGThumbnail from "../../../assets/images/DB Images/MWG/Thumbnail.png"
+import MWGThumbnail from "../../../assets/images/DB Images/MWG/Thumbnail.png";
+import KeeperNotesDetail from "../../DB/Keeper-Notes/KeeperNotesDetail";
+import KNThumbnail from "../../../assets/images/DB Images/KN/Thumbnail.png";
 
 export const allProjects = [
   // Frontend Development
@@ -24,13 +26,14 @@ export const allProjects = [
   },
   {
     id: "f2",
-    src: projectOne,
-    title: "Portfolio Website",
-    des: "A modern portfolio website showcasing animations, dark mode, and contact form integration.",
-    github: "https://github.com/Ashwin-Pulipati",
-    website: "https://personal-portfolio.netlify.app/",
-    createdAt: new Date().toISOString(),
-    component: ProjectDetail,
+    src: KNThumbnail,
+    title: "Keeper Notes",
+    des: "A web app for real-time note-taking, designed to streamline personal organization with instant note creation, editing, and dynamic search highlighting.",
+    github: "https://github.com/Ashwin-Pulipati/Keeper-Notes",
+    website: "https://ashwin-pulipati.github.io/Keeper-Notes/",
+    demo: "https://github.com/Ashwin-Pulipati/Keeper-Notes?tab=readme-ov-file#keeper-notes",
+    createdAt: "Sept 2024",
+    component: KeeperNotesDetail,
     category: "frontend-development",
     sub: null,
   },

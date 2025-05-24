@@ -9,7 +9,7 @@ const ViewCardImage = ({ src }) => {
   }, []);
 
   return (
-    <div className="w-full h-48 sm:h-56 md:h-64 lg:h-72 pb-[56.25%] relative overflow-hidden rounded-xl" >
+    <div className="w-full h-48 sm:h-56 md:h-64 lg:h-72 pb-[56.25%] relative overflow-hidden rounded-xl">
       {isExpanded ? (
         <div className="fixed top-0 left-0 w-screen h-screen bg-black bg-opacity-80 flex justify-center items-center z-50">
           <img
@@ -22,7 +22,7 @@ const ViewCardImage = ({ src }) => {
             viewBox="0 0 14 14"
             width="1em"
             height="1em"
-            className="w-8 h-8 absolute top-5 right-8 duration-300 cursor-pointer text-[#f3a99c] group-hover:text-[#f29685] shadow-shadowOne"
+            className="w-8 h-8 absolute top-5 right-8 duration-300 cursor-pointer text-rose-400 dark:text-rose-600 group-hover:text-rose-600 dark:group-hover:text-rose-400"
             onClick={toggleExpand}
             aria-label="Collapse"
           >
@@ -42,7 +42,7 @@ const ViewCardImage = ({ src }) => {
             alt="project"
           />
           <BiExpand
-            className="w-5 h-5 absolute top-3 right-3 text-md text-[#f3a99c] group-hover:text-[#f29685] duration-300 cursor-pointer"
+            className="w-5 h-5 absolute top-3 right-3 text-md text-rose-400 dark:text-rose-600 group-hover:text-rose-600 dark:group-hover:text-rose-400 duration-300 cursor-pointer"
             onClick={toggleExpand}
             aria-label="Expand"
           />

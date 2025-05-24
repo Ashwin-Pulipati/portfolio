@@ -6,18 +6,17 @@ import Searchbar from "../../navbar/components/Searchbar";
 import HighlightTextProjectDetail from "../../projects/components/HighlightTextProjectDetail";
 import ProjectDetailInterest from "../../projects/components/ProjectDetailInterest";
 import ProjectSidebarNavigation from "../../projects/components/ProjectSidebarNavigation";
-import MWGProjectDetailData from "./MWGProjectDetailData";
-import BackgroundVideo from "../../../assets/images/DB Images/MWG/background.gif";
-import Page1 from "../../../assets/images/DB Images/MWG/Page-1.png";
-import Page2 from "../../../assets/images/DB Images/MWG/Page-2.png";
-import Page3 from "../../../assets/images/DB Images/MWG/Page-3.png";
-import Page4 from "../../../assets/images/DB Images/MWG/Page-4.png";
-import Page5 from "../../../assets/images/DB Images/MWG/Page-5.png";
-import Page6 from "../../../assets/images/DB Images/MWG/Page-6.png";
-import Page7 from "../../../assets/images/DB Images/MWG/Page-7.png";
+import BackgroundVideo from "../../../assets/images/DB Images/KN/background.gif";
+import Page1 from "../../../assets/images/DB Images/KN/Page-1.png";
+import Page2 from "../../../assets/images/DB Images/KN/Page-2.png";
+import Page3 from "../../../assets/images/DB Images/KN/Page-3.png";
+import Page4 from "../../../assets/images/DB Images/KN/Page-4.png";
+import Page5 from "../../../assets/images/DB Images/KN/Page-5.png";
+import Page6 from "../../../assets/images/DB Images/KN/Page-6.png";
 import { CopyBlock, dracula } from "react-code-blocks";
+import KNProjectDetailData from "./KeeperNotesDetailData";
 
-const MultiplicationWorksheetGeneratorProjectDetail = ({
+const KeeperNotesDetail = ({
   id,
   title,
   des,
@@ -39,7 +38,7 @@ const MultiplicationWorksheetGeneratorProjectDetail = ({
     }
   }, [searchQuery]);
 
-  const SLIDES = [Page1, Page2, Page3, Page4, Page5, Page6, Page7];
+  const SLIDES = [Page1, Page2, Page3, Page4, Page5, Page6];
   const emblaOptions = useMemo(() => ({ loop: true, align: "start" }), []);
 
   const scrollToSection = (id) => {
@@ -60,24 +59,24 @@ const MultiplicationWorksheetGeneratorProjectDetail = ({
     </div>
   );
 
-  const codeSnippetChallenge1 = `function generateWorksheet(rows, cols) {
-    let worksheet = [];
-    for (let i = 1; i <= rows; i++) {
-      let row = [];
-      for (let j = 1; j <= cols; j++) {
-        row.push(i + " x " + j + " = __");
-      }
-      worksheet.push(row);
-    }
-    return worksheet;
-  }`;
+  const codeSnippetChallenge1 = `function submitNote(event) {
+  // Prevent full reload
+  event.preventDefault();
 
-  const codeSnippetChallenge2 = `.faq-question {
-  cursor: pointer;
-  background-color: #f9f9f9;
-  border-radius: 5px;
-  padding: 10px;
+  // Pass note up to App
+  props.onAdd(note);
+
+  // Clear inputs for next entry
+  setNote({ title: "", content: "" });
 }`;
+
+const codeSnippetChallenge2 = `const regex = new RegExp("(" + searchTerm + ")", "gi");
+const highlighted = content.replace(
+  regex,
+  match => "<mark>" + match + "</mark>"
+);
+setHighlightedContent(highlighted);`;
+
 
   return (
     <div className="w-full min-h-screen bg-bodyColorWhite dark:bg-bodyColor text-lightText relative">
@@ -97,16 +96,16 @@ const MultiplicationWorksheetGeneratorProjectDetail = ({
           <div className="cardView rounded-2xl py-14 px-6 md:px-14 relative">
             <button
               onClick={() => navigate(-1)}
-              className="absolute z-10 top-4 right-4 md:top-6 md:right-6 lg:top-8 lg:right-8 w-12 h-12 
+              className="absolute z-10 top-4 right-4 md:top-6 md:right-6 lg:top-8 lg:right-8 w-12 h-12
               rounded-full flex items-center justify-center transition-all duration-300 group elevatedShadow"
               aria-label="Back"
             >
               <div
-                className="absolute -inset-0.5 p-0.5 rounded-full appGradient opacity-0 group-hover:opacity-100 
+                className="absolute -inset-0.5 p-0.5 rounded-full appGradient opacity-0 group-hover:opacity-100
               group-focus:opacity-100 transition-opacity duration-300"
               ></div>
               <div
-                className="relative w-full h-full boxBgGradient cardGradient rounded-full flex items-center justify-center 
+                className="relative w-full h-full boxBgGradient cardGradient rounded-full flex items-center justify-center
                 ripple-container"
                 onMouseDown={createRipple}
               >
@@ -145,7 +144,7 @@ const MultiplicationWorksheetGeneratorProjectDetail = ({
                     </span>
                     <span className="text-md font-titleFont font-medium shrink-0 text-gray-700 dark:text-gray-300">
                       <HighlightTextProjectDetail
-                        text={MWGProjectDetailData.timeline}
+                        text={KNProjectDetailData.timeline}
                         highlight={searchQuery}
                       />
                     </span>
@@ -155,7 +154,7 @@ const MultiplicationWorksheetGeneratorProjectDetail = ({
                       Stack:
                     </span>
                     <div className="flex gap-4 flex-wrap">
-                      {MWGProjectDetailData.stack.map((tech, idx) => (
+                      {KNProjectDetailData.stack.map((tech, idx) => (
                         <div
                           key={idx}
                           className="flex items-center justify-center rounded"
@@ -189,7 +188,7 @@ const MultiplicationWorksheetGeneratorProjectDetail = ({
                     <div className="text-gray-700 dark:text-gray-400">
                       <strong>Challenge:</strong>{" "}
                       <HighlightTextProjectDetail
-                        text="The worksheet creation process was highly manual and error-prone, leading to inefficiencies for teachers."
+                        text="Submitting a new note caused a full page refresh or jump, breaking the user experience."
                         highlight={searchQuery}
                       />
                     </div>
@@ -197,7 +196,7 @@ const MultiplicationWorksheetGeneratorProjectDetail = ({
                     <div className="text-gray-700 dark:text-gray-400">
                       <strong>Solution:</strong>{" "}
                       <HighlightTextProjectDetail
-                        text="I automated worksheet generation by creating dynamic forms that generate customized multiplication problems instantly, reducing manual work and eliminating errors."
+                        text="Intercepted the form’s onSubmit, prevented default reload, and reset component state so the UI stays in place."
                         highlight={searchQuery}
                       />
                     </div>
@@ -217,7 +216,7 @@ const MultiplicationWorksheetGeneratorProjectDetail = ({
                     <div className="text-gray-700 dark:text-gray-400">
                       <strong>Challenge:</strong>{" "}
                       <HighlightTextProjectDetail
-                        text="The original UI was clunky and difficult for educators to navigate."
+                        text="Implementing real-time, in-note search highlighting without heavy libraries—and doing so safely."
                         highlight={searchQuery}
                       />
                     </div>
@@ -225,14 +224,14 @@ const MultiplicationWorksheetGeneratorProjectDetail = ({
                     <div className="text-gray-700 dark:text-gray-400">
                       <strong>Solution:</strong>{" "}
                       <HighlightTextProjectDetail
-                        text="Redesigned the interface to be intuitive with clear sections, collapsible FAQs, and easy-to-use controls, improving user onboarding and experience."
+                        text="Used a simple regex to wrap matches in <mark>, then rendered via dangerouslySetInnerHTML after sanitizing the search term"
                         highlight={searchQuery}
                       />
                     </div>
 
                     <CopyBlock
                       text={codeSnippetChallenge2}
-                      language="css"
+                      language="javascript"
                       theme={dracula}
                       showLineNumbers={true}
                       wrapLines={true}
@@ -250,25 +249,25 @@ const MultiplicationWorksheetGeneratorProjectDetail = ({
               <ul className="list-disc ml-6 font-bodyFont">
                 <li className="linkDot text-gray-700 dark:text-gray-400">
                   <HighlightTextProjectDetail
-                    text="Used a purely front-end stack (HTML, CSS, JavaScript) to build a lightweight, easily maintainable app."
+                    text="Broke the UI into small, reusable pieces (Header, CreateArea, Note, Footer)."
                     highlight={searchQuery}
                   />
                 </li>
                 <li className="linkDot text-gray-700 dark:text-gray-400">
                   <HighlightTextProjectDetail
-                    text="Followed an iterative development approach, testing UI/UX improvements and gathering feedback."
+                    text="Used useState for note data and useEffect for updating highlights whenever the search term or content changed."
                     highlight={searchQuery}
                   />
                 </li>
                 <li className="linkDot text-gray-700 dark:text-gray-400">
                   <HighlightTextProjectDetail
-                    text="Employed responsive design principles with CSS Flexbox and media queries to support different devices."
+                    text="Leveraged <Fab> and <Zoom> from Material-UI for the add-button animation, keeping bundle size minimal."
                     highlight={searchQuery}
                   />
                 </li>
                 <li className="linkDot text-gray-700 dark:text-gray-400">
                   <HighlightTextProjectDetail
-                    text="Built interactive components like FAQ toggles and dynamic worksheet tables using vanilla JS event listeners and DOM manipulation."
+                    text="Styled with Flexbox and media queries—no Bootstrap or Tailwind—so the app looks great on desktop and mobile."
                     highlight={searchQuery}
                   />
                 </li>
@@ -282,19 +281,19 @@ const MultiplicationWorksheetGeneratorProjectDetail = ({
               <ul className="list-disc ml-6 font-bodyFont">
                 <li className="linkDot text-gray-700 dark:text-gray-400">
                   <HighlightTextProjectDetail
-                    text="Reduced worksheet generation time by 50%, enabling teachers to focus more on teaching than preparation."
+                    text="Users can add notes without page reloads—context is never lost."
                     highlight={searchQuery}
                   />
                 </li>
                 <li className="linkDot text-gray-700 dark:text-gray-400">
                   <HighlightTextProjectDetail
-                    text="Cut onboarding time by 30% due to the simplified and user-friendly interface."
+                    text="Finding keywords in long notes is immediate, boosting usability by 100%"
                     highlight={searchQuery}
                   />
                 </li>
                 <li className="linkDot text-gray-700 dark:text-gray-400">
                   <HighlightTextProjectDetail
-                    text="Eliminated manual errors in worksheet creation, improving accuracy and reliability."
+                    text="Header and footer reuse across projects reduced CSS duplication by ~30%."
                     highlight={searchQuery}
                   />
                 </li>
@@ -308,27 +307,24 @@ const MultiplicationWorksheetGeneratorProjectDetail = ({
               <ul className="list-disc ml-6 font-bodyFont">
                 <li className="linkDot text-gray-700 dark:text-gray-400">
                   <HighlightTextProjectDetail
-                    text="Gained deep appreciation for user-centered design and the importance of intuitive UI."
+                    text="Mastered React hooks for form control and side-effect management."
                     highlight={searchQuery}
                   />
                 </li>
                 <li className="linkDot text-gray-700 dark:text-gray-400">
                   <HighlightTextProjectDetail
-                    text="Learned how to automate repetitive tasks effectively with JavaScript."
+                    text="Learned the trade-offs of using dangerouslySetInnerHTML and ensured search terms are sanitized."
                     highlight={searchQuery}
                   />
                 </li>
                 <li className="linkDot text-gray-700 dark:text-gray-400">
-                  <HighlightTextProjectDetail
-                    text="Realized the power of pure frontend technologies to create robust apps without frameworks."
-                    highlight={searchQuery}
-                  />
-                </li>
-                <li className="linkDot text-gray-700 dark:text-gray-400">
-                  <HighlightTextProjectDetail
-                    text="Plan to improve the project by adding better error handling and exploring new features like automated report generation."
-                    highlight={searchQuery}
-                  />
+                    <span className="italic mr-2">
+                      <strong>Next steps: </strong>
+                    </span>
+                    <HighlightTextProjectDetail
+                      text="Implement autosave to localStorage, add Markdown support, and explore rich-text editing."
+                      highlight={searchQuery}
+                    />
                 </li>
               </ul>
             )}
@@ -339,4 +335,4 @@ const MultiplicationWorksheetGeneratorProjectDetail = ({
   );
 };
 
-export default React.memo(MultiplicationWorksheetGeneratorProjectDetail);
+export default React.memo(KeeperNotesDetail);
