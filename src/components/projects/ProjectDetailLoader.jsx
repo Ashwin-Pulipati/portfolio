@@ -14,7 +14,11 @@ export default function ProjectDetailLoader({ onSearch, searchQuery }) {
 
   const project = allProjectsList.find((p) => slugify(p.title) === title);
 
-  if (!project) return <div>Project not found</div>;
+  if (!project) return (
+    <div className="col-span-full flex flex-col justify-center items-center min-h-[calc(100vh-15rem)] text-2xl text-gray-500 dark:text-gray-500 font-titleFont">
+      Project Not Found
+    </div>
+  );
 
   const humanize = (slug) =>
     slug

@@ -27,6 +27,8 @@ import {
 } from "./Projects.Utils";
 import { darkModeDropdownItemGradientMap, lightModeDropdownItemGradientMap } from "../navbar/Navbar.constants";
 import { useDarkMode } from "../layouts/DarkMode";
+import OctaCat from "../../assets/images/Other Formats/octacat.gif";
+import ManufacturerOctaCat from "../../assets/images/Other Formats/manufacturetocat.png";
 
 const ProjectsCardLazy = lazy(() => import("./ProjectsCard"));
 
@@ -278,8 +280,26 @@ const ProjectsList = ({ searchQuery, onSearch }) => {
             </Suspense>
           ))
         ) : (
-          <div className="col-span-full flex justify-center items-center min-h-[calc(100vh-15rem)] text-2xl text-gray-500 dark:text-gray-500 font-titleFont">
-            No results found
+          <div className="col-span-full flex flex-col justify-center items-center min-h-[calc(100vh-15rem)] text-2xl text-gray-600 dark:text-gray-300 font-titleFont">
+            {categoryProjects.length === 0 ? (
+              <>
+                <img
+                  src={OctaCat}
+                  alt="Coming Soon OctaCat"
+                  className="w-[300px] h-[300px] sm:w-[400px] sm:h-[400px] md:w-[500px] md:h-[500px]"
+                />
+                Coming Soon...
+              </>
+            ) : (
+              <>
+                <img
+                  src={ManufacturerOctaCat}
+                  alt="No Results Found OctaCat"
+                  className="w-[300px] h-[300px] sm:w-[400px] sm:h-[400px] md:w-[500px] md:h-[500px]"
+                />
+                No Results Found...
+              </>
+            )}
           </div>
         )}
       </div>
