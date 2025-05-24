@@ -132,12 +132,12 @@ const ProjectsCard = React.memo(
         </div>
         <div className="flex flex-col gap-2 mt-4 group">
           <Link to={`/features/${categorySlug}/projects/${slug}`}>
-            <div className="flex items-center gap-2">
-              <h1 className="font-medium capitalize tracking-wide w-fit h-fit textGradient inline-block group-hover:text-black dark:group-hover:text-white">
+            <h1 className="font-medium capitalize tracking-wide w-fit h-fit textGradient group-hover:text-black dark:group-hover:text-white">
+              <span className="inline">
                 {highlightedText(title)}
-              </h1>
-              <FiArrowUpRight className="arrowIcon w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity transform duration-700 ease-in-out group-hover:translate-x-[5%] group-hover:translate-y-[-5%] group-hover:transition-all group-hover:duration-700 group-hover:ease-in-out" />
-            </div>
+                <FiArrowUpRight className="arrowIcon inline-block align-text-bottom ml-1 w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity transform duration-700 ease-in-out group-hover:translate-x-[5%] group-hover:translate-y-[3%] group-hover:transition-all group-hover:duration-700 group-hover:ease-in-out" />
+              </span>
+            </h1>
           </Link>
           <div className="relative flex flex-col gap-2">
             <p className="text-sm tracking-wide text-gray-700 dark:text-lightText text-justify group-hover:text-black dark:group-hover:text-gray-100 duration-300 group-hover:cursor-pointer">

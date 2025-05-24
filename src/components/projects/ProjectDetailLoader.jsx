@@ -4,6 +4,9 @@ import ProjectDetail from "./ProjectDetail";
 import { allProjectsList } from "./Projects.Utils";
 import MultiplicationWorksheetGeneratorProjectDetail from "../DB/Multiplication-Worksheet-Generator/MultiplicationWorksheetGeneratorProjectDetail";
 import KNProjectDetail from "../DB/Keeper-Notes/KeeperNotesDetail";
+import TeachableMachineImageModelDetail from "../DB/Teachable-Machine-Image-Model/TeachableMachineImageModelDetail";
+import FacialLandmarkingDetail from "../DB/Facial-Landmarking/FacialLandmarkingDetail";
+import VirtualRLandingPageDetail from "../DB/VirtualR-Landing-Page/VirtualRLandingPageDetail";
 export default function ProjectDetailLoader({ onSearch, searchQuery }) {
   const { category, title } = useParams();
   const location = useLocation();
@@ -26,6 +29,9 @@ export default function ProjectDetailLoader({ onSearch, searchQuery }) {
     "multiplication-worksheet-generator":
       MultiplicationWorksheetGeneratorProjectDetail,
     "keeper-notes": KNProjectDetail,
+    "teachable-machine-image-model": TeachableMachineImageModelDetail,
+    "multi-facial-landmarking-with-emotion-and-age-and-gender-detection": FacialLandmarkingDetail,
+    "virtualr-landing-page": VirtualRLandingPageDetail,
   };
 
   const ProjectComponent = DBProjectComponents[slugify(project.title)];

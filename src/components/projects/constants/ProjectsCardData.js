@@ -6,6 +6,12 @@ import ProjectDetail from "../ProjectDetail";
 import MWGThumbnail from "../../../assets/images/DB Images/MWG/Thumbnail.png";
 import KeeperNotesDetail from "../../DB/Keeper-Notes/KeeperNotesDetail";
 import KNThumbnail from "../../../assets/images/DB Images/KN/Thumbnail.png";
+import TeachableMachineImageModelDetail from "../../DB/Teachable-Machine-Image-Model/TeachableMachineImageModelDetail";
+import TMIMThumbnail from "../../../assets/images/DB Images/TMIM/Thumbnail.png";
+import FacialLandmarkingDetail from "../../DB/Facial-Landmarking/FacialLandmarkingDetail";
+import FLThumbnail from "../../../assets/images/DB Images/FL/Thumbnail.png";
+import VirtualRLandingPageDetail from "../../DB/VirtualR-Landing-Page/VirtualRLandingPageDetail";
+import VRLPThumbnail from "../../../assets/images/DB Images/VRLP/Thumbnail.png";
 
 export const allProjects = [
   // Frontend Development
@@ -32,8 +38,21 @@ export const allProjects = [
     github: "https://github.com/Ashwin-Pulipati/Keeper-Notes",
     website: "https://ashwin-pulipati.github.io/Keeper-Notes/",
     demo: "https://github.com/Ashwin-Pulipati/Keeper-Notes?tab=readme-ov-file#keeper-notes",
-    createdAt: "Sept 2024",
+    createdAt: "Sep 2024",
     component: KeeperNotesDetail,
+    category: "frontend-development",
+    sub: null,
+  },
+  {
+    id: "f3",
+    src: VRLPThumbnail,
+    title: "VirtualR Landing Page",
+    des: "A futuristic web app designed to showcase a suite of VR development tools, built to deliver a sleek and interactive landing page experience.",
+    github: "https://github.com/Ashwin-Pulipati/VirtualR-Landing-Page",
+    website: "https://ashwin-pulipati.github.io/VirtualR-Landing-Page/",
+    demo: "https://github.com/Ashwin-Pulipati/VirtualR-Landing-Page?tab=readme-ov-file#virtualr-landing-page",
+    createdAt: "Aug 2024",
+    component: VirtualRLandingPageDetail,
     category: "frontend-development",
     sub: null,
   },
@@ -103,25 +122,29 @@ export const allProjects = [
   // Machine Learning
   {
     id: "ml1",
-    src: projectOne,
-    title: "Image Classifier",
-    des: "A deep learning model to classify images using TensorFlow.js and pre-trained models.",
-    github: "https://github.com/Ashwin-Pulipati",
-    website: "https://image-classifier.netlify.app/",
-    createdAt: new Date().toISOString(),
-    component: ProjectDetail,
+    src: TMIMThumbnail,
+    title: "Teachable Machine Image Model",
+    des: "A real-time image classification web app using Teachable Machine and TensorFlow.js to detect and label objects through a webcam, streamlining visual recognition tasks.",
+    github: "https://github.com/Ashwin-Pulipati/teachable-machine-image-model",
+    website: "https://ashwin-pulipati.github.io/teachable-machine-image-model/",
+    demo: "https://github.com/Ashwin-Pulipati/teachable-machine-image-model/tree/main?tab=readme-ov-file#teachable-machine-image-model",
+    createdAt: "Apr 2024",
+    component: TeachableMachineImageModelDetail,
     category: "machine-learning",
     sub: null,
   },
   {
     id: "ml2",
-    src: projectTwo,
-    title: "Stock Market Predictor",
-    des: "A machine learning model to analyze stock trends and predict future prices.",
-    github: "https://github.com/Ashwin-Pulipati",
-    website: "https://stock-market-predictor.netlify.app/",
-    createdAt: new Date().toISOString(),
-    component: ProjectDetail,
+    src: FLThumbnail,
+    title: "Multi Facial Landmarking with Emotion and Age and Gender Detection",
+    des: "A real-time facial analysis tool used to detect facial landmarks, classify expressions, and estimate age and gender from live webcam input.",
+    github:
+      "https://github.com/Ashwin-Pulipati/multi-face-emotion-age-gender-detection",
+    website:
+      "https://ashwin-pulipati.github.io/multi-face-emotion-age-gender-detection/",
+    demo: "https://github.com/Ashwin-Pulipati/multi-face-emotion-age-gender-detection/tree/main?tab=readme-ov-file#multi-facial-landmarking-with-emotion-age-and-gender-detection",
+    createdAt: "May 2024",
+    component: FacialLandmarkingDetail,
     category: "machine-learning",
     sub: null,
   },
