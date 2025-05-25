@@ -10,7 +10,7 @@ import {
   SiAdobeillustrator,
   SiAdobeindesign,
   SiAdobephotoshop,
-  SiAngular,
+  // SiAngular,
   SiBootstrap,
   SiGraphql,
   SiMarkdown,
@@ -38,12 +38,14 @@ import OpenCV from "../../assets/images/SVG/opencv.svg";
 import Python from "../../assets/images/SVG/python.svg";
 import SQL from "../../assets/images/SVG/sql.svg";
 import HuggingFace from "../../assets/images/SVG/hugging-face-icon.svg";
+import MSOffice365 from "../../assets/images/SVG/microsoft365.svg";
 
 import cybersecurity from "../../assets/images/Other Formats/cybersecurity.png";
 import uiux  from "../../assets/images/Other Formats/ui-ux.png";
 import huggingFace from "../../assets/images/Other Formats/hugging-face.png";
 import outskill from "../../assets/images/Other Formats/outskill.png";
 import webDevBootcamp from "../../assets/images/Other Formats/web-dev-bootcamp.png";
+import { BiLogoZoom } from "react-icons/bi";
 
 export const tabData = [
   { id: "experience", label: "Experience" },
@@ -336,7 +338,7 @@ export const skillsData = [
           { type: "icon", component: FaReact, color: "#61DAFB" },
           { type: "icon", component: SiRedux, color: "#764ABC" },
           { type: "icon", component: SiNextdotjs, color: "#ffffff" },
-          { type: "icon", component: SiAngular, color: "#DD0031" },
+          // { type: "icon", component: SiAngular, color: "#DD0031" },
           { type: "icon", component: SiBootstrap, color: "#7952B3" },
           { type: "icon", component: SiTailwindcss, color: "#38B2AC" },
           {
@@ -425,9 +427,15 @@ export const skillsData = [
         items: [
           {
             type: "image",
+            src: MSOffice365,
+            alt: "MS Office 365",
+            className: "w-12 h-12",
+          },
+          {
+            type: "image",
             src: VitePress,
             alt: "VitePress",
-            className: "w-12 h-12",
+            className: "w-14 h-14",
           },
           {
             type: "icon",
@@ -439,6 +447,11 @@ export const skillsData = [
             type: "icon",
             component: SiNotion,
             color: "#ffffff",
+          },
+          {
+            type: "icon",
+            component: BiLogoZoom,
+            color: "#0B5CFF",
           },
         ],
       },
