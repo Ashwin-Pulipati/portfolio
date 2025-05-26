@@ -73,7 +73,7 @@ const ViewCardImage = ({ src }) => {
       {isExpanded ? (
         <div className="fixed top-0 left-0 w-screen h-screen bg-black bg-opacity-80 flex justify-center items-center z-50">
           <img
-            className="w-full max-w-5xl mx-auto object-cover"
+            className="max-h-[90vh] max-w-[90vw] object-contain rounded-2xl"
             src={src}
             alt="Expanded project"
           />

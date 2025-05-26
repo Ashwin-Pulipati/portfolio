@@ -74,7 +74,7 @@ export const achievementData = [
   {
     title: "Product Manager",
     subTitle: "Phygtl. (Feb 2025 - Mar 2025)",
-    result: "Coming Soon...",
+    result: "Success",
     points: [
       "Uncovered key UX issues that led to improved tooltip help and email validation processes.",
       "Decreased user-reported issues by 20% through data-driven UX enhancements.",
@@ -83,6 +83,18 @@ export const achievementData = [
       "Reduced user friction and accelerated account activations by integrating SSO with SMS backup and troubleshooting.",
     ],
   },
+  // {
+  //   title: "Frontend Developer",
+  //   subTitle: "HTOH Solutions LLC (Feb 2023 - Mar 2024)",
+  //   result: "Coming Soon...",
+  //   points: [
+  //     "Enabled 85% cross-device functionality and reduced new-page build time by 30%, speeding project delivery.",
+  //     "Improved navigation speed by 50ms and enhanced consistent user experience across devices.",
+  //     "Optimized user experience with real-time inventory updates, achieving average fetch times under 200ms and 93% CORS success.",
+  //     "Accelerated initial load time by 0.5 seconds while meeting WCAG AA accessibility standards with dark/light themes.",
+  //     "Reduced build errors by 40% through automated Privacy & Terms documentation generation and CI/CD pipeline improvements.",
+  //   ],
+  // },
   {
     title: "Full Stack Web Developer",
     subTitle: "JS Associates (May 2020 - May 2022)",
@@ -263,6 +275,18 @@ export const experienceData = [
       "Supported verification and account setup improvements including SSO and backup mechanisms.",
     ],
   },
+  // {
+  //   title: "Frontend Developer",
+  //   subTitle: "HTOH Solutions LLC (Feb 2023 - Feb 2024)",
+  //   result: "USA",
+  //   points: [
+  //     "Developed modular UI components using React and Tailwind CSS for a responsive frontend framework.",
+  //     "Implemented client-side routing with React Router and smooth scrolling via React-Scroll in a single-page app.",
+  //     "Designed and deployed backend integrations using AWS API Gateway for real-time data updates.",
+  //     "Created adaptive layouts and themes using CSS Grid, Flexbox, and theming techniques.",
+  //     "Established automated documentation generation and standardized CI/CD pipelines to improve build reliability.",
+  //   ],
+  // },
   {
     title: "Full Stack Web Developer",
     subTitle: "JS Associates (May 2020 - May 2022)",
@@ -282,6 +306,10 @@ export const experienceGradientMap = {
     light: "linear-gradient(to bottom right, #ff9aad, #b78fff)",
     dark: "linear-gradient(to bottom right, #8a3a48, #4f2a7a)",
   },
+  // "frontend-developer": {
+  //   light: "linear-gradient(to bottom right, #ffd97a, #b78fff)",
+  //   dark: "linear-gradient(to bottom right, #8a3a48, #4f2a7a)",
+  // },
   "software-engineer": {
     light: "linear-gradient(to bottom right, #a0f0f4, #b78fff)",
     dark: "linear-gradient(to bottom right, #0d7998, #4f2a7a)",
