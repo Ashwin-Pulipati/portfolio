@@ -28,7 +28,7 @@ export const pinkStyles = {
   baseText: "text-pink-800 dark:text-pink-100",
   baseShadow:
     "shadow-md shadow-pink-400 dark:shadow-pink-500 hover:shadow-none",
-  icon: "w-5 h-5 mt-0.5 transition duration-200",
+  icon: "w-5 h-5 transition duration-200",
   heartActive: "text-[#ff4586] dark:text-pink-200",
   heartInactive: "text-pink-300 dark:text-pink-100 opacity-80",
   gradientHover: "gradientBorderFullNoShadow",

@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import EmblaCarousel from "../../projects/components/embla-carousel-lazy/EmblaCarousel";
 import { createRipple } from "../../layouts/RippleEffect";
@@ -12,9 +12,9 @@ import Page2 from "../../../assets/images/DB Images/FL/Page-2.png";
 import Page3 from "../../../assets/images/DB Images/FL/Page-3.png";
 import Page4 from "../../../assets/images/DB Images/FL/Page-4.png";
 import Page5 from "../../../assets/images/DB Images/FL/Page-5.png";
-import Page6 from "../../../assets/images/DB Images/FL/Page-6.png";
 import { CopyBlock, dracula } from "react-code-blocks";
 import FLProjectDetailData from "./FacialLandmarkingDetailData";
+import EmblaCarouselModal from "../../projects/components/embla-carousel-lazy/EmblaCarouselModal";
 
 const FacialLandmarkingDetail = ({
   id,
@@ -38,7 +38,7 @@ const FacialLandmarkingDetail = ({
     }
   }, [searchQuery]);
 
-  const SLIDES = [Page1, Page2, Page3, Page4, Page5, Page6];
+  const SLIDES = [Page1, Page2, Page3, Page4, Page5];
   const emblaOptions = useMemo(() => ({ loop: true, align: "start" }), []);
 
   const scrollToSection = (id) => {
@@ -89,9 +89,23 @@ const FacialLandmarkingDetail = ({
 
   requestAnimationFrame(detectLoop);
 }`;
+  
+  const [startIndex, setStartIndex] = useState(0);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const openModal = useCallback((idx) => {
+        setStartIndex(idx);
+        setIsModalOpen(true);
+      }, []);
 
   return (
     <div className="w-full min-h-screen bg-bodyColorWhite dark:bg-bodyColor text-lightText relative">
+      {isModalOpen && (
+        <EmblaCarouselModal
+          slides={SLIDES}
+          startIndex={startIndex}
+          onClose={() => setIsModalOpen(false)}
+        />
+      )}
       <div className="flex justify-center items-center lg:hidden mt-0 pt-8 md:px-12 lg:px-0">
         <Searchbar onSearch={onSearch} searchQuery={searchQuery} />
       </div>
@@ -132,7 +146,11 @@ const FacialLandmarkingDetail = ({
               className="flex flex-col-reverse xl:flex-row-reverse justify-between items-start gap-14 border-b border-b-gray-400 dark:border-b-black pb-20 mt-8"
             >
               <div className="w-full max-w-full md:max-w-[500px] lg:max-w-[800px] xl:max-w-[500px] rounded-xl z-20">
-                <EmblaCarousel slides={SLIDES} options={emblaOptions} />
+                <EmblaCarousel
+                  slides={SLIDES}
+                  options={emblaOptions}
+                  onExpand={openModal}
+                />
               </div>
               <div className="w-full h-full flex flex-col gap-6 z-20">
                 <div className="flex flex-col gap-3">

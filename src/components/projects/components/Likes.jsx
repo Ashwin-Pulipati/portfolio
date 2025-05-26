@@ -90,11 +90,14 @@ function Likes({ projectId, temporary = false }) {
         <div
           className={`group relative w-22 h-11 p-0.5 rounded-full flex justify-start items-center hover:shadow-none ${pinkStyles.baseBg}`}
         >
-          <button className="relative z-10 w-12 h-11 rounded-full flex justify-center items-center focus:outline-none transition duration-200" aria-label="Like">
+          <button
+            className="relative z-10 w-12 h-11 rounded-full flex justify-center items-center focus:outline-none transition duration-200"
+            aria-label="Like"
+          >
             {!isLiked ? (
               <>
                 <GoHeart
-                  className={`${pinkStyles.icon} ${pinkStyles.heartActive} opacity-80 group-hover:hidden`}
+                  className={`${pinkStyles.icon} ${pinkStyles.heartActive} ${pinkStyles.baseText} group-hover:hidden`}
                 />
                 <GoHeartFill
                   className={`${pinkStyles.icon} ${pinkStyles.heartInactive} hidden group-hover:inline`}

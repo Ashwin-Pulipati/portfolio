@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import EmblaCarousel from "../../projects/components/embla-carousel-lazy/EmblaCarousel";
 import { createRipple } from "../../layouts/RippleEffect";
@@ -16,6 +16,7 @@ import Page5 from "../../../assets/images/DB Images/MWG/Page-5.png";
 import Page6 from "../../../assets/images/DB Images/MWG/Page-6.png";
 import Page7 from "../../../assets/images/DB Images/MWG/Page-7.png";
 import { CopyBlock, dracula } from "react-code-blocks";
+import EmblaCarouselModal from "../../projects/components/embla-carousel-lazy/EmblaCarouselModal";
 
 const MultiplicationWorksheetGeneratorProjectDetail = ({
   id,
@@ -78,9 +79,22 @@ const MultiplicationWorksheetGeneratorProjectDetail = ({
   border-radius: 5px;
   padding: 10px;
 }`;
+  const [startIndex, setStartIndex] = useState(0);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const openModal = useCallback((idx) => {
+      setStartIndex(idx);
+      setIsModalOpen(true);
+    }, []);
 
   return (
     <div className="w-full min-h-screen bg-bodyColorWhite dark:bg-bodyColor text-lightText relative">
+      {isModalOpen && (
+        <EmblaCarouselModal
+          slides={SLIDES}
+          startIndex={startIndex}
+          onClose={() => setIsModalOpen(false)}
+        />
+      )}
       <div className="flex justify-center items-center lg:hidden mt-0 pt-8 md:px-12 lg:px-0">
         <Searchbar onSearch={onSearch} searchQuery={searchQuery} />
       </div>
@@ -121,7 +135,11 @@ const MultiplicationWorksheetGeneratorProjectDetail = ({
               className="flex flex-col-reverse xl:flex-row-reverse justify-between items-start gap-14 border-b border-b-gray-400 dark:border-b-black pb-20 mt-8"
             >
               <div className="w-full max-w-full md:max-w-[500px] lg:max-w-[800px] xl:max-w-[500px] rounded-xl z-20">
-                <EmblaCarousel slides={SLIDES} options={emblaOptions} />
+                <EmblaCarousel
+                  slides={SLIDES}
+                  options={emblaOptions}
+                  onExpand={openModal}
+                />
               </div>
               <div className="w-full h-full flex flex-col gap-6 z-20">
                 <div className="flex flex-col gap-3">
