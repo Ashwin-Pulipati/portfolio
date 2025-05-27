@@ -60,7 +60,7 @@ export const LOCAL_STORAGE_KEY = "activeResumeTab";
 export const achievementData = [
   {
     title: "Software Engineer",
-    subTitle: "Flowscript.AI (Oct 2024 - Apr 2025)",
+    subTitle: "Lean Innovation Labs LLC (Oct 2024 - Apr 2025)",
     result: "Success",
     des: "",
     points: [
@@ -253,7 +253,7 @@ export const certificationsGradientMap = {
 export const experienceData = [
   {
     title: "Software Engineer",
-    subTitle: "Flowscript.AI (Oct 2024 - Apr 2025)",
+    subTitle: "Lean Innovation Labs LLC (Oct 2024 - Apr 2025)",
     result: "USA",
     points: [
       "Developed two web apps to automate data entry workflows, replacing manual Google Forms and Excel processes.",

@@ -50,7 +50,7 @@ const Title = ({ title, des }) => {
         <div className="text-4xl md:text-5xl text-gray-700 dark:text-gray-300 font-bold capitalize pl-0 pr-2">
           {des === "My Resume" ? (
             <a
-              href="https://tinyurl.com/ashwin-pulipati-resume"
+              href="https://tinyurl.com/ashwin-pulipati"
               target="_blank"
               rel="noopener noreferrer"
               className="relative inline-flex items-center gap-2 group cursor-pointer dark:hover:text-yellow-400 hover:text-yellow-800"
