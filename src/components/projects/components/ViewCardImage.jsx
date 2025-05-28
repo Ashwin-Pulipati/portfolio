@@ -137,7 +137,7 @@ const ViewCardImage = ({ src }) => {
       {isExpanded ? (
         <div
           onClick={toggleExpand}
-          className="fixed inset-0 w-screen h-[100dvh] bg-black bg-opacity-80 flex justify-center items-center z-50"
+          className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50"
         >
           <img
             onClick={(e) => e.stopPropagation()}
