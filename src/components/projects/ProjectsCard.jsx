@@ -135,7 +135,7 @@ const ProjectsCard = React.memo(
             <h1 className="font-medium capitalize tracking-wide w-fit h-fit textGradient group-hover:text-black dark:group-hover:text-white">
               <span className="inline">
                 {highlightedText(title)}
-                <FiArrowUpRight className="arrowIcon inline-block align-text-bottom ml-1 w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity transform duration-700 ease-in-out group-hover:translate-x-[5%] group-hover:translate-y-[3%] group-hover:transition-all group-hover:duration-700 group-hover:ease-in-out" />
+                <FiArrowUpRight className="arrowIcon inline-block align-text-bottom ml-1 w-5 h-5 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity transform duration-700 ease-in-out group-hover:translate-x-[5%] group-hover:translate-y-[3%] group-hover:transition-all group-hover:duration-700 group-hover:ease-in-out" />
               </span>
             </h1>
           </Link>

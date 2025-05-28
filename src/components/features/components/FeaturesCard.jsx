@@ -117,7 +117,7 @@ const Card = ({
           </div>
 
           <div className="flex justify-start">
-            <span className="text-2xl arrowIcon opacity-0 group-hover:opacity-100 transition-opacity duration-300 cursor-pointer">
+            <span className="text-2xl arrowIcon lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-300 cursor-pointer">
               <HiArrowRight />
             </span>
           </div>

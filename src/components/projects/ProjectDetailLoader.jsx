@@ -7,6 +7,7 @@ import KNProjectDetail from "../DB/Keeper-Notes/KeeperNotesDetail";
 import TeachableMachineImageModelDetail from "../DB/Teachable-Machine-Image-Model/TeachableMachineImageModelDetail";
 import FacialLandmarkingDetail from "../DB/Facial-Landmarking/FacialLandmarkingDetail";
 import VirtualRLandingPageDetail from "../DB/VirtualR-Landing-Page/VirtualRLandingPageDetail";
+import ProjectNotFoundOctacat from "../../assets/images/Other Formats/project-not-found-octacat.png";
 export default function ProjectDetailLoader({ onSearch, searchQuery }) {
   const { category, title } = useParams();
   const location = useLocation();
@@ -16,7 +17,14 @@ export default function ProjectDetailLoader({ onSearch, searchQuery }) {
 
   if (!project) return (
     <div className="col-span-full flex flex-col justify-center items-center min-h-[calc(100vh-15rem)] text-2xl text-gray-500 dark:text-gray-500 font-titleFont">
-      Project Not Found
+      <>
+        <img
+          src={ProjectNotFoundOctacat}
+          alt="Project Not Found OctaCat"
+          className="w-[300px] h-[300px] sm:w-[400px] sm:h-[400px] md:w-[500px] md:h-[500px]"
+        />
+        Project Not Found
+      </>
     </div>
   );
 
