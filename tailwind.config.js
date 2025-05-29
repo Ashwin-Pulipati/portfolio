@@ -16,7 +16,7 @@ module.exports = {
       },
       fontFamily: {
         bodyFont: ["Poppins", "sans-serif"],
-        titleFont: ["VisbyRoundCF", "sans-serif"],
+        titleFont: ["Quicksand", "sans-serif"],
         nameFont: ["Arizonia", "sans-serif"],
       },
       colors: {

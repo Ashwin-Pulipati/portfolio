@@ -37,6 +37,8 @@
 
 
 import React, { useState, useEffect } from "react";
+import { Spiral } from "ldrs/react";
+import "ldrs/react/Spiral.css";
 
 const PLACEHOLDER =
   "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D";
@@ -67,7 +69,7 @@ export const LazyLoadImage = ({
       <div className={`relative ${heightClass}`}>
         {!loaded && (
           <div className="absolute inset-0 flex items-center justify-center">
-            <l-spiral size="40" speed="0.9" color="#0055FF" />
+            <Spiral size="40" speed="0.9" color="#0055FF" />
           </div>
         )}
         <img

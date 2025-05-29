@@ -1,4 +1,4 @@
-.link {
+/* .link {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -33,4 +33,45 @@
 .link_text {
   white-space: nowrap;
 }
+ */
 
+
+ .link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 10px;
+  border-right: 4px solid transparent; /* Fixed border-right */
+  transition: 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+}
+
+.link:hover {
+  border-right: 4px solid transparent; /* Fixed border-right */
+  border-image: linear-gradient(to bottom, #58eba6, #1fc8de, #0584d9) 1; /* Fixed linear-gradient */
+  background: linear-gradient(to right, rgba(88, 235, 166, 0.3), rgba(31, 200, 222, 0.3), rgba(5, 132, 217, 0.2)); /* Fixed linear-gradient */
+  transition: 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+  border-radius: 8px 0px 0px 8px; /* Fixed border-radius */
+}
+
+.dark .link:hover {
+  background: linear-gradient(to left, rgba(88, 235, 166, 0.3), rgba(31, 200, 222, 0.3), rgba(5, 132, 217, 0.2)); /* Fixed linear-gradient */
+}
+
+/* Ensure 'active' is applied correctly by your JS (e.g., via NavLink or state) */
+.active .link, /* If active class is on parent */
+.link.active /* If active class is on link itself */
+{
+  border-right: 4px solid transparent; /* Fixed border-right */
+  border-image: linear-gradient(to bottom, #58eba6, #1fc8de, #0584d9) 1; /* Fixed linear-gradient */
+  background: linear-gradient(to right, rgba(88, 235, 166, 0.3), rgba(31, 200, 222, 0.3), rgba(5, 132, 217, 0.2)); /* Fixed linear-gradient */
+  border-radius: 8px 0px 0px 8px; /* Fixed border-radius */
+}
+
+.dark .active .link,
+.dark .link.active {
+  background: linear-gradient(to left, rgba(88, 235, 166, 0.3), rgba(31, 200, 222, 0.3), rgba(5, 132, 217, 0.2)); /* Fixed linear-gradient */
+}
+
+.link_text {
+  white-space: nowrap;
+}

@@ -1,4 +1,4 @@
-@font-face {
+/* @font-face {
   font-family: "VisbyRoundCF";
   src: url("./assets/fonts/VisbyRoundCF-Bold.ttf") format("truetype");
   font-display: swap;
@@ -116,6 +116,134 @@
   background: rgba(0, 0, 0, 0.2);
   animation: ripple 600ms linear;
   pointer-events: none;
+}
+.dark .ripple {
+  background: rgba(255, 255, 255, 0.5);
+}
+@keyframes ripple {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+} */
+
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html,
+  body,
+  #root {
+    @apply bg-bodyColorWhite dark:bg-bodyColor;
+  }
+}
+
+@layer components {
+  .appGradient{
+    @apply bg-app-gradient-light dark:bg-app-gradient-dark
+  }
+  .textGradient{
+    @apply appGradient bg-clip-text text-transparent
+  }
+  .hoverFocusGradient{
+    @apply hover:appGradient focus-within:appGradient
+  }
+  .gradientBorder{
+    @apply hoverFocusGradient p-0.5
+  }
+  .gradientBorderMd{
+    @apply gradientBorder elevatedShadow rounded-md
+  }
+  .gradientBorderFull{
+    @apply gradientBorder elevatedShadow rounded-full
+  }
+  .gradientBorderFullNoShadow{
+    @apply gradientBorder rounded-full
+  }
+  .gradientBorderLg{
+    @apply gradientBorder elevatedShadow rounded-lg
+  }
+  .arrowIcon{
+    @apply text-blue-700 dark:text-cyan-400
+  }
+  .linkDot{
+    @apply arrowIcon mb-2 marker:text-blue-700 dark:marker:text-cyan-400
+  }
+  .bannerIcon {
+    @apply w-16 h-16 bg-opacity-25 text-gray-200 text-xl inline-flex items-center justify-center rounded-lg shadow-shadowTwo dark:shadow-shadowOne hover:bg-opacity-40 hover:-translate-y-1 transition-all cursor-pointer bg-boxBgWhite dark:bg-boxBg bg-gradient-to-br from-[#dee3e7] to-white dark:bg-gradient-to-tl dark:from-[#262a2e] dark:to-[#1f2022] dark:hover:bg-gradient-to-br dark:hover:from-[#212428] dark:hover:to-[#16181c] duration-100; /* Fixed cursor-pointer */
+  }
+
+  .zoomIcon:hover {
+    transform: scale(1.15);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .skillIcon {
+    @apply w-16 h-16 bg-boxBg bg-opacity-25 text-gray-200 text-xl inline-flex items-center justify-center rounded-lg shadow-shadowTwo dark:shadow-shadowOne cursor-pointer bg-gradient-to-br from-[#dee3e7] to-white dark:bg-gradient-to-tl dark:from-[#262a2e] dark:to-[#202327]; /* Fixed cursor-pointer */
+  }
+  .bgOpacity {
+    @apply bg-black bg-opacity-40;
+  }
+  .contactInput {
+    @apply w-full h-12 rounded-md border-[2px] border-[#dee3e7] bg-white dark:border-[#1e1f1f] dark:bg-[#191b1e] text-lightText px-4 active:outline-none outline-none focus-visible:border-b-transparent duration-300 shadow-custom-inset-white dark:shadow-custom-inset; /* Fixed border, border-b */
+  }
+  .contactTextArea {
+    @apply w-full rounded-lg border-[2px] border-[#dee3e7] bg-white dark:border-[#1e1f1f] dark:bg-[#191b1e] text-lightText px-4 py-2 active:outline-none outline-none focus-visible:border-b-transparent duration-300 resize-none shadow-custom-inset-white dark:shadow-custom-inset; /* Fixed border, border-b */
+  }
+  .elevatedShadow {
+    @apply shadow-shadowTwo dark:shadow-shadowOne;
+  }
+  .boxBgGradient{
+    @apply bg-boxBgWhite dark:bg-boxBg
+  }
+  .cardGradient{
+    @apply bg-gradient-to-br dark:bg-gradient-to-tl from-[#dee3e7] to-white dark:from-[#262a2e] dark:to-[#1f2022]
+  }
+  .cardView{
+    @apply boxBgGradient cardGradient elevatedShadow transition-colors duration-300
+  }
+  .sectionSeparator{
+    @apply border-b border-b-gray-400 dark:border-b-black pb-24; /* Fixed border-b */
+  }
+}
+
+.active {
+  color: white; /* This might need adjustment based on your structure */
+}
+
+/* Fixed scrollbar-hide */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+
+.navbalogo {
+  width: 64px;
+  height: 64px;
+  background-size: cover;
+  background-position: center;
+}
+
+.ripple-container {
+  position: relative;
+  overflow: hidden;
+}
+.ripple {
+  position: absolute;
+  border-radius: 50%; /* Fixed border-radius */
+  transform: scale(0);
+  background: rgba(0, 0, 0, 0.2);
+  animation: ripple 600ms linear;
+  pointer-events: none; /* Fixed pointer-events */
 }
 .dark .ripple {
   background: rgba(255, 255, 255, 0.5);
