@@ -16,7 +16,7 @@ const Dashboard = () => {
   
   return (
     <div className="w-full h-full bg-bodyColorWhite dark:bg-bodyColor text-gray-700 dark:text-white z-30 overflow-hidden">
-          <SocialIconsSidebar />
+      <SocialIconsSidebar />
       <Suspense fallback={<BannerSkeleton/>}>
         <Banner />
       </Suspense>
