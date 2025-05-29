@@ -4,7 +4,6 @@ import { BsLaptop, BsFillLaptopFill } from "react-icons/bs";
 import { TbTags } from "react-icons/tb";
 import { AiFillAliwangwang, AiOutlineAliwangwang } from "react-icons/ai";
 import { MdDesignServices, MdOutlineDesignServices } from "react-icons/md";
-import { ReactComponent as TagIconFilled } from "../../assets/images/SVG/tag-icon-filled.svg";
 
 export const tagStyleMap = {
   "frontend-development": {
@@ -107,9 +106,6 @@ export const featuresData = [
     tagIconOutlined: (
       <TbTags className="w-4 h-4 text-pink-600 dark:text-[#fa8fa4]" />
     ),
-    tagIconFilled: (
-      <TagIconFilled className="w-4 h-4 text-pink-600 dark:text-[#fa8fa4]" />
-    ),
     des: "Proficient in React, TypeScript, and HTML/CSS for creating responsive web apps.",
   },
   {
@@ -132,9 +128,6 @@ export const featuresData = [
     tagIconOutlined: (
       <TbTags className="w-4 h-4 text-yellow-600 dark:text-[#f5a442]" />
     ),
-    tagIconFilled: (
-      <TagIconFilled className="w-4 h-4 text-yellow-600 dark:text-[#f5a442]" />
-    ),
     des: "Implementing machine learning models and AI-driven solutions in real-world applications.",
   },
   {
@@ -148,9 +141,6 @@ export const featuresData = [
     bgClass: tagStyleMap["full-stack-development"].backgroundClass,
     tagIconOutlined: (
       <TbTags className="w-4 h-4 text-green-600 dark:text-[#8dc653]" />
-    ),
-    tagIconFilled: (
-      <TagIconFilled className="w-4 h-4 text-green-600 dark:text-[#8dc653]" />
     ),
     des: "Experience with full-stack development using MongoDB, Express, React, and Node.js.",
   },
@@ -166,9 +156,6 @@ export const featuresData = [
     tagIconOutlined: (
       <TbTags className="w-4 h-4 text-blue-600 dark:text-[#85f9f9]" />
     ),
-    tagIconFilled: (
-      <TagIconFilled className="w-4 h-4 text-blue-600 dark:text-[#85f9f9]" />
-    ),
     des: "Building AI-powered applications using machine learning and generative models.",
   },
   {
@@ -182,9 +169,6 @@ export const featuresData = [
     bgClass: tagStyleMap["ui-ux"].backgroundClass,
     tagIconOutlined: (
       <TbTags className="w-4 h-4 text-purple-600 dark:text-[#b06ce5]" />
-    ),
-    tagIconFilled: (
-      <TagIconFilled className="w-4 h-4 text-purple-600 dark:text-[#b06ce5]" />
     ),
     des: "Designing user interfaces and complex UI flows using tools like Figma and Photoshop.",
   },
