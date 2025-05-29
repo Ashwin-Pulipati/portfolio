@@ -265,7 +265,7 @@ function Searchbar({ onSearch }) {
             <img
               src={SearchIcon}
               alt="Search Icon"
-              className="w-5 h-5 mr-2 bg-bodyColorWhite dark:bg-bodyColor shadow-xs"
+              className="w-5 h-5 mr-2"
             />
             <input
               type="text"
