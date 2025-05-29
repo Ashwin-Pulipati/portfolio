@@ -67,6 +67,11 @@ const EmblaCarousel = ({ options, children }) => {
 
   return (
     <div className="hidden md:block md:max-w-6xl mx-auto">
+      {/* Arrow buttons – normal flow, aligned right */}
+      <div className="flex justify-center md:justify-end space-x-6">
+        <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
+        <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
+      </div>
       <div
         ref={emblaRef}
         className={`overflow-hidden transition-opacity duration-200 ${
@@ -105,7 +110,9 @@ const EmblaCarousel = ({ options, children }) => {
               >
                 {/* Hover gradient halo */}
                 <div
-                  className={`absolute w-[18px] h-[18px] ${isActive ? "w-[30px] h-[10px] rounded-lg" : "rounded-full"} 
+                  className={`absolute w-[18px] h-[18px] ${
+                    isActive ? "w-[30px] h-[10px] rounded-lg" : "rounded-full"
+                  } 
                appGradient opacity-30 scale-0 transition-all duration-300
                group-hover:opacity-100 group-hover:scale-100`}
                 />
@@ -130,12 +137,6 @@ const EmblaCarousel = ({ options, children }) => {
               </div>
             );
           })}
-        </div>
-
-        {/* Arrow buttons – normal flow, aligned right */}
-        <div className="flex justify-center pt-12 md:justify-end space-x-6">
-          <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
-          <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
         </div>
       </div>
     </div>
