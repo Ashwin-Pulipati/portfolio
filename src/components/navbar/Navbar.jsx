@@ -1001,7 +1001,7 @@ const Navbar = ({ onSearch }) => {
       />
       <picture className="block lg:hidden">
         <source
-          srcSet={`${process.env.PUBLIC_URL}/app-logo.webp`}
+          srcSet={`${process.env.PUBLIC_URL}/app-logo-2.webp`}
           type="image/webp"
         />
         <source
