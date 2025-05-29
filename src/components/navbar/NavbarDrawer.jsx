@@ -55,6 +55,7 @@ const NavbarDrawer = ({
                   height="64"
                   loading="lazy" // Lazy load in drawer
                   decoding="async"
+                  fetchpriority="high"
                 />
               </picture>
             </ScrollLink>
