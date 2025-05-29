@@ -6,6 +6,7 @@
   "dependencies": {
     "@heroicons/react": "^2.2.0",
     "ajv": "^8.17.1",
+    "critical": "^7.2.1",
     "emailjs-com": "^3.2.0",
     "embla-carousel-auto-scroll": "^8.6.0",
     "embla-carousel-react": "^8.6.0",
@@ -25,13 +26,13 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "postbuild": "cp build/index.html build/404.html",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+  "start": "react-scripts start",
+  "build": "react-scripts build",
+  "postbuild": "node critical-css.js && cp build/index.html build/404.html",
+  "predeploy": "npm run build",
+  "deploy": "gh-pages -d build",
+  "test": "react-scripts test",
+  "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
