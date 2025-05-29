@@ -4,7 +4,6 @@ generate({
   base: "build/",
   src: "index.html",
   inline: true,
-  minify: true,
   width: 1300,
   height: 900,
 })
