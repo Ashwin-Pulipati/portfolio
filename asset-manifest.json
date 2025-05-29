@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/portfolio/static/css/main.f50b0a92.css",
-    "main.js": "/portfolio/static/js/main.c905ea40.js",
+    "main.css": "/portfolio/static/css/main.466dc5fc.css",
+    "main.js": "/portfolio/static/js/main.23eb3b01.js",
     "static/css/9889.e55a0582.chunk.css": "/portfolio/static/css/9889.e55a0582.chunk.css",
     "static/js/9889.947c682e.chunk.js": "/portfolio/static/js/9889.947c682e.chunk.js",
     "static/css/8778.1cd598b9.chunk.css": "/portfolio/static/css/8778.1cd598b9.chunk.css",
@@ -320,9 +320,7 @@
     "static/media/web-dev-bootcamp.png": "/portfolio/static/media/web-dev-bootcamp.fa93572145fbc7db851b.png",
     "static/media/outskill.png": "/portfolio/static/media/outskill.dab48c42ef8e2bbbb436.png",
     "static/media/hugging-face.png": "/portfolio/static/media/hugging-face.f4da571f83e858eba487.png",
-    "static/media/VisbyRoundCF-Bold.ttf": "/portfolio/static/media/VisbyRoundCF-Bold.e48013f8232e85447d54.ttf",
     "static/media/cybersecurity.png": "/portfolio/static/media/cybersecurity.a92fbc4a9c98256dc8b4.png",
-    "static/media/Arizonia-Regular.ttf": "/portfolio/static/media/Arizonia-Regular.f420d64b78d3a3994c1b.ttf",
     "static/media/projectThree.webp": "/portfolio/static/media/projectThree.c4c5c3567e13c7955873.webp",
     "static/media/fairy-trial.webp": "/portfolio/static/media/fairy-trial.93437d23fb19259bb373.webp",
     "static/media/fairy-trial2.webp": "/portfolio/static/media/fairy-trial2.f52f89ebeaf9d42e4ec1.webp",
@@ -344,8 +342,8 @@
     "static/media/tensorflow.svg": "/portfolio/static/media/tensorflow.cbbee40dfc23131b3232ce7146730958.svg",
     "static/media/figma.svg": "/portfolio/static/media/figma.4c7c72690bda96207f676a0d84c261a3.svg",
     "static/media/materialui.svg": "/portfolio/static/media/materialui.35c1f68232f56950a73a1b2484869ec2.svg",
-    "main.f50b0a92.css.map": "/portfolio/static/css/main.f50b0a92.css.map",
-    "main.c905ea40.js.map": "/portfolio/static/js/main.c905ea40.js.map",
+    "main.466dc5fc.css.map": "/portfolio/static/css/main.466dc5fc.css.map",
+    "main.23eb3b01.js.map": "/portfolio/static/js/main.23eb3b01.js.map",
     "9889.e55a0582.chunk.css.map": "/portfolio/static/css/9889.e55a0582.chunk.css.map",
     "9889.947c682e.chunk.js.map": "/portfolio/static/js/9889.947c682e.chunk.js.map",
     "8778.1cd598b9.chunk.css.map": "/portfolio/static/css/8778.1cd598b9.chunk.css.map",
@@ -646,7 +644,7 @@
     "79.7a0068a7.chunk.js.map": "/portfolio/static/js/79.7a0068a7.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.f50b0a92.css",
-    "static/js/main.c905ea40.js"
+    "static/css/main.466dc5fc.css",
+    "static/js/main.23eb3b01.js"
   ]
 }
