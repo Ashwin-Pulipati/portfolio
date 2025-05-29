@@ -25,12 +25,12 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "craco start",
-    "build": "craco build",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
     "postbuild": "cp build/index.html build/404.html",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "test": "craco test",
+    "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -53,12 +53,10 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-    "@craco/craco": "^7.1.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^14.6.1",
     "gh-pages": "^6.3.0",
-    "html-critical-webpack-plugin": "^2.1.0",
     "html-webpack-plugin": "^5.6.3",
     "tailwindcss": "^3.2.4",
     "webpack-dev-server": "^5.2.0"
