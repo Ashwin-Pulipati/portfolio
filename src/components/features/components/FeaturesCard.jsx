@@ -23,7 +23,7 @@ const Card = ({
     navigate(`/features/${cardSlug}`);
   }, [cardSlug, navigate]);
 
-  const [hoveredTag, setHoveredTag] = useState(null);
+  // const [hoveredTag, setHoveredTag] = useState(null);
   const [isHovered, setIsHovered] = useState(false);
   const isDarkMode = useDarkMode();
 
@@ -93,12 +93,12 @@ const Card = ({
                           backgroundColor: hexToRGBA(tagColors.tagColor, 0.15),
                         }
                   }
-                  onMouseEnter={() => setHoveredTag(idx)}
-                  onMouseLeave={() => setHoveredTag(null)}
+                  // onMouseEnter={() => setHoveredTag(idx)}
+                  // onMouseLeave={() => setHoveredTag(null)}
                 >
                   <div className="flex items-center gap-1">
                     <span className="transition-all duration-300 dark:group-hover:text-white">
-                      {hoveredTag === idx ? tagIconFilled : tagIconOutlined}
+                      {tagIconOutlined}
                     </span>
                     {tag}
                   </div>
