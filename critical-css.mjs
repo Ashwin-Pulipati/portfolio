@@ -3,7 +3,6 @@ import { generate } from "critical";
 generate({
   base: "build/",
   src: "index.html",
-  dest: "index.html",
   inline: true,
   minify: true,
   width: 1300,
