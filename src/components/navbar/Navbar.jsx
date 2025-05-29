@@ -786,15 +786,14 @@ const Navbar = ({ onSearch }) => {
       setIsScrolled(window.scrollY > 0);
       checkSections();
     };
-
-    // *** DELAYED Initial Call ***
-    // Give the browser ~100ms to handle initial paint before running this.
+        
+    window.addEventListener("scroll", handleScroll);
     const initialCheckTimer = setTimeout(handleScroll, 100);
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
       checkSections.cancel();
-      clearTimeout(initialCheckTimer); // Clean up the timer
+      clearTimeout(initialCheckTimer);
     };
   }, []);
 
