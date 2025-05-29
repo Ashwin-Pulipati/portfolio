@@ -4,6 +4,7 @@ import { BsLaptop, BsFillLaptopFill } from "react-icons/bs";
 import { TbTags } from "react-icons/tb";
 import { AiFillAliwangwang, AiOutlineAliwangwang } from "react-icons/ai";
 import { MdDesignServices, MdOutlineDesignServices } from "react-icons/md";
+import { ReactComponent as TagIconFilled } from "../../assets/images/SVG/tag-icon-filled.svg";
 
 export const tagStyleMap = {
   "frontend-development": {
@@ -107,18 +108,7 @@ export const featuresData = [
       <TbTags className="w-4 h-4 text-pink-600 dark:text-[#fa8fa4]" />
     ),
     tagIconFilled: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        width="1em"
-        height="1em"
-        className="w-4 h-4 text-pink-600 dark:text-[#fa8fa4]"
-      >
-        <g fill="currentColor">
-          <path d="M9.172 5a3 3 0 0 1 2.121.879l5.71 5.71a3.41 3.41 0 0 1 0 4.822l-3.592 3.592a3.41 3.41 0 0 1-4.822 0l-5.71-5.71A3 3 0 0 1 2 12.172V8a3 3 0 0 1 3-3zM7 9h-.01A1 1 0 1 0 7 11a1 1 0 0 0 0-2" />
-          <path d="M14.293 5.293a1 1 0 0 1 1.414 0L20.3 9.885a5.82 5.82 0 0 1 0 8.23l-1.592 1.592a1 1 0 0 1-1.414-1.414l1.592-1.592a3.82 3.82 0 0 0 0-5.402l-4.592-4.592a1 1 0 0 1 0-1.414" />
-        </g>
-      </svg>
+      <TagIconFilled className="w-4 h-4 text-pink-600 dark:text-[#fa8fa4]" />
     ),
     des: "Proficient in React, TypeScript, and HTML/CSS for creating responsive web apps.",
   },
@@ -143,18 +133,7 @@ export const featuresData = [
       <TbTags className="w-4 h-4 text-yellow-600 dark:text-[#f5a442]" />
     ),
     tagIconFilled: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        width="1em"
-        height="1em"
-        className="w-4 h-4 text-yellow-600 dark:text-[#f5a442]"
-      >
-        <g fill="currentColor">
-          <path d="M9.172 5a3 3 0 0 1 2.121.879l5.71 5.71a3.41 3.41 0 0 1 0 4.822l-3.592 3.592a3.41 3.41 0 0 1-4.822 0l-5.71-5.71A3 3 0 0 1 2 12.172V8a3 3 0 0 1 3-3zM7 9h-.01A1 1 0 1 0 7 11a1 1 0 0 0 0-2" />
-          <path d="M14.293 5.293a1 1 0 0 1 1.414 0L20.3 9.885a5.82 5.82 0 0 1 0 8.23l-1.592 1.592a1 1 0 0 1-1.414-1.414l1.592-1.592a3.82 3.82 0 0 0 0-5.402l-4.592-4.592a1 1 0 0 1 0-1.414" />
-        </g>
-      </svg>
+      <TagIconFilled className="w-4 h-4 text-yellow-600 dark:text-[#f5a442]" />
     ),
     des: "Implementing machine learning models and AI-driven solutions in real-world applications.",
   },
@@ -171,18 +150,7 @@ export const featuresData = [
       <TbTags className="w-4 h-4 text-green-600 dark:text-[#8dc653]" />
     ),
     tagIconFilled: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        width="1em"
-        height="1em"
-        className="w-4 h-4 text-green-600 dark:text-[#8dc653]"
-      >
-        <g fill="currentColor">
-          <path d="M9.172 5a3 3 0 0 1 2.121.879l5.71 5.71a3.41 3.41 0 0 1 0 4.822l-3.592 3.592a3 3 0 0 1-4.822 0l-5.71-5.71A3 3 0 0 1 2 12.172V8a3 3 0 0 1 3-3zM7 9h-.01A1 1 0 1 0 7 11a1 1 0 0 0 0-2" />
-          <path d="M14.293 5.293a1 1 0 0 1 1.414 0L20.3 9.885a5.82 5.82 0 0 1 0 8.23l-1.592 1.592a1 1 0 0 1-1.414-1.414l1.592-1.592a3.82 3.82 0 0 0 0-5.402l-4.592-4.592a1 1 0 0 1 0-1.414" />
-        </g>
-      </svg>
+      <TagIconFilled className="w-4 h-4 text-green-600 dark:text-[#8dc653]" />
     ),
     des: "Experience with full-stack development using MongoDB, Express, React, and Node.js.",
   },
@@ -199,18 +167,7 @@ export const featuresData = [
       <TbTags className="w-4 h-4 text-blue-600 dark:text-[#85f9f9]" />
     ),
     tagIconFilled: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        width="1em"
-        height="1em"
-        className="w-4 h-4 text-blue-600 dark:text-[#85f9f9]"
-      >
-        <g fill="currentColor">
-          <path d="M9.172 5a3 3 0 0 1 2.121.879l5.71 5.71a3.41 3.41 0 0 1 0 4.822l-3.592 3.592a3 3 0 0 1-4.822 0l-5.71-5.71A3 3 0 0 1 2 12.172V8a3 3 0 0 1 3-3zM7 9h-.01A1 1 0 1 0 7 11a1 1 0 0 0 0-2" />
-          <path d="M14.293 5.293a1 1 0 0 1 1.414 0L20.3 9.885a5.82 5.82 0 0 1 0 8.23l-1.592 1.592a1 1 0 0 1-1.414-1.414l1.592-1.592a3.82 3.82 0 0 0 0-5.402l-4.592-4.592a1 1 0 0 1 0-1.414" />
-        </g>
-      </svg>
+      <TagIconFilled className="w-4 h-4 text-blue-600 dark:text-[#85f9f9]" />
     ),
     des: "Building AI-powered applications using machine learning and generative models.",
   },
@@ -227,18 +184,7 @@ export const featuresData = [
       <TbTags className="w-4 h-4 text-purple-600 dark:text-[#b06ce5]" />
     ),
     tagIconFilled: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        width="1em"
-        height="1em"
-        className="w-4 h-4 text-purple-600 dark:text-[#b06ce5]"
-      >
-        <g fill="currentColor">
-          <path d="M9.172 5a3 3 0 0 1 2.121.879l5.71 5.71a3.41 3.41 0 0 1 0 4.822l-3.592 3.592a3 3 0 0 1-4.822 0l-5.71-5.71A3 3 0 0 1 2 12.172V8a3 3 0 0 1 3-3zM7 9h-.01A1 1 0 1 0 7 11a1 1 0 0 0 0-2" />
-          <path d="M14.293 5.293a1 1 0 0 1 1.414 0L20.3 9.885a5.82 5.82 0 0 1 0 8.23l-1.592 1.592a1 1 0 0 1-1.414-1.414l1.592-1.592a3.82 3.82 0 0 0 0-5.402l-4.592-4.592a1 1 0 0 1 0-1.414" />
-        </g>
-      </svg>
+      <TagIconFilled className="w-4 h-4 text-purple-600 dark:text-[#b06ce5]" />
     ),
     des: "Designing user interfaces and complex UI flows using tools like Figma and Photoshop.",
   },
