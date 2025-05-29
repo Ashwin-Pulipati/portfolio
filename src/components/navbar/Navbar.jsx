@@ -1015,7 +1015,6 @@ const Navbar = ({ onSearch }) => {
           width="64"
           height="64"
           loading="eager"
-          decoding="async" // *** ADDED THIS ***
           fetchpriority="high"
         />
       </picture>
