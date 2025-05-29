@@ -27,9 +27,6 @@ jobs:
       - name: Build project
         run: npm run build
 
-      - name: Inline critical CSS
-        run: node critical-css.mjs
-
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
