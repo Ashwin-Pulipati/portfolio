@@ -733,7 +733,7 @@ import { HiArrowLeft } from "react-icons/hi";
 import { Link as RouterLink, useLocation, useNavigate } from "react-router-dom";
 import { Link as ScrollLink } from "react-scroll";
 import useSystemTheme from "react-use-system-theme";
-import { ReactComponent as LogoSVG } from "../../assets/images/app-logo/app-logo.svg";
+import LogoPNG from "../../assets/images/app-logo/app-logo.png";
 import { createRipple } from "../layouts/RippleEffect";
 import HamburgerMenu from "./components/HamburgerMenu";
 import LargeScreenNavItems from "./LargeScreenNavItems";
@@ -991,7 +991,8 @@ const Navbar = ({ onSearch }) => {
       className="flex justify-between items-center m-2 md:m-0"
       onClick={() => handleLinkClick(0)}
     >
-      <LogoSVG
+      <img
+        src={LogoPNG}
         className="w-16 h-16 hidden lg:block"
         aria-label="App logo"
         loading="eager"
