@@ -99,21 +99,35 @@ const EmblaCarousel = ({ options, children }) => {
               : "lightGray";
 
             return (
-              <DotButton
+              <div
                 key={i}
-                onClick={() => onDotButtonClick(i)}
-                className={`
-        relative
-        w-[10px] h-[10px]
-        md:w-[13px] md:h-[13px]
-        rounded-full
-      `}
-                style={{
-                  background: bgColor,
-                  boxShadow:
-                    "1px 4px 2px -3px rgba(0,0,0,0.7) inset, -1px -3px 3px -2px rgba(255,255,255,0.2) inset",
-                }}
-              />
+                className="relative flex items-center justify-center group"
+              >
+                {/* Hover gradient halo */}
+                <div
+                  className={`absolute w-[18px] h-[18px] ${isActive ? "w-[30px] h-[10px] rounded-lg" : "rounded-full"} 
+               appGradient opacity-30 scale-0 transition-all duration-300
+               group-hover:opacity-100 group-hover:scale-100`}
+                />
+                {/* Actual Dot Button */}
+                <DotButton
+                  onClick={() => onDotButtonClick(i)}
+                  className={`
+      relative cursor-pointer transition-all duration-300 focus:outline-none
+      ${
+        isActive
+          ? "w-[25px] h-[11px] rounded-lg"
+          : "w-[10px] h-[10px] md:w-[13px] md:h-[13px] rounded-full"
+      }
+    `}
+                  style={{
+                    background: bgColor,
+                    boxShadow:
+                      "1px 4px 2px -3px rgba(0,0,0,0.7) inset, -1px -3px 3px -2px rgba(255,255,255,0.2) inset",
+                  }}
+                  aria-label={`Go to slide ${i + 1}`}
+                />
+              </div>
             );
           })}
         </div>

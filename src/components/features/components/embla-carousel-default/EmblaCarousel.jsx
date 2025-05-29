@@ -38,7 +38,6 @@ const EmblaCarousel = React.forwardRef(
             <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
             <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
           </div>
-          <div className="flex space-x-2">
             {scrollSnaps.map((_, idx) => (
               <DotButton
                 key={idx}
@@ -46,7 +45,6 @@ const EmblaCarousel = React.forwardRef(
                 onClick={() => onDotButtonClick(idx)}
               />
             ))}
-          </div>
         </div>
       </section>
     );
