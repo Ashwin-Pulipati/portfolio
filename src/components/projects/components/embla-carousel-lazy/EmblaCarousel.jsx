@@ -160,7 +160,7 @@ const EmblaCarousel = ({ slides, options, onExpand, expanded = false }) => {
       </div>
 
       {/* Dots overlay at bottom center */}
-      <div className={`absolute ${dotsClass} left-1/2 transform -translate-x-1/2 flex gap-6 pointer-events-auto`}>
+      <div className={`absolute ${dotsClass} left-1/2 transform -translate-x-1/2 flex gap-2 pointer-events-auto`}>
         {scrollSnaps.map((_, idx) => (
           <DotButton
             key={idx}

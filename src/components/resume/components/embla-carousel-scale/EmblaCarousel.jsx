@@ -92,7 +92,7 @@ const EmblaCarousel = ({ options, children }) => {
       {/* Controls: dots absolutely centered, arrows on the right */}
       <div className="mt-6 relative">
         {/* Dots – absolutely centered */}
-        <div className="absolute mt-2 md:mt-4 left-1/2 top-0 transform -translate-x-1/2 flex space-x-4">
+        <div className="absolute mt-2 md:mt-4 left-1/2 top-0 transform -translate-x-1/2 flex space-x-2">
           {scrollSnaps.map((_, i) => {
             const isActive = i === selectedIndex;
             const bgColor = isDarkMode

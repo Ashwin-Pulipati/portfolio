@@ -108,7 +108,7 @@ export const DotButton = React.memo(({ active, onClick }) => {
       onClick={onClick}
       type="button"
       aria-label="Go to slide"
-      className="relative flex items-center justify-center mx-2 group transition-all duration-300"
+      className="relative flex items-center justify-center mx-1 group transition-all duration-300"
     >
       {/* Hover halo */}
       <div
