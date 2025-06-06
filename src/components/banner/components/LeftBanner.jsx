@@ -137,7 +137,7 @@ import { HiArrowRight } from "react-icons/hi2";
 import { useTypewriter } from "react-simple-typewriter";
 import { createRipple } from "../../layouts/RippleEffect";
 import "../Banner.css";
-import { AnimatedText, fadeUpProps } from "../Banner.utils.js";
+import { fadeUpProps } from "../Banner.utils.js";
 import Media from "./Media";
 
 const LeftBanner = () => {
@@ -174,6 +174,26 @@ const LeftBanner = () => {
     element.scrollIntoView({ behavior: "smooth" });
   }, []);
 
+  const renderPerLetter = (label) => (
+    <span className="tracking-tight">
+      {label.split(" ").map((word, wordIdx) => (
+        <span key={wordIdx} className="mr-1 inline-block">
+          {word.split("").map((char, charIdx) => (
+            <span
+              key={`${wordIdx}-${charIdx}`}
+              className="inline-block group-hover:animate-move-out transition-transform duration-300 ease-in-out"
+              style={{ animationDelay: `${(wordIdx * 5 + charIdx) * 0.1}s` }}
+            >
+              {char}
+            </span>
+          ))}
+        </span>
+      ))}
+    </span>
+  );
+  
+  
+
   return (
     <motion.div
       {...fadeUpProps}
@@ -205,50 +225,68 @@ const LeftBanner = () => {
 
       <div className="flex flex-col gap-16 lg:gap-20">
         <div className="flex items-center gap-4 flex-wrap sm:flex-nowrap">
+          {/* ---------- View Projects Button ---------- */}
           <button
             className="group hover:cursor-pointer"
             onClick={() => scrollToSection("features")}
             aria-label="View Projects"
           >
             <div
-              className="flex items-center gap-2 w-fit h-fit bg-orange-100 text-amber-800 
-              dark:bg-orange-800 dark:text-amber-100 font-medium px-4 py-3 
-              rounded-full text-sm sm:text-base view-projects-button ripple-container elevatedShadow  group-hover:shadow-none "
+              className="
+                flex items-center gap-2 w-fit h-fit 
+                bg-orange-100 text-amber-800 
+                dark:bg-orange-800 dark:text-amber-100 
+                font-medium px-4 py-3 
+                rounded-full text-sm sm:text-base 
+                view-projects-button ripple-container elevatedShadow  
+                group-hover:shadow-none
+              "
               onMouseDown={createRipple}
             >
+              {/* Small screens: static text + icon */}
               <div className="flex items-center gap-2 justify-center md:hidden">
-                <span className="mb-0.5">View Projects </span>
+                <span>View Projects</span>
                 <HiArrowRight className="w-4 h-4" />
               </div>
 
-              <div className="md:flex items-center gap-2 justify-center hidden">
-                <AnimatedText text="View Projects" />
-                <span className="animate-on-hover">
+              {/* Medium+ screens: each letter animates on hover */}
+              <div className="hidden md:flex items-center gap-2 justify-center">
+                {renderPerLetter("View Projects")}
+                <span className="inline-block transform group-hover:-translate-y-1 transition-transform duration-300 ease-in-out">
                   <HiArrowRight className="w-4 h-4" />
                 </span>
               </div>
             </div>
           </button>
 
+          {/* ---------- View Resume Button ---------- */}
           <button
             className="group hover:cursor-pointer"
             onClick={() => scrollToSection("resume")}
             aria-label="View Resume"
           >
             <div
-              className="flex items-center gap-2 w-fit h-fit bg-cyan-100 font-medium dark:bg-cyan-800 dark:text-blue-100 
-              px-4 py-3 rounded-full text-blue-800 text-sm sm:text-base 
-              view-resume-button ripple-container elevatedShadow group-hover:shadow-none"
+              className="
+                flex items-center gap-2 w-fit h-fit 
+                bg-cyan-100 font-medium 
+                dark:bg-cyan-800 dark:text-blue-100 
+                px-4 py-3 rounded-full 
+                text-blue-800 text-sm sm:text-base 
+                view-resume-button ripple-container elevatedShadow 
+                group-hover:shadow-none
+              "
               onMouseDown={createRipple}
             >
+              {/* Small screens: static text + icon */}
               <div className="flex items-center gap-2 justify-center md:hidden">
-                <span className="mb-0.5">View Resume </span>
+                <span>View Resume</span>
                 <HiArrowRight className="w-4 h-4" />
               </div>
 
-              <div className="md:flex items-center gap-2 justify-center hidden">
-                <AnimatedText text="View Resume" />
-                <span className="animate-on-hover">
+              {/* Medium+ screens: each letter animates on hover */}
+              <div className="hidden md:flex items-center gap-2 justify-center">
+                {renderPerLetter("View Resume")}
+                <span className="inline-block transform group-hover:-translate-y-1 transition-transform duration-300 ease-in-out">
                   <HiArrowRight className="w-4 h-4" />
                 </span>
               </div>

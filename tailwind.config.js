@@ -44,6 +44,7 @@ module.exports = {
       animation: {
         blink: "blink 1.2s ease-in-out infinite",
         fadeInBounce: "fadeInBounce 5s ease-in-out infinite",
+        "move-out": "move-out 1.2s ease-in-out infinite",
       },
       keyframes: {
         blink: {
@@ -55,6 +56,11 @@ module.exports = {
           "50%": { opacity: "1", transform: "translateY(0px)" },
           "75%": { transform: "translateY(-3px)" },
           "100%": { transform: "translateY(0px)" },
+        },
+        "move-out": {
+          "0%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-10px)" },
+          "100%": { transform: "translateY(0)" },
         },
       },
     },
