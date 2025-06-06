@@ -434,9 +434,14 @@ function Searchbar({ onSearch }) {
           </div>
           {isCategoryOpen && (
             <ul className="absolute z-50 xs:top-16 lg:top-14 left-0 w-full cardGradient transition-colors duration-100 shadow-md rounded-br-md rounded-bl-md py-2 text-gray-700 dark:text-gray-300">
-              {dropdownCategories.map((cat, i) => {
+             {dropdownCategories.map((cat, i) => {
                 const slug = slugify(cat);
-                const { iconOutlined, iconFilled, color } = categoryIconMap[cat];
+                // Alias the icon components with uppercase names:
+                const {
+                  iconOutlined: IconOutlined,
+                  iconFilled: IconFilled,
+                  color,
+                } = categoryIconMap[cat];
                 const isHovered = hoveredCategory === cat;
                 return (
                   <li
@@ -460,9 +465,9 @@ function Searchbar({ onSearch }) {
                     }}
                   >
                     {isHovered ? (
-                      <iconFilled className={`w-5 h-5 ${color}`} />
+                      <IconFilled className={`w-5 h-5 ${color}`} />
                     ) : (
-                      <iconOutlined className={`w-5 h-5 ${color}`} />
+                      <IconOutlined className={`w-5 h-5 ${color}`} />
                     )}
                     {cat} ({getCategoryCount(cat)})
                   </li>
