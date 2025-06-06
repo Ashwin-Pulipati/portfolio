@@ -29,8 +29,14 @@ export const getProjectAgeText = (createdAt) => {
   const seconds = Math.floor(diffTime / 1000);
 
   if (seconds < 60) return `${seconds} sec${seconds !== 1 ? "s" : ""} ago`;
-  if (seconds < 3600) return `${Math.floor(seconds / 60)} min${Math.floor(seconds / 60) !== 1 ? "s" : ""} ago`;
-  if (seconds < 86400) return `${Math.floor(seconds / 3600)} hr${Math.floor(seconds / 3600) !== 1 ? "s" : ""} ago`;
+  if (seconds < 3600)
+    return `${Math.floor(seconds / 60)} min${
+      Math.floor(seconds / 60) !== 1 ? "s" : ""
+    } ago`;
+  if (seconds < 86400)
+    return `${Math.floor(seconds / 3600)} hr${
+      Math.floor(seconds / 3600) !== 1 ? "s" : ""
+    } ago`;
 
   const days = Math.floor(seconds / 86400);
 
@@ -38,7 +44,6 @@ export const getProjectAgeText = (createdAt) => {
     return `${days} day${days > 1 ? "s" : ""} ago`;
   }
 
-  // After 14 days, show absolute date
   return projectDate.toLocaleDateString("en-US", {
     year: "numeric",
     month: "short",
