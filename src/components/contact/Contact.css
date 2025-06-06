@@ -1,4 +1,4 @@
-.custom-toast {
+/* .custom-toast {
   background: #d1fae5 !important;
   box-shadow: 5px 5px 15px #D1D9E6, -5px -5px 15px #ffffff !important;
   color: #166534 !important;
@@ -39,7 +39,87 @@
 .custom-toast-error {
   background: #fee2e2 !important; 
   box-shadow: 5px 5px 15px #D1D9E6, -5px -5px 15px #ffffff !important;
-  color: #991b1b !important; /* Error red text */
+  color: #991b1b !important; 
+  border-radius: 0.5rem !important;
+}
+
+.Toastify__close-button.custom-error {
+  background: #fee2e2 !important;
+  color: #991b1b !important;
+  font-size: 1.5rem !important;
+  opacity: 1 !important;
+  transition: color 0.3s ease-in-out !important;
+}
+
+.dark .custom-toast-error {
+  background: #991b1b !important;
+  box-shadow: 10px 10px 19px #1c1e22, -10px -10px 19px #262a2e !important;
+  color: #fee2e2 !important;
+  border-radius: 0.5rem !important;
+}
+
+.dark .Toastify__close-button.custom-error {
+  background: #991b1b !important;
+  color: #fee2e2 !important;
+  font-size: 1.5rem !important;
+  opacity: 1 !important;
+  transition: color 0.3s ease-in-out !important;
+}
+
+.custom-toast-error-progress {
+  background: linear-gradient(to right, #12c2e9, #c471ed, #ed417d, #f64f59) !important;
+}
+
+.dark .custom-toast-error-progress {
+  background: linear-gradient(to right, #12c2e9, #c471ed, #ed417d, #f64f59) !important;
+} */
+
+
+
+/* Contact.css */
+
+.custom-toast {
+  background: #d1fae5 !important;
+  box-shadow: 5px 5px 15px #D1D9E6, -5px -5px 15px #ffffff !important;
+  color: #166534 !important;
+  border-radius: 0.5rem !important;
+}
+
+.Toastify__close-button {
+  background: #d1fae5 !important;
+  color: #166534 !important;
+  font-size: 1.5rem !important;
+  opacity: 1 !important;
+  transition: color 0.3s ease-in-out !important;
+}
+
+.dark .custom-toast {
+  background: #166534 !important;
+  box-shadow: 10px 10px 19px #1c1e22, -10px -10px 19px #262a2e !important;
+  color: #d1fae5 !important;
+  border-radius: 0.5rem !important;
+}
+
+.dark .Toastify__close-button {
+  background: #166534 !important;
+  color: #d1fae5 !important;
+  font-size: 1.5rem !important;
+  opacity: 1 !important;
+  transition: color 0.3s ease-in-out !important;
+}
+
+.custom-toast-success-progress {
+  background: linear-gradient(to right, #12c2e9, #c471ed, #ed417d, #f64f59) !important;
+}
+
+.dark .custom-toast-success-progress {
+  background: linear-gradient(to right, #00bcd4, #6a00ff, #ff2e63, #ff5733) !important;
+}
+
+.custom-toast-error {
+  background: #fee2e2 !important;
+  box-shadow: 5px 5px 15px #D1D9E6, -5px -5px 15px #ffffff !important;
+  color: #991b1b !important;
   border-radius: 0.5rem !important;
 }
 
