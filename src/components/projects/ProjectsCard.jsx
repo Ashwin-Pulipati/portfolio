@@ -163,6 +163,7 @@ import ViewCardImage from "./components/ViewCardImage";
 import { gradients } from "./Projects.constants";
 import { getProjectAgeText } from "./Projects.Utils";
 import "./Project.css";
+import { useDarkMode } from "../layouts/DarkMode";
 
 const useProjectAgeText = (createdAt) => {
   const [projectAgeText, setProjectAgeText] = useState(
@@ -211,15 +212,12 @@ const ProjectsCard = React.memo(function ProjectsCard({
   searchQuery,
   createdAt,
   gradientIndex,
+  stack = [],
 }) {
   const slug = slugify(title);
   const categorySlug = slugify(category);
   const [isHovered, setIsHovered] = useState(false);
-
-  const isDarkMode = useMemo(
-    () => document.documentElement.classList.contains("dark"),
-    []
-  );
+  const isDarkMode = useDarkMode();
 
   const currentGradient = useMemo(
     () => gradients[gradientIndex % gradients.length],
@@ -252,7 +250,7 @@ const ProjectsCard = React.memo(function ProjectsCard({
 
   return (
     <div
-      className="group relative w-full p-4 lg:p-8 sm:p-7 xs:p-6 rounded-2xl flex flex-col cardView"
+      className="group relative w-full p-4 lg:p-8 sm:p-7 xs:p-6 rounded-2xl flex flex-col cardView "
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       style={
@@ -281,34 +279,34 @@ const ProjectsCard = React.memo(function ProjectsCard({
           </div>
         </div>
       )}
+      
+        <ViewCardImage src={src} stack={stack} />
 
-      <ViewCardImage src={src} />
-
-      <div className="w-full mt-5 flex flex-col gap-6">
-        <div className="flex items-center justify-end gap-1">
-          <ProjectsCardInterest
-            projectId={id}
-            github={github}
-            website={website}
-            disableShadow={isHovered}
-          />
+        <div className="w-full mt-5 flex flex-col gap-6 ">
+          <div className="flex items-center justify-end gap-1">
+            <ProjectsCardInterest
+              projectId={id}
+              github={github}
+              website={website}
+              disableShadow={isHovered}
+            />
+          </div>
         </div>
-      </div>
-      <div className="flex flex-col gap-2 mt-4 group">
-        <Link to={`/features/${categorySlug}/projects/${slug}`}>
-          <h1 className="font-medium capitalize tracking-wide w-fit h-fit textGradient group-hover:text-black dark:group-hover:text-white">
-            <span className="inline">
-              {highlightedText(title)}
-              <FiArrowUpRight className="arrowIcon inline-block align-text-bottom ml-1 w-5 h-5 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity transform duration-700 ease-in-out group-hover:translate-x-[5%] group-hover:translate-y-[3%] group-hover:transition-all group-hover:duration-700 group-hover:ease-in-out" />
-            </span>
-          </h1>
-        </Link>
-        <div className="relative flex flex-col gap-2">
-          <p className="text-sm tracking-wide text-gray-700 dark:text-lightText text-justify group-hover:text-black dark:group-hover:text-gray-100 duration-300 group-hover:cursor-pointer">
-            {highlightedText(des)}
-          </p>
+        <div className="flex flex-col gap-2 mt-4 group">
+          <Link to={`/features/${categorySlug}/projects/${slug}`}>
+            <h1 className="font-medium capitalize tracking-wide w-fit h-fit textGradient group-hover:text-black dark:group-hover:text-white">
+              <span className="inline">
+                {highlightedText(title)}
+                <FiArrowUpRight className="arrowIcon inline-block align-text-bottom ml-1 w-5 h-5 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity transform duration-700 ease-in-out group-hover:translate-x-[5%] group-hover:translate-y-[3%] group-hover:transition-all group-hover:duration-700 group-hover:ease-in-out" />
+              </span>
+            </h1>
+          </Link>
+          <div className="relative flex flex-col gap-2">
+            <p className="text-sm tracking-wide text-gray-700 dark:text-lightText text-justify group-hover:text-black dark:group-hover:text-gray-100 duration-300 group-hover:cursor-pointer">
+              {highlightedText(des)}
+            </p>
+          </div>
         </div>
-      </div>
     </div>
   );
 });

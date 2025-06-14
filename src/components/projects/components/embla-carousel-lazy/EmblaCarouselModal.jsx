@@ -62,13 +62,13 @@ const EmblaCarouselModal = React.memo(function EmblaCarouselModal({
           expanded={true}
         />
       </div>
-      <div className="group">
+      <button className="group p-2.5 absolute top-7 right-7  bg-white/80 dark:bg-black/60 rounded-full flex justify-center items-center">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 14 14"
           width="1em"
           height="1em"
-          className="w-8 h-8 absolute top-7 right-7 duration-300 cursor-pointer text-rose-400  group-hover:text-rose-600 dark:text-rose-600 dark:group-hover:text-rose-400"
+          className="w-5 h-5 duration-300 cursor-pointer text-rose-400  group-hover:text-rose-600 dark:text-rose-600 dark:group-hover:text-rose-400"
           onClick={onClose}
           aria-label="Collapse"
         >
@@ -79,7 +79,7 @@ const EmblaCarouselModal = React.memo(function EmblaCarouselModal({
             clipRule="evenodd"
           />
         </svg>
-      </div>
+      </button>
     </div>
   );
 });

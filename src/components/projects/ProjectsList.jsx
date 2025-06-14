@@ -610,6 +610,7 @@ const ProjectsList = React.memo(function ProjectsList({
                 createdAt={project.createdAt}
                 id={project.id}
                 gradientIndex={index}
+                key={project.id}
               />
             </Suspense>
           ))

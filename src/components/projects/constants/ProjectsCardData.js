@@ -214,6 +214,11 @@ import FacialLandmarkingDetail from "../../DB/Facial-Landmarking/FacialLandmarki
 import FLThumbnail from "../../../assets/images/DB Images/FL/Thumbnail.png";
 import VirtualRLandingPageDetail from "../../DB/VirtualR-Landing-Page/VirtualRLandingPageDetail";
 import VRLPThumbnail from "../../../assets/images/DB Images/VRLP/Thumbnail.png";
+import { FaCss3Alt, FaHtml5, FaJs, FaReact} from "react-icons/fa";
+import MaterialUI from "../../../assets/images/SVG/materialui.svg";
+import Tensorflow from "../../../assets/images/SVG/tensorflow.svg";
+import TeachableMachine from "../../../assets/images/Webp/teachable-image.webp";
+import { SiTailwindcss } from "react-icons/si";
 
 export const allProjects = [
   {
@@ -229,6 +234,11 @@ export const allProjects = [
     createdAt: "Jan 2024",
     component: MultiplicationWorksheetGeneratorProjectDetail,
     category: "frontend-development",
+    stack: [
+      <FaHtml5 key="html5" className="w-6 h-6 text-[#E34F26]" />,
+      <FaCss3Alt key="css3" className="w-6 h-6 text-[#1572B6]" />,
+      <FaJs key="js" className="w-6 h-6 text-[#F0DB4F]" />,
+    ],
     sub: null,
   },
   {
@@ -242,6 +252,12 @@ export const allProjects = [
     createdAt: "Sep 2024",
     component: KeeperNotesDetail,
     category: "frontend-development",
+    stack: [
+      <FaReact className="w-6 h-6 text-[#61DAFB]" />,
+      <img src={MaterialUI} alt="Material UI" className="w-6 h-6" />,
+      <FaCss3Alt className="w-6 h-6 text-[#1572B6]" />,
+      <FaJs className="w-6 h-6 text-[#F0DB4F]" />,
+    ],
     sub: null,
   },
   {
@@ -255,6 +271,12 @@ export const allProjects = [
     createdAt: "Aug 2024",
     component: VirtualRLandingPageDetail,
     category: "frontend-development",
+    stack: [
+      <FaReact className="w-6 h-6 text-[#61DAFB]" />,
+      <SiTailwindcss className="w-6 h-6 text-[#38B2AC]" />,
+      <FaCss3Alt className="w-6 h-6 text-[#1572B6]" />,
+      <FaJs className="w-6 h-6 text-[#F0DB4F]" />,
+    ],
     sub: null,
   },
   {
@@ -268,7 +290,14 @@ export const allProjects = [
     createdAt: "Apr 2024",
     component: TeachableMachineImageModelDetail,
     category: "machine-learning",
-    sub: null,
+    stack: [
+      <FaHtml5 className="w-7 h-7 text-[#E34F26]" />,
+      <FaCss3Alt className="w-7 h-7 text-[#1572B6]" />,
+      <FaJs className="w-7 h-7 text-[#F0DB4F]" />,
+      <img src={TeachableMachine} alt="Material UI" className="w-7 h-7" />,
+      <img src={Tensorflow} alt="Material UI" className="w-7 h-7" />,
+    ],
+    sub: null
   },
   {
     id: "ml2",
@@ -283,6 +312,14 @@ export const allProjects = [
     createdAt: "May 2024",
     component: FacialLandmarkingDetail,
     category: "machine-learning",
+    stack: [
+      <FaHtml5 className="w-7 h-7 text-[#E34F26]" />,
+      <FaCss3Alt className="w-7 h-7 text-[#1572B6]" />,
+      <FaJs className="w-7 h-7 text-[#F0DB4F]" />,
+      <p className="w-fit h-fit text-black text-md font-titleFont leading-0">
+        Face-API
+      </p>,
+    ],
     sub: null,
   },
 ];

@@ -214,11 +214,13 @@ const CertificationsCard = ({ item }) => {
               src={item.image}
               alt={`${item.title} certification`}
             />
-            <BiExpand
-              className="w-7 h-7 absolute top-2 right-2 duration-300 cursor-pointer text-violet-600 group-hover:text-violet-400 dark:text-violet-300 dark:group-hover:text-violet-400"
-              onClick={toggleModal}
-              aria-label="Expand"
-            />
+            <div className="absolute top-0 right-0 p-2.5 bg-white/80 dark:bg-black/60 rounded-full ">
+              <BiExpand
+                className="w-5 h-5 text-rose-400  group-hover:text-rose-600 dark:text-rose-600 dark:group-hover:text-rose-400 duration-300 cursor-pointer"
+                onClick={toggleModal}
+                aria-label="Expand"
+              />
+            </div>
           </div>
 
           <div className="flex items-center flex-wrap gap-2 textGradient font-titleFont">

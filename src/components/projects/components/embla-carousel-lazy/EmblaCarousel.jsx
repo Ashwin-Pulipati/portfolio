@@ -281,11 +281,13 @@ const EmblaCarousel = React.memo(function EmblaCarousel({
                 heightClass={heightClass}
               />
               {onExpand && !expanded && (
-                <BiExpand
-                  className="w-5 h-5 absolute bottom-5 right-5 text-rose-400 dark:text-rose-600 group-hover:text-rose-600 dark:group-hover:text-rose-400 duration-300 cursor-pointer"
-                  onClick={() => handleExpandClick(idx)}
-                  aria-label="Expand"
-                />
+                <div className="absolute bottom-5 right-5 p-2 bg-white/80 dark:bg-black/60 rounded-full ">
+                  <BiExpand
+                    className="w-5 h-5  text-rose-600 dark:text-rose-300 hover:text-rose-800 dark:hover:text-rose-600 transition-colors duration-300 cursor-pointer"
+                    onClick={() => handleExpandClick(idx)}
+                    aria-label="Expand"
+                  />
+                </div>
               )}
             </div>
           ))}

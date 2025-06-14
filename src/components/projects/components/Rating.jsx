@@ -359,23 +359,27 @@ function StarRating({ projectId, temporary = false }) {
         {showStars ? (
           <div className={`relative ${yellowStyles.bg} rounded-full`}>
             <div className="-z-10 absolute -inset-0.5 rounded-full appGradient opacity-60 blur"></div>
-            <div
-              className={`relative w-48 h-12 p-0.5 rounded-full ${yellowStyles.bg} flex justify-start items-center`}
+            <button
+              className={`relative w-48 h-12 p-0.5 rounded-full ${yellowStyles.bg} flex justify-start items-center focus:outline-none`}
+              onClick={toggleStarsVisibility}
+              aria-label="Toggle star rating"
             >
-              <button
-                className={`z-10 w-12 h-12 rounded-full ${yellowStyles.bg} flex justify-center items-center focus:outline-none`}
-                onClick={toggleStarsVisibility}
-                aria-label="Close"
+              <div
+                className={`z-10 w-12 h-12 rounded-full ${yellowStyles.bg} flex justify-center items-center pointer-events-none`}
               >
                 <RiStarSmileFill className="w-5 h-5 text-orange-800 dark:text-orange-200" />
-              </button>
+              </div>
+
               <div className="flex gap-1 items-center">
-                <div className="flex gap-1 justify-center items-center rounded-full text-white ">
+                <div className="flex gap-1 justify-center items-center rounded-full text-white">
                   {[1, 2, 3, 4, 5].map((star) => (
                     <div
                       key={star}
                       className="relative w-4 h-4 cursor-pointer"
-                      onClick={() => handleStarClick(star)}
+                      onClick={(e) => {
+                        e.stopPropagation(); // Prevent triggering the parent button
+                        handleStarClick(star);
+                      }}
                     >
                       {renderStar(star)}
                     </div>
@@ -387,7 +391,7 @@ function StarRating({ projectId, temporary = false }) {
                   {avgRating.toFixed(1)}
                 </span>
               </div>
-            </div>
+            </button>
           </div>
         ) : (
           <div className="flex items-center">
@@ -423,14 +427,12 @@ function StarRating({ projectId, temporary = false }) {
           ref={containerRef}
           className="relative p-0.5 rounded-full flex items-center gradientBorderFullNoShadow cursor-pointer"
         >
-          <div
-            className={`group relative w-48 h-12 p-0.5 rounded-full ${yellowStyles.bg} flex justify-start items-center hover:shadow-none`}
+          <button
+            className={`group relative w-48 h-12 p-0.5 rounded-full ${yellowStyles.bg} flex justify-start items-center hover:shadow-none focus:outline-none`}
+            onClick={toggleStarsVisibility}
+            aria-label="Toggle star rating"
           >
-            <button
-              className="z-10 w-12 h-12 rounded-full flex justify-center items-center focus:outline-none"
-              onClick={toggleStarsVisibility}
-              aria-label="Close"
-            >
+            <div className="z-10 w-12 h-12 rounded-full flex justify-center items-center pointer-events-none">
               {avgRating > 0 ? (
                 <RiStarSmileFill className="w-5 h-5 text-orange-800 dark:text-orange-100 ml-0.5" />
               ) : (
@@ -439,13 +441,17 @@ function StarRating({ projectId, temporary = false }) {
                   <RiStarSmileFill className="w-5 h-5 hidden group-hover:inline text-orange-800 dark:text-orange-200 ml-0.5" />
                 </>
               )}
-            </button>
+            </div>
+
             <div className="flex gap-1 items-center">
               {[1, 2, 3, 4, 5].map((star) => (
                 <div
                   key={star}
                   className="relative w-4 h-4 cursor-pointer"
-                  onClick={() => handleStarClick(star)}
+                  onClick={(e) => {
+                    e.stopPropagation(); // Prevent parent button's onClick
+                    handleStarClick(star);
+                  }}
                 >
                   {renderStar(star)}
                 </div>
@@ -456,7 +462,7 @@ function StarRating({ projectId, temporary = false }) {
                 {avgRating.toFixed(1)}
               </span>
             </div>
-          </div>
+          </button>
         </div>
       </div>
       {userRating > 0 && showFeedbackTooltip && FeedbackTooltipDetail}

@@ -49,6 +49,7 @@ export const redStyles = {
   baseBg: "bg-red-100 dark:bg-red-800",
   baseText: "text-red-800 dark:text-red-100",
   baseShadow: "shadow-md shadow-red-400 dark:shadow-red-500 hover:shadow-none",
+  border: "gradientBorderFullNoShadow",
   icon: "w-5 h-5 mt-0.5",
 };
 

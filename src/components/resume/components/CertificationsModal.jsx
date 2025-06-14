@@ -66,14 +66,14 @@ const CertificationsModal = React.memo(({ image, onClose }) =>
           onClose();
         }}
         aria-label="Close"
-        className="absolute top-4 right-4 z-60"
+        className="absolute top-4 right-4 z-60 bg-white/80 dark:bg-black/60 rounded-full p-2.5"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 14 14"
           width="1em"
           height="1em"
-          className="w-7 h-7 text-rose-600 group-hover:text-rose-400 dark:text-rose-300 dark:group-hover:text-rose-400 duration-300 cursor-pointer"
+          className="w-5 h-5 text-rose-600 dark:text-rose-300 hover:text-rose-800 dark:hover:text-rose-600 transition-colors duration-300 cursor-pointer"
         >
           <path
             fill="currentColor"

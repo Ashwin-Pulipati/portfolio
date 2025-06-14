@@ -118,46 +118,32 @@ function Website({ website, temporary = false }) {
     <div
       className={`relative rounded-full overflow-visible ${greenStyles.baseBg} ${greenStyles.baseShadow}`}
     >
-      <div
-        className={`relative p-0.5 rounded-full flex items-center cursor-pointer ${greenStyles.gradientHover}`}
+      <button
+        type="button"
+        className={`group relative p-0.5 rounded-full flex items-center cursor-pointer ${greenStyles.gradientHover} focus:outline-none`}
         onClick={() => window.open(website, "_blank", "noopener,noreferrer")}
+        aria-label="Open Website"
       >
-        <div className="relative hover:text-white cursor-pointer">
-          <div
-            className={`group relative w-22 h-11 p-0.5 rounded-full flex justify-start items-center hover:shadow-none ${greenStyles.baseBg}`}
-          >
-            <a
-              href={website}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={(e) => e.stopPropagation()}
-              className="relative z-10 w-12 h-12 rounded-full flex justify-center items-center focus:outline-none transition duration-200"
-              aria-label="Website"
-            >
-              <GlobeAmericasIcon
-                className={`${greenStyles.icon} ${greenStyles.baseText} opacity-80 transition duration-200 group-hover:hidden`}
-              />
-              <GlobeAmericasSolidIcon
-                className={`${greenStyles.icon} ${greenStyles.baseText} transition duration-200 hidden group-hover:inline`}
-              />
-            </a>
+        <div
+          className={`relative w-22 h-11 p-0.5 rounded-full flex justify-start items-center hover:shadow-none ${greenStyles.baseBg}`}
+        >
+          <div className="relative z-10 w-12 h-12 rounded-full flex justify-center items-center pointer-events-none transition duration-200">
+            <GlobeAmericasIcon
+              className={`${greenStyles.icon} ${greenStyles.baseText} opacity-80 transition duration-200 group-hover:hidden`}
+            />
+            <GlobeAmericasSolidIcon
+              className={`${greenStyles.icon} ${greenStyles.baseText} transition duration-200 hidden group-hover:inline`}
+            />
+          </div>
 
-            <div className="relative flex items-center text-sm w-fit pr-4">
-              <span className={`font-bodyFont mt-0.5 ${greenStyles.baseText}`}>
-                Website
-              </span>
-              <a
-                href={website}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-0 overflow-hidden group-hover:w-auto group-hover:ml-2 transition-[width,margin] duration-200"
-              >
-                <FiExternalLink className="w-4 h-4 text-yellow-800 dark:text-yellow-200" />
-              </a>
-            </div>
+          <div className="relative flex items-center text-sm w-fit pr-4">
+            <span className={`font-bodyFont mt-0.5 ${greenStyles.baseText}`}>
+              Website
+            </span>
+            <FiExternalLink className="w-0 overflow-hidden group-hover:w-auto group-hover:ml-2 transition-[width,margin] duration-200 text-yellow-800 dark:text-yellow-200" />
           </div>
         </div>
-      </div>
+      </button>
     </div>
   );
 }
